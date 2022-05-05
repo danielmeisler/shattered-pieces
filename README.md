@@ -4,6 +4,6 @@ Daniel Meisler<br>
 Visual Novel<br>
 Sommersemester 2022<br>
 
-Visuel Novel:
+Visuel Novel: https://danielmeisler.github.io/VisualNovel_Endabgabe/game.html
 
-Konzept:
+Konzept: https://danielmeisler.github.io/VisualNovel_Endabgabe/Concept
