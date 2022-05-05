@@ -1,9 +1,9 @@
 # VisualNovel_Endabgabe
 
-Daniel Meisler
-Visual Novel
-Sommersemester 2022
+Daniel Meisler<br>
+Visual Novel<br>
+Sommersemester 2022<br>
 
-Visuel Novel :
+Visuel Novel:
 
 Konzept:
