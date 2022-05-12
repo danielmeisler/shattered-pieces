@@ -1,4 +1,4 @@
-declare namespace Template {
+declare namespace Endabgabe {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let transitions: {
@@ -23,22 +23,36 @@ declare namespace Template {
         };
     };
     let characters: {
-        narrator: {
+        protagonist: {
             name: string;
         };
-        aisaka: {
+        sumi: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
-                angry: string;
-                happy: string;
-                upset: string;
+                normal: string;
             };
         };
-        kohana: {
+        nobu: {
             name: string;
             origin: ƒ.ORIGIN2D;
             pose: {
+                normal: string;
+                happy: string;
+            };
+        };
+        yuko: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                normal: string;
+            };
+        };
+        shou: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                normal: string;
                 happy: string;
             };
         };
@@ -47,7 +61,9 @@ declare namespace Template {
         nameProtagonist: string;
         score: number;
     };
+    function volumeUp(): void;
+    function volumeDown(): void;
 }
-declare namespace Template {
-    function Scene(): ƒS.SceneReturn;
+declare namespace Endabgabe {
+    function Street(): ƒS.SceneReturn;
 }

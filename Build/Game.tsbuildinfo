@@ -3,7 +3,7 @@
     "commonSourceDirectory": "..",
     "sourceFiles": [
       "../Source/Main.ts",
-      "../Source/Scene.ts"
+      "../Source/Street.ts"
     ],
     "js": {
       "sections": [
@@ -15,7 +15,7 @@
         },
         {
           "pos": 15,
-          "end": 2589,
+          "end": 4766,
           "kind": "text"
         }
       ],
@@ -43,7 +43,7 @@
       "sections": [
         {
           "pos": 0,
-          "end": 1177,
+          "end": 1565,
           "kind": "text"
         }
       ]
