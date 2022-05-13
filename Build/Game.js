@@ -202,7 +202,7 @@ var Endabgabe;
                 S1121_01: "Hey Jungs, lasst sie in Ruhe! Ihr könnt doch sowas nicht machen, beruhigt euch doch!",
                 S1121_05: "Ahhh!",
                 S1122_01: "Hey! Haut mal schnell ab von hier, ich habe die Polizei gerufen.",
-                S1122_04: "Protagonist:	Wir wollen hier doch nichts überstürz…",
+                S1122_04: "Wir wollen hier doch nichts überstürz…",
                 S1122_09: "Doch, ich habe sie nicht gerufen…",
                 S1123_01: "Verzieht euch lieber schnell von hier oder das wird ziemlich unschön.",
                 S1123_03: "Sicher, dass du weiterreden möchtest?"
