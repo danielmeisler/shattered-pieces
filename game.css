@@ -61,10 +61,13 @@ speech name {
   margin-top: 20px;
   margin-bottom: 10px;
   font-size: 30px;
+  font-weight: bold;
 } 
 
 speech content {
+  position: absolute;
   margin-left: 50px;
+  margin-right: 50px;
 }
 
 .menu {
@@ -79,7 +82,6 @@ speech content {
   background: none;
   border: none;
   color: white;
-  font-family: "Wingdings 3";
   font-size: 20px;
 }
 
@@ -87,5 +89,74 @@ speech content {
   background: none;
   border: none;
   color: silver;
-  font-family: "Wingdings 3";
 }
+
+.decisionClass[open] {
+  background-color: rgba(0, 0, 0, 0.500);
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.decisionClass button {
+  border: none;
+  background: none;
+  color: white;
+  font-family: Century Gothic;
+  font-size: 30px;
+  padding: 5px;
+}
+
+.decisionClass button:hover {
+  background-color: rgba(0, 0, 0, 0.750);
+}
+
+dialog[type="inventory"] {
+  background-color: rgba(0, 0, 0, 0.500);
+  color: white;
+  border: none;
+  top: -200px;
+}
+
+dialog[type="inventory"] > button{
+  font-family: Century Gothic;
+  font-size: 20px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.750);
+  color: white;
+}
+
+dialog[type="inventory"] > ul{
+  padding-left: 50px;
+}
+
+dialog[type="inventory"] > ul > li{
+  color: white;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  align-items: center;
+}
+
+dialog[type="inventory"] img {
+  position: absolute;
+  left: 10px;
+  width: 50px;
+}
+
+dialog[type="inventory"] > ul > li > name{
+  width: 150px;
+  color: white;
+  font-weight: bold;
+}
+
+dialog[type="inventory"] > ul > li > amount{
+  width: 50px;
+  color: white;
+}
+
+dialog[type="inventory"] > ul > li > description{
+  color: white;
+}
+

@@ -17,7 +17,7 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
-        city: {
+        alley: {
             name: string;
             background: string;
         };
@@ -56,6 +56,20 @@ declare namespace Endabgabe {
                 happy: string;
             };
         };
+        schlaeger: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                normal: string;
+            };
+        };
+        doktor: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                normal: string;
+            };
+        };
     };
     let dataForSave: {
         nameProtagonist: string;
@@ -63,6 +77,52 @@ declare namespace Endabgabe {
     };
     function volumeUp(): void;
     function volumeDown(): void;
+    let menuItems: {
+        inventory: string;
+        save: string;
+        load: string;
+        volumeDown: string;
+        volumeUp: string;
+    };
+    let items: {
+        item1: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        item2: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        item3: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        item4: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        item5: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+        item6: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
+    };
+    function menuButtons(_option: string): Promise<void>;
 }
 declare namespace Endabgabe {
     function Street(): ƒS.SceneReturn;

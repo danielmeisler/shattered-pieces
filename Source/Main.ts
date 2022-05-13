@@ -24,17 +24,17 @@ namespace Endabgabe {
     export let locations = {
         street: {
             name: "Street",
-            background: "./assets/images/backgrounds/test.jpg"
+            background: "./assets/images/backgrounds/street.jpg"
         },
-        city: {
-            name: "City",
-            background: "./Images/city_01.png"
+        alley: {
+            name: "Alley",
+            background: "./assets/images/backgrounds/alley.jpg"
         }
     };
   
     export let characters = {
         protagonist: {
-            name: ""
+            name: "Ich"
         },
         sumi: {
             name: "Sumi",
@@ -66,6 +66,23 @@ namespace Endabgabe {
                 happy: "./assets/images/characters/shou/shou_happy.png"
 
             }
+        },
+
+        schlaeger: {
+            name: "Schläger",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: ""
+
+            }
+        },
+        doktor: {
+            name: "Doktor",
+            origin: ƒS.ORIGIN.BOTTOMCENTER,
+            pose: {
+                normal: ""
+
+            }
         }
     };
   
@@ -90,19 +107,59 @@ namespace Endabgabe {
         }
     }
   
-    let menuItems = {
-        //inventory: "I",
-        save: "q",
-        load: "p",
-        volumeUp: "y",
-        volumeDown: "x"
+    export let menuItems = {
+        inventory: "≡",
+        save: "▼",
+        load: "▲",
+        volumeDown: "♪",
+        volumeUp: "♫",
     };
+
+    export let items = {
+        item1: {
+            name: "Poke Ball",
+            description: "It has a simple red and white design, and it's the most known kind of Poké Ball",
+            image: "./assets/images/items/pokeball.png",
+            static: false
+        },
+        item2: {
+            name: "Great Ball",
+            description: "It is slightly better than the regular Poké Ball.",
+            image: "./assets/images/items/superball.png",
+            static: false
+        },
+        item3: {
+            name: "Ultra Ball",
+            description: "It is twice as good as a regular Poké Ball.",
+            image: "./assets/images/items/hyperball.png",
+            static: false
+        },
+        item4: {
+            name: "Quick Ball",
+            description: "A kind of Poké Ball that works better the sooner it is used in battle.",
+            image: "./assets/images/items/flottball.png",
+            static: false
+        },
+        item5: {
+            name: "Premier Ball",
+            description: "They act the same way as a regular Poké Ball but has a completely white design and is given as a gift when ten or more Poké Balls are bought at once.",
+            image: "./assets/images/items/premierball.png",
+            static: false
+        },
+        item6: {
+            name: "Master Ball",
+            description: "A very rare Poké Ball that never fails in an attempt to catch a Pokémon.",
+            image: "./assets/images/items/masterball.png",
+            static: false
+        }     
+      };
+    
   
-    async function menuButtons(_option: string): Promise<void> {
+    export async function menuButtons(_option: string): Promise<void> {
         console.log(_option);
-        // if (_option == inGameMenu.inventory) {
-            
-        // }
+        if (_option == menuItems.inventory) {
+            ƒS.Inventory.open();
+        }
         if (_option == menuItems.save) {
             await ƒS.Progress.save();
         }
@@ -118,12 +175,29 @@ namespace Endabgabe {
     }
   
     window.addEventListener("load", start);
-    let menu: ƒS.Menu;
   
     function start(_event: Event): void {
-        menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
-        menu.open();
-        
+
+        for (let i: number = 0; i < 86; i++) {
+            ƒS.Inventory.add(items.item1);
+        }
+        for (let i: number = 0; i < 22; i++) {
+            ƒS.Inventory.add(items.item2);
+        }
+        for (let i: number = 0; i < 14; i++) {
+            ƒS.Inventory.add(items.item3);
+        }
+        for (let i: number = 0; i < 64; i++) {
+            ƒS.Inventory.add(items.item4);
+        }
+        for (let i: number = 0; i < 3; i++) {
+            ƒS.Inventory.add(items.item5);
+        }
+        for (let i: number = 0; i < 1; i++) {
+            ƒS.Inventory.add(items.item6);
+        }
+
+
         let scenes: ƒS.Scenes = [
             { scene: Street, name: "Street", id: "street"}
         ];
