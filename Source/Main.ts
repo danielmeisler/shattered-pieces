@@ -2,7 +2,12 @@ namespace Endabgabe {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
   
-    console.log("FILLER starting");
+    console.log("Endabgabe starting");
+
+    export let dataForSave = {
+        nameProtagonist: "",
+        score: 0
+    };
   
     export let transitions = {
         puzzle: {
@@ -99,11 +104,6 @@ namespace Endabgabe {
 
             }
         }
-    };
-  
-    export let dataForSave = {
-            nameProtagonist: "",
-            score: 0
     };
   
     let volume: number = 1.0;
@@ -214,7 +214,7 @@ namespace Endabgabe {
 
 
         let scenes: ƒS.Scenes = [
-            { scene: Street, name: "Street", id: "street"}
+            { scene: Alley, name: "Alley", id: "alley"}
         ];
   
         // start the sequence

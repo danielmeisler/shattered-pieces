@@ -1,6 +1,13 @@
 declare namespace Endabgabe {
+    function Alley(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
+    let dataForSave: {
+        nameProtagonist: string;
+        score: number;
+    };
     let transitions: {
         puzzle: {
             duration: number;
@@ -28,6 +35,10 @@ declare namespace Endabgabe {
             background: string;
         };
         harassment: {
+            name: string;
+            background: string;
+        };
+        coming: {
             name: string;
             background: string;
         };
@@ -81,10 +92,6 @@ declare namespace Endabgabe {
             };
         };
     };
-    let dataForSave: {
-        nameProtagonist: string;
-        score: number;
-    };
     function volumeUp(): void;
     function volumeDown(): void;
     let menuItems: {
@@ -135,5 +142,5 @@ declare namespace Endabgabe {
     function menuButtons(_option: string): Promise<void>;
 }
 declare namespace Endabgabe {
-    function Street(): ƒS.SceneReturn;
+    function SumisHome(): ƒS.SceneReturn;
 }

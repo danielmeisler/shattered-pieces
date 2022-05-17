@@ -1,10 +1,11 @@
 namespace Endabgabe {
-  export async function Street(): ƒS.SceneReturn {
+  export async function Alley(): ƒS.SceneReturn {
     console.log("FudgeStory Endabgabe Scene starting");
     //alert("Vollbild Modus (F11) zu empfehlen.");
     let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
     menu.open();
       
+	// Speeches
     let text = {
         Protagonist: {
             S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
@@ -56,6 +57,10 @@ namespace Endabgabe {
 
 
     // Decisions
+	  let interfereOrNot;
+    let howToInterfere;
+    let nobuTalk;
+    let provokeOrKeepUp;
 
     let interfereOrNotAnswer = {
       ignore: "Ignorieren",
@@ -95,13 +100,7 @@ namespace Endabgabe {
       keepUp: "Das kann den ganzen Tag so weitergehen!"
     };
 
-    let interfereOrNot;
-    let howToInterfere;
-    let nobuTalk;
-    let provokeOrKeepUp;
-
     // Start
-
     ƒS.Speech.hide();
     await ƒS.Location.show(locations.street);
     await ƒS.update(1);
@@ -212,7 +211,5 @@ namespace Endabgabe {
                 //WIP for Hospital Scene
                 return "sumiHospital";
     }
-
-
   }
 }
