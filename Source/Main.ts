@@ -31,6 +31,21 @@ namespace Endabgabe {
             background: "./assets/images/backgrounds/alley.jpg"
         }
     };
+
+    export let sequence = {
+        black: {
+            name: "Black",
+            background: "./assets/images/sequences/black.png"
+        },
+        harassment: {
+            name: "Harassment",
+            background: "./assets/images/sequences/harassment.png"
+        },
+        coming: {
+            name: "TheyComing",
+            background: "./assets/images/sequences/coming.png"
+        }
+    };
   
     export let characters = {
         protagonist: {

@@ -22,6 +22,16 @@ declare namespace Endabgabe {
             background: string;
         };
     };
+    let sequence: {
+        black: {
+            name: string;
+            background: string;
+        };
+        harassment: {
+            name: string;
+            background: string;
+        };
+    };
     let characters: {
         protagonist: {
             name: string;

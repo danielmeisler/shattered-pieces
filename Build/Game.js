@@ -27,6 +27,16 @@ var Endabgabe;
             background: "./assets/images/backgrounds/alley.jpg"
         }
     };
+    Endabgabe.sequence = {
+        black: {
+            name: "Black",
+            background: "./assets/images/sequences/black.png"
+        },
+        harassment: {
+            name: "Harassment",
+            background: "./assets/images/sequences/harassment.png"
+        }
+    };
     Endabgabe.characters = {
         protagonist: {
             name: "Ich"
@@ -197,8 +207,9 @@ var Endabgabe;
             Protagonist: {
                 S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
                 S1000_02: "Wo kam der Schrei her? Ich sollte mal nachsehen...",
-                S1000_03: "Was soll ich tun?",
-                S1000_04: "Ich sollte sie aufhalten, aber wie?",
+                S1000_03: "Ich glaube der Schrei kam aus dieser Gasse...",
+                S1000_04: "Was soll ich tun?",
+                S1000_05: "Ich sollte sie aufhalten, aber wie?",
                 S1121_01: "Hey Jungs, lasst sie in Ruhe! Ihr könnt doch sowas nicht machen, beruhigt euch doch!",
                 S1121_05: "Ahhh!",
                 S1122_01: "Hey! Haut mal schnell ab von hier, ich habe die Polizei gerufen.",
@@ -271,26 +282,31 @@ var Endabgabe;
         // Start
         Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street);
-        await Endabgabe.ƒS.update();
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_02);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
-        await Endabgabe.ƒS.update();
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_03);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequence.harassment);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_04);
         interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
         switch (interfereOrNot) {
             case interfereOrNotAnswer.ignore:
                 return await badEnding1();
             case interfereOrNotAnswer.interefere:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_05);
                 howToInterfere = await Endabgabe.ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
                 break;
         }
         switch (howToInterfere) {
             case howToInterfereAnswer.talk:
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update();
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_01);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_02);
                 nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk1Answer, "decisionClass");
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_03);
@@ -305,9 +321,11 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1121_08);
                 return "SumisHome";
             case howToInterfereAnswer.threatenWithCops:
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update();
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_01);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_02);
                 nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk3Answer, "decisionClass");
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_03);
@@ -328,11 +346,15 @@ var Endabgabe;
                     case nobuTalk4Answer.fight:
                 }
             case howToInterfereAnswer.threatenWithViolence:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_01);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
                 await Endabgabe.ƒS.update();
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_02);
-                nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk1Answer, "decisionClass");
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_04);
+                provokeOrKeepUp = await Endabgabe.ƒS.Menu.getInput(provokeOrKeepUpAnswer, "decisionClass");
                 switch (provokeOrKeepUp) {
                     case provokeOrKeepUpAnswer.provoke:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_05);

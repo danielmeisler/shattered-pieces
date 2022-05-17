@@ -9,8 +9,9 @@ namespace Endabgabe {
         Protagonist: {
             S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
             S1000_02: "Wo kam der Schrei her? Ich sollte mal nachsehen...",
-            S1000_03: "Was soll ich tun?",
-            S1000_04: "Ich sollte sie aufhalten, aber wie?",
+            S1000_03: "Ich glaube der Schrei kam aus dieser Gasse...",
+            S1000_04: "Was soll ich tun?",
+            S1000_05: "Ich sollte sie aufhalten, aber wie?",
 
             S1121_01: "Hey Jungs, lasst sie in Ruhe! Ihr könnt doch sowas nicht machen, beruhigt euch doch!",
             S1121_05: "Ahhh!",
@@ -103,24 +104,23 @@ namespace Endabgabe {
 
     ƒS.Speech.hide();
     await ƒS.Location.show(locations.street);
-    await ƒS.update();
+    await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
-    
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_02);
     await ƒS.Location.show(locations.alley);
-    await ƒS.update();
+    await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
-
-
+    await ƒS.Location.show(sequence.harassment);
+    await ƒS.update(1);
+    await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
     interfereOrNot = await ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
-
 
     switch (interfereOrNot) {
               case interfereOrNotAnswer.ignore:
 
                   return await badEnding1();
               case interfereOrNotAnswer.interefere:
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_05);
                 howToInterfere = await ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
                 break;
     }
@@ -128,11 +128,11 @@ namespace Endabgabe {
 
     switch (howToInterfere) {
               case howToInterfereAnswer.talk:
-
-                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
-                await ƒS.update();
-                
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_01);
+                await ƒS.Location.show(locations.alley);
+                await ƒS.update(1);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1121_02);
                 
                 nobuTalk = await ƒS.Menu.getInput(nobuTalk1Answer, "decisionClass");
@@ -155,11 +155,11 @@ namespace Endabgabe {
 
                 return "SumisHome";
               case howToInterfereAnswer.threatenWithCops:
-
-                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
-                await ƒS.update();
-
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_01);
+                await ƒS.Location.show(locations.alley);
+                await ƒS.update(1);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_02);
                   
                 nobuTalk = await ƒS.Menu.getInput(nobuTalk3Answer, "decisionClass");
@@ -185,13 +185,16 @@ namespace Endabgabe {
                 }
 
               case howToInterfereAnswer.threatenWithViolence:
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1123_01);
+                await ƒS.Location.show(locations.alley);
+                await ƒS.update(1);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
                 await ƒS.update();
-                
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1123_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_02);
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1123_03);
+                await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_04);
                 
-                nobuTalk = await ƒS.Menu.getInput(nobuTalk1Answer, "decisionClass");
+                provokeOrKeepUp = await ƒS.Menu.getInput(provokeOrKeepUpAnswer, "decisionClass");
 
                 switch (provokeOrKeepUp) {
                   case provokeOrKeepUpAnswer.provoke:
