@@ -92,7 +92,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_03);
-        await Endabgabe.ƒS.Location.show(Endabgabe.sequence.harassment);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.harassment);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_04);
         interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
@@ -208,7 +208,7 @@ var Endabgabe;
             background: "./assets/images/backgrounds/alley.jpg"
         }
     };
-    Endabgabe.sequence = {
+    Endabgabe.sequences = {
         black: {
             name: "Black",
             background: "./assets/images/sequences/black.png"
@@ -220,6 +220,18 @@ var Endabgabe;
         coming: {
             name: "TheyComing",
             background: "./assets/images/sequences/coming.png"
+        },
+        gimmeYourHand: {
+            name: "gimmeYourHand",
+            background: "./assets/images/sequences/givemehand.png"
+        },
+        nobuHitMad: {
+            name: "nobuHitMad",
+            background: "./assets/images/sequences/nobuhitmad.png"
+        },
+        nobuKnife: {
+            name: "nobuKnife",
+            background: "./assets/images/sequences/nobuknife.png"
         }
     };
     Endabgabe.characters = {

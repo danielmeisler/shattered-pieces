@@ -1,1 +1,54 @@
-{"bundle":{"commonSourceDirectory":"..","sourceFiles":["../Source/Alley.ts","../Source/Main.ts","../Source/SumisHome.ts"],"js":{"sections":[{"pos":0,"end":13,"kind":"prologue","data":"use strict"},{"pos":15,"end":30222,"kind":"text"}],"sources":{"prologues":[{"file":0,"text":"","directives":[{"pos":-1,"end":-1,"expression":{"pos":-1,"end":-1,"text":"use strict"}}]}]}},"dts":{"sections":[{"pos":0,"end":3411,"kind":"text"}]}},"version":"4.6.4"}
+{
+  "bundle": {
+    "commonSourceDirectory": "..",
+    "sourceFiles": [
+      "../Source/Alley.ts",
+      "../Source/Main.ts",
+      "../Source/SumisHome.ts"
+    ],
+    "js": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 13,
+          "kind": "prologue",
+          "data": "use strict"
+        },
+        {
+          "pos": 15,
+          "end": 30635,
+          "kind": "text"
+        }
+      ],
+      "sources": {
+        "prologues": [
+          {
+            "file": 0,
+            "text": "",
+            "directives": [
+              {
+                "pos": -1,
+                "end": -1,
+                "expression": {
+                  "pos": -1,
+                  "end": -1,
+                  "text": "use strict"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "dts": {
+      "sections": [
+        {
+          "pos": 0,
+          "end": 3699,
+          "kind": "text"
+        }
+      ]
+    }
+  },
+  "version": "4.0.3"
+}

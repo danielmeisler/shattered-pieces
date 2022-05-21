@@ -29,7 +29,7 @@ declare namespace Endabgabe {
             background: string;
         };
     };
-    let sequence: {
+    let sequences: {
         black: {
             name: string;
             background: string;
@@ -39,6 +39,18 @@ declare namespace Endabgabe {
             background: string;
         };
         coming: {
+            name: string;
+            background: string;
+        };
+        gimmeYourHand: {
+            name: string;
+            background: string;
+        };
+        nobuHitMad: {
+            name: string;
+            background: string;
+        };
+        nobuKnife: {
             name: string;
             background: string;
         };

@@ -37,7 +37,7 @@ namespace Endabgabe {
         }
     };
 
-    export let sequence = {
+    export let sequences = {
         black: {
             name: "Black",
             background: "./assets/images/sequences/black.png"
@@ -49,6 +49,18 @@ namespace Endabgabe {
         coming: {
             name: "TheyComing",
             background: "./assets/images/sequences/coming.png"
+        },
+        gimmeYourHand: {
+            name: "gimmeYourHand", 
+            background: "./assets/images/sequences/givemehand.png"
+        },
+        nobuHitMad: {
+            name: "nobuHitMad", 
+            background: "./assets/images/sequences/nobuhitmad.png"
+        },
+        nobuKnife: {
+            name: "nobuKnife", 
+            background: "./assets/images/sequences/nobuknife.png"
         }
     };
   

@@ -109,7 +109,7 @@ namespace Endabgabe {
     await ƒS.Location.show(locations.alley);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
-    await ƒS.Location.show(sequence.harassment);
+    await ƒS.Location.show(sequences.harassment);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
     interfereOrNot = await ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
