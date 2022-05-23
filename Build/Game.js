@@ -195,6 +195,8 @@ var Endabgabe;
                 //WIP for Hospital Scene
                 return "protagonistHospital";
             case howToInterfereAnswer.getHelp:
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHurt);
+                await Endabgabe.ƒS.update(2);
                 //WIP for Hospital Scene
                 return "sumiHospital";
         }

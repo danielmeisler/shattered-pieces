@@ -241,7 +241,8 @@ namespace Endabgabe {
                 return "protagonistHospital";
               case howToInterfereAnswer.getHelp:
 
-
+                await ƒS.Location.show(sequences.sumiHurt);
+                await ƒS.update(2);
                 //WIP for Hospital Scene
                 return "sumiHospital";
     }
