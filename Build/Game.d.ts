@@ -54,6 +54,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiHurt: {
+            name: string;
+            background: string;
+        };
     };
     let characters: {
         protagonist: {

@@ -98,6 +98,7 @@ var Endabgabe;
         interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
         switch (interfereOrNot) {
             case interfereOrNotAnswer.ignore:
+                // Zeitungsartikel fehlt
                 return await badEnding1();
             case interfereOrNotAnswer.interefere:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_05);
@@ -116,12 +117,22 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_03);
                 nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk2Answer, "decisionClass");
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_04);
+                await Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.coming);
+                await Endabgabe.ƒS.update(2);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
+                await Endabgabe.ƒS.update(2);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_05);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_06);
+                // Polizei Sirenen oder so
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1121_07);
                 Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update();
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1121_08);
                 return "SumisHome";
             case howToInterfereAnswer.threatenWithCops:
@@ -133,16 +144,24 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_02);
                 nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk3Answer, "decisionClass");
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_03);
+                await Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.coming);
+                await Endabgabe.ƒS.update(2);
                 nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk4Answer, "decisionClass");
                 switch (nobuTalk) {
                     case nobuTalk4Answer.doNotFight:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_04);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
+                        await Endabgabe.ƒS.update(2);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_05);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                        await Endabgabe.ƒS.update(1);
+                        // Polizei Sirenen oder so
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1122_06);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_07);
                         Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
-                        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-                        await Endabgabe.ƒS.update();
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
+                        await Endabgabe.ƒS.update(2);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1122_08);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_09);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1122_10);
@@ -150,21 +169,27 @@ var Endabgabe;
                     case nobuTalk4Answer.fight:
                 }
             case howToInterfereAnswer.threatenWithViolence:
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.coming);
+                await Endabgabe.ƒS.update(2);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update();
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_03);
+                await Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
+                await Endabgabe.ƒS.update(2);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_04);
+                // Zwischensequenz?
                 provokeOrKeepUp = await Endabgabe.ƒS.Menu.getInput(provokeOrKeepUpAnswer, "decisionClass");
                 switch (provokeOrKeepUp) {
                     case provokeOrKeepUpAnswer.provoke:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_05);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuKnife);
+                        await Endabgabe.ƒS.update(2);
                         return badEnding2;
                     case provokeOrKeepUpAnswer.keepUp:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_06);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
+                        await Endabgabe.ƒS.update(2);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1123_07);
                 }
                 //WIP for Hospital Scene
@@ -232,6 +257,10 @@ var Endabgabe;
         nobuKnife: {
             name: "nobuKnife",
             background: "./assets/images/sequences/nobuknife.png"
+        },
+        sumiHurt: {
+            name: "sumiHurt",
+            background: "./assets/images/sequences/sumihurt.png"
         }
     };
     Endabgabe.characters = {

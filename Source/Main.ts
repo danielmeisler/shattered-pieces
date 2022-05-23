@@ -61,6 +61,10 @@ namespace Endabgabe {
         nobuKnife: {
             name: "nobuKnife", 
             background: "./assets/images/sequences/nobuknife.png"
+        },
+        sumiHurt: {
+            name: "sumiHurt", 
+            background: "./assets/images/sequences/sumihurt.png"
         }
     };
   
