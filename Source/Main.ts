@@ -29,11 +29,11 @@ namespace Endabgabe {
     export let locations = {
         street: {
             name: "Street",
-            background: "./assets/images/backgrounds/street.jpg"
+            background: "./assets/images/backgrounds/street.png"
         },
-        alley: {
-            name: "Alley",
-            background: "./assets/images/backgrounds/alley.jpg"
+        school: {
+            name: "School",
+            background: "./assets/images/backgrounds/school.png"
         }
     };
 
@@ -230,7 +230,7 @@ namespace Endabgabe {
 
 
         let scenes: ƒS.Scenes = [
-            { scene: Alley, name: "Alley", id: "alley"}
+            { scene: school, name: "school", id: "school"}
         ];
   
         // start the sequence

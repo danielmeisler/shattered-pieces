@@ -1,7 +1,7 @@
 "use strict";
 var Endabgabe;
 (function (Endabgabe) {
-    async function Alley() {
+    async function school() {
         console.log("FudgeStory Endabgabe Scene starting");
         //alert("Vollbild Modus (F11) zu empfehlen.");
         let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
@@ -11,7 +11,7 @@ var Endabgabe;
             Protagonist: {
                 S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
                 S1000_02: "Wo kam der Schrei her? Ich sollte mal nachsehen...",
-                S1000_03: "Ich glaube der Schrei kam aus dieser Gasse...",
+                S1000_03: "Ich glaube der Schrei kam von hier...",
                 S1000_04: "Was soll ich tun?",
                 S1000_05: "Ich sollte sie aufhalten, aber wie?",
                 S1121_01: "Hey Jungs, lasst sie in Ruhe! Ihr könnt doch sowas nicht machen, beruhigt euch doch!",
@@ -29,7 +29,7 @@ var Endabgabe;
                 S1123_07: "He du! Bleib bei mir, ich hole einen Krankenwagen! HILFE!"
             },
             Nobu: {
-                S1121_02: "Hey Kleiner, verzieh dich. Geh einfach weiter und tu so als hättest du nichts gesehen.",
+                S1121_02: "Hey du, verzieh dich. Geh einfach weiter und tu so als hättest du nichts gesehen.",
                 S1121_03: "Junge, ich habe dich gewarnt, letzte Chance. Oder willst du den nächsten Tag nicht mehr erleben?",
                 S1121_04: "Wenn du nicht hören willst, musst du eben fühlen du kleine Ratte.",
                 S1121_06: "Du hättest auf mich hören sollen, jetzt ist es vorbei mit dir…",
@@ -89,7 +89,7 @@ var Endabgabe;
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_02);
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_03);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.harassment);
@@ -108,7 +108,7 @@ var Endabgabe;
         switch (howToInterfere) {
             case howToInterfereAnswer.talk:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
                 await Endabgabe.ƒS.update(1);
@@ -123,7 +123,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
                 await Endabgabe.ƒS.update(2);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_05);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
                 await Endabgabe.ƒS.update(1);
@@ -137,7 +137,7 @@ var Endabgabe;
                 return "SumisHome";
             case howToInterfereAnswer.threatenWithCops:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
                 await Endabgabe.ƒS.update(1);
@@ -154,7 +154,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
                         await Endabgabe.ƒS.update(2);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_05);
-                        await Endabgabe.ƒS.Location.show(Endabgabe.locations.alley);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
                         await Endabgabe.ƒS.update(1);
                         // Polizei Sirenen oder so
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1122_06);
@@ -201,7 +201,7 @@ var Endabgabe;
                 return "sumiHospital";
         }
     }
-    Endabgabe.Alley = Alley;
+    Endabgabe.school = school;
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
 (function (Endabgabe) {
@@ -228,11 +228,11 @@ var Endabgabe;
     Endabgabe.locations = {
         street: {
             name: "Street",
-            background: "./assets/images/backgrounds/street.jpg"
+            background: "./assets/images/backgrounds/street.png"
         },
-        alley: {
-            name: "Alley",
-            background: "./assets/images/backgrounds/alley.jpg"
+        school: {
+            name: "School",
+            background: "./assets/images/backgrounds/school.png"
         }
     };
     Endabgabe.sequences = {
@@ -414,7 +414,7 @@ var Endabgabe;
             Endabgabe.ƒS.Inventory.add(Endabgabe.items.item6);
         }
         let scenes = [
-            { scene: Endabgabe.Alley, name: "Alley", id: "alley" }
+            { scene: Endabgabe.school, name: "school", id: "school" }
         ];
         // start the sequence
         Endabgabe.ƒS.Progress.go(scenes);

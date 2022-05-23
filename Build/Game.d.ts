@@ -1,5 +1,5 @@
 declare namespace Endabgabe {
-    function Alley(): ƒS.SceneReturn;
+    function school(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
     export import ƒ = FudgeCore;
@@ -24,7 +24,7 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
-        alley: {
+        school: {
             name: string;
             background: string;
         };

@@ -1,5 +1,5 @@
 namespace Endabgabe {
-  export async function Alley(): ƒS.SceneReturn {
+  export async function school(): ƒS.SceneReturn {
     console.log("FudgeStory Endabgabe Scene starting");
     //alert("Vollbild Modus (F11) zu empfehlen.");
     let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
@@ -10,7 +10,7 @@ namespace Endabgabe {
         Protagonist: {
             S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
             S1000_02: "Wo kam der Schrei her? Ich sollte mal nachsehen...",
-            S1000_03: "Ich glaube der Schrei kam aus dieser Gasse...",
+            S1000_03: "Ich glaube der Schrei kam von hier...",
             S1000_04: "Was soll ich tun?",
             S1000_05: "Ich sollte sie aufhalten, aber wie?",
 
@@ -33,7 +33,7 @@ namespace Endabgabe {
             S1123_07: "He du! Bleib bei mir, ich hole einen Krankenwagen! HILFE!"
         },
         Nobu: {
-            S1121_02: "Hey Kleiner, verzieh dich. Geh einfach weiter und tu so als hättest du nichts gesehen.",
+            S1121_02: "Hey du, verzieh dich. Geh einfach weiter und tu so als hättest du nichts gesehen.",
             S1121_03: "Junge, ich habe dich gewarnt, letzte Chance. Oder willst du den nächsten Tag nicht mehr erleben?",
             S1121_04: "Wenn du nicht hören willst, musst du eben fühlen du kleine Ratte.",
             S1121_06: "Du hättest auf mich hören sollen, jetzt ist es vorbei mit dir…",
@@ -57,7 +57,7 @@ namespace Endabgabe {
 
 
     // Decisions
-	  let interfereOrNot;
+    let interfereOrNot;
     let howToInterfere;
     let nobuTalk;
     let provokeOrKeepUp;
@@ -106,7 +106,7 @@ namespace Endabgabe {
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_02);
-    await ƒS.Location.show(locations.alley);
+    await ƒS.Location.show(locations.school);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
     await ƒS.Location.show(sequences.harassment);
@@ -127,7 +127,7 @@ namespace Endabgabe {
     switch (howToInterfere) {
               case howToInterfereAnswer.talk:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_01);
-                await ƒS.Location.show(locations.alley);
+                await ƒS.Location.show(locations.school);
                 await ƒS.update(1);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
@@ -149,7 +149,7 @@ namespace Endabgabe {
 
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_05);
 
-                await ƒS.Location.show(locations.alley);
+                await ƒS.Location.show(locations.school);
                 await ƒS.update(1);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
@@ -168,7 +168,7 @@ namespace Endabgabe {
                 return "SumisHome";
               case howToInterfereAnswer.threatenWithCops:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_01);
-                await ƒS.Location.show(locations.alley);
+                await ƒS.Location.show(locations.school);
                 await ƒS.update(1);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
@@ -191,7 +191,7 @@ namespace Endabgabe {
                     await ƒS.update(2);
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_05);
 
-                    await ƒS.Location.show(locations.alley);
+                    await ƒS.Location.show(locations.school);
                     await ƒS.update(1);
                     
                     // Polizei Sirenen oder so
