@@ -1,5 +1,5 @@
 namespace Endabgabe {
-  export async function School(): ƒS.SceneReturn {
+  export async function Street(): ƒS.SceneReturn {
     console.log("FudgeStory Endabgabe Scene starting");
     //alert("Vollbild Modus (F11) zu empfehlen.");
     let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
@@ -22,7 +22,12 @@ namespace Endabgabe {
             S1122_09: "Doch, ich habe sie nicht gerufen…",
 
             S1123_01: "Verzieht euch lieber schnell von hier oder das wird ziemlich unschön.",
-            S1123_03: "Sicher, dass du weiterreden möchtest?"
+            S1123_03: "Sicher, dass du weiterreden möchtest?",
+
+            S1124_01: "HILFE! ICH BRAUCHE HILFE, RUFT DIE POLIZEI!",
+            S1124_02: "HEY IHR DA! KOMMT MIT, DA VORNE WIRD GERADE EIN MÄDCHEN VON EINEM HAUFEN JUNGS BELÄSTIGT!",
+            S1124_03: "DIE HAUEN AB!",
+            S1124_04: "SIE BLUTET, SCHNELL RUFT EINEN KRANKENWAGEN!"
         },
         Sumi: {
             S1121_08: "Schnell weg hier, die Polizei ist gleich hier. Ich wohne hier in der Nähe, dort kann ich dich verarzten.",
@@ -117,7 +122,7 @@ namespace Endabgabe {
     switch (interfereOrNot) {
               case interfereOrNotAnswer.ignore:
                   // Zeitungsartikel fehlt
-                  return await badEnding1();
+                  return await ending(1);
               case interfereOrNotAnswer.interefere:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_05);
                 howToInterfere = await ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
@@ -230,21 +235,39 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_05);
                     await ƒS.Location.show(sequences.nobuKnife);
                     await ƒS.update(2);
-                    return badEnding2;
+                    return await ending(2);
                   case provokeOrKeepUpAnswer.keepUp:
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_06);
                     await ƒS.Location.show(sequences.nobuHitMad);
                     await ƒS.update(2);
+                    // Polizei Sirenen oder so
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1123_07);
+                    return "protagonistHospital";
                 }
                 //WIP for Hospital Scene
                 return "protagonistHospital";
               case howToInterfereAnswer.getHelp:
-
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_01);
+                // zwischensequenz?
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_02);
+                // zwischensequenz?
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_03);
                 await ƒS.Location.show(sequences.sumiHurt);
                 await ƒS.update(2);
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_04);
+                // zwischensequenz?
                 //WIP for Hospital Scene
                 return "sumiHospital";
     }
   }
+
+  async function ending(endingNr: number): Promise<void> {
+    switch(endingNr) {
+        case 1:
+          break;
+        case 2:
+          break;
+    }
+  }
+  
 }

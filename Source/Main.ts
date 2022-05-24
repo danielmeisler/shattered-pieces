@@ -6,7 +6,7 @@ namespace Endabgabe {
 
     export let dataForSave = {
         nameProtagonist: "",
-        score: 0
+        romancePoints: 0
     };
   
     export let transitions = {
@@ -34,6 +34,22 @@ namespace Endabgabe {
         school: {
             name: "School",
             background: "./assets/images/backgrounds/school.png"
+        },
+        sumisHome_livingRoom: {
+            name: "SumisHome_LivingRoom",
+            background: "./assets/images/backgrounds/sumishome_livingroom.png"
+        },
+        sumisHome_bathRoom_normal: {
+            name: "SumisHome_BathRoom_Normal",
+            background: "./assets/images/backgrounds/sumishome_bathroom_normal.png"
+        },
+        sumisHome_bathRoom_foggy: {
+            name: "SumisHome_BathRoom_Foggy",
+            background: "./assets/images/backgrounds/sumishome_bathroom_foggy.png"
+        },
+        sumisHome_hallway: {
+            name: "SumisHome_Hallway",
+            background: "./assets/images/backgrounds/sumishome_hallway.png"
         }
     };
 
@@ -230,7 +246,9 @@ namespace Endabgabe {
 
 
         let scenes: ƒS.Scenes = [
-            { scene: school, name: "school", id: "school"}
+            { scene: Street, name: "street", id: "street"},
+            { scene: SumisHome, name: "sumisHome", id: "sumisHome"},
+            { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"}
         ];
   
         // start the sequence
