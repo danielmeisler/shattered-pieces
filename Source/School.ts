@@ -1,5 +1,5 @@
 namespace Endabgabe {
-  export async function school(): ƒS.SceneReturn {
+  export async function School(): ƒS.SceneReturn {
     console.log("FudgeStory Endabgabe Scene starting");
     //alert("Vollbild Modus (F11) zu empfehlen.");
     let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");

@@ -1,7 +1,4 @@
 declare namespace Endabgabe {
-    function school(): ƒS.SceneReturn;
-}
-declare namespace Endabgabe {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
@@ -156,6 +153,9 @@ declare namespace Endabgabe {
         };
     };
     function menuButtons(_option: string): Promise<void>;
+}
+declare namespace Endabgabe {
+    function School(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
     function SumisHome(): ƒS.SceneReturn;
