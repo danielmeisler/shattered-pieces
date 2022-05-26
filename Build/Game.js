@@ -41,7 +41,8 @@ var Endabgabe;
         man_laughter_long: "./assets/sounds/sfx/manlaughterlong.mp3",
         heartbeat: "./assets/sounds/sfx/heartbeat.mp3",
         police_sirens: "./assets/sounds/sfx/policesirens.mp3",
-        group_scream: "./assets/sounds/sfx/groupscream.mp3"
+        group_scream: "./assets/sounds/sfx/groupscream.mp3",
+        woman_heavy_breathing: "./assets/sounds/sfx/womanheavybreathing.mp3"
     };
     Endabgabe.locations = {
         street: {
@@ -118,9 +119,9 @@ var Endabgabe;
             name: "peopleStanding",
             background: "./assets/images/sequences/peoplestanding.png"
         },
-        runningAway: {
-            name: "runningAway",
-            background: "./assets/images/sequences/runningaway.png"
+        gangRunningAway: {
+            name: "gangRunningAway",
+            background: "./assets/images/sequences/gangrunningaway.png"
         }
     };
     Endabgabe.endings = {
@@ -505,7 +506,6 @@ var Endabgabe;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousNobuGang);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_04);
-                // Zwischensequenz?
                 provokeOrKeepUp = await Endabgabe.ƒS.Menu.getInput(provokeOrKeepUpAnswer, "decisionClass");
                 switch (provokeOrKeepUp) {
                     case provokeOrKeepUpAnswer.provoke:
@@ -536,7 +536,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1123_07);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(2);
-                        //WIP
+                        //WIP for Hospital Scene
                         return "protagonistHospital";
                 }
             case howToInterfereAnswer.getHelp:
@@ -546,14 +546,17 @@ var Endabgabe;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.peopleStanding);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_02);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.runningAway);
-                await Endabgabe.ƒS.update(1);
-                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.police_sirens, 0, 5, false);
-                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.police_sirens, 0, 5, true);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.3, 5, false);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.police);
+                await Endabgabe.ƒS.update(1);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.1, 5, false);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gangRunningAway);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_03);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHurt);
                 await Endabgabe.ƒS.update(1);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_heavy_breathing, 0.5, 6, false);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_04);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                 await Endabgabe.ƒS.update(1);

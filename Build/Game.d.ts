@@ -35,6 +35,7 @@ declare namespace Endabgabe {
         heartbeat: string;
         police_sirens: string;
         group_scream: string;
+        woman_heavy_breathing: string;
     };
     let locations: {
         street: {
@@ -111,7 +112,7 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
-        runningAway: {
+        gangRunningAway: {
             name: string;
             background: string;
         };

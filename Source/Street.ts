@@ -252,8 +252,6 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_04);
 
-                // Zwischensequenz?
-                
                 provokeOrKeepUp = await ƒS.Menu.getInput(provokeOrKeepUpAnswer, "decisionClass");
 
                 switch (provokeOrKeepUp) {
@@ -285,7 +283,7 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1123_07);
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(2);
-                    //WIP
+                    //WIP for Hospital Scene
                     return "protagonistHospital";
                 }
               case howToInterfereAnswer.getHelp:
@@ -295,14 +293,17 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.peopleStanding);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_02);
-                await ƒS.Location.show(sequences.runningAway);
-                await ƒS.update(1);
-                ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
-                ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                ƒS.Sound.fade(sound.police_sirens, 0, 5, true);
+                ƒS.Sound.fade(sound.group_scream, 0.3, 5, false);
                 await ƒS.Location.show(sequences.police);
+                await ƒS.update(1);
+                ƒS.Sound.fade(sound.group_scream, 0.1, 5, false);
+                await ƒS.Location.show(sequences.gangRunningAway);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_03);
                 await ƒS.Location.show(sequences.sumiHurt);
                 await ƒS.update(1);
+                ƒS.Sound.fade(sound.woman_heavy_breathing, 0.5, 6, false);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_04);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(1);

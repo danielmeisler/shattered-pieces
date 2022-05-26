@@ -40,7 +40,8 @@ namespace Endabgabe {
         man_laughter_long: "./assets/sounds/sfx/manlaughterlong.mp3",
         heartbeat: "./assets/sounds/sfx/heartbeat.mp3",
         police_sirens: "./assets/sounds/sfx/policesirens.mp3",
-        group_scream: "./assets/sounds/sfx/groupscream.mp3"
+        group_scream: "./assets/sounds/sfx/groupscream.mp3",
+        woman_heavy_breathing: "./assets/sounds/sfx/womanheavybreathing.mp3"
     };
   
     export let locations = {
@@ -119,9 +120,9 @@ namespace Endabgabe {
             name: "peopleStanding",
             background: "./assets/images/sequences/peoplestanding.png"
         },
-        runningAway: {
-            name: "runningAway",
-            background: "./assets/images/sequences/runningaway.png"
+        gangRunningAway: {
+            name: "gangRunningAway",
+            background: "./assets/images/sequences/gangrunningaway.png"
         }
     };
 
