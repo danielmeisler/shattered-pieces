@@ -14,6 +14,11 @@ declare namespace Endabgabe {
             alpha: string;
             edge: number;
         };
+        jigsaw: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
     };
     let sound: {
         nightclub: string;

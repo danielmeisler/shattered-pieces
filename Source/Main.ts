@@ -11,10 +11,14 @@ namespace Endabgabe {
   
     export let transitions = {
         blink: {
-            duration: 1,
+            duration: 3,
             alpha: "./assets/transitions/blink.jpg",
             edge: 1
-  
+        },
+        jigsaw: {
+            duration: 3,
+            alpha: "./assets/transitions/jigsaw.jpg",
+            edge: 1
         }
     };
   

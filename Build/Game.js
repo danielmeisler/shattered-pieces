@@ -15,8 +15,13 @@ var Endabgabe;
     };
     Endabgabe.transitions = {
         blink: {
-            duration: 1,
+            duration: 3,
             alpha: "./assets/transitions/blink.jpg",
+            edge: 1
+        },
+        jigsaw: {
+            duration: 3,
+            alpha: "./assets/transitions/jigsaw.jpg",
             edge: 1
         }
     };
@@ -686,7 +691,7 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
-        await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.jigsaw.duration, Endabgabe.transitions.jigsaw.alpha, Endabgabe.transitions.jigsaw.edge);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);

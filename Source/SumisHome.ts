@@ -126,7 +126,7 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
-        await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
+        await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
         await ƒS.Location.show(locations.sumisHome_livingRoom);
         await ƒS.update(1);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
