@@ -5,12 +5,12 @@ namespace Endabgabe {
     let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
     menu.open();
       
-	// Speeches
+  // Speeches
     let text = {
         Protagonist: {
-            S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
-            S1000_02: "Wo kam der Schrei her? Ich sollte mal nachsehen...",
-            S1000_03: "Ich glaube der Schrei kam von hier...",
+            S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Noch dazu war es heute so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
+            S1000_02: "Wo kam das her? Ich sollte mal nachsehen...",
+            S1000_03: "Ich glaube das kam von hier...",
             S1000_04: "Was soll ich tun?",
             S1000_05: "Ich sollte sie aufhalten, aber wie?",
 
@@ -25,7 +25,7 @@ namespace Endabgabe {
             S1123_03: "Sicher, dass du weiterreden möchtest?",
 
             S1124_01: "HILFE! ICH BRAUCHE HILFE, RUFT DIE POLIZEI!",
-            S1124_02: "HEY IHR DA! KOMMT MIT, DA VORNE WIRD GERADE EIN MÄDCHEN VON EINEM HAUFEN JUNGS BELÄSTIGT!",
+            S1124_02: "HEY IHR DA! KOMMT MIT, DA VORNE WIRD GERADE EIN MÄDCHEN VON EINER GANG BELÄSTIGT!",
             S1124_03: "DIE HAUEN AB!",
             S1124_04: "SIE BLUTET, SCHNELL RUFT EINEN KRANKENWAGEN!"
         },
@@ -107,13 +107,18 @@ namespace Endabgabe {
 
     // Start
     ƒS.Speech.hide();
+    await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Location.show(locations.street);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
+    await ƒS.Sound.fade(sound.woman_groan_1, 0.3, 1, false);
+    await ƒS.Sound.fade(sound.woman_groan_2, 0.5, 1, false);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_02);
-    await ƒS.Location.show(locations.school);
+    await ƒS.Sound.fade(sound.woman_groan_3, 0.8, 1, false);
+    await ƒS.Location.show(locations.school2);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
+    await ƒS.Sound.fade(sound.woman_groan_4, 0, 1, false);
     await ƒS.Location.show(sequences.harassment);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
@@ -121,7 +126,6 @@ namespace Endabgabe {
 
     switch (interfereOrNot) {
               case interfereOrNotAnswer.ignore:
-                  // Zeitungsartikel fehlt
                   return await ending(1);
               case interfereOrNotAnswer.interefere:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_05);
@@ -132,8 +136,9 @@ namespace Endabgabe {
     switch (howToInterfere) {
               case howToInterfereAnswer.talk:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_01);
-                await ƒS.Location.show(locations.school);
+                await ƒS.Location.show(locations.school2);
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.smoking_cigarette, 0, 1, false);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1121_02);
@@ -148,33 +153,40 @@ namespace Endabgabe {
 
                 await ƒS.Character.hide(characters.nobu);
                 await ƒS.Location.show(sequences.coming);
-                await ƒS.update(2);
+                await ƒS.update(1);
                 await ƒS.Location.show(sequences.nobuHitMad);
-                await ƒS.update(2);
-
+                await ƒS.update(1);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(1);
+                await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
+                await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
+                ƒS.Sound.fade(sound.heartbeat, 0, 3, false);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_05);
 
-                await ƒS.Location.show(locations.school);
+                await ƒS.Location.show(sequences.unconsciousNobuGang);
                 await ƒS.update(1);
-                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
-                await ƒS.update(1);
-
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1121_06);
+                ƒS.Speech.hide();
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(1);
 
-                // Polizei Sirenen oder so
+                ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
+                ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                await ƒS.Location.show(sequences.police);
+                await ƒS.update(1);
 
                 await ƒS.Speech.tell(characters.schlaeger, text.Schlaeger.S1121_07);
 
-                ƒS.Character.hide(characters.nobu);
                 await ƒS.Location.show(sequences.gimmeYourHand);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S1121_08);
 
-                return "SumisHome";
+                return "sumisHome";
               case howToInterfereAnswer.threatenWithCops:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_01);
-                await ƒS.Location.show(locations.school);
+                await ƒS.Location.show(locations.school2);
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.smoking_cigarette, 0, 1, false);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_02);
@@ -185,7 +197,7 @@ namespace Endabgabe {
                 
                 await ƒS.Character.hide(characters.nobu);
                 await ƒS.Location.show(sequences.coming);
-                await ƒS.update(2);
+                await ƒS.update(1);
 
                 nobuTalk = await ƒS.Menu.getInput(nobuTalk4Answer, "decisionClass");
 
@@ -193,37 +205,51 @@ namespace Endabgabe {
                   case nobuTalk4Answer.doNotFight:
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_04);
                     await ƒS.Location.show(sequences.nobuHitMad);
-                    await ƒS.update(2);
-                    await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_05);
-
-                    await ƒS.Location.show(locations.school);
                     await ƒS.update(1);
-                    
-                    // Polizei Sirenen oder so
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(1);
+                    await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
+                    await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
+                    ƒS.Sound.fade(sound.heartbeat, 0, 3, false);
+                    await ƒS.Location.show(sequences.unconsciousNobuGang);
+                    await ƒS.update(1);
+                    await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_05);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(1);
+                    ƒS.Speech.hide();
+                    ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
+                    ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                    await ƒS.Location.show(sequences.police);
+                    await ƒS.update(1);
 
                     await ƒS.Speech.tell(characters.schlaeger, text.Schlaeger.S1122_06);
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_07);
                     ƒS.Character.hide(characters.nobu);
                     await ƒS.Location.show(sequences.gimmeYourHand);
-                    await ƒS.update(2);
+                    await ƒS.update(1);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_08);
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_09);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_10);
-                    return "SumisHome";
+                    return "sumisHome";
                   case nobuTalk4Answer.fight:
                 }
 
               case howToInterfereAnswer.threatenWithViolence:
                 await ƒS.Location.show(sequences.coming);
-                await ƒS.update(2);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1123_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1123_03);
 
-                await ƒS.Character.hide(characters.nobu);
                 await ƒS.Location.show(sequences.nobuHitMad);
-                await ƒS.update(2);
-
+                await ƒS.update(1);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(1);
+                await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
+                await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
+                ƒS.Sound.fade(sound.heartbeat, 0, 3, false);
+                await ƒS.Location.show(sequences.unconsciousNobuGang);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_04);
 
                 // Zwischensequenz?
@@ -234,40 +260,71 @@ namespace Endabgabe {
                   case provokeOrKeepUpAnswer.provoke:
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_05);
                     await ƒS.Location.show(sequences.nobuKnife);
-                    await ƒS.update(2);
+                    await ƒS.update(1);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(1);
+                    await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
                     return await ending(2);
                   case provokeOrKeepUpAnswer.keepUp:
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_06);
-                    await ƒS.Location.show(sequences.nobuHitMad);
+                    await ƒS.Location.show(sequences.unconsciousNobuGang);
+                    await ƒS.update(1);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(1);
+                    await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
+                    await ƒS.Sound.fade(sound.punch_2, 0, 1, false);
+                    await ƒS.Sound.fade(sound.punch_3, 0, 1, false);
+                    await ƒS.Sound.fade(sound.punch_4, 0, 1, false);
+                    ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
+                    ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                    await ƒS.Sound.fade(sound.punch_5, 0, 1, false);
+                    await ƒS.Sound.fade(sound.punch_6, 0, 1, false);
+                    await ƒS.Speech.tell(characters.schlaeger, text.Schlaeger.S1121_07);
+                    await ƒS.Location.show(sequences.unconsciousSumi);
                     await ƒS.update(2);
-                    // Polizei Sirenen oder so
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1123_07);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(2);
+                    //WIP
                     return "protagonistHospital";
                 }
-                //WIP for Hospital Scene
-                return "protagonistHospital";
               case howToInterfereAnswer.getHelp:
+                await ƒS.Location.show(locations.street);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_01);
-                // zwischensequenz?
+                await ƒS.Location.show(sequences.peopleStanding);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_02);
-                // zwischensequenz?
+                await ƒS.Location.show(sequences.runningAway);
+                await ƒS.update(1);
+                ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
+                ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                await ƒS.Location.show(sequences.police);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_03);
                 await ƒS.Location.show(sequences.sumiHurt);
-                await ƒS.update(2);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_04);
-                // zwischensequenz?
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(1);
                 //WIP for Hospital Scene
                 return "sumiHospital";
     }
   }
 
-  async function ending(endingNr: number): Promise<void> {
-    switch(endingNr) {
+  async function ending(endingNr: number): Promise<string> {
+    switch (endingNr) {
         case 1:
-          break;
+          await ƒS.Speech.hide();
+          await ƒS.Location.show(endings.newspaper);
+          await ƒS.update(1);
+          return "endOfNovel";
         case 2:
-          break;
+          await ƒS.Speech.hide();
+          await ƒS.Location.show(endings.protagonistDead);
+          await ƒS.update(1);
+          return "endOfNovel";
     }
+    return "endOfNovel";
   }
   
 }

@@ -1,17 +1,22 @@
 "use strict";
 var Endabgabe;
 (function (Endabgabe) {
+    async function EndOfNovel() { }
+    Endabgabe.EndOfNovel = EndOfNovel;
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
     Endabgabe.ƒ = FudgeCore;
     Endabgabe.ƒS = FudgeStory;
     console.log("Endabgabe starting");
     Endabgabe.dataForSave = {
         nameProtagonist: "",
-        score: 0
+        romancePoints: 0
     };
     Endabgabe.transitions = {
-        puzzle: {
+        blink: {
             duration: 1,
-            alpha: "./Images/jigsaw_06.jpg",
+            alpha: "./assets/transitions/blink.jpg",
             edge: 1
         }
     };
@@ -19,7 +24,24 @@ var Endabgabe;
         // themes
         nightclub: "Pfad für Musik",
         // sfx
-        click: "Pfad für Soundeffekt"
+        woman_groan_1: "./assets/sounds/sfx/womangroan1.mp3",
+        woman_groan_2: "./assets/sounds/sfx/womangroan2.mp3",
+        woman_groan_3: "./assets/sounds/sfx/womangroan3.mp3",
+        woman_groan_4: "./assets/sounds/sfx/womangroan4.mp3",
+        punch_1: "./assets/sounds/sfx/punch1.mp3",
+        punch_2: "./assets/sounds/sfx/punch2.mp3",
+        punch_3: "./assets/sounds/sfx/punch3.mp3",
+        punch_4: "./assets/sounds/sfx/punch4.mp3",
+        punch_5: "./assets/sounds/sfx/punch5.mp3",
+        punch_6: "./assets/sounds/sfx/punch6.mp3",
+        fall_on_ground: "./assets/sounds/sfx/fallonground.mp3",
+        knife_stabbing: "./assets/sounds/sfx/knifestabbing.mp3",
+        smoking_cigarette: "./assets/sounds/sfx/smokingcigarette.mp3",
+        man_laughter_short: "./assets/sounds/sfx/manlaughtershort.mp3",
+        man_laughter_long: "./assets/sounds/sfx/manlaughterlong.mp3",
+        heartbeat: "./assets/sounds/sfx/heartbeat.mp3",
+        police_sirens: "./assets/sounds/sfx/policesirens.mp3",
+        group_scream: "./assets/sounds/sfx/groupscream.mp3"
     };
     Endabgabe.locations = {
         street: {
@@ -29,6 +51,26 @@ var Endabgabe;
         school: {
             name: "School",
             background: "./assets/images/backgrounds/school.png"
+        },
+        school2: {
+            name: "School",
+            background: "./assets/images/backgrounds/school_harassment.png"
+        },
+        sumisHome_livingRoom: {
+            name: "SumisHome_LivingRoom",
+            background: "./assets/images/backgrounds/sumishome_livingroom.png"
+        },
+        sumisHome_bathRoom_normal: {
+            name: "SumisHome_BathRoom_Normal",
+            background: "./assets/images/backgrounds/sumishome_bathroom_normal.png"
+        },
+        sumisHome_bathRoom_foggy: {
+            name: "SumisHome_BathRoom_Foggy",
+            background: "./assets/images/backgrounds/sumishome_bathroom_foggy.png"
+        },
+        sumisHome_hallway: {
+            name: "SumisHome_Hallway",
+            background: "./assets/images/backgrounds/sumishome_hallway.png"
         }
     };
     Endabgabe.sequences = {
@@ -59,6 +101,36 @@ var Endabgabe;
         sumiHurt: {
             name: "sumiHurt",
             background: "./assets/images/sequences/sumihurt.png"
+        },
+        police: {
+            name: "police",
+            background: "./assets/images/sequences/police.png"
+        },
+        unconsciousSumi: {
+            name: "unconsciousSumi",
+            background: "./assets/images/sequences/unconscious.png"
+        },
+        unconsciousNobuGang: {
+            name: "unconsciousNobuGang",
+            background: "./assets/images/sequences/unconscious2.png"
+        },
+        peopleStanding: {
+            name: "peopleStanding",
+            background: "./assets/images/sequences/peoplestanding.png"
+        },
+        runningAway: {
+            name: "runningAway",
+            background: "./assets/images/sequences/runningaway.png"
+        }
+    };
+    Endabgabe.endings = {
+        newspaper: {
+            name: "newspaper",
+            background: "./assets/images/sequences/endings/newspaper.png"
+        },
+        protagonistDead: {
+            name: "protagonistDead",
+            background: "./assets/images/sequences/endings/protagonistdead.png"
         }
     };
     Endabgabe.characters = {
@@ -210,7 +282,10 @@ var Endabgabe;
             Endabgabe.ƒS.Inventory.add(Endabgabe.items.item6);
         }
         let scenes = [
-            { scene: school, name: "school", id: "school" }
+            { scene: Endabgabe.Street, name: "street", id: "street" },
+            { scene: Endabgabe.SumisHome, name: "sumisHome", id: "sumisHome" },
+            { scene: Endabgabe.SumisHouse, name: "sumisHouse", id: "sumisHouse" },
+            { scene: Endabgabe.EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
         // start the sequence
         Endabgabe.ƒS.Progress.go(scenes);
@@ -218,7 +293,7 @@ var Endabgabe;
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
 (function (Endabgabe) {
-    async function School() {
+    async function Street() {
         console.log("FudgeStory Endabgabe Scene starting");
         //alert("Vollbild Modus (F11) zu empfehlen.");
         let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
@@ -226,9 +301,9 @@ var Endabgabe;
         // Speeches
         let text = {
             Protagonist: {
-                S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Und dann war es heute noch so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
-                S1000_02: "Wo kam der Schrei her? Ich sollte mal nachsehen...",
-                S1000_03: "Ich glaube der Schrei kam von hier...",
+                S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Noch dazu war es heute so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
+                S1000_02: "Wo kam das her? Ich sollte mal nachsehen...",
+                S1000_03: "Ich glaube das kam von hier...",
                 S1000_04: "Was soll ich tun?",
                 S1000_05: "Ich sollte sie aufhalten, aber wie?",
                 S1121_01: "Hey Jungs, lasst sie in Ruhe! Ihr könnt doch sowas nicht machen, beruhigt euch doch!",
@@ -237,7 +312,11 @@ var Endabgabe;
                 S1122_04: "Wir wollen hier doch nichts überstürz…",
                 S1122_09: "Doch, ich habe sie nicht gerufen…",
                 S1123_01: "Verzieht euch lieber schnell von hier oder das wird ziemlich unschön.",
-                S1123_03: "Sicher, dass du weiterreden möchtest?"
+                S1123_03: "Sicher, dass du weiterreden möchtest?",
+                S1124_01: "HILFE! ICH BRAUCHE HILFE, RUFT DIE POLIZEI!",
+                S1124_02: "HEY IHR DA! KOMMT MIT, DA VORNE WIRD GERADE EIN MÄDCHEN VON EINER GANG BELÄSTIGT!",
+                S1124_03: "DIE HAUEN AB!",
+                S1124_04: "SIE BLUTET, SCHNELL RUFT EINEN KRANKENWAGEN!"
             },
             Sumi: {
                 S1121_08: "Schnell weg hier, die Polizei ist gleich hier. Ich wohne hier in der Nähe, dort kann ich dich verarzten.",
@@ -302,21 +381,25 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_1, 0.3, 1, false);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_2, 0.5, 1, false);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_02);
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_3, 0.8, 1, false);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.school2);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_03);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_4, 0, 1, false);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.harassment);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_04);
         interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
         switch (interfereOrNot) {
             case interfereOrNotAnswer.ignore:
-                // Zeitungsartikel fehlt
-                return await badEnding1();
+                return await ending(1);
             case interfereOrNotAnswer.interefere:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_05);
                 howToInterfere = await Endabgabe.ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
@@ -325,8 +408,9 @@ var Endabgabe;
         switch (howToInterfere) {
             case howToInterfereAnswer.talk:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school2);
                 await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.smoking_cigarette, 0, 1, false);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_02);
@@ -336,26 +420,35 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_04);
                 await Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.coming);
-                await Endabgabe.ƒS.update(2);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
-                await Endabgabe.ƒS.update(2);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_05);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
                 await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_1, 0, 1, false);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.fall_on_ground, 0, 1, false);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.heartbeat, 0, 3, false);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1121_05);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousNobuGang);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1121_06);
-                // Polizei Sirenen oder so
+                Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.police_sirens, 0, 5, false);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.police);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1121_07);
-                Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1121_08);
-                return "SumisHome";
+                return "sumisHome";
             case howToInterfereAnswer.threatenWithCops:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.school2);
                 await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.smoking_cigarette, 0, 1, false);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_02);
@@ -363,37 +456,54 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_03);
                 await Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.coming);
-                await Endabgabe.ƒS.update(2);
+                await Endabgabe.ƒS.update(1);
                 nobuTalk = await Endabgabe.ƒS.Menu.getInput(nobuTalk4Answer, "decisionClass");
                 switch (nobuTalk) {
                     case nobuTalk4Answer.doNotFight:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_04);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
-                        await Endabgabe.ƒS.update(2);
-                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_05);
-                        await Endabgabe.ƒS.Location.show(Endabgabe.locations.school);
                         await Endabgabe.ƒS.update(1);
-                        // Polizei Sirenen oder so
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_1, 0, 1, false);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.fall_on_ground, 0, 1, false);
+                        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.heartbeat, 0, 3, false);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousNobuGang);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_05);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        Endabgabe.ƒS.Speech.hide();
+                        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.police_sirens, 0, 5, false);
+                        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.police);
+                        await Endabgabe.ƒS.update(1);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1122_06);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_07);
                         Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
-                        await Endabgabe.ƒS.update(2);
+                        await Endabgabe.ƒS.update(1);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1122_08);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_09);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1122_10);
-                        return "SumisHome";
+                        return "sumisHome";
                     case nobuTalk4Answer.fight:
                 }
             case howToInterfereAnswer.threatenWithViolence:
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.coming);
-                await Endabgabe.ƒS.update(2);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1123_03);
-                await Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
-                await Endabgabe.ƒS.update(2);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_1, 0, 1, false);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.fall_on_ground, 0, 1, false);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.heartbeat, 0, 3, false);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousNobuGang);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_04);
                 // Zwischensequenz?
                 provokeOrKeepUp = await Endabgabe.ƒS.Menu.getInput(provokeOrKeepUpAnswer, "decisionClass");
@@ -401,24 +511,72 @@ var Endabgabe;
                     case provokeOrKeepUpAnswer.provoke:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_05);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuKnife);
-                        await Endabgabe.ƒS.update(2);
-                        return badEnding2;
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.knife_stabbing, 0, 1, false);
+                        return await ending(2);
                     case provokeOrKeepUpAnswer.keepUp:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1123_06);
-                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuHitMad);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousNobuGang);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_1, 0, 1, false);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_2, 0, 1, false);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_3, 0, 1, false);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_4, 0, 1, false);
+                        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.police_sirens, 0, 5, false);
+                        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_5, 0, 1, false);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_6, 0, 1, false);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1121_07);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousSumi);
                         await Endabgabe.ƒS.update(2);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1123_07);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(2);
+                        //WIP
+                        return "protagonistHospital";
                 }
-                //WIP for Hospital Scene
-                return "protagonistHospital";
             case howToInterfereAnswer.getHelp:
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.street);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_01);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.peopleStanding);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_02);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.runningAway);
+                await Endabgabe.ƒS.update(1);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.police_sirens, 0, 5, false);
+                Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.police);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_03);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHurt);
-                await Endabgabe.ƒS.update(2);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1124_04);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
                 //WIP for Hospital Scene
                 return "sumiHospital";
         }
     }
-    Endabgabe.School = School;
+    Endabgabe.Street = Street;
+    async function ending(endingNr) {
+        switch (endingNr) {
+            case 1:
+                await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.endings.newspaper);
+                await Endabgabe.ƒS.update(1);
+                return "endOfNovel";
+            case 2:
+                await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
+                await Endabgabe.ƒS.update(1);
+                return "endOfNovel";
+        }
+        return "endOfNovel";
+    }
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
 (function (Endabgabe) {
@@ -444,18 +602,19 @@ var Endabgabe;
                 S2123_01: "Ich schätze deinen Optimismus, aber ohne einen Plan wirst du nichts erreichen. Du hast keine Anhaltspunkte, sondern jagst deinem Gefühl hinterher. Wir sollten erst einen Plan ausarbeiten und vorsichtig sein.",
                 S2123_03: "Ich glaube nicht, dass wir noch fremde Personen sind, Sumi. Ich habe bereits mehr mit dir erlebt und weiß mehr von dir als von den meisten Menschen in meinem Umfeld. Aber das spielt keine Rolle, wenn jemand Hilfe braucht, sollte ihr geholfen werden.",
                 S2123_05: "Jetzt erzähl mir lieber mehr über Nobu, damit wir uns einen Plan überlegen können.",
-                S2123_07: "Es ist schon spät, ich sollte nach Hause… Wir treffen uns einfach morgen nach der Schule und setzen unsere Planung fort.",
+                S2123_07: "Es ist schon richtig spät, ich sollte nach Hause… Wir treffen uns einfach morgen nach der Schule und setzen unsere Planung fort.",
                 S2123_09: "Wirklich? Nur wenn es dir nichts ausmacht, denn ich möchte wirklich nicht komplett durchnässt zu Hause ankommen.",
                 S2123_11: "Das klingt super. Vielen Dank!",
-                S2123_12: "AH! WARUM BIST DU NACKT?",
-                S2123_14: "Tut mir leid, das war nicht mit Absicht…",
-                S2123_16: "...",
+                S2123_12: "Sumi? Wo bist du? Ah hier brennt Licht...",
+                S2123_13: "AH! WARUM BIST DU NACKT?",
+                S2123_15: "Tut mir leid, das war nicht mit Absicht…",
+                S2123_17: "..."
             },
             Sumi: {
                 S2100_01: "Ich bin dir zwar dankbar, dass du mich gerettet hast…. Aber bist du irgendwie lebensmüde? Er hätte dich umbringen können.",
                 S2100_03: "Das hätte dir ja egal sein können, ist ja meine Sache.",
                 S2100_05: "Sag mir mal lieber, wie du heißt. Wenn du schon bei mir zuhause bist und ich dich verarzte, kann ich ja zumindest den Namen meines vermeintlichen „Retters“ erfahren.",
-                S2100_07: "Alles klar, PROTAGONIST, danke nochmal für deine Hilfe. Ich heiße Sumi.",
+                S2100_07: "Alles klar, " + Endabgabe.characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.",
                 S2100_09: "Ehhhh, das ist kompliziert… und geht dich eigentlich auch nichts an…",
                 S2100_11: "Das ist mir so egal, du hast über meinen Bruder hergezogen und ihn beleidigt.",
                 S2100_13: "Verdiente Strafe? Ich weiß, dass zwischen ihm und dir was vorgefallen ist. Aber egal was es war, du hast keinen Recht so über ihn zu reden, nachdem er immer für dich da war.",
@@ -474,17 +633,18 @@ var Endabgabe;
                 S2120_05: "Ja, aber am letzten Abend, an dem ich meinen Bruder sah, ist er zu einem Gang-Treffen aufgebrochen und laut Nobu nie dort angekommen. Seitdem macht er sich auch so ekelhaft an mich ran. Er ist der Meinung, dass als sein bester Freund es jetzt seine Aufgabe ist mich zu beschützen. Und da er der Vize ist wurde er natürlich zum Anführer und strukturiert die Gang um… alle Prinzipien und Grenzen, die mein Bruder aufgestellt hat, ignoriert er komplett. Es scheint alles perfekt für ihn zu laufen, seitdem Shou weg ist…. Ich habe das im Gefühl...",
                 S2120_07: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
                 S2121_02: "Wer bist du? Ich treffe meine eigenen Entscheidungen… warum erzähl ich das eigentlich einer fremden Person? Du solltest gehen und mich in Ruhe mein Ding machen lassen.",
-                S2122_01: "Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten. Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als unsere Mutter schwerkrank wurde und ins Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
+                S2122_01: "Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten.",
+                S2122_01b: "Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als unsere Mutter schwerkrank wurde und ins Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
                 S2122_03: "Ich brauch kein Mitleid… meine Mutter wird wieder gesund, mein Vater wird zurückkommen und meinen Bruder werde ich finden. Auch wenn meine Familie wie eine Vase zerbrochen ist und ohne meinen kleinen Bruder ein Teil fehlt… sie kann wieder zusammengeklebt werden, auch wenn die Risse bleiben werden.",
                 S2123_02: "Wir? Warum sollte eine fremde Person mir helfen wollen? Außerdem schaffe ich das auch allein.",
                 S2123_04: "Trotzdem…",
                 S2123_06: "Na gut…",
                 S2123_08: "Es ist zu spät und es regnet stark. Ich bin sowieso allein und erwarte niemanden. Du kannst hier übernachten.",
                 S2123_10: "Ja das passt schon. Ich lass dir ein Bad ein und bringe dir Klamotten zum Wechseln, du wirst ja wahrscheinlich keine dabeihaben.",
-                S2123_13: "ICH HABE VERGESSEN ABZUSCHLIESSEN, DA ICH SONST IMMER ALLEIN BIN, SCHLIESSE ICH NIE AB…. SCHLIESS WENIGSTENS DEINE AUGEN!",
-                S2123_15: "Nicht so schlimm, war ja nicht deine Schuld…",
-                S2123_17: "Ich bin fertig, du kannst sie wieder aufmachen...",
-                S2123_18: "Ich weiß nicht, ob das der richtige Zeitpunkt ist sowas zu sagen, nachdem du mich halbnackt gesehen hast… aber danke…",
+                S2123_14: "ICH HABE VERGESSEN ABZUSCHLIESSEN, DA ICH SONST IMMER ALLEIN BIN, SCHLIESSE ICH NIE AB…. SCHLIESS WENIGSTENS DEINE AUGEN!",
+                S2123_16: "Nicht so schlimm, war ja nicht deine Schuld…",
+                S2123_18: "Ich bin fertig, du kannst sie wieder aufmachen...",
+                S2123_19: "Ich weiß nicht, ob das der richtige Zeitpunkt ist sowas zu sagen, nachdem du mich halbnackt gesehen hast… aber danke…"
             },
             Nobu: {
                 S2100_10: "Du glaubst wohl nicht, dass du einfach so verschwinden kannst? Nachdem du mich so vor meinen Jungs blamiert hast, musste ich ein Zeichen setzen, dass niemand mit ihrem Anführer so umgeht, auch du nicht.",
@@ -495,7 +655,7 @@ var Endabgabe;
             }
         };
         // Decisions
-        let juiceOrNot;
+        //let juiceOrNot;
         let nobuOrShou;
         let goOrTalk;
         let talkOutOrHelp;
@@ -509,7 +669,7 @@ var Endabgabe;
             shou: "Dein Bruder wird vermisst?"
         };
         let goOrTalkAnswer = {
-            go: "Tut mir leid, du hast natürlich Recht. Danke fürs Verarzten, ich werde gleich gehen.",
+            go: "Tut mir leid, du hast natürlich Recht. Danke fürs Verarzten, dann gehe ich jetzt.",
             talk: "Gerade weil ich ein Fremder bin und nichts mit der Sache zu tun habe ist es manchmal leichter darüber zu reden."
         };
         let talkOutOrHelpAnswer = {
@@ -523,7 +683,8 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumiHome);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(1);
@@ -537,7 +698,129 @@ var Endabgabe;
         let name = await Endabgabe.ƒS.Speech.getInput();
         Endabgabe.dataForSave.nameProtagonist = name;
         Endabgabe.characters.protagonist.name = name;
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Alles klar, " + Endabgabe.characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_09);
+        // klingel und zwischensequenz wie sie aufsteht?
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S2100_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_11);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S2100_12);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_13);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S2100_14);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_15);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S2100_16);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_17);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S2100_18);
+        // zurück zum wohnzimmer falls weg, sumi kommt zurück
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_19);
+        await Endabgabe.ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_20);
+        // sequenz mit verarzten
+        nobuOrShou = await Endabgabe.ƒS.Menu.getInput(nobuOrShouAnswer, "decisionClass");
+        switch (nobuOrShou) {
+            case nobuOrShouAnswer.nobu:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_21);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_22);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_23);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_24);
+                //Funktion oder continue oder Möglichkeit hier rauszukommen.
+                break;
+            case nobuOrShouAnswer.shou:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_25);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_26);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_27);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_28);
+                //Funktion oder continue oder Möglichkeit hier rauszukommen.
+                break;
+        }
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_29);
+        goOrTalk = await Endabgabe.ƒS.Menu.getInput(goOrTalkAnswer, "decisionClass");
+        switch (goOrTalk) {
+            case goOrTalkAnswer.go:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2110_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2110_02);
+                // sequenz zum verlassen?
+                return await ending(1);
+            case goOrTalkAnswer.talk:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_07);
+                talkOutOrHelp = await Endabgabe.ƒS.Menu.getInput(talkOutOrHelpAnswer, "decisionClass");
+        }
+        switch (talkOutOrHelp) {
+            case talkOutOrHelpAnswer.talkOut:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2121_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2121_02);
+                // sumi ist sauer und schmeißt dich raus, sequenz zum verlassen?
+                return await ending(2);
+            case talkOutOrHelpAnswer.morePeople:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01b);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2122_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_03);
+            // sumi weint aber lächelt sequenz
+            case talkOutOrHelpAnswer.help:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_06);
+                // sumi weint aber lächelt sequenz
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_09);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_10);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_11);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_normal);
+                await Endabgabe.ƒS.update(2);
+                // Zwischensequenz zum Bad, Zeit vergeht und der Protagonist kommt vom baden
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_foggy);
+                await Endabgabe.ƒS.update(2);
+                // Noch irgendwas?
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_hallway);
+                await Endabgabe.ƒS.update(2);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_12);
+                // Sumi halb nackt sequenz
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_13);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_14);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_15);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_16);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_17);
+                flirtOrSleep = await Endabgabe.ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
+                switch (flirtOrSleep) {
+                    case flirtOrSleepAnswer.sleep:
+                        // Beide gehen schlafen und der nächste Tag beginnt...
+                        return "sumisHouse";
+                    case flirtOrSleepAnswer.flirt:
+                        // Romance Points und Sumi wird rot Sequenz
+                        Endabgabe.dataForSave.romancePoints++;
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_19);
+                        return "sumisHouse";
+                }
+        }
     }
     Endabgabe.SumisHome = SumisHome;
+    async function ending(endingNr) {
+        switch (endingNr) {
+            case 1:
+                break;
+            case 2:
+                break;
+        }
+    }
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
+    async function SumisHouse() {
+        console.log("FudgeStory SumisHouse Scene starting");
+        // Speeches
+    }
+    Endabgabe.SumisHouse = SumisHouse;
 })(Endabgabe || (Endabgabe = {}));
 //# sourceMappingURL=Game.js.map

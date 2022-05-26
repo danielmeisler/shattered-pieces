@@ -10,9 +10,9 @@ namespace Endabgabe {
     };
   
     export let transitions = {
-        puzzle: {
+        blink: {
             duration: 1,
-            alpha: "./Images/jigsaw_06.jpg",
+            alpha: "./assets/transitions/blink.jpg",
             edge: 1
   
         }
@@ -23,7 +23,24 @@ namespace Endabgabe {
         nightclub: "Pfad für Musik",
   
         // sfx
-        click: "Pfad für Soundeffekt"
+        woman_groan_1: "./assets/sounds/sfx/womangroan1.mp3",
+        woman_groan_2: "./assets/sounds/sfx/womangroan2.mp3",
+        woman_groan_3: "./assets/sounds/sfx/womangroan3.mp3",
+        woman_groan_4: "./assets/sounds/sfx/womangroan4.mp3",
+        punch_1: "./assets/sounds/sfx/punch1.mp3",
+        punch_2: "./assets/sounds/sfx/punch2.mp3",
+        punch_3: "./assets/sounds/sfx/punch3.mp3",
+        punch_4: "./assets/sounds/sfx/punch4.mp3",
+        punch_5: "./assets/sounds/sfx/punch5.mp3",
+        punch_6: "./assets/sounds/sfx/punch6.mp3",
+        fall_on_ground: "./assets/sounds/sfx/fallonground.mp3",
+        knife_stabbing: "./assets/sounds/sfx/knifestabbing.mp3",
+        smoking_cigarette: "./assets/sounds/sfx/smokingcigarette.mp3",
+        man_laughter_short: "./assets/sounds/sfx/manlaughtershort.mp3",
+        man_laughter_long: "./assets/sounds/sfx/manlaughterlong.mp3",
+        heartbeat: "./assets/sounds/sfx/heartbeat.mp3",
+        police_sirens: "./assets/sounds/sfx/policesirens.mp3",
+        group_scream: "./assets/sounds/sfx/groupscream.mp3"
     };
   
     export let locations = {
@@ -34,6 +51,10 @@ namespace Endabgabe {
         school: {
             name: "School",
             background: "./assets/images/backgrounds/school.png"
+        },
+        school2: {
+            name: "School",
+            background: "./assets/images/backgrounds/school_harassment.png"
         },
         sumisHome_livingRoom: {
             name: "SumisHome_LivingRoom",
@@ -81,6 +102,37 @@ namespace Endabgabe {
         sumiHurt: {
             name: "sumiHurt", 
             background: "./assets/images/sequences/sumihurt.png"
+        },
+        police: {
+            name: "police",
+            background: "./assets/images/sequences/police.png"
+        },
+        unconsciousSumi: {
+            name: "unconsciousSumi",
+            background: "./assets/images/sequences/unconscious.png"
+        },
+        unconsciousNobuGang: {
+            name: "unconsciousNobuGang",
+            background: "./assets/images/sequences/unconscious2.png"
+        },
+        peopleStanding: {
+            name: "peopleStanding",
+            background: "./assets/images/sequences/peoplestanding.png"
+        },
+        runningAway: {
+            name: "runningAway",
+            background: "./assets/images/sequences/runningaway.png"
+        }
+    };
+
+    export let endings = {
+        newspaper: {
+            name: "newspaper",
+            background: "./assets/images/sequences/endings/newspaper.png"
+        },
+        protagonistDead: {
+            name: "protagonistDead",
+            background: "./assets/images/sequences/endings/protagonistdead.png"
         }
     };
   
@@ -248,7 +300,8 @@ namespace Endabgabe {
         let scenes: ƒS.Scenes = [
             { scene: Street, name: "street", id: "street"},
             { scene: SumisHome, name: "sumisHome", id: "sumisHome"},
-            { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"}
+            { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"},
+            { scene: EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
   
         // start the sequence

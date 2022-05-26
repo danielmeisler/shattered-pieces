@@ -160,3 +160,9 @@ dialog[type="inventory"] > ul > li > description{
   color: white;
 }
 
+input {
+  background-color: lightgray;
+  border: none;
+  height: 25px;
+}
+

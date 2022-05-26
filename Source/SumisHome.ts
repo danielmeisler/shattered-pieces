@@ -4,7 +4,7 @@ namespace Endabgabe {
 
         // Speeches
         let text = {
-          	Protagonist: {
+            Protagonist: {
                 S2100_02: "Ach so bedankt man sich also? Was wäre denn mit dir passiert, wenn ich nicht eingegriffen hätte?",
                 S2100_04: "Wow, da hat jemand aber eine gesunde Einstellung seine Probleme anzugehen.",
                 S2100_06: "Stellt man sich eigentlich nicht zuerst vor? Egal, ich heiße: ",
@@ -35,13 +35,13 @@ namespace Endabgabe {
                 S2123_12: "Sumi? Wo bist du? Ah hier brennt Licht...",
                 S2123_13: "AH! WARUM BIST DU NACKT?",
                 S2123_15: "Tut mir leid, das war nicht mit Absicht…",
-                S2123_17: "...",
+                S2123_17: "..."
             },
-          	Sumi: {
+            Sumi: {
                 S2100_01: "Ich bin dir zwar dankbar, dass du mich gerettet hast…. Aber bist du irgendwie lebensmüde? Er hätte dich umbringen können.",
                 S2100_03: "Das hätte dir ja egal sein können, ist ja meine Sache.",
                 S2100_05: "Sag mir mal lieber, wie du heißt. Wenn du schon bei mir zuhause bist und ich dich verarzte, kann ich ja zumindest den Namen meines vermeintlichen „Retters“ erfahren.",
-                S2100_07: "Alles klar, "+ dataForSave.nameProtagonist +", danke nochmal für deine Hilfe. Ich heiße Sumi.",
+                S2100_07: "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.",
                 S2100_09: "Ehhhh, das ist kompliziert… und geht dich eigentlich auch nichts an…",
                 S2100_11: "Das ist mir so egal, du hast über meinen Bruder hergezogen und ihn beleidigt.",
                 S2100_13: "Verdiente Strafe? Ich weiß, dass zwischen ihm und dir was vorgefallen ist. Aber egal was es war, du hast keinen Recht so über ihn zu reden, nachdem er immer für dich da war.",
@@ -67,7 +67,8 @@ namespace Endabgabe {
             
                 S2121_02: "Wer bist du? Ich treffe meine eigenen Entscheidungen… warum erzähl ich das eigentlich einer fremden Person? Du solltest gehen und mich in Ruhe mein Ding machen lassen.",
             
-                S2122_01: "Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten. Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als unsere Mutter schwerkrank wurde und ins Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
+                S2122_01: "Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten.",
+                S2122_01b: "Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als unsere Mutter schwerkrank wurde und ins Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
                 S2122_03: "Ich brauch kein Mitleid… meine Mutter wird wieder gesund, mein Vater wird zurückkommen und meinen Bruder werde ich finden. Auch wenn meine Familie wie eine Vase zerbrochen ist und ohne meinen kleinen Bruder ein Teil fehlt… sie kann wieder zusammengeklebt werden, auch wenn die Risse bleiben werden.",
             
                 S2123_02: "Wir? Warum sollte eine fremde Person mir helfen wollen? Außerdem schaffe ich das auch allein.",
@@ -79,19 +80,19 @@ namespace Endabgabe {
                 S2123_16: "Nicht so schlimm, war ja nicht deine Schuld…",
                 S2123_18: "Ich bin fertig, du kannst sie wieder aufmachen...",
                 
-                S2123_19: "Ich weiß nicht, ob das der richtige Zeitpunkt ist sowas zu sagen, nachdem du mich halbnackt gesehen hast… aber danke…",
+                S2123_19: "Ich weiß nicht, ob das der richtige Zeitpunkt ist sowas zu sagen, nachdem du mich halbnackt gesehen hast… aber danke…"
             },
-        	Nobu: {
+          Nobu: {
                 S2100_10: "Du glaubst wohl nicht, dass du einfach so verschwinden kannst? Nachdem du mich so vor meinen Jungs blamiert hast, musste ich ein Zeichen setzen, dass niemand mit ihrem Anführer so umgeht, auch du nicht.",
                 S2100_12: "Es tut mir leid, dass Shou immer noch vermisst wird, Sumi… Aber seien wir ganz ehrlich. Dein Bruder hat schon immer seine Nase reingesteckt, wohin er nicht sollte, wahrscheinlich hat er sich mit den falschen Leuten angelegt und hat seine verdiente Strafe bezahlt.",
                 S2100_14: "Kann ja sein, dass wir mal beste Freunde waren, jedoch hat er sich geändert.",
                 S2100_16: "Immer heulst du wegen deinem Bruder rum, hast du auch ein anderes Band zum Abspielen?",
                 S2100_18: "Na gut, heute ist viel passiert. Aber glaub nicht, dass du das nächste Mal so leicht davonkommst."
             }
-      	};
+        };
 
-      	// Decisions
-        let juiceOrNot;
+        // Decisions
+        //let juiceOrNot;
         let nobuOrShou;
         let goOrTalk;
         let talkOutOrHelp;
@@ -125,6 +126,7 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
+        await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
         await ƒS.Location.show(locations.sumisHome_livingRoom);
         await ƒS.update(1);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
@@ -141,10 +143,11 @@ namespace Endabgabe {
         dataForSave.nameProtagonist = name;
         characters.protagonist.name = name;
 
-        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_07);
+        await ƒS.Speech.tell(characters.sumi, "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
         // klingel und zwischensequenz wie sie aufsteht?
+        await ƒS.Character.hide(characters.sumi);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_10);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_11);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_12);
@@ -156,7 +159,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_18);
         // zurück zum wohnzimmer falls weg, sumi kommt zurück
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_19);
-        juiceOrNot = await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
+        await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_20);
         // sequenz mit verarzten
         nobuOrShou = await ƒS.Menu.getInput(nobuOrShouAnswer, "decisionClass");
@@ -206,6 +209,7 @@ namespace Endabgabe {
                 return await ending(2);
             case talkOutOrHelpAnswer.morePeople:
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01);
+                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01b);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2122_02);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_03);
                 // sumi weint aber lächelt sequenz
@@ -228,7 +232,7 @@ namespace Endabgabe {
                 await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
                 await ƒS.update(2);
                 // Noch irgendwas?
-                await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
+                await ƒS.Location.show(locations.sumisHome_hallway);
                 await ƒS.update(2);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
                 // Sumi halb nackt sequenz
@@ -238,7 +242,7 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_16);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_17);
                 flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
-                switch(flirtOrSleep) {
+                switch (flirtOrSleep) {
                     case flirtOrSleepAnswer.sleep:
                         // Beide gehen schlafen und der nächste Tag beginnt...
                         return "sumisHouse";
@@ -252,7 +256,7 @@ namespace Endabgabe {
     }
 
     async function ending(endingNr: number): Promise<void> {
-        switch(endingNr) {
+        switch (endingNr) {
             case 1:
               break;
             case 2:

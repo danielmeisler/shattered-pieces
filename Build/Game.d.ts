@@ -1,12 +1,15 @@
 declare namespace Endabgabe {
+    function EndOfNovel(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
     let dataForSave: {
         nameProtagonist: string;
-        score: number;
+        romancePoints: number;
     };
     let transitions: {
-        puzzle: {
+        blink: {
             duration: number;
             alpha: string;
             edge: number;
@@ -14,7 +17,24 @@ declare namespace Endabgabe {
     };
     let sound: {
         nightclub: string;
-        click: string;
+        woman_groan_1: string;
+        woman_groan_2: string;
+        woman_groan_3: string;
+        woman_groan_4: string;
+        punch_1: string;
+        punch_2: string;
+        punch_3: string;
+        punch_4: string;
+        punch_5: string;
+        punch_6: string;
+        fall_on_ground: string;
+        knife_stabbing: string;
+        smoking_cigarette: string;
+        man_laughter_short: string;
+        man_laughter_long: string;
+        heartbeat: string;
+        police_sirens: string;
+        group_scream: string;
     };
     let locations: {
         street: {
@@ -22,6 +42,26 @@ declare namespace Endabgabe {
             background: string;
         };
         school: {
+            name: string;
+            background: string;
+        };
+        school2: {
+            name: string;
+            background: string;
+        };
+        sumisHome_livingRoom: {
+            name: string;
+            background: string;
+        };
+        sumisHome_bathRoom_normal: {
+            name: string;
+            background: string;
+        };
+        sumisHome_bathRoom_foggy: {
+            name: string;
+            background: string;
+        };
+        sumisHome_hallway: {
             name: string;
             background: string;
         };
@@ -52,6 +92,36 @@ declare namespace Endabgabe {
             background: string;
         };
         sumiHurt: {
+            name: string;
+            background: string;
+        };
+        police: {
+            name: string;
+            background: string;
+        };
+        unconsciousSumi: {
+            name: string;
+            background: string;
+        };
+        unconsciousNobuGang: {
+            name: string;
+            background: string;
+        };
+        peopleStanding: {
+            name: string;
+            background: string;
+        };
+        runningAway: {
+            name: string;
+            background: string;
+        };
+    };
+    let endings: {
+        newspaper: {
+            name: string;
+            background: string;
+        };
+        protagonistDead: {
             name: string;
             background: string;
         };
@@ -155,8 +225,11 @@ declare namespace Endabgabe {
     function menuButtons(_option: string): Promise<void>;
 }
 declare namespace Endabgabe {
-    function School(): ƒS.SceneReturn;
+    function Street(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
     function SumisHome(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function SumisHouse(): ƒS.SceneReturn;
 }
