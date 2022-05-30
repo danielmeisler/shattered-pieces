@@ -121,6 +121,7 @@ namespace Endabgabe {
     await ƒS.Sound.fade(sound.woman_groan_4, 0, 1, false);
     await ƒS.Location.show(sequences.harassment);
     await ƒS.update(1);
+    ƒS.Sound.fade(sound.first_encounter, 0.05, 19, true);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
     interfereOrNot = await ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
 

@@ -21,7 +21,8 @@ declare namespace Endabgabe {
         };
     };
     let sound: {
-        nightclub: string;
+        first_encounter: string;
+        final_fight: string;
         woman_groan_1: string;
         woman_groan_2: string;
         woman_groan_3: string;
@@ -68,6 +69,10 @@ declare namespace Endabgabe {
             background: string;
         };
         sumisHome_hallway: {
+            name: string;
+            background: string;
+        };
+        sumisHome_futonroom: {
             name: string;
             background: string;
         };
@@ -121,6 +126,22 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiFirstAid: {
+            name: string;
+            background: string;
+        };
+        sumiHappyCry: {
+            name: string;
+            background: string;
+        };
+        sumiUndress: {
+            name: string;
+            background: string;
+        };
+        sumiUndress2: {
+            name: string;
+            background: string;
+        };
     };
     let endings: {
         newspaper: {
@@ -128,6 +149,10 @@ declare namespace Endabgabe {
             background: string;
         };
         protagonistDead: {
+            name: string;
+            background: string;
+        };
+        partingWays: {
             name: string;
             background: string;
         };
@@ -181,6 +206,17 @@ declare namespace Endabgabe {
             };
         };
     };
+    let animations: {
+        midToRightOut: string;
+        midToLeftOut: string;
+        midToRight: string;
+        midToLeft: string;
+        rightOutToMid: string;
+        leftOutToMid: string;
+        rightToMid: string;
+        leftToMid: string;
+    };
+    function animate(_animation: string): ƒS.AnimationDefinition;
     function volumeUp(): void;
     function volumeDown(): void;
     let menuItems: {

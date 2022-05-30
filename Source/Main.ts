@@ -24,7 +24,9 @@ namespace Endabgabe {
   
     export let sound = {
         // themes
-        nightclub: "Pfad für Musik",
+        first_encounter: "./assets/sounds/music/First_Encounter.mp3",
+
+        final_fight: "./assets/sounds/music/Final_Fight.mp3",
   
         // sfx
         woman_groan_1: "./assets/sounds/sfx/womangroan1.mp3",
@@ -76,6 +78,10 @@ namespace Endabgabe {
         sumisHome_hallway: {
             name: "SumisHome_Hallway",
             background: "./assets/images/backgrounds/sumishome_hallway.png"
+        },
+        sumisHome_futonroom: {
+            name: "SumisHome_FutonRoom",
+            background: "./assets/images/backgrounds/sumishome_futonroom.png"
         }
     };
 
@@ -127,6 +133,23 @@ namespace Endabgabe {
         gangRunningAway: {
             name: "gangRunningAway",
             background: "./assets/images/sequences/gangrunningaway.png"
+        },
+
+        sumiFirstAid: {
+            name: "sumiFirstAid",
+            background: "./assets/images/sequences/sumifirstaid.png"
+        },
+        sumiHappyCry: {
+            name: "sumiHappyCry",
+            background: "./assets/images/sequences/sumicrying.png"
+        },
+        sumiUndress: {
+            name: "sumiUndress",
+            background: "./assets/images/sequences/sumiundress.png"
+        },
+        sumiUndress2: {
+            name: "sumiUndress2",
+            background: "./assets/images/sequences/sumiundress2.png"
         }
     };
 
@@ -138,6 +161,10 @@ namespace Endabgabe {
         protagonistDead: {
             name: "protagonistDead",
             background: "./assets/images/sequences/endings/protagonistdead.png"
+        },
+        partingWays: {
+            name: "partingWays",
+            background: "./assets/images/sequences/endings/partingways.png"
         }
     };
   
@@ -194,6 +221,87 @@ namespace Endabgabe {
             }
         }
     };
+
+    export let animations = {
+        midToRightOut: "midToRightOut",
+        midToLeftOut: "midToLeftOut",
+        midToRight: "midToRight",
+        midToLeft: "midToLeft",
+
+        rightOutToMid: "rightOutToMid",
+        leftOutToMid: "leftOutToMid",
+        rightToMid: "rightToMid",
+        leftToMid: "leftToMid"
+    };
+
+    export function animate(_animation: string): ƒS.AnimationDefinition {
+        switch (_animation) {
+            case animations.midToRightOut:
+                return {
+                    start: { translation: ƒS.positions.bottomcenter },
+                    end: { translation: new ƒS.Position(1500, ƒS.positions.bottomcenter.y) },
+                    duration: 4,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case animations.midToLeftOut:
+                return {
+                    start: { translation: ƒS.positions.bottomcenter },
+                    end: { translation: new ƒS.Position(-1500, ƒS.positions.bottomcenter.y) },
+                    duration: 4,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case animations.midToRight:
+                return {
+                    start: { translation: ƒS.positions.bottomcenter },
+                    end: { translation: new ƒS.Position(480, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };    
+            case animations.midToLeft:
+                return {
+                    start: { translation: ƒS.positions.bottomcenter },
+                    end: { translation: new ƒS.Position(-480, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };   
+            case animations.rightOutToMid:
+                return {
+                    start: { translation: new ƒS.Position(1500, ƒS.positions.bottomcenter.y) },
+                    end: { translation: ƒS.positions.bottomcenter },
+                    duration: 4,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case animations.leftOutToMid:
+                return {
+                    start: { translation: new ƒS.Position(-1500, ƒS.positions.bottomcenter.y) },
+                    end: { translation: ƒS.positions.bottomcenter },
+                    duration: 4,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case animations.rightToMid:
+                return {
+                    start: { translation: new ƒS.Position(480, ƒS.positions.bottomcenter.y) },
+                    end: { translation: ƒS.positions.bottomcenter },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };    
+            case animations.leftToMid:
+                return {
+                    start: { translation: new ƒS.Position(-480, ƒS.positions.bottomcenter.y) },
+                    end: { translation: ƒS.positions.bottomcenter },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };        
+
+            default:
+                return {
+                    start: { translation: ƒS.positions.bottomcenter },
+                    end: { translation: ƒS.positions.bottomcenter },
+                    duration: 5,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                  };
+        }
+    }
   
     let volume: number = 1.0;
   
@@ -216,7 +324,7 @@ namespace Endabgabe {
         save: "▼",
         load: "▲",
         volumeDown: "♪",
-        volumeUp: "♫",
+        volumeUp: "♫"
     };
 
     export let items = {
@@ -308,6 +416,8 @@ namespace Endabgabe {
             { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"},
             { scene: EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
+
+        ƒS.Progress.setData(dataForSave);
   
         // start the sequence
         ƒS.Progress.go(scenes);

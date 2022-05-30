@@ -33,7 +33,7 @@ namespace Endabgabe {
                 S2123_09: "Wirklich? Nur wenn es dir nichts ausmacht, denn ich möchte wirklich nicht komplett durchnässt zu Hause ankommen.",
                 S2123_11: "Das klingt super. Vielen Dank!",
                 S2123_12: "Sumi? Wo bist du? Ah hier brennt Licht...",
-                S2123_13: "AH! WARUM BIST DU NACKT?",
+                S2123_13: "AH! WARUM BIST DU HALB NACKT?",
                 S2123_15: "Tut mir leid, das war nicht mit Absicht…",
                 S2123_17: "..."
             },
@@ -129,6 +129,7 @@ namespace Endabgabe {
         await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
         await ƒS.Location.show(locations.sumisHome_livingRoom);
         await ƒS.update(1);
+        ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_01);
@@ -146,8 +147,10 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
-        // klingel und zwischensequenz wie sie aufsteht?
+        ƒS.Speech.hide();
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Character.hide(characters.sumi);
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_10);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_11);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_12);
@@ -157,11 +160,16 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_16);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_18);
-        // zurück zum wohnzimmer falls weg, sumi kommt zurück
+        ƒS.Speech.hide();
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.leftOutToMid));
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_19);
         await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_20);
-        // sequenz mit verarzten
+        await ƒS.Character.hide(characters.sumi);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.sumiFirstAid);
+        await ƒS.update(1);
         nobuOrShou = await ƒS.Menu.getInput(nobuOrShouAnswer, "decisionClass");
 
         switch (nobuOrShou) {
@@ -170,14 +178,12 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_22);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_23);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_24);
-                //Funktion oder continue oder Möglichkeit hier rauszukommen.
                 break;
             case nobuOrShouAnswer.shou:
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_25);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_26);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_27);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_28);
-                //Funktion oder continue oder Möglichkeit hier rauszukommen.
                 break;
         }
 
@@ -211,36 +217,53 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01b);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2122_02);
+                await ƒS.Location.show(sequences.sumiHappyCry);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_03);
-                // sumi weint aber lächelt sequenz
             case talkOutOrHelpAnswer.help:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_03);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
+                await ƒS.Location.show(sequences.sumiHappyCry);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
-                // sumi weint aber lächelt sequenz
+                // Skip
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_08);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_09);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_10);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_11);
+                ƒS.Speech.hide();
                 await ƒS.Location.show(locations.sumisHome_bathRoom_normal);
                 await ƒS.update(2);
-                // Zwischensequenz zum Bad, Zeit vergeht und der Protagonist kommt vom baden
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
                 await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
                 await ƒS.update(2);
                 // Noch irgendwas?
                 await ƒS.Location.show(locations.sumisHome_hallway);
                 await ƒS.update(2);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
-                // Sumi halb nackt sequenz
+                await ƒS.Location.show(sequences.sumiUndress);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_13);
+                await ƒS.Location.show(sequences.sumiUndress2);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_14);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_15);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_16);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_17);
+                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_18);
+                await ƒS.Location.show(locations.sumisHome_futonroom);
+                await ƒS.update(1);
+                // anderen sprite von einer erröteten sumi
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
+                
                 flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
                 switch (flirtOrSleep) {
                     case flirtOrSleepAnswer.sleep:
@@ -255,12 +278,19 @@ namespace Endabgabe {
         }
     }
 
-    async function ending(endingNr: number): Promise<void> {
+    async function ending(endingNr: number): Promise<string> {
         switch (endingNr) {
             case 1:
-              break;
+              await ƒS.Speech.hide();
+              await ƒS.Location.show(endings.partingWays);
+              await ƒS.update(1);
+              return "endOfNovel";
             case 2:
-              break;
+              await ƒS.Speech.hide();
+              await ƒS.Location.show(endings.partingWays);
+              await ƒS.update(1);
+              return "endOfNovel";
         }
+        return "endOfNovel";
       }
 }
