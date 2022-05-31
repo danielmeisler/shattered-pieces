@@ -7,6 +7,7 @@ declare namespace Endabgabe {
     let dataForSave: {
         nameProtagonist: string;
         romancePoints: number;
+        nobuKnows: boolean;
     };
     let transitions: {
         blink: {
@@ -44,7 +45,7 @@ declare namespace Endabgabe {
         woman_heavy_breathing: string;
     };
     let locations: {
-        street: {
+        street_evening: {
             name: string;
             background: string;
         };
@@ -73,6 +74,14 @@ declare namespace Endabgabe {
             background: string;
         };
         sumisHome_futonroom: {
+            name: string;
+            background: string;
+        };
+        street_day: {
+            name: string;
+            background: string;
+        };
+        sumisHouse_outside: {
             name: string;
             background: string;
         };
@@ -139,6 +148,10 @@ declare namespace Endabgabe {
             background: string;
         };
         sumiUndress2: {
+            name: string;
+            background: string;
+        };
+        sumiUndressHarmless: {
             name: string;
             background: string;
         };
@@ -274,4 +287,7 @@ declare namespace Endabgabe {
 }
 declare namespace Endabgabe {
     function SumisHouse(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function ThePlan(): ƒS.SceneReturn;
 }

@@ -6,7 +6,8 @@ namespace Endabgabe {
 
     export let dataForSave = {
         nameProtagonist: "",
-        romancePoints: 0
+        romancePoints: 0,
+        nobuKnows: false,
     };
   
     export let transitions = {
@@ -51,9 +52,9 @@ namespace Endabgabe {
     };
   
     export let locations = {
-        street: {
-            name: "Street",
-            background: "./assets/images/backgrounds/street.png"
+        street_evening: {
+            name: "Street_Evening",
+            background: "./assets/images/backgrounds/street_evening.png"
         },
         school: {
             name: "School",
@@ -63,6 +64,7 @@ namespace Endabgabe {
             name: "School",
             background: "./assets/images/backgrounds/school_harassment.png"
         },
+
         sumisHome_livingRoom: {
             name: "SumisHome_LivingRoom",
             background: "./assets/images/backgrounds/sumishome_livingroom.png"
@@ -82,7 +84,16 @@ namespace Endabgabe {
         sumisHome_futonroom: {
             name: "SumisHome_FutonRoom",
             background: "./assets/images/backgrounds/sumishome_futonroom.png"
-        }
+        },
+
+        street_day: {
+            name: "Street_Day",
+            background: "./assets/images/backgrounds/street_day.png"
+        },
+        sumisHouse_outside: {
+            name: "SumisHouse_Outside",
+            background: "./assets/images/backgrounds/sumishouse_outside.png"
+        },
     };
 
     export let sequences = {
@@ -150,6 +161,10 @@ namespace Endabgabe {
         sumiUndress2: {
             name: "sumiUndress2",
             background: "./assets/images/sequences/sumiundress2.png"
+        },
+        sumiUndressHarmless: {
+            name: "sumiUndressHarmless",
+            background: "./assets/images/sequences/sumiundressharmless.png"
         }
     };
 

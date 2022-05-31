@@ -126,9 +126,8 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
-        await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
         await ƒS.Location.show(locations.sumisHome_livingRoom);
-        await ƒS.update(1);
+        await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
         ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
@@ -246,11 +245,13 @@ namespace Endabgabe {
                 await ƒS.Location.show(locations.sumisHome_hallway);
                 await ƒS.update(2);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
-                await ƒS.Location.show(sequences.sumiUndress);
+                await ƒS.Location.show(sequences.sumiUndressHarmless);
                 await ƒS.update(1);
+                //await ƒS.Location.show(sequences.sumiUndress);
+                //await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_13);
-                await ƒS.Location.show(sequences.sumiUndress2);
-                await ƒS.update(1);
+                //await ƒS.Location.show(sequences.sumiUndress2);
+                //await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_14);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(1);

@@ -107,9 +107,8 @@ namespace Endabgabe {
 
     // Start
     ƒS.Speech.hide();
+    await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
-    await ƒS.Location.show(locations.street);
-    await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
     await ƒS.Sound.fade(sound.woman_groan_1, 0.3, 1, false);
     await ƒS.Sound.fade(sound.woman_groan_2, 0.5, 1, false);
@@ -288,7 +287,7 @@ namespace Endabgabe {
                     return "protagonistHospital";
                 }
               case howToInterfereAnswer.getHelp:
-                await ƒS.Location.show(locations.street);
+                await ƒS.Location.show(locations.street_evening);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_01);
                 await ƒS.Location.show(sequences.peopleStanding);
