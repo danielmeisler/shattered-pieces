@@ -15,7 +15,7 @@ declare namespace Endabgabe {
             alpha: string;
             edge: number;
         };
-        jigsaw: {
+        fade: {
             duration: number;
             alpha: string;
             edge: number;
@@ -57,7 +57,11 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
-        sumisHome_livingRoom: {
+        sumisHome_livingRoom_evening: {
+            name: string;
+            background: string;
+        };
+        sumisHome_livingRoom_night: {
             name: string;
             background: string;
         };
@@ -143,6 +147,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiMadCry: {
+            name: string;
+            background: string;
+        };
         sumiUndress: {
             name: string;
             background: string;
@@ -179,6 +187,7 @@ declare namespace Endabgabe {
             origin: ƒ.ORIGIN2D;
             pose: {
                 normal: string;
+                embarrassed: string;
             };
         };
         nobu: {

@@ -16,7 +16,7 @@ namespace Endabgabe {
             alpha: "./assets/transitions/blink.jpg",
             edge: 1
         },
-        jigsaw: {
+        fade: {
             duration: 3,
             alpha: "./assets/transitions/jigsaw.jpg",
             edge: 1
@@ -65,9 +65,13 @@ namespace Endabgabe {
             background: "./assets/images/backgrounds/school_harassment.png"
         },
 
-        sumisHome_livingRoom: {
-            name: "SumisHome_LivingRoom",
-            background: "./assets/images/backgrounds/sumishome_livingroom.png"
+        sumisHome_livingRoom_evening: {
+            name: "SumisHome_LivingRoom_Evening",
+            background: "./assets/images/backgrounds/sumishome_livingroom_evening.png"
+        },
+        sumisHome_livingRoom_night: {
+            name: "SumisHome_LivingRoom_Night",
+            background: "./assets/images/backgrounds/sumishome_livingroom_night.png"
         },
         sumisHome_bathRoom_normal: {
             name: "SumisHome_BathRoom_Normal",
@@ -154,6 +158,10 @@ namespace Endabgabe {
             name: "sumiHappyCry",
             background: "./assets/images/sequences/sumicrying.png"
         },
+        sumiMadCry: {
+            name: "sumiMadCry",
+            background: "./assets/images/sequences/sumimad.png"
+        },
         sumiUndress: {
             name: "sumiUndress",
             background: "./assets/images/sequences/sumiundress.png"
@@ -191,7 +199,8 @@ namespace Endabgabe {
             name: "Sumi",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                normal: "./assets/images/characters/sumi/sumi_normal.png"
+                normal: "./assets/images/characters/sumi/sumi_normal.png",
+                embarrassed: "./assets/images/characters/sumi/sumi_embarrassed.png"
             }
         },
         nobu: {

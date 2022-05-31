@@ -130,8 +130,8 @@ namespace Endabgabe {
 
                 //nobu geht
 
-                await ƒS.Location.show(locations.sumisHome_livingRoom);
-                await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
+                await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
+                await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S3121_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_03);

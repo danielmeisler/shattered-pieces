@@ -22,8 +22,8 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
-        await ƒS.Location.show(locations.sumisHome_livingRoom);
-        await ƒS.update(transitions.jigsaw.duration, transitions.jigsaw.alpha, transitions.jigsaw.edge);
+        await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
+        await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_01);
