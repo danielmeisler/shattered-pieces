@@ -1,6 +1,8 @@
 namespace Endabgabe {
     export async function ThePlan(): ƒS.SceneReturn {
         console.log("FudgeStory ThePlan Scene starting");
+        let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
+        menu.open();
 
         // Speeches
         let text = {
@@ -16,12 +18,13 @@ namespace Endabgabe {
                 S4100_06: "Ja, wie erwartet eine Liste mit all den neuen Verstecken, die die Gang für ihre illegalen Machenschaften und Geschäfte nutzt. Ich weiß nicht, ob du genug Zeit hast, um alle zu durchsuchen. Ich muss jetzt zum Gang-Treffen… aber ich versuche dir so viel Zeit wie möglich rauszuschlagen. Leider sind die Orte sehr verstreut und weit voneinander entfernt… ich hoffe du hast direkt beim ersten Glück.",
                 S4100_08: "Pass auf dich auf… falls die Orte bewacht sind, mach nichts Riskantes!"
             }
-        }
+        };
 
         // Decisions
 
         // Start
         ƒS.Speech.hide();
+        characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);

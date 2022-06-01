@@ -7,7 +7,7 @@ namespace Endabgabe {
     export let dataForSave = {
         nameProtagonist: "",
         romancePoints: 0,
-        nobuKnows: false,
+        nobuKnows: false
     };
   
     export let transitions = {
@@ -18,7 +18,7 @@ namespace Endabgabe {
         },
         fade: {
             duration: 3,
-            alpha: "./assets/transitions/jigsaw.jpg",
+            alpha: "./assets/transitions/fade.jpg",
             edge: 1
         }
     };
@@ -97,7 +97,7 @@ namespace Endabgabe {
         sumisHouse_outside: {
             name: "SumisHouse_Outside",
             background: "./assets/images/backgrounds/sumishouse_outside.png"
-        },
+        }
     };
 
     export let sequences = {
@@ -154,6 +154,10 @@ namespace Endabgabe {
             name: "sumiFirstAid",
             background: "./assets/images/sequences/sumifirstaid.png"
         },
+        youLeave: {
+            name: "youLeave",
+            background: "./assets/images/sequences/youleave.png"
+        },
         sumiHappyCry: {
             name: "sumiHappyCry",
             background: "./assets/images/sequences/sumicrying.png"
@@ -161,6 +165,10 @@ namespace Endabgabe {
         sumiMadCry: {
             name: "sumiMadCry",
             background: "./assets/images/sequences/sumimad.png"
+        },
+        sumiKicksYouOut: {
+            name: "sumiKicksYouOut",
+            background: "./assets/images/sequences/sumikicksyouout.png"
         },
         sumiUndress: {
             name: "sumiUndress",
@@ -173,6 +181,31 @@ namespace Endabgabe {
         sumiUndressHarmless: {
             name: "sumiUndressHarmless",
             background: "./assets/images/sequences/sumiundressharmless.png"
+        },
+        theNextDay: {
+            name: "theNextDay",
+            background: "./assets/images/sequences/thenextday.png"
+        },
+
+        sumiNobuArgument: {
+            name: "sumiNobuArgument",
+            background: "./assets/images/sequences/suminobuargument.png"
+        },
+        nobuWaiting: {
+            name: "nobuWaiting",
+            background: "./assets/images/sequences/nobuwaiting.png"
+        },
+        nobuWaitingAndKnife: {
+            name: "nobuWaitingAndKnife",
+            background: "./assets/images/sequences/nobuwaitingandknife.png"
+        },
+        sumiSmilingEyesOpen: {
+            name: "sumiSmilingEyesOpen",
+            background: "./assets/images/sequences/sumismilingeyesopen.png"
+        },
+        sumiSmilingEyesClosed: {
+            name: "sumiSmilingEyesClosed",
+            background: "./assets/images/sequences/sumismilingeyesclosed.png"
         }
     };
 
@@ -255,7 +288,10 @@ namespace Endabgabe {
         rightOutToMid: "rightOutToMid",
         leftOutToMid: "leftOutToMid",
         rightToMid: "rightToMid",
-        leftToMid: "leftToMid"
+        leftToMid: "leftToMid",
+
+        rightToRightOut: "rightToRightOut",
+        leftToLeftOut: "leftToLeftOut"
     };
 
     export function animate(_animation: string): ƒS.AnimationDefinition {
@@ -315,7 +351,22 @@ namespace Endabgabe {
                     end: { translation: ƒS.positions.bottomcenter },
                     duration: 2,
                     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
-                };        
+                };     
+                
+            case animations.leftToLeftOut:
+                return {
+                    start: { translation: new ƒS.Position(-480, ƒS.positions.bottomcenter.y) },
+                    end: { translation: new ƒS.Position(-1500, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };               
+            case animations.rightToRightOut:
+                return {
+                    start: { translation: new ƒS.Position(480, ƒS.positions.bottomcenter.y) },
+                    end: { translation: new ƒS.Position(1500, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };   
 
             default:
                 return {
@@ -438,6 +489,7 @@ namespace Endabgabe {
             { scene: Street, name: "street", id: "street"},
             { scene: SumisHome, name: "sumisHome", id: "sumisHome"},
             { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"},
+            { scene: ThePlan, name: "thePlan", id: "thePlan"},
             { scene: EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
 

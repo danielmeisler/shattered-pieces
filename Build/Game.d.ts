@@ -143,11 +143,19 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        youLeave: {
+            name: string;
+            background: string;
+        };
         sumiHappyCry: {
             name: string;
             background: string;
         };
         sumiMadCry: {
+            name: string;
+            background: string;
+        };
+        sumiKicksYouOut: {
             name: string;
             background: string;
         };
@@ -160,6 +168,30 @@ declare namespace Endabgabe {
             background: string;
         };
         sumiUndressHarmless: {
+            name: string;
+            background: string;
+        };
+        theNextDay: {
+            name: string;
+            background: string;
+        };
+        sumiNobuArgument: {
+            name: string;
+            background: string;
+        };
+        nobuWaiting: {
+            name: string;
+            background: string;
+        };
+        nobuWaitingAndKnife: {
+            name: string;
+            background: string;
+        };
+        sumiSmilingEyesOpen: {
+            name: string;
+            background: string;
+        };
+        sumiSmilingEyesClosed: {
             name: string;
             background: string;
         };
@@ -237,6 +269,8 @@ declare namespace Endabgabe {
         leftOutToMid: string;
         rightToMid: string;
         leftToMid: string;
+        rightToRightOut: string;
+        leftToLeftOut: string;
     };
     function animate(_animation: string): ƒS.AnimationDefinition;
     function volumeUp(): void;

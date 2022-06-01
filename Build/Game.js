@@ -12,7 +12,7 @@ var Endabgabe;
     Endabgabe.dataForSave = {
         nameProtagonist: "",
         romancePoints: 0,
-        nobuKnows: false,
+        nobuKnows: false
     };
     Endabgabe.transitions = {
         blink: {
@@ -22,7 +22,7 @@ var Endabgabe;
         },
         fade: {
             duration: 3,
-            alpha: "./assets/transitions/jigsaw.jpg",
+            alpha: "./assets/transitions/fade.jpg",
             edge: 1
         }
     };
@@ -95,7 +95,7 @@ var Endabgabe;
         sumisHouse_outside: {
             name: "SumisHouse_Outside",
             background: "./assets/images/backgrounds/sumishouse_outside.png"
-        },
+        }
     };
     Endabgabe.sequences = {
         black: {
@@ -150,6 +150,10 @@ var Endabgabe;
             name: "sumiFirstAid",
             background: "./assets/images/sequences/sumifirstaid.png"
         },
+        youLeave: {
+            name: "youLeave",
+            background: "./assets/images/sequences/youleave.png"
+        },
         sumiHappyCry: {
             name: "sumiHappyCry",
             background: "./assets/images/sequences/sumicrying.png"
@@ -157,6 +161,10 @@ var Endabgabe;
         sumiMadCry: {
             name: "sumiMadCry",
             background: "./assets/images/sequences/sumimad.png"
+        },
+        sumiKicksYouOut: {
+            name: "sumiKicksYouOut",
+            background: "./assets/images/sequences/sumikicksyouout.png"
         },
         sumiUndress: {
             name: "sumiUndress",
@@ -169,6 +177,30 @@ var Endabgabe;
         sumiUndressHarmless: {
             name: "sumiUndressHarmless",
             background: "./assets/images/sequences/sumiundressharmless.png"
+        },
+        theNextDay: {
+            name: "theNextDay",
+            background: "./assets/images/sequences/thenextday.png"
+        },
+        sumiNobuArgument: {
+            name: "sumiNobuArgument",
+            background: "./assets/images/sequences/suminobuargument.png"
+        },
+        nobuWaiting: {
+            name: "nobuWaiting",
+            background: "./assets/images/sequences/nobuwaiting.png"
+        },
+        nobuWaitingAndKnife: {
+            name: "nobuWaitingAndKnife",
+            background: "./assets/images/sequences/nobuwaitingandknife.png"
+        },
+        sumiSmilingEyesOpen: {
+            name: "sumiSmilingEyesOpen",
+            background: "./assets/images/sequences/sumismilingeyesopen.png"
+        },
+        sumiSmilingEyesClosed: {
+            name: "sumiSmilingEyesClosed",
+            background: "./assets/images/sequences/sumismilingeyesclosed.png"
         }
     };
     Endabgabe.endings = {
@@ -243,7 +275,9 @@ var Endabgabe;
         rightOutToMid: "rightOutToMid",
         leftOutToMid: "leftOutToMid",
         rightToMid: "rightToMid",
-        leftToMid: "leftToMid"
+        leftToMid: "leftToMid",
+        rightToRightOut: "rightToRightOut",
+        leftToLeftOut: "leftToLeftOut"
     };
     function animate(_animation) {
         switch (_animation) {
@@ -300,6 +334,20 @@ var Endabgabe;
                 return {
                     start: { translation: new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y) },
                     end: { translation: Endabgabe.ƒS.positions.bottomcenter },
+                    duration: 2,
+                    playmode: Endabgabe.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case Endabgabe.animations.leftToLeftOut:
+                return {
+                    start: { translation: new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y) },
+                    end: { translation: new Endabgabe.ƒS.Position(-1500, Endabgabe.ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: Endabgabe.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case Endabgabe.animations.rightToRightOut:
+                return {
+                    start: { translation: new Endabgabe.ƒS.Position(480, Endabgabe.ƒS.positions.bottomcenter.y) },
+                    end: { translation: new Endabgabe.ƒS.Position(1500, Endabgabe.ƒS.positions.bottomcenter.y) },
                     duration: 2,
                     playmode: Endabgabe.ƒS.ANIMATION_PLAYMODE.PLAYONCE
                 };
@@ -416,6 +464,7 @@ var Endabgabe;
             { scene: Endabgabe.Street, name: "street", id: "street" },
             { scene: Endabgabe.SumisHome, name: "sumisHome", id: "sumisHome" },
             { scene: Endabgabe.SumisHouse, name: "sumisHouse", id: "sumisHouse" },
+            { scene: Endabgabe.ThePlan, name: "thePlan", id: "thePlan" },
             { scene: Endabgabe.EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
         Endabgabe.ƒS.Progress.setData(Endabgabe.dataForSave);
@@ -513,6 +562,8 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
+        Endabgabe.characters.nobu.name = "Blonder Junge";
+        Endabgabe.characters.sumi.name = "Pinkes Mädchen";
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_evening);
         await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
@@ -575,6 +626,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1121_08);
+                await Endabgabe.ƒS.Character.hideAll();
                 return "sumisHome";
             case howToInterfereAnswer.threatenWithCops:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_01);
@@ -618,6 +670,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1122_08);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1122_09);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1122_10);
+                        await Endabgabe.ƒS.Character.hideAll();
                         return "sumisHome";
                     case nobuTalk4Answer.fight:
                 }
@@ -696,6 +749,7 @@ var Endabgabe;
         }
     }
     Endabgabe.Street = Street;
+    // Endings
     async function ending(endingNr) {
         switch (endingNr) {
             case 1:
@@ -716,6 +770,8 @@ var Endabgabe;
 (function (Endabgabe) {
     async function SumisHome() {
         console.log("FudgeStory SumisHome Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
         // Speeches
         let text = {
             Protagonist: {
@@ -750,7 +806,7 @@ var Endabgabe;
                 S2100_01: "Ich bin dir zwar dankbar, dass du mich gerettet hast…. Aber bist du irgendwie lebensmüde? Er hätte dich umbringen können.",
                 S2100_03: "Das hätte dir ja egal sein können, ist ja meine Sache.",
                 S2100_05: "Sag mir mal lieber, wie du heißt. Wenn du schon bei mir zuhause bist und ich dich verarzte, kann ich ja zumindest den Namen meines vermeintlichen „Retters“ erfahren.",
-                S2100_07: "Alles klar, " + Endabgabe.characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.",
+                //S2100_07: "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.",
                 S2100_09: "Ehhhh, das ist kompliziert… und geht dich eigentlich auch nichts an…",
                 S2100_11: "Das ist mir so egal, du hast über meinen Bruder hergezogen und ihn beleidigt.",
                 S2100_13: "Verdiente Strafe? Ich weiß, dass zwischen ihm und dir was vorgefallen ist. Aber egal was es war, du hast keinen Recht so über ihn zu reden, nachdem er immer für dich da war.",
@@ -819,9 +875,12 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0, 0, false);
+        Endabgabe.characters.nobu.name = "???";
+        Endabgabe.characters.sumi.name = "Sumi";
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
-        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0, 0, false);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_01);
@@ -835,6 +894,8 @@ var Endabgabe;
         Endabgabe.dataForSave.nameProtagonist = name;
         Endabgabe.characters.protagonist.name = name;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Alles klar, " + Endabgabe.characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_08);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_09);
         Endabgabe.ƒS.Speech.hide();
@@ -875,6 +936,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_28);
                 break;
         }
+        Endabgabe.characters.nobu.name = "Nobu";
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_29);
         goOrTalk = await Endabgabe.ƒS.Menu.getInput(goOrTalkAnswer, "decisionClass");
         switch (goOrTalk) {
@@ -882,7 +944,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2110_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2110_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2110_02);
-                // sequenz zum verlassen?
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.youLeave);
+                await Endabgabe.ƒS.update(3);
                 return await ending(1);
             case goOrTalkAnswer.talk:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_01);
@@ -901,6 +964,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiMadCry);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2121_02);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiKicksYouOut);
+                await Endabgabe.ƒS.update(3);
                 return await ending(2);
             case talkOutOrHelpAnswer.morePeople:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01);
@@ -913,12 +978,11 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_03);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCry);
                 await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_06);
-                // Skip
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                 await Endabgabe.ƒS.update(10);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_07);
@@ -937,7 +1001,6 @@ var Endabgabe;
                 await Endabgabe.ƒS.update(2);
                 await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_foggy);
                 await Endabgabe.ƒS.update(5);
-                // Noch irgendwas?
                 await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_hallway);
                 await Endabgabe.ƒS.update(2);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_12);
@@ -966,32 +1029,33 @@ var Endabgabe;
                 flirtOrSleep = await Endabgabe.ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
                 switch (flirtOrSleep) {
                     case flirtOrSleepAnswer.sleep:
-                        // Beide gehen schlafen und der nächste Tag beginnt...
-                        Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
-                        await Endabgabe.ƒS.update(1);
-                        return "sumisHouse";
+                        break;
                     case flirtOrSleepAnswer.flirt:
-                        // Romance Points und Sumi wird rot Sequenz
                         Endabgabe.dataForSave.romancePoints++;
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_19);
-                        Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
-                        await Endabgabe.ƒS.update(1);
-                        return "sumisHouse";
+                        break;
                 }
+                Endabgabe.ƒS.Speech.hide();
+                Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+                await Endabgabe.ƒS.update(3);
+                return "sumisHouse";
         }
     }
     Endabgabe.SumisHome = SumisHome;
+    // Endings
     async function ending(endingNr) {
         switch (endingNr) {
             case 1:
                 await Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Location.show(Endabgabe.endings.partingWays);
-                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.update(3);
                 return "endOfNovel";
             case 2:
                 await Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Location.show(Endabgabe.endings.partingWays);
-                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.update(3);
                 return "endOfNovel";
         }
         return "endOfNovel";
@@ -1001,6 +1065,8 @@ var Endabgabe;
 (function (Endabgabe) {
     async function SumisHouse() {
         console.log("FudgeStory SumisHouse Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
         // Speeches
         let text = {
             Protagonist: {
@@ -1019,7 +1085,7 @@ var Endabgabe;
                 S3100_01: "Jetzt verschwinde endlich, ich bin immer noch sauer auf dich!",
                 S3100_03: "Achja? Was passiert dann?!",
                 S3100_05: "Hör zu, ich habe noch viel zu tun… warum komm ich nicht einfach zum nächsten Gang-Treffen und wir bereden es?",
-                S3100_08: Endabgabe.characters.protagonist.name + ", warum?!...",
+                S3100_08: Endabgabe.dataForSave.nameProtagonist + ", warum?!...",
                 S3100_10: "Nein… ehm…",
                 S3120_02: "Ja, das wäre richtig dumm...",
                 S3120_04: "Nichts…. Jetzt geh und lass uns unser Projekt machen.",
@@ -1041,7 +1107,7 @@ var Endabgabe;
                 S3120_05: "Na gut… aber ich komme wieder Sumi, denk nicht, dass du mich einfach so jedes Mal abschütteln kannst.",
                 S3130_01: "Ich weiß absolut nicht was du meinst… und was kümmert dich das eigentlich?",
                 S3130_03: "Hast du Beweise für deine Anschuldigungen?",
-                S3130_05: "Pass lieber auf wo du deine Nase reinsteckst.",
+                S3130_05: "Pass lieber auf wo du deine Nase reinsteckst."
             }
         };
         // Decisions
@@ -1064,12 +1130,15 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
-        await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_day);
+        Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_day);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3100_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3100_01);
-        // sequenz wo sie miteinander diskutieren
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiNobuArgument);
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3100_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3100_03);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3100_04);
@@ -1078,9 +1147,15 @@ var Endabgabe;
             case interfereOrNotAnswer.not:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3100_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3100_06);
-                // nobu geht sequenz?
+                Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
                 break;
             case interfereOrNotAnswer.interefere:
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHouse_outside);
+                Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRight));
+                Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeft));
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3100_07);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3100_08);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3100_09);
@@ -1089,9 +1164,19 @@ var Endabgabe;
                 switch (howToInterfere) {
                     case howToInterfereAnswer.couple:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3110_01);
-                        // nobu verfolgung szene?
+                        await Endabgabe.ƒS.Character.hideAll();
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuWaiting);
+                        await Endabgabe.ƒS.update(5);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuWaitingAndKnife);
+                        await Endabgabe.ƒS.update(3);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.knife_stabbing, 0, 1, false);
                         return await ending(1);
-                        break;
                     case howToInterfereAnswer.classmates:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3120_01);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3120_02);
@@ -1108,57 +1193,66 @@ var Endabgabe;
                         Endabgabe.dataForSave.nobuKnows = true;
                         break;
                 }
-                //nobu geht
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
-                await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_02);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_03);
-                // Plan sequenz?
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_04);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_05);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_06);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_07);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_08);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_09);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_10);
-                romanceChoices = await Endabgabe.ƒS.Menu.getInput(romanceChoicesAnswer, "decisionClass");
-                switch (romanceChoices) {
-                    case romanceChoicesAnswer.beautiful:
-                        Endabgabe.dataForSave.romancePoints++;
-                        break;
-                    case romanceChoicesAnswer.intelligent:
-                        Endabgabe.dataForSave.romancePoints++;
-                        break;
-                    case romanceChoicesAnswer.thanks:
-                        break;
-                }
-                //sumis gesicht wird rot sequenz (einfach ohne tränen)
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_11);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_12);
-                // Nächster Tag und Beginn des Planes sequenz
-                return "thePlan";
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.rightToRightOut));
+                await Endabgabe.ƒS.Speech.hide();
+                break;
         }
-        async function ending(endingNr) {
-            switch (endingNr) {
-                case 1:
-                    await Endabgabe.ƒS.Speech.hide();
-                    await Endabgabe.ƒS.update(1);
-                    return "endOfNovel";
-                case 2:
-                    await Endabgabe.ƒS.Speech.hide();
-                    await Endabgabe.ƒS.update(1);
-                    return "endOfNovel";
-            }
-            return "endOfNovel";
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_03);
+        // Plan sequenz?
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_10);
+        romanceChoices = await Endabgabe.ƒS.Menu.getInput(romanceChoicesAnswer, "decisionClass");
+        switch (romanceChoices) {
+            case romanceChoicesAnswer.beautiful:
+                Endabgabe.dataForSave.romancePoints++;
+                break;
+            case romanceChoicesAnswer.intelligent:
+                Endabgabe.dataForSave.romancePoints++;
+                break;
+            case romanceChoicesAnswer.thanks:
+                break;
         }
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesOpen);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_11);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesClosed);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_12);
+        // Nächster Tag und Beginn des Planes sequenz
+        return "thePlan";
     }
     Endabgabe.SumisHouse = SumisHouse;
+    // Endings
+    async function ending(endingNr) {
+        switch (endingNr) {
+            case 1:
+                await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
+                await Endabgabe.ƒS.update(1);
+                return "endOfNovel";
+        }
+        return "endOfNovel";
+    }
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
 (function (Endabgabe) {
     async function ThePlan() {
         console.log("FudgeStory ThePlan Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
         // Speeches
         let text = {
             Protagonist: {
@@ -1177,6 +1271,7 @@ var Endabgabe;
         // Decisions
         // Start
         Endabgabe.ƒS.Speech.hide();
+        Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);

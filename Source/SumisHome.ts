@@ -1,6 +1,8 @@
 namespace Endabgabe {
     export async function SumisHome(): ƒS.SceneReturn {
         console.log("FudgeStory SumisHome Scene starting");
+        let menu = ƒS.Menu.create(menuItems, menuButtons, "menu");
+        menu.open();
 
         // Speeches
         let text = {
@@ -43,7 +45,7 @@ namespace Endabgabe {
                 S2100_01: "Ich bin dir zwar dankbar, dass du mich gerettet hast…. Aber bist du irgendwie lebensmüde? Er hätte dich umbringen können.",
                 S2100_03: "Das hätte dir ja egal sein können, ist ja meine Sache.",
                 S2100_05: "Sag mir mal lieber, wie du heißt. Wenn du schon bei mir zuhause bist und ich dich verarzte, kann ich ja zumindest den Namen meines vermeintlichen „Retters“ erfahren.",
-                S2100_07: "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.",
+                //S2100_07: "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.",
                 S2100_09: "Ehhhh, das ist kompliziert… und geht dich eigentlich auch nichts an…",
                 S2100_11: "Das ist mir so egal, du hast über meinen Bruder hergezogen und ihn beleidigt.",
                 S2100_13: "Verdiente Strafe? Ich weiß, dass zwischen ihm und dir was vorgefallen ist. Aber egal was es war, du hast keinen Recht so über ihn zu reden, nachdem er immer für dich da war.",
@@ -128,9 +130,12 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
-        await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
+        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        characters.nobu.name = "???";
+        characters.sumi.name = "Sumi";
+        await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_01);
@@ -146,6 +151,9 @@ namespace Endabgabe {
         characters.protagonist.name = name;
 
         await ƒS.Speech.tell(characters.sumi, "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
+        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.update(1);
+
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
         ƒS.Speech.hide();
@@ -187,7 +195,7 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_28);
                 break;
         }
-
+        characters.nobu.name = "Nobu";
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_29);
         goOrTalk = await ƒS.Menu.getInput(goOrTalkAnswer, "decisionClass");
 
@@ -196,7 +204,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2110_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2110_01);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2110_02);
-                // sequenz zum verlassen?
+                await ƒS.Location.show(sequences.youLeave);
+                await ƒS.update(3);
                 return await ending(1);
             case goOrTalkAnswer.talk:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_01);
@@ -216,6 +225,8 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.sumiMadCry);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2121_02);
+                await ƒS.Location.show(sequences.sumiKicksYouOut);
+                await ƒS.update(3);
                 return await ending(2);
             case talkOutOrHelpAnswer.morePeople:
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01);
@@ -228,12 +239,11 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_03);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
                 await ƒS.Location.show(sequences.sumiHappyCry);
                 await ƒS.update(1);
+                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
+                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
-                // Skip
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(10);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
@@ -252,7 +262,6 @@ namespace Endabgabe {
                 await ƒS.update(2);
                 await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
                 await ƒS.update(5);
-                // Noch irgendwas?
                 await ƒS.Location.show(locations.sumisHome_hallway);
                 await ƒS.update(2);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
@@ -281,32 +290,33 @@ namespace Endabgabe {
                 flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
                 switch (flirtOrSleep) {
                     case flirtOrSleepAnswer.sleep:
-                        // Beide gehen schlafen und der nächste Tag beginnt...
-                        ƒS.Character.hide(characters.sumi);
-                        await ƒS.update(1);
-                        return "sumisHouse";
+                        break;
                     case flirtOrSleepAnswer.flirt:
-                        // Romance Points und Sumi wird rot Sequenz
                         dataForSave.romancePoints++;
                         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_19);
-                        ƒS.Character.hide(characters.sumi);
-                        await ƒS.update(1);
-                        return "sumisHouse";
+                        break;
                 }
+                ƒS.Speech.hide();
+                ƒS.Character.hide(characters.sumi);
+                await ƒS.update(1);
+                await ƒS.Location.show(sequences.theNextDay);
+                await ƒS.update(3);
+                return "sumisHouse";
         }
     }
 
+    // Endings
     async function ending(endingNr: number): Promise<string> {
         switch (endingNr) {
             case 1:
               await ƒS.Speech.hide();
               await ƒS.Location.show(endings.partingWays);
-              await ƒS.update(1);
+              await ƒS.update(3);
               return "endOfNovel";
             case 2:
               await ƒS.Speech.hide();
               await ƒS.Location.show(endings.partingWays);
-              await ƒS.update(1);
+              await ƒS.update(3);
               return "endOfNovel";
         }
         return "endOfNovel";

@@ -107,6 +107,8 @@ namespace Endabgabe {
 
     // Start
     ƒS.Speech.hide();
+    characters.nobu.name = "Blonder Junge";
+    characters.sumi.name = "Pinkes Mädchen";
     await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
@@ -181,6 +183,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S1121_08);
 
+                await ƒS.Character.hideAll();
                 return "sumisHome";
               case howToInterfereAnswer.threatenWithCops:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_01);
@@ -230,6 +233,7 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_08);
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_09);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_10);
+                    await ƒS.Character.hideAll();
                     return "sumisHome";
                   case nobuTalk4Answer.fight:
                 }
@@ -312,6 +316,7 @@ namespace Endabgabe {
     }
   }
 
+  // Endings
   async function ending(endingNr: number): Promise<string> {
     switch (endingNr) {
         case 1:
