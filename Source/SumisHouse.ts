@@ -85,7 +85,7 @@ namespace Endabgabe {
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(sequences.black);
-        await ƒS.update(1)
+        await ƒS.update(1);
         await ƒS.Location.show(locations.street_day);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3100_01);
@@ -180,6 +180,7 @@ namespace Endabgabe {
                 dataForSave.romancePoints++;
                 break;
             case romanceChoicesAnswer.intelligent:
+                dataForSave.romancePoints++;
                 dataForSave.romancePoints++;
                 break;
             case romanceChoicesAnswer.thanks:

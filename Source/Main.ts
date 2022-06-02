@@ -7,7 +7,8 @@ namespace Endabgabe {
     export let dataForSave = {
         nameProtagonist: "",
         romancePoints: 0,
-        nobuKnows: false
+        nobuKnows: false,
+        protagonistHurt: false
     };
   
     export let transitions = {
@@ -490,6 +491,9 @@ namespace Endabgabe {
             { scene: SumisHome, name: "sumisHome", id: "sumisHome"},
             { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"},
             { scene: ThePlan, name: "thePlan", id: "thePlan"},
+            { scene: WrongPlace, name: "wrongPlace", id: "wrongPlace"},
+            { scene: RightPlace, name: "rightPlace", id: "rightPlace"},
+
             { scene: EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
 

@@ -7,7 +7,7 @@ namespace Endabgabe {
         // Speeches
         let text = {
             Protagonist: {
-                S4100_01: "Und?",
+                S4100_01: "Und? Hast du alles besorgt?",
                 S4100_03: "Wie kamst du rein?",
                 S4100_05: "Hast du was gefunden?",
                 S4100_07: "Mhhhh… ich gib mein Bestes. Aber dir erstmal viel Glück."
@@ -30,6 +30,8 @@ namespace Endabgabe {
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_01);
+        // Inventar hinzufügen
+        await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_03);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_04);

@@ -8,6 +8,7 @@ declare namespace Endabgabe {
         nameProtagonist: string;
         romancePoints: number;
         nobuKnows: boolean;
+        protagonistHurt: boolean;
     };
     let transitions: {
         blink: {
@@ -323,6 +324,9 @@ declare namespace Endabgabe {
     function menuButtons(_option: string): Promise<void>;
 }
 declare namespace Endabgabe {
+    function RightPlace(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
     function Street(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
@@ -333,4 +337,7 @@ declare namespace Endabgabe {
 }
 declare namespace Endabgabe {
     function ThePlan(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function WrongPlace(): ƒS.SceneReturn;
 }
