@@ -259,13 +259,6 @@ var Endabgabe;
             pose: {
                 normal: ""
             }
-        },
-        doktor: {
-            name: "Doktor",
-            origin: Endabgabe.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                normal: ""
-            }
         }
     };
     Endabgabe.animations = {
@@ -1259,7 +1252,7 @@ var Endabgabe;
             help: "Hilfe anbieten"
         };
         let flirtOrSleepAnswer = {
-            flirt: "Du bist sehr schön...",
+            flirt: "Du siehst sehr schön aus...",
             sleep: "Wir sollten schlafen gehen..."
         };
         // Start
@@ -1283,8 +1276,6 @@ var Endabgabe;
         Endabgabe.dataForSave.nameProtagonist = name;
         Endabgabe.characters.protagonist.name = name;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Alles klar, " + Endabgabe.characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
-        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_08);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_09);
         Endabgabe.ƒS.Speech.hide();

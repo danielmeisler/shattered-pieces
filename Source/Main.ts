@@ -269,14 +269,6 @@ namespace Endabgabe {
                 normal: ""
 
             }
-        },
-        doktor: {
-            name: "Doktor",
-            origin: ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                normal: ""
-
-            }
         }
     };
 
@@ -493,6 +485,9 @@ namespace Endabgabe {
             { scene: ThePlan, name: "thePlan", id: "thePlan"},
             { scene: WrongPlace, name: "wrongPlace", id: "wrongPlace"},
             { scene: RightPlace, name: "rightPlace", id: "rightPlace"},
+
+            { scene: ProtagonistHospital, name: "protagonistHospital", id: "protagonistHospital"},
+            { scene: HospitalHallway, name: "hospitalHallway", id: "hospitalHallway"},
 
             { scene: EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];

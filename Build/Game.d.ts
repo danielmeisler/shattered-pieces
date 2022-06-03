@@ -253,13 +253,6 @@ declare namespace Endabgabe {
                 normal: string;
             };
         };
-        doktor: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                normal: string;
-            };
-        };
     };
     let animations: {
         midToRightOut: string;

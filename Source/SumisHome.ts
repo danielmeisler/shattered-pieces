@@ -124,7 +124,7 @@ namespace Endabgabe {
         };
 
         let flirtOrSleepAnswer = {
-            flirt: "Du bist sehr schön...",
+            flirt: "Du siehst sehr schön aus...",
             sleep: "Wir sollten schlafen gehen..."
         };
 
@@ -151,9 +151,6 @@ namespace Endabgabe {
         characters.protagonist.name = name;
 
         await ƒS.Speech.tell(characters.sumi, "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
-        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
-        await ƒS.update(1);
-
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
         ƒS.Speech.hide();
