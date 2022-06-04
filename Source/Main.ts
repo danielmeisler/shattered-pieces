@@ -262,6 +262,20 @@ namespace Endabgabe {
                 happy: "./assets/images/characters/shou/shou_happy.png"
 
             }
+        },
+        credits: {
+            name: "Credits",
+            origin: ƒS.ORIGIN.CENTER,
+            pose: {
+                story: "./assets/credits/story.png",
+                characters: "./assets/credits/characters.png",
+                sequences: "./assets/credits/sequences.png",
+                music: "./assets/credits/music.png",
+                sfx: "./assets/credits/sfx.png",
+                backgrounds: "./assets/credits/backgrounds.png",
+
+                tfp: "./assets/credits/thanksforplaying.png"
+            }
         }
     };
 
@@ -277,7 +291,10 @@ namespace Endabgabe {
         leftToMid: "leftToMid",
 
         rightToRightOut: "rightToRightOut",
-        leftToLeftOut: "leftToLeftOut"
+        leftToLeftOut: "leftToLeftOut",
+
+        credits: "credits",
+        creditsLast: "creditsLast"
     };
 
     export function animate(_animation: string): ƒS.AnimationDefinition {
@@ -353,6 +370,21 @@ namespace Endabgabe {
                     duration: 2,
                     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
                 };   
+
+            case animations.credits:
+                return {
+                    start: { translation: new ƒS.Position(ƒS.positions.bottomcenter.x, -650) },
+                    end: { translation: new ƒS.Position(ƒS.positions.bottomcenter.x, 650) },
+                    duration: 4,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };  
+            case animations.creditsLast:
+                return {
+                    start: { translation: new ƒS.Position(ƒS.positions.bottomcenter.x, -650) },
+                    end: { translation: new ƒS.Position(ƒS.positions.bottomcenter.x, 0) },
+                    duration: 4,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };  
 
             default:
                 return {

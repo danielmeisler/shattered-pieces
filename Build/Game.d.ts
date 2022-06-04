@@ -247,6 +247,19 @@ declare namespace Endabgabe {
                 happy: string;
             };
         };
+        credits: {
+            name: string;
+            origin: ƒ.ORIGIN2D;
+            pose: {
+                story: string;
+                characters: string;
+                sequences: string;
+                music: string;
+                sfx: string;
+                backgrounds: string;
+                tfp: string;
+            };
+        };
     };
     let animations: {
         midToRightOut: string;
@@ -259,6 +272,8 @@ declare namespace Endabgabe {
         leftToMid: string;
         rightToRightOut: string;
         leftToLeftOut: string;
+        credits: string;
+        creditsLast: string;
     };
     function animate(_animation: string): ƒS.AnimationDefinition;
     function volumeUp(): void;

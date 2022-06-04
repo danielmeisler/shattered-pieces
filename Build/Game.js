@@ -1,7 +1,25 @@
 "use strict";
 var Endabgabe;
 (function (Endabgabe) {
-    async function EndOfNovel() { }
+    async function EndOfNovel() {
+        await Endabgabe.ƒS.Sound.setMasterVolume(0);
+        await Endabgabe.ƒS.update(5);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.story, Endabgabe.animate(Endabgabe.animations.credits));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.characters, Endabgabe.animate(Endabgabe.animations.credits));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.sequences, Endabgabe.animate(Endabgabe.animations.credits));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.music, Endabgabe.animate(Endabgabe.animations.credits));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.sfx, Endabgabe.animate(Endabgabe.animations.credits));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.backgrounds, Endabgabe.animate(Endabgabe.animations.credits));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.tfp, Endabgabe.animate(Endabgabe.animations.creditsLast));
+    }
     Endabgabe.EndOfNovel = EndOfNovel;
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
@@ -253,6 +271,19 @@ var Endabgabe;
                 normal: "./assets/images/characters/shou/shou_normal.png",
                 happy: "./assets/images/characters/shou/shou_happy.png"
             }
+        },
+        credits: {
+            name: "Credits",
+            origin: Endabgabe.ƒS.ORIGIN.CENTER,
+            pose: {
+                story: "./assets/credits/story.png",
+                characters: "./assets/credits/characters.png",
+                sequences: "./assets/credits/sequences.png",
+                music: "./assets/credits/music.png",
+                sfx: "./assets/credits/sfx.png",
+                backgrounds: "./assets/credits/backgrounds.png",
+                tfp: "./assets/credits/thanksforplaying.png"
+            }
         }
     };
     Endabgabe.animations = {
@@ -265,7 +296,9 @@ var Endabgabe;
         rightToMid: "rightToMid",
         leftToMid: "leftToMid",
         rightToRightOut: "rightToRightOut",
-        leftToLeftOut: "leftToLeftOut"
+        leftToLeftOut: "leftToLeftOut",
+        credits: "credits",
+        creditsLast: "creditsLast"
     };
     function animate(_animation) {
         switch (_animation) {
@@ -337,6 +370,20 @@ var Endabgabe;
                     start: { translation: new Endabgabe.ƒS.Position(480, Endabgabe.ƒS.positions.bottomcenter.y) },
                     end: { translation: new Endabgabe.ƒS.Position(1500, Endabgabe.ƒS.positions.bottomcenter.y) },
                     duration: 2,
+                    playmode: Endabgabe.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case Endabgabe.animations.credits:
+                return {
+                    start: { translation: new Endabgabe.ƒS.Position(Endabgabe.ƒS.positions.bottomcenter.x, -650) },
+                    end: { translation: new Endabgabe.ƒS.Position(Endabgabe.ƒS.positions.bottomcenter.x, 650) },
+                    duration: 4,
+                    playmode: Endabgabe.ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case Endabgabe.animations.creditsLast:
+                return {
+                    start: { translation: new Endabgabe.ƒS.Position(Endabgabe.ƒS.positions.bottomcenter.x, -650) },
+                    end: { translation: new Endabgabe.ƒS.Position(Endabgabe.ƒS.positions.bottomcenter.x, 0) },
+                    duration: 4,
                     playmode: Endabgabe.ƒS.ANIMATION_PLAYMODE.PLAYONCE
                 };
             default:
