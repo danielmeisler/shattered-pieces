@@ -177,7 +177,7 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.police);
                 await ƒS.update(1);
 
-                await ƒS.Speech.tell(characters.schlaeger, text.Schlaeger.S1121_07);
+                await ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
 
                 await ƒS.Location.show(sequences.gimmeYourHand);
                 await ƒS.update(1);
@@ -225,7 +225,7 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.police);
                     await ƒS.update(1);
 
-                    await ƒS.Speech.tell(characters.schlaeger, text.Schlaeger.S1122_06);
+                    await ƒS.Speech.tell("Schläger", text.Schlaeger.S1122_06);
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_07);
                     ƒS.Character.hide(characters.nobu);
                     await ƒS.Location.show(sequences.gimmeYourHand);
@@ -281,7 +281,7 @@ namespace Endabgabe {
                     ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
                     await ƒS.Sound.fade(sound.punch_5, 0, 1, false);
                     await ƒS.Sound.fade(sound.punch_6, 0, 1, false);
-                    await ƒS.Speech.tell(characters.schlaeger, text.Schlaeger.S1121_07);
+                    await ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
                     await ƒS.Location.show(sequences.unconsciousSumi);
                     await ƒS.update(2);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1123_07);

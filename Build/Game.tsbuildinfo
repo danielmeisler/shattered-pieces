@@ -4,11 +4,16 @@
     "sourceFiles": [
       "../Source/EndOfNovel.ts",
       "../Source/Main.ts",
+      "../Source/ProtagonistHospital.ts",
+      "../Source/ProtagonistHospitalHallway.ts",
       "../Source/RightPlace.ts",
       "../Source/Street.ts",
+      "../Source/SumiHospital.ts",
+      "../Source/SumiHospitalHallway.ts",
       "../Source/SumisHome.ts",
       "../Source/SumisHouse.ts",
       "../Source/ThePlan.ts",
+      "../Source/ThePlanFailed.ts",
       "../Source/WrongPlace.ts"
     ],
     "js": {
@@ -21,7 +26,7 @@
         },
         {
           "pos": 15,
-          "end": 120465,
+          "end": 203598,
           "kind": "text"
         }
       ],
@@ -49,7 +54,7 @@
       "sections": [
         {
           "pos": 0,
-          "end": 8394,
+          "end": 8701,
           "kind": "text"
         }
       ]

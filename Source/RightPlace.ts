@@ -223,7 +223,7 @@ namespace Endabgabe {
         // Minispiel oder so oder einfach Kampf Sequenzen
 
         if (dataForSave.protagonistHurt == false) {
-            if (dataForSave.nobuKnows == false) {
+            if (dataForSave.nobuKnowsBrother == false) {
                 //Sequenz wie Protagonist auf dem Boden liegt
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_01);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41212_02);
@@ -309,7 +309,7 @@ namespace Endabgabe {
                 }
             }
         } else {
-            if (dataForSave.nobuKnows == false) {
+            if (dataForSave.nobuKnowsBrother == false) {
                 // Nobu liegt am Boden Sequenz
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_02);

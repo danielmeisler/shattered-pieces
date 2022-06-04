@@ -7,8 +7,9 @@ declare namespace Endabgabe {
     let dataForSave: {
         nameProtagonist: string;
         romancePoints: number;
-        nobuKnows: boolean;
         protagonistHurt: boolean;
+        nobuKnowsBrother: boolean;
+        nobuKnowsMother: boolean;
     };
     let transitions: {
         blink: {
@@ -246,13 +247,6 @@ declare namespace Endabgabe {
                 happy: string;
             };
         };
-        schlaeger: {
-            name: string;
-            origin: ƒ.ORIGIN2D;
-            pose: {
-                normal: string;
-            };
-        };
     };
     let animations: {
         midToRightOut: string;
@@ -317,10 +311,22 @@ declare namespace Endabgabe {
     function menuButtons(_option: string): Promise<void>;
 }
 declare namespace Endabgabe {
+    function ProtagonistHospital(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function ProtagonistHospitalHallway(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
     function RightPlace(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
     function Street(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function SumiHospital(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function SumiHospitalHallway(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
     function SumisHome(): ƒS.SceneReturn;
@@ -330,6 +336,9 @@ declare namespace Endabgabe {
 }
 declare namespace Endabgabe {
     function ThePlan(): ƒS.SceneReturn;
+}
+declare namespace Endabgabe {
+    function ThePlanFailed(): ƒS.SceneReturn;
 }
 declare namespace Endabgabe {
     function WrongPlace(): ƒS.SceneReturn;

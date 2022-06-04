@@ -12,8 +12,9 @@ var Endabgabe;
     Endabgabe.dataForSave = {
         nameProtagonist: "",
         romancePoints: 0,
-        nobuKnows: false,
-        protagonistHurt: false
+        protagonistHurt: false,
+        nobuKnowsBrother: false,
+        nobuKnowsMother: false
     };
     Endabgabe.transitions = {
         blink: {
@@ -252,13 +253,6 @@ var Endabgabe;
                 normal: "./assets/images/characters/shou/shou_normal.png",
                 happy: "./assets/images/characters/shou/shou_happy.png"
             }
-        },
-        schlaeger: {
-            name: "Schläger",
-            origin: Endabgabe.ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                normal: ""
-            }
         }
     };
     Endabgabe.animations = {
@@ -455,17 +449,522 @@ var Endabgabe;
             Endabgabe.ƒS.Inventory.add(Endabgabe.items.item6);
         }
         let scenes = [
+            // Intro
             { scene: Endabgabe.Street, name: "street", id: "street" },
+            // Branch 1
             { scene: Endabgabe.SumisHome, name: "sumisHome", id: "sumisHome" },
             { scene: Endabgabe.SumisHouse, name: "sumisHouse", id: "sumisHouse" },
-            { scene: Endabgabe.ThePlan, name: "thePlan", id: "thePlan" },
+            // Branch 2
+            { scene: Endabgabe.ProtagonistHospital, name: "protagonistHospital", id: "protagonistHospital" },
+            { scene: Endabgabe.ProtagonistHospitalHallway, name: "protagonistHospitalHallway", id: "protagonistHospitalHallway" },
+            // Branch 3
+            { scene: Endabgabe.SumiHospital, name: "sumiHospital", id: "sumiHospital" },
+            { scene: Endabgabe.SumiHospitalHallway, name: "sumiHospitalHallway", id: "sumiHospitalHallway" },
+            // Final Fight Endings
+            { scene: Endabgabe.ThePlanFailed, name: "thePlanFailed", id: "thePlanFailed" },
             { scene: Endabgabe.WrongPlace, name: "wrongPlace", id: "wrongPlace" },
+            // Final Fight
+            { scene: Endabgabe.ThePlan, name: "thePlan", id: "thePlan" },
             { scene: Endabgabe.RightPlace, name: "rightPlace", id: "rightPlace" },
+            // End of novel
             { scene: Endabgabe.EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
         Endabgabe.ƒS.Progress.setData(Endabgabe.dataForSave);
         // start the sequence
         Endabgabe.ƒS.Progress.go(scenes);
+    }
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
+    async function ProtagonistHospital() {
+        console.log("FudgeStory ProtagonistHospital Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
+        // Speeches
+        let text = {
+            Protagonist: {
+                S2200_02: "Wo bin ich?",
+                S2200_04: "Ahh aua, ich fühle den Grund, mist…",
+                S2200_06: "Nobu? Du kennst diesen Typen?",
+                S2200_08: "Wow, wie nett von ihm…",
+                S2200_10: "Ja ehm… kein Problem…",
+                S2200_12: "Warte! Du gehst schon? Kann ich wenigstens deinen Namen erfahren?",
+                S2200_14: "Ein sehr schöner Name! Ich heiße: ",
+                S2200_16: "Okay, danke… wow dann muss ich mich wohl einige Tage hier langweilen…",
+                S2200_18: "Warte! Werde ich dich wiedersehen?",
+                S2200_20: "Dann besuch mich wenigstens, während ich noch hier im Krankenhaus bin, mir ist sowieso langweilig.",
+                S2200_22: "Ja, man sieht sich.",
+                S2210_02: "Das ist doch der Junge von den Plakaten, der gesucht wird… wow… es sind schon Wochen vergangen und keine Spur, seine Familie muss sich große Sorgen machen.",
+                S2210_04: "Seine Jacke kommt mir bekannt vor… das ist doch die von Nobu!",
+                S2220_01: "War das nicht gerade Sumi? Was macht sie hier…",
+                S2220_13: "Ich habe genug zugehört… ich sollte zurück auf mein Zimmer.",
+                S2230_02: "Sumi? Dachte nicht, dass du wirklich kommst und mich tatsächlich besuchst…",
+                S2230_04: "Freut mich! Mir geht es an sich ganz gut, aber fühle immer noch leichten Schmerz… aber habe etwas dagegen bekommen.",
+                S2230_06: "Was meinst du? Wieso?",
+                S2231_01: "Du hör zu… ich habe in den Nachrichten einen Jungen gesehen, welcher seit Wochen vermisst wird. Auf dem Foto hatte er dieselbe Jacke an wie Nobu und seine Gang. Kennst du den auch?",
+                S2231_03: "Alles okay?",
+                S2231_05: "Wow… bei deiner Reaktion kennst du ihn wohl sehr gut… tut mir leid, falls ich etwas Falsches gesagt habe…",
+                S2231_07: "Darf ich fragen was passiert ist?",
+                S2231_09: "Gerade weil ich eine fremde Person bin und nichts mit der Sache zu tun habe ist es vielleicht manchmal leichter darüber zu reden.",
+                S2232_01: "Du hör zu… ich bin vorhin aus Langeweile durch das Krankenhaus spaziert und habe dich in ein Zimmer reinlaufen sehen. Ich bin dir hinterher, weil ich dich nochmal sehen wollte, habe aber dabei aus Versehen ein kleines Stück eines Gespräches mitgekriegt…",
+                S2232_03: "Tut mir leid, ich wollte euch nicht belauschen… alles okay?",
+                S2232_05: "Nicht viel, nur dass dein Bruder vermisst wird und die Frau schwerkrank ist?",
+                S2232_07: "Wow… tut mir leid, falls ich etwas Falsches gesagt habe…",
+                S2232_09: "Darf ich fragen was passiert ist?",
+                S2232_11: "Gerade weil ich eine fremde Person bin und nichts mit der Sache zu tun habe ist es vielleicht manchmal leichter darüber zu reden.",
+                S2240_02: "Ich weiß jetzt nicht, ob ich mich bedanken soll.",
+                S2240_04: "Wie kommst du darauf? Er war doch sein bester Freund.",
+                S2240_06: "Lass mich raten… Deswegen gibst du dich mit ihm ab und spielst sein Spiel mit, um mehr herauszufinden?",
+                S2241_01: "Das ist viel zu gefährlich, du solltest das lieber alles sein lassen. Du hast keine richtigen Anhaltspunkte, das ist viel zu riskant. Wenn er wirklich was mit der Entführung deines Bruders zu tun hat, dann ist er gefährlich und du könntest die Nächste sein.",
+                S2242_02: "Und jetzt ist auch dein Bruder weg, du hast kein Geld und bist ganz allein. Wow, ich weiß nicht was ich sagen soll…",
+                S2243_01: "Ich schätze deinen Optimismus, aber ohne einen Plan wirst du nichts erreichen. Du hast keine Anhaltspunkte, sondern jagst deinem Gefühl hinterher. Wir sollten erst einen Plan ausarbeiten und vorsichtig sein.",
+                S2243_03: "Ich glaube nicht, dass wir noch fremde Personen sind, Sumi. Ich habe bereits mehr mit dir erlebt und weiß mehr von dir als von den meisten Menschen in meinem Umfeld. Aber das spielt keine Rolle, wenn jemand Hilfe braucht, sollte ihr geholfen werden.",
+                S2243_05: "Jetzt erzähl mir lieber mehr über Nobu, damit wir uns einen Plan überlegen können.",
+                S2243_08: "Das klingt gut...",
+                S2243_10: "...",
+                S2243_13: "Bis morgen!"
+            },
+            Sumi: {
+                S2200_01: "Da bist du ja endlich, hat ja lang genug gedauert…",
+                S2200_03: "Wonach sieht es denn aus? Du bist im Krankenhaus natürlich.",
+                S2200_05: "Ja Nobu hat dich ordentlich zusammengeschlagen, aber du wolltest ja nicht aufhören…",
+                S2200_07: "Ja, lange Geschichte… jedenfalls hast du nochmal Glück gehabt… er hätte dich auch umbringen können.",
+                S2200_09: "Jedenfalls hast du mich trotzdem irgendwie gerettet und deswegen hab ich gewartet bis du aufwachst…um mich zu bedanken… also danke.",
+                S2200_11: "Also dann geh ich wieder… und halt dich in Zukunft lieber raus, wenn du weiterleben willst…",
+                S2200_13: "In Ordnung, ich heiße Sumi…",
+                //S2200_15: "Alles klar, PROTAGONIST. Ahja und noch eine Sache. Der Arzt war hier und sagte, dass du einige Tage hierbleiben musst. Du hast leichte Verletzungen, nichts Schwerwiegendes, musst dich aber schonen.",
+                S2200_17: "Du kannst Fernsehen oder lern deine Zimmernachbarn kennen, mir egal. Ich muss aber jetzt gehen, hab noch etwas zu erledigen.",
+                S2200_19: "Hör zu, halt dich lieber fern von mir, alles klar? Sonst kommst du wieder in solche Schwierigkeiten.",
+                S2200_21: "Ich verspreche dir nichts... und jetzt ruh dich aus.",
+                S2220_03: "Nein, Mom… leider nicht.",
+                S2220_05: "Nicht ganz… ich wusste, dass er mit komischen Typen abhing… aber nicht, dass sie eine Gang waren.",
+                S2220_07: "Mach dir keine Gedanken… in deinem Zustand solltest du dir keine Sorgen machen, das ist nicht gut für dich.",
+                S2220_09: "Ich weiß doch… aber wenn sich dein Zustand noch verschlechtert… und ich dich auch noch verliere… dann bin ich allein.",
+                S2220_11: "Ich vermisse ihn…",
+                S2230_01: "Na du Superheld, wie geht es dir?",
+                S2230_03: "Ach, ich war in der Nähe… dachte ich komm mal vorbei und schaue nach wie es dir geht. Immerhin hast du Schläge für mich kassiert, da kann ich ja auch mal vorbeischauen.",
+                S2230_05: "Davon könnte ich auch etwas gebrauchen…",
+                S2230_07: "Ach egal…",
+                S2231_02: "…",
+                S2231_04: "Ja nein, alles in Ordnung… ja ich kenne diesen Jungen aus den Nachrichten…",
+                S2231_06: "Nein ist schon in Ordnung…",
+                S2231_08: "Ich weiß nicht, ob ich hier einer ziemlich fremden Person private Geschichten erzählen sollte. Außerdem hat das alles sowieso nichts mit dir zu tun…",
+                S2232_02: "…",
+                S2232_04: "Ja nein, alles in Ordnung… was genau hast du denn mit angehört?",
+                S2232_06: "Nicht viel…",
+                S2232_08: "Nein ist schon in Ordnung…",
+                S2232_10: "	Ich weiß nicht, ob ich hier einer ziemlich fremden Person private Geschichten erzählen sollte. Außerdem hat das alles sowieso nichts mit dir zu tun…",
+                S2240_01: "Wow, so wie du aussiehst hätte ich solchen weise Worte nicht erwartet.",
+                S2240_03: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen Möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der dich zusammen-geschlagen hat, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
+                S2240_05: "Ja, aber am letzten Abend, an dem ich meinen Bruder sah, ist er zu einem Gang-Treffen aufgebrochen und laut Nobu nie dort angekommen. Seitdem macht er sich auch so ekelhaft an mich ran. Er ist der Meinung, dass als sein bester Freund es jetzt seine  Aufgabe ist mich zu beschützen. Und da er der Vize ist wurde er natürlich zum Anführer und strukturiert die Gang um… alle Prinzipien und Grenzen, die mein Bruder aufgestellt hat, ignoriert er komplett. Es scheint alles perfekt für ihn zu laufen, seitdem Shou weg ist…. Ich habe das im Gefühl…",
+                S2240_07: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
+                S2241_02: "Wer bist du? Ich treffe meine eigenen Entscheidungen… warum erzähl ich das eigentlich einer fremden Person? Du solltest gehen und mich in Ruhe mein Ding machen lassen.",
+                S2242_01: "Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten.",
+                S2242_01b: "Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als unsere Mutter schwerkrank wurde und ins Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
+                S2242_03: "Ich brauch kein Mitleid… meine Mutter wird wieder gesund, mein Vater wird zurückkommen und meinen Bruder werde ich finden. Auch wenn meine Familie wie eine Vase zerbrochen ist und ohne meinen kleinen Bruder ein Teil fehlt… sie kann wieder zusammengeklebt werden, auch wenn die Risse bleiben werden.",
+                S2243_02: "Wir? Warum sollte eine fremde Person mir helfen wollen? Außerdem schaffe ich das auch allein.",
+                S2243_04: "Trotzdem…",
+                S2243_06: "Na gut…",
+                S2243_07: "Es ist schon spät und ich muss noch wohin... ich komme dich morgen besuchen, dann können wir daran weiterarbeiten.",
+                S2243_09: "...",
+                S2243_11: "Alles okay? Warum siehst du mich so an?",
+                S2243_12: "Ehm… danke… ich sollte aber jetzt gehen… bis morgen."
+            },
+            Yuko: {
+                S2220_02: "Ich habe gerade die Nachrichten gesehen… es gibt immer noch keine Neuigkeiten von Shou?",
+                S2220_04: "Wusstest du, dass er Mitglied einer Gang war?",
+                S2220_06: "Ach Schatz… wann wird mein Sohn endlich zurückkehren?",
+                S2220_08: "Wie soll ich mir keine Sorgen machen, wenn dein Bruder seit Wochen vermisst wird? Sumi, er ist mein Sohn… ich würde mir ja auch Sorgen machen, wenn du wochenlang verschwunden wärst.",
+                S2220_10: "Schatz, egal was passiert… ich werde immer bei dir sein… und ich bin mir sicher, dass dein Bruder zurückkommt.",
+                S2220_12: "Ich vermisse ihn auch…"
+            },
+            Reporter: {
+                S2210_01: "… seit Wochen gibt es immer noch keine Hinweise zum Verschwinden von dem jungen Shou …",
+                S2210_03: "… da dieser Junge Mitglied einer Gang ist, geht die Polizei davon aus, dass dieser in illegale Machenschaften reingezogen wurde …",
+                S2210_05: "… demnach stellt sich die Frage, lebt dieser Junge überhaupt noch?"
+            }
+        };
+        // Decisions
+        let tvOrWalk;
+        let talkOutOrHelp;
+        let flirtOrNot;
+        let tvOrWalkAnswer = {
+            tv: "Fernseher schauen",
+            walk: "Durch das Krankenhaus spazieren"
+        };
+        let talkOutOrHelpAnswer = {
+            talkOut: "Ausreden",
+            morePeople: "Noch mehr Menschen?",
+            help: "Hilfe anbieten"
+        };
+        let flirtOrNotAnswer = {
+            flirt: "Du siehst sehr schön aus...",
+            not: "Wir sollten schlafen gehen..."
+        };
+        // Start
+        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0, 0, false);
+        Endabgabe.characters.nobu.name = "Nobu";
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        //await ƒS.Location.show(locations.sumisHome_hospitalroom);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_11);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_12);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_13);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_14);
+        Endabgabe.characters.sumi.name = "Sumi";
+        //Name Input
+        let name = await Endabgabe.ƒS.Speech.getInput();
+        Endabgabe.dataForSave.nameProtagonist = name;
+        Endabgabe.characters.protagonist.name = name;
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Alles klar, " + Endabgabe.characters.protagonist.name + ". Ahja und noch eine Sache. Der Arzt war hier und sagte, dass du einige Tage hierbleiben musst. Du hast leichte Verletzungen, nichts Schwerwiegendes, musst dich aber schonen.");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_16);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_17);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_18);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_19);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_20);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_21);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_22);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.update(1);
+        tvOrWalk = await Endabgabe.ƒS.Menu.getInput(tvOrWalkAnswer, "decisionClass");
+        switch (tvOrWalk) {
+            case tvOrWalkAnswer.tv:
+                // Sequenz von Nachrichten im TV
+                await Endabgabe.ƒS.Speech.tell("Nachrichtensprecher", text.Reporter.S2210_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_18);
+                await Endabgabe.ƒS.Speech.tell("Nachrichtensprecher", text.Reporter.S2210_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_18);
+                await Endabgabe.ƒS.Speech.tell("Nachrichtensprecher", text.Reporter.S2210_05);
+                // Nach einer Weile kommt Sumi ihn besuchen
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2231_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2231_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2231_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2231_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_09);
+                break;
+            case tvOrWalkAnswer.walk:
+                // Sequenz von verschiedenen Gängen und eine wo sumi reinläuft.
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2220_01);
+                // Protagonist schaut durch Tür und sieh Sumi mit einer Frau
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2220_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2220_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2220_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2220_09);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_10);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2220_11);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_12);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2220_13);
+                // Der Protagonist kehrt zurück in sein Zimmer
+                // Nach einer Weile kommt Sumi ihn besuchen
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_09);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_10);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_11);
+                break;
+        }
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2240_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2240_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2240_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2240_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2240_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2240_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2240_07);
+        switch (talkOutOrHelp) {
+            case talkOutOrHelpAnswer.talkOut:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2241_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2241_02);
+                return await ending(1);
+            case talkOutOrHelpAnswer.morePeople:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01b);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2242_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_03);
+            case talkOutOrHelpAnswer.help:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_03);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCry);
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_06);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(10);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_09);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_10);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_11);
+                flirtOrNot = await Endabgabe.ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
+                switch (flirtOrNot) {
+                    case flirtOrNotAnswer.not:
+                        // Sumi geht und der nächste Tag bricht an
+                        break;
+                    case flirtOrNotAnswer.flirt:
+                        Endabgabe.dataForSave.romancePoints++;
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_12);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_13);
+                        break;
+                }
+                Endabgabe.ƒS.Speech.hide();
+                Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+                await Endabgabe.ƒS.update(1);
+                // Sumi geht Sequenz?
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+                await Endabgabe.ƒS.update(3);
+                return "protagonistHospitalHallway";
+        }
+        // Endings
+        async function ending(endingNr) {
+            switch (endingNr) {
+                case 1:
+                    await Endabgabe.ƒS.Speech.hide();
+                    // Sumi haut wütend ab, entweder was neues oder parting ways
+                    //await ƒS.Location.show(endings.partingWays);
+                    await Endabgabe.ƒS.update(3);
+                    return "endOfNovel";
+            }
+            return "endOfNovel";
+        }
+    }
+    Endabgabe.ProtagonistHospital = ProtagonistHospital;
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
+    async function ProtagonistHospitalHallway() {
+        console.log("FudgeStory ProtagonistHospitalHallway Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
+        // Speeches
+        let text = {
+            Protagonist: {
+                S3200_01: "Das klingt doch wie Sumi? Was ist da los?",
+                S3200_07: "Du hast echt nichts Besseres zu tun als sie zu nerven, oder?",
+                S3230_02: "Sicher, dass du nichts weißt?",
+                S3230_04: "Keine Sorge, die finden wir noch…",
+                S3240_01: "Dass der Typ dich auch nicht in Ruhe lässt.",
+                S3240_03: "Halte noch ein wenig durch.",
+                S3240_05: "Klingt gut, geht mir genauso...",
+                S3240_07: "Keine Sorge, wir finden deinen Bruder.",
+                S3240_09: "Ganz bestimmt...",
+                S3240_12: "Du hast Recht, machen wir weiter."
+            },
+            Sumi: {
+                S3200_01: "Jetzt verschwinde endlich, du hast hier nichts zu suchen!",
+                S3200_03: "Du spionierst mir nach? Das geht dich nichts an, verschwinde jetzt!",
+                S3200_05: "Hör zu, ich habe gerade keine Zeit… warum komm ich nicht einfach zum nächsten Gang-Treffen und ich erzähle dir alles?",
+                S3200_08: Endabgabe.dataForSave.nameProtagonist + ", warum?!...",
+                S3200_10: "Nein… ehm…",
+                S3220_02: "Nein… eh… ja… das ist nicht wichtig und geht dich nichts an.",
+                S3220_04: "Nobu… geh einfach…",
+                S3240_02: "Ja… aber lange muss ich mir das nicht mehr geben.",
+                S3240_04: "Wir sollten eine kurze Pause einlegen, ich kann nicht mehr denken…",
+                S3240_06: "Ich find es echt nett von dir, dass du mir hilfst… danke…",
+                S3240_08: "Hoffentlich… vielleicht, wenn das alles vorbei ist… kann ich dann auch ein ganz normales Leben als Teenagerin führen…",
+                S3240_10: "Sag mal, du bist ziemlich intelligent, wenn ich mir deine Ideen so anschaue… ich bewundere intelligente Menschen.",
+                S3240_11: "Wir sollten den Plan fertig stellen… denn morgen wirst du entlassen und dann treffen wir uns bei mir zuhause, um den Plan zu beginnen."
+            },
+            Nobu: {
+                S3200_02: "Glaubst du ich werde mir das weiterhin Gefallen lassen Sumi?! Irgendwann reißt der Faden! Du meidest mich, antwortest mir nicht auf meine Nachrichten oder Anrufe. Ich hab dich beobachtet… du bist ziemlich oft in diesem Krankenhaus… warum?",
+                S3200_04: "Ja, ich will wissen, warum du mir aus dem Weg gehst!",
+                S3200_06: "Wehe du tauchst nicht auf.",
+                S3200_09: "Ach ist er der Grund, weshalb du so eiskalt zu mir bist, mich dauernd meidest und dich hier befindest? Hast dich in deinen Retter verliebt?",
+                S3210_01: "Du kleine Ratte… hast du Glück, dass hier schon die Leute schauen. Aber das wirst du noch bereuen…",
+                S3220_01: "Achsoooo, ihre Mutter ist hier im Krankenhaus?",
+                S3220_03: "Aber warum hast du das nicht gleich gesagt? Deine arme Mutter ist also schwerkrank? Du armes Mädchen…",
+                S3220_05: "Keine Sorge… ich gehe jetzt.",
+                S3220_05b: "Aber an deiner Stelle würde ich definitiv zum nächsten Gang-Treffen kommen, wenn du nicht willst, dass es deiner schwerkranken Mutter noch schlechter geht.",
+                S3230_01: "Ich weiß absolut nicht was du meinst… und was kümmert dich das eigentlich?",
+                S3230_03: "Hast du Beweise für deine Anschuldigungen?",
+                S3230_05: "Pass lieber auf wo du deine Nase reinsteckst."
+            }
+        };
+        // Decisions
+        let interfereOrNot;
+        let howToInterfere;
+        let romanceChoices;
+        let interfereOrNotAnswer = {
+            not: "Ich sollte mich raushalten, um den Plan nicht zu gefährden.",
+            interefere: "Ich sollte was tun, es sieht brenzlig aus."
+        };
+        let howToInterfereAnswer = {
+            couple: "Ja bin ich, wir sind jetzt ein Paar und sie besucht mich.",
+            mother: "Das ist Zufall, du hast mich her befördert und sie besucht ihre Mutter.",
+            brother: "Vielleicht ist der Grund eher, dass du etwas mit der Entführung ihres Bruders zu tun hast?"
+        };
+        let romanceChoicesAnswer = {
+            beautiful: "Ich bewundere wunderschöne Menschen.",
+            intelligent: "Du bist auch sehr intelligent, deine Ideen waren sogar noch besser.",
+            thanks: "Danke"
+        };
+        // Start
+        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(1);
+        //await ƒS.Location.show(locations.hospitalhallway);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3200_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3200_01);
+        //await ƒS.Location.show(sequences.sumiNobuArgumentInHospitalHallway);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3200_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3200_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3200_04);
+        interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
+        switch (interfereOrNot) {
+            case interfereOrNotAnswer.not:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3200_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3200_06);
+                Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
+                break;
+            case interfereOrNotAnswer.interefere:
+                //await ƒS.Location.show(locations.hospitalhallway);
+                Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRight));
+                Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeft));
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3200_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3200_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3200_09);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3200_10);
+                howToInterfere = await Endabgabe.ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
+                switch (howToInterfere) {
+                    case howToInterfereAnswer.couple:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3210_01);
+                        await Endabgabe.ƒS.Character.hideAll();
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        //await ƒS.Location.show(sequences.nobuWaitingHospital);
+                        await Endabgabe.ƒS.update(5);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
+                        //Nobu drückt dir Kissen ins Gesicht
+                        await Endabgabe.ƒS.update(3);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        //await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
+                        return await ending(1);
+                    case howToInterfereAnswer.mother:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3220_01);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3220_02);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3220_03);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3220_04);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3220_05);
+                        Endabgabe.dataForSave.nobuKnowsMother = true;
+                        break;
+                    case howToInterfereAnswer.brother:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3230_01);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3230_02);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3230_03);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3230_04);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3230_05);
+                        Endabgabe.dataForSave.nobuKnowsBrother = true;
+                        break;
+                }
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.rightToRightOut));
+                await Endabgabe.ƒS.Speech.hide();
+                break;
+        }
+        //await ƒS.Location.show(locations.hospitalroom);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_03);
+        // Plan sequenz?
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_10);
+        romanceChoices = await Endabgabe.ƒS.Menu.getInput(romanceChoicesAnswer, "decisionClass");
+        switch (romanceChoices) {
+            case romanceChoicesAnswer.beautiful:
+                Endabgabe.dataForSave.romancePoints++;
+                break;
+            case romanceChoicesAnswer.intelligent:
+                Endabgabe.dataForSave.romancePoints++;
+                Endabgabe.dataForSave.romancePoints++;
+                break;
+            case romanceChoicesAnswer.thanks:
+                break;
+        }
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        //await ƒS.Location.show(sequences.sumiSmilingEyesOpenHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_11);
+        //await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_12);
+        // Nächster Tag und Beginn des Planes sequenz
+        if (Endabgabe.dataForSave.nobuKnowsMother == false) {
+            return "thePlan";
+        }
+        else {
+            return "thePlanFailed";
+        }
+    }
+    Endabgabe.ProtagonistHospitalHallway = ProtagonistHospitalHallway;
+    // Endings
+    async function ending(endingNr) {
+        switch (endingNr) {
+            case 1:
+                await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
+                await Endabgabe.ƒS.update(1);
+                return "endOfNovel";
+        }
+        return "endOfNovel";
     }
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
@@ -663,7 +1162,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_30);
         // Minispiel oder so oder einfach Kampf Sequenzen
         if (Endabgabe.dataForSave.protagonistHurt == false) {
-            if (Endabgabe.dataForSave.nobuKnows == false) {
+            if (Endabgabe.dataForSave.nobuKnowsBrother == false) {
                 //Sequenz wie Protagonist auf dem Boden liegt
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41212_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41212_02);
@@ -752,7 +1251,7 @@ var Endabgabe;
             }
         }
         else {
-            if (Endabgabe.dataForSave.nobuKnows == false) {
+            if (Endabgabe.dataForSave.nobuKnowsBrother == false) {
                 // Nobu liegt am Boden Sequenz
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41222_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41222_02);
@@ -1004,7 +1503,7 @@ var Endabgabe;
                 Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.police);
                 await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1121_07);
+                await Endabgabe.ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1121_08);
@@ -1044,7 +1543,7 @@ var Endabgabe;
                         Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.police);
                         await Endabgabe.ƒS.update(1);
-                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1122_06);
+                        await Endabgabe.ƒS.Speech.tell("Schläger", text.Schlaeger.S1122_06);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S1122_07);
                         Endabgabe.ƒS.Character.hide(Endabgabe.characters.nobu);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.gimmeYourHand);
@@ -1096,7 +1595,7 @@ var Endabgabe;
                         Endabgabe.ƒS.Sound.fade(Endabgabe.sound.group_scream, 0.2, 5, false);
                         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_5, 0, 1, false);
                         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.punch_6, 0, 1, false);
-                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.schlaeger, text.Schlaeger.S1121_07);
+                        await Endabgabe.ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.unconsciousSumi);
                         await Endabgabe.ƒS.update(2);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S1123_07);
@@ -1140,6 +1639,440 @@ var Endabgabe;
                 await Endabgabe.ƒS.update(1);
                 return "endOfNovel";
             case 2:
+                await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
+                await Endabgabe.ƒS.update(1);
+                return "endOfNovel";
+        }
+        return "endOfNovel";
+    }
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
+    async function SumiHospital() {
+        console.log("FudgeStory SumiHospital Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
+        // Speeches
+        let text = {
+            Protagonist: {
+                S2300_01: "Hey du, du bist endlich wach.",
+                S2300_03: "Im Krankenhaus.",
+                S2300_05: "Ich heiße: ",
+                S2300_07: "Ich habe gesehen, wie eine Gruppe von Gang-Mitgliedern dich belästigt hat und habe Hilfe geholt. Allerdings, als ich zurückkam, war es zu spät und du lagst auf dem Boden.",
+                S2300_09: "Was ist passiert, was wollten die von dir?",
+                S2300_11: "Okay tut mir leid… wie dem auch sei… Der Arzt meinte, dass du zum Glück nur leichte Verletzungen hast und für ein paar Tage hierbleiben musst, um dich auszuruhen.",
+                S2300_13: "Darf ich noch deinen Namen erfahren?",
+                S2300_15: "Und du willst mir wirklich nicht anvertrauen was da passiert ist?",
+                S2300_17: "Nobu? Das heißt du kennst den Typen?",
+                S2300_19: "Tut mir leid, war bloß neugierig…",
+                S2300_31: "Gerne doch.",
+                S2300_34: "Ach was… aber warum hast du sie angelogen?",
+                S2300_36: "Anhand der Kleidung und dass sie gleich eine Therapie hat, ist sie auch in diesem Krankenhaus?",
+                S2300_38: "Das tut mir leid zu hören…",
+                S2310_02: "Das ist dein Bruder? Das nicht mitzukriegen ist schon beinahe unmöglich…. Aber das tut mir sehr leid für dich.",
+                S2310_04: "Aber was ist passiert?",
+                S2310_06: "Wie kommst du darauf? Er war doch sein bester Freund.",
+                S2310_08: "Lass mich raten… Deswegen gibst du dich mit ihm ab und spielst sein Spiel mit, um mehr herauszufinden?",
+                S2310_10: "Und was hat deine Mutter?",
+                S2320_02: "Was ist mit deinem Vater oder anderen Familienmitgliedern?",
+                S2320_04: "Wo sind sie denn?",
+                S2320_06: "Und jetzt ist auch dein Bruder verschwunden, du hast kein Geld und bist ganz allein. Wow, ich weiß nicht was ich sagen soll…",
+                S2320_08: "Und dein Bruder ist jetzt verschwunden?",
+                S2330_01: "Deine Mutter kann ich nicht heilen, aber ich kann dir bei der Suche deines Bruder helfen… Ohne einen Plan wirst du nichts erreichen. Du hast keine Anhaltspunkte, sondern jagst deinem Gefühl hinterher. Wir sollten erst einen Plan ausarbeiten und vorsichtig sein.",
+                S2330_03: "Ich glaube nicht, dass wir noch fremde Personen sind, Sumi. Ich habe bereits mehr mit dir erlebt und weiß mehr von dir als von den meisten Menschen in meinem Umfeld. Aber das spielt keine Rolle, wenn jemand Hilfe braucht, sollte ihr geholfen werden.",
+                S2330_05: "Jetzt erzähl mir lieber mehr über Nobu, damit wir uns einen Plan überlegen können.",
+                S2330_07: "Es ist schon… ich sollte gehen. Ich komme dich morgen besuchen, dann können wir daran weiterarbeiten.",
+                S2330_09: "…",
+                S2330_12: "Bis morgen!"
+            },
+            Sumi: {
+                S2300_02: "Wo bin ich?",
+                S2300_04: "Und wer bist du?",
+                //S2300_06: "Okay… PROTAGONIST… und was machst du hier?",
+                S2300_08: "Ach… aua… ich erinnere mich…",
+                S2300_10: "Geht dich wohl gar nichts an…",
+                S2300_12: "Alles klar, danke fürs Bescheid geben…",
+                S2300_14: "Meinetwegen… Sumi ist mein Name.",
+                S2300_16: "Tzz… Nobu wurde wütend, weil ich jemanden verteidigt habe, über den er hergezogen hat…",
+                S2300_18: "Ja. Sag mal, stellst du nicht zu viele Fragen?",
+                S2300_21: "Mom… woher weißt du, dass ich hier bin.",
+                S2300_23: "Ist nur halb so schlimm…",
+                S2300_25: "Ehm… ich bin an einer erhöhten Stelle an einem halbfesten Geländer ausgerutscht und tief gefallen…",
+                //S2300_27: "Nein, nicht ganz… das ist PROTAGNIST… PROTAGONIST hat mir geholfen und den Krankenwagen gerufen…",
+                S2300_29: "Pfff…",
+                S2300_33: "Entschuldige meine peinliche Mutter…",
+                S2300_35: "Sie soll sich nicht noch mehr Sorgen machen, das ist nicht gut für sie…",
+                S2300_37: "Ja ist sie… sie ist schwer krank und hat vielleicht nicht mehr lange…",
+                S2300_39: "Jedenfalls reicht ihr der Stress mit meinem verschwundenen Bruder… wenn sie noch erfährt dass ich mich mit so einer Gang rumtreibe kann sie das vielleicht nicht verkraften…",
+                S2310_01: "Ja, vielleicht hast du es schon gesehen… überall in den Nachrichten wird von ihm berichtet und in der Stadt hängen überall Plakate.",
+                S2310_03: "Schon in Ordnung.",
+                S2310_05: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen Möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der dich zusammen-geschlagen hat, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
+                S2310_07: "Ja, aber am letzten Abend, an dem ich meinen Bruder sah, ist er zu einem Gang-Treffen aufgebrochen und laut Nobu nie dort angekommen. Seitdem macht er sich auch so ekelhaft an mich ran. Er ist der Meinung, dass als sein bester Freund es jetzt seine Aufgabe ist mich zu beschützen. Und da er der Vize ist wurde er natürlich zum Anführer und strukturiert die Gang um… alle Prinzipien und Grenzen, die mein Bruder aufgestellt hat, ignoriert er komplett. Es scheint alles perfekt für ihn zu laufen, seitdem Shou weg ist…. Ich habe das im Gefühl…",
+                S2310_09: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
+                S2320_01: "Was genau sie hat spielt keine Rolle… jedenfalls ist sie schwerkrank und hat wahrscheinlich nicht mehr lange zu leben…",
+                S2320_03: "Der ist nicht mehr da… es ist niemand mehr da…",
+                S2320_05: "Das ist eine lange Geschichte… Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade 	da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten. Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als 	unsere Mutter schwerkrank wurde und in dieses Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
+                S2320_07: "Ich brauch kein Mitleid… meine Mutter wird wieder gesund, mein Vater wird zurückkommen und meinen Bruder werde ich finden. Auch wenn meine Familie wie eine Vase zerbrochen ist und ohne meinen kleinen Bruder ein Teil fehlt… sie kann wieder zusammengeklebt werden, auch wenn die Risse bleiben werden.",
+                S2330_02: "Wir? Warum sollte eine fremde Person mir helfen wollen? Außerdem schaffe ich das auch allein.",
+                S2330_04: "Trotzdem…",
+                S2330_06: "Na gut…",
+                S2330_08: "Das klingt gut…",
+                S2330_10: "Alles okay? Warum siehst du mich so an?",
+                S2330_11: "Ehm… danke… bis morgen."
+            },
+            Yuko: {
+                S2300_20: "SUMI? WAS IST PASSIERT MEIN SCHATZ?",
+                S2300_22: "Die Schwester hat es mir gesagt, aber was ist nur passiert?",
+                S2300_24: "Los raus mit der Sprache.",
+                S2300_26: "Und wer ist das? Seid ihr Freunde… oder sogar mehr?",
+                S2300_28: "Und dann bis ins Krankenhaus gefolgt? Nein nein, mein Schatz, das glaub ich dir nicht.",
+                S2300_30: "Mein Name ist Yuko und ich bin Sumis Mutter. Komm doch gerne wieder vorbei… ich möchte dich kennen lernen. Ich habe noch nie Freunde von Sumi kennen gelernt!",
+                S2300_32: "Wie dem auch sei… Sumi, dir geht es zum Glück gut! Ich habe gleich meine Therapie, wir reden später… man sieht sich."
+            }
+        };
+        // Decisions
+        let brotherOrMother;
+        let flirtOrNot;
+        let brotherOrMotherAnswer = {
+            brother: "Dein Bruder ist verschwunden?",
+            mother: "Was hat denn deine Mutter?"
+        };
+        let flirtOrNotAnswer = {
+            flirt: "Du siehst sehr schön aus...",
+            not: "Wir sollten schlafen gehen..."
+        };
+        // Start
+        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0, 0, false);
+        Endabgabe.characters.nobu.name = "Nobu";
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        //await ƒS.Location.show(locations.sumisHome_hospitalroom);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_05);
+        //Name Input
+        let name = await Endabgabe.ƒS.Speech.getInput();
+        Endabgabe.dataForSave.nameProtagonist = name;
+        Endabgabe.characters.protagonist.name = name;
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Okay... " + Endabgabe.characters.protagonist.name + "... und was machst du hier?");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_11);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_12);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_13);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_14);
+        Endabgabe.characters.sumi.name = "Sumi";
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_15);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_16);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_17);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_18);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_19);
+        // Yuko rennt rein
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_20);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_21);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_22);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_23);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_24);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_25);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_26);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Nein, nicht ganz… das ist " + Endabgabe.characters.protagonist.name + " … " + Endabgabe.characters.protagonist.name + " hat mir geholfen und den Krankenwagen gerufen…");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_28);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_29);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_30);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_31);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_32);
+        // Yuko verlässt das Zimmer
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_33);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_34);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_35);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_36);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_37);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_38);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_39);
+        brotherOrMother = await Endabgabe.ƒS.Menu.getInput(brotherOrMotherAnswer, "decisionClass");
+        switch (brotherOrMother) {
+            case brotherOrMotherAnswer.brother:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_09);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_10);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_06);
+                //Sumi kommen die Tränen
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_07);
+                break;
+            case brotherOrMotherAnswer.mother:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_06);
+                //Sumi kommen die Tränen
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_01);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_02);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_03);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_04);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_06);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_07);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_08);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_09);
+                break;
+        }
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_10);
+        flirtOrNot = await Endabgabe.ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
+        switch (flirtOrNot) {
+            case flirtOrNotAnswer.not:
+                // Protagonist geht und der nächste Tag bricht an
+                break;
+            case flirtOrNotAnswer.flirt:
+                Endabgabe.dataForSave.romancePoints++;
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_11);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_12);
+                // Sumi wird rot und der Protagonist geht
+                break;
+        }
+        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+        await Endabgabe.ƒS.update(3);
+        return "sumiHospitalHallway";
+    }
+    Endabgabe.SumiHospital = SumiHospital;
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
+    async function SumiHospitalHallway() {
+        console.log("FudgeStory SumiHospitalHallway Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
+        // Speeches
+        let text = {
+            Protagonist: {
+                S3300_02: "Klar, alles in Ordnung?",
+                S3300_04: "Warum?",
+                S3300_06: "Das würde niemanden gut tun…",
+                S3300_08: "...",
+                S3300_10: "...",
+                S3300_12: "Ich versprechs…",
+                S3300_14: "Gute Besserung...",
+                S3300_21: "Du hast echt nichts Besseres zu tun als sie zu nerven, oder?",
+                S3330_02: "Sicher, dass du nichts weißt?",
+                S3330_04: "Keine Sorge, die finden wir noch…",
+                S3340_01: "Dass der Typ dich auch nicht in Ruhe lässt.",
+                S3340_03: "Halte noch ein wenig durch.",
+                S3340_05: "Klingt gut, geht mir genauso...",
+                S3340_07: "Keine Sorge, wir finden deinen Bruder.",
+                S3340_09: "Ganz bestimmt...",
+                S3340_11: "Wir sollten den Plan fertig stellen… denn morgen wirst du entlassen und dann treffen wir uns bei dir zuhause, um den Plan zu beginnen."
+            },
+            Sumi: {
+                S3300_15: "Jetzt verschwinde endlich, und lass mich in Ruhe!",
+                S3300_17: "Sag mal spinnst du? Ich bin wegen dir hier drin!",
+                S3300_19: "Hör zu, mir geht es gerade echt nicht gut… warum komm ich nicht einfach zum nächsten Gang-Treffen, sobald ich freigelassen werde?",
+                S3300_22: Endabgabe.dataForSave.nameProtagonist + ", warum?!...",
+                S3300_24: "Nein… ehm…",
+                S3320_02: "Jetzt geh und lass mich ein wenig ausruhen.",
+                S3340_02: "Ja… aber lange muss ich mir das nicht mehr geben.",
+                S3340_04: "Wir sollten eine kurze Pause einlegen, ich kann nicht mehr denken…",
+                S3340_06: "Ich find es echt nett von dir, dass du mir hilfst… danke…",
+                S3340_08: "Hoffentlich… vielleicht, wenn das alles vorbei ist… kann ich dann auch ein ganz normales Leben als Teenagerin führen…",
+                S3340_10: "Sag mal, du bist ziemlich intelligent, wenn ich mir deine Ideen so anschaue… ich bewundere intelligente Menschen.",
+                S3340_12: "Du hast Recht, machen wir weiter."
+            },
+            Nobu: {
+                S3300_16: "Glaubst du ich werde mir das weiterhin Gefallen lassen Sumi?! Irgendwann reißt der Faden! Du meidest mich, antwortest mir nicht auf meine Nachrichten oder Anrufe. Glaubst du nur weil du im Krankenhaus bist, kannst du mich ignorieren?",
+                S3300_18: "Und das wirst du noch öfters, wenn du nicht auf mich hörst.",
+                S3300_20: "Letzte Chance, wehe du tauchst nicht auf.",
+                S3300_23: "Ach ist er der Grund, weshalb du so eiskalt zu mir bist, mich dauernd meidest und dich hier befindest? Hast dich in deinen Retter verliebt?",
+                S3310_01: "Du kleine Ratte… hast du Glück, dass hier so viele Leute sind. Aber das wirst du noch bereuen…",
+                S3320_01: "Zufällig also? Du kleine Ratte… ich glaube dir mal, aber wenn ich dich noch einmal in ihrer Nähe erwische, mach ich dich kalt!",
+                S3320_03: "Na gut… aber ich komme wieder Sumi, denk nicht, dass du mich einfach so jedes Mal abschütteln kannst.",
+                S3330_01: "Ich weiß absolut nicht was du meinst… und was kümmert dich das eigentlich?",
+                S3330_03: "Hast du Beweise für deine Anschuldigungen?",
+                S3330_05: "Pass lieber auf wo du deine Nase reinsteckst."
+            },
+            Yuko: {
+                S3300_01: "Hey " + Endabgabe.dataForSave.nameProtagonist + ", hast du eine Sekunde?",
+                S3300_03: "Hör zu… vielleicht bist du nicht die richtige Person, an die ich mich wende, aber Sumi hat sonst keine anderen Freunde, zumindest kenne ich niemanden… und ich mache mir Sorgen.",
+                S3300_05: "Sie gibt sich äußerlich stark und tut so als würde sie nichts erschüttern, jedoch kenn ich sie… das Alles frisst sie innerlich auf… und irgendwann wird es sie innerlich zerstören. Sie schleppt schon lange alte Familienbürden mit sich rum und seitdem ihr Bruder verschwunden ist tut ihr das sicherlich auch nicht gut.",
+                S3300_07: "Jedenfalls… ich weiß nicht mehr wie lange ich habe… es ist jedenfalls nicht mehr viel Zeit… ich habe Angst, dass das Sumi den letzten Stoß verpassen wird… und das will ich nicht. Ich will, dass selbst, wenn ich nicht mehr da bin, sie ein langes und glückliches Leben führt und mit alldem hier abschließen kann.",
+                S3300_09: "Wie gesagt, ich weiß nicht an wen ich mich sonst wenden soll… Aber kannst du für Sumi da sein und auf sie aufpassen? Bitte… pass auf meine Tochter auf, wenn ich es nicht mehr kann…versprich es mir!",
+                S3300_11: "…bitte…",
+                S3300_13: "…danke dir… ich sollte jetzt gehen… habt ihr zwei viel Spaß."
+            }
+        };
+        // Decisions
+        let interfereOrNot;
+        let howToInterfere;
+        let romanceChoices;
+        let interfereOrNotAnswer = {
+            not: "Ich sollte mich raushalten, um den Plan nicht zu gefährden.",
+            interefere: "Ich sollte was tun, es sieht brenzlig aus."
+        };
+        let howToInterfereAnswer = {
+            couple: "Ja bin ich, wir sind jetzt ein Paar und ich besuche sie.",
+            coincidence: "Ich besuche hier zufälligerweise Jemanden und hab euch bloß vom Gang schreien hören.",
+            brother: "Vielleicht ist der Grund eher, dass du etwas mit der Entführung ihres Bruders zu tun hast?"
+        };
+        let romanceChoicesAnswer = {
+            beautiful: "Ich bewundere wunderschöne Menschen.",
+            intelligent: "Du bist auch sehr intelligent, deine Ideen waren sogar noch besser.",
+            thanks: "Danke"
+        };
+        // Start
+        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        //await ƒS.Location.show(locations.sumisHome_hospitalhallway);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_11);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_12);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_13);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_14);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRightOut));
+        await Endabgabe.ƒS.update(1);
+        // Protagonist geht weiter und hört Diskussion aus Sumis Zimmer, er linst rein.
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_15);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_16);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_17);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_18);
+        switch (interfereOrNot) {
+            case interfereOrNotAnswer.not:
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_19);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_20);
+                Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                await Endabgabe.ƒS.update(1);
+                break;
+            case interfereOrNotAnswer.interefere:
+                //await ƒS.Location.show(locations.hospitalroom);
+                Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRight));
+                Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeft));
+                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_21);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_22);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_23);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_24);
+                howToInterfere = await Endabgabe.ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
+                switch (howToInterfere) {
+                    case howToInterfereAnswer.couple:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3310_01);
+                        await Endabgabe.ƒS.Character.hideAll();
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        //await ƒS.Location.show(sequences.nobuWaitingHospital);
+                        await Endabgabe.ƒS.update(5);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
+                        //Nobu sticht dich außerhalb des Krankenhauses ab
+                        await Endabgabe.ƒS.update(3);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+                        await Endabgabe.ƒS.update(1);
+                        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.knife_stabbing, 0, 1, false);
+                        return await ending(1);
+                    case howToInterfereAnswer.coincidence:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3320_01);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3320_02);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3320_03);
+                        break;
+                    case howToInterfereAnswer.brother:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3330_01);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3330_02);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3330_03);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3330_04);
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3330_05);
+                        Endabgabe.dataForSave.nobuKnowsBrother = true;
+                        break;
+                }
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.rightToRightOut));
+                await Endabgabe.ƒS.Speech.hide();
+                break;
+        }
+        //await ƒS.Location.show(locations.hospitalroom);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_03);
+        // Plan sequenz?
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_10);
+        romanceChoices = await Endabgabe.ƒS.Menu.getInput(romanceChoicesAnswer, "decisionClass");
+        switch (romanceChoices) {
+            case romanceChoicesAnswer.beautiful:
+                Endabgabe.dataForSave.romancePoints++;
+                break;
+            case romanceChoicesAnswer.intelligent:
+                Endabgabe.dataForSave.romancePoints++;
+                Endabgabe.dataForSave.romancePoints++;
+                break;
+            case romanceChoicesAnswer.thanks:
+                break;
+        }
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        //await ƒS.Location.show(sequences.sumiSmilingEyesOpenHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_11);
+        //await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_12);
+        // Nächster Tag und Beginn des Planes sequenz
+        return "thePlan";
+    }
+    Endabgabe.SumiHospitalHallway = SumiHospitalHallway;
+    // Endings
+    async function ending(endingNr) {
+        switch (endingNr) {
+            case 1:
                 await Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
                 await Endabgabe.ƒS.update(1);
@@ -1570,7 +2503,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3130_03);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3130_04);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3130_05);
-                        Endabgabe.dataForSave.nobuKnows = true;
+                        Endabgabe.dataForSave.nobuKnowsBrother = true;
                         break;
                 }
                 await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
@@ -1669,6 +2602,93 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_08);
     }
     Endabgabe.ThePlan = ThePlan;
+})(Endabgabe || (Endabgabe = {}));
+var Endabgabe;
+(function (Endabgabe) {
+    async function ThePlanFailed() {
+        console.log("FudgeStory ThePlanFailed Scene starting");
+        let menu = Endabgabe.ƒS.Menu.create(Endabgabe.menuItems, Endabgabe.menuButtons, "menu");
+        menu.open();
+        // Speeches
+        let text = {
+            Protagonist: {
+                S4200_01: "Sumi?! Was ist passiert?",
+                S4200_03: "Und dann?",
+                S4200_05: "Oh nein… ich habe mich verplappert?",
+                S4200_07: "Tut mir leid, aber das erklärt immer noch nicht warum du verletzt bist.",
+                S4200_09: "Was will er denn von dir?",
+                S4200_11: "Was habe ich nur angerichtet…",
+            },
+            Sumi: {
+                S4200_02: "Als ich dich gestern aus dem Krankenhaus verlassen habe, hat mir Nobu aufgelauert…",
+                S4200_04: "Ich habe Nobu nie wirklich etwas erzählt, auch nicht, dass meine Mutter im Krankenhaus liegt… da ich wusste, dass es nichts Gutes bringt.",
+                S4200_06: "Ja, aber du wusstest es ja nicht…",
+                S4200_08: "Naja, jetzt benutzt Nobu meine Mutter als Erpressung, um von mir zu bekommen was er möchte… das wollte ich ihm zuerst nicht geben, also hat er mich geschlagen… wie damals, als du mich gerettet hast.",
+                S4200_10: "Was weiß denn ich, aber bisher hat er von mir verlangt seine Freundin zu sein und zu machen was er von mir verlangt… sonst tut er meiner Mutter etwas an.",
+                S4200_12: "Jetzt ist es egal… ich habe keine andere Wahl als ihm zu gehorchen… meine Mutter verliere ich nicht auch noch…",
+                S4200_13: "Nobu, warte doch draußen… geh nicht rein!",
+                S4200_15: "Ehhh… moment, es ist nicht so wie du denkst!",
+                S4200_17: "Nein! Warte! Das ist ein Missverständnis…",
+                S4200_19: "Nein!"
+            },
+            Nobu: {
+                S4200_14: "Was macht die Ratte hier? ",
+                S4200_16: "Sumi… was habe ich dir gesagt? Du triffst dich mit niemanden außer mir… erst recht nicht mit der kleinen Ratte! Hast du vergessen was passiert?",
+                S4200_18: "Du enttäuschst mich… ich habe echt an dich geglaubt. Das wirst du bereuen…"
+            }
+        };
+        // Decisions
+        // Start
+        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_11);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_12);
+        // Klopfen an der Tür
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_13);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftOutToMid));
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4200_14);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_15);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.leftOutToMid));
+        Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeft));
+        Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRight));
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4200_16);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_17);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4200_18);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.rightToMid));
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_19);
+        // Endsequenzen
+        return await ending(1);
+    }
+    Endabgabe.ThePlanFailed = ThePlanFailed;
+    // Endings
+    async function ending(endingNr) {
+        switch (endingNr) {
+            case 1:
+                await Endabgabe.ƒS.Speech.hide();
+                //await ƒS.Location.show(endings.suicide);
+                await Endabgabe.ƒS.update(3);
+                return "endOfNovel";
+        }
+        return "endOfNovel";
+    }
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
 (function (Endabgabe) {

@@ -313,8 +313,9 @@ namespace Endabgabe {
                 // Sumi geht Sequenz?
                 await ƒS.Location.show(sequences.theNextDay);
                 await ƒS.update(3);
-                return "hospitalHallway";
+                return "protagonistHospitalHallway";
         }
+        
         // Endings
         async function ending(endingNr: number): Promise<string> {
             switch (endingNr) {

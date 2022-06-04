@@ -146,7 +146,7 @@ namespace Endabgabe {
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3130_03);
                         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3130_04);
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3130_05);
-                        dataForSave.nobuKnows = true;
+                        dataForSave.nobuKnowsBrother = true;
                         break;
                 }
                 await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.leftToLeftOut));

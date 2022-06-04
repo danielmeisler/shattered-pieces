@@ -7,8 +7,10 @@ namespace Endabgabe {
     export let dataForSave = {
         nameProtagonist: "",
         romancePoints: 0,
-        nobuKnows: false,
-        protagonistHurt: false
+        protagonistHurt: false,
+        nobuKnowsBrother: false,
+        nobuKnowsMother: false
+
     };
   
     export let transitions = {
@@ -260,15 +262,6 @@ namespace Endabgabe {
                 happy: "./assets/images/characters/shou/shou_happy.png"
 
             }
-        },
-
-        schlaeger: {
-            name: "Schläger",
-            origin: ƒS.ORIGIN.BOTTOMCENTER,
-            pose: {
-                normal: ""
-
-            }
         }
     };
 
@@ -479,16 +472,30 @@ namespace Endabgabe {
 
 
         let scenes: ƒS.Scenes = [
+            // Intro
             { scene: Street, name: "street", id: "street"},
+
+            // Branch 1
             { scene: SumisHome, name: "sumisHome", id: "sumisHome"},
             { scene: SumisHouse, name: "sumisHouse", id: "sumisHouse"},
-            { scene: ThePlan, name: "thePlan", id: "thePlan"},
+
+            // Branch 2
+            { scene: ProtagonistHospital, name: "protagonistHospital", id: "protagonistHospital"},
+            { scene: ProtagonistHospitalHallway, name: "protagonistHospitalHallway", id: "protagonistHospitalHallway"},
+
+            // Branch 3
+            { scene: SumiHospital, name: "sumiHospital", id: "sumiHospital"},
+            { scene: SumiHospitalHallway, name: "sumiHospitalHallway", id: "sumiHospitalHallway"},
+
+            // Final Fight Endings
+            { scene: ThePlanFailed, name: "thePlanFailed", id: "thePlanFailed"},
             { scene: WrongPlace, name: "wrongPlace", id: "wrongPlace"},
+
+            // Final Fight
+            { scene: ThePlan, name: "thePlan", id: "thePlan"},
             { scene: RightPlace, name: "rightPlace", id: "rightPlace"},
 
-            { scene: ProtagonistHospital, name: "protagonistHospital", id: "protagonistHospital"},
-            { scene: HospitalHallway, name: "hospitalHallway", id: "hospitalHallway"},
-
+            // End of novel
             { scene: EndOfNovel, name: "endOfNovel", id: "endOfNovel" }
         ];
 
