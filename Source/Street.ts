@@ -109,6 +109,7 @@ namespace Endabgabe {
     ƒS.Speech.hide();
     characters.nobu.name = "Blonder Junge";
     characters.sumi.name = "Pinkes Mädchen";
+    //ƒS.Sound.fade(sound.filler_track, 0.1, 14, true);
     await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
@@ -120,9 +121,10 @@ namespace Endabgabe {
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
     await ƒS.Sound.fade(sound.woman_groan_4, 0, 1, false);
+    //await ƒS.Sound.fade(sound.filler_track, 0, 0, false);
     await ƒS.Location.show(sequences.harassment);
     await ƒS.update(1);
-    ƒS.Sound.fade(sound.first_encounter, 0.05, 19, true);
+    ƒS.Sound.fade(sound.first_encounter, 0.1, 19, true);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
     interfereOrNot = await ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
 

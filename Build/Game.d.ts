@@ -24,8 +24,11 @@ declare namespace Endabgabe {
         };
     };
     let sound: {
+        filler_track: string;
         first_encounter: string;
+        searching_track: string;
         final_fight: string;
+        sad_ending: string;
         woman_groan_1: string;
         woman_groan_2: string;
         woman_groan_3: string;
@@ -88,6 +91,30 @@ declare namespace Endabgabe {
             background: string;
         };
         sumisHouse_outside: {
+            name: string;
+            background: string;
+        };
+        hospitalRoom_day: {
+            name: string;
+            background: string;
+        };
+        hospitalRoom_evening: {
+            name: string;
+            background: string;
+        };
+        hospitalRoom_night: {
+            name: string;
+            background: string;
+        };
+        hospitalHallway: {
+            name: string;
+            background: string;
+        };
+        hospitalHallway2: {
+            name: string;
+            background: string;
+        };
+        yukosRoom: {
             name: string;
             background: string;
         };

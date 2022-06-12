@@ -48,8 +48,11 @@ var Endabgabe;
     };
     Endabgabe.sound = {
         // themes
+        filler_track: "./assets/sounds/music/Filler_Track.mp3",
         first_encounter: "./assets/sounds/music/First_Encounter.mp3",
+        searching_track: "./assets/sounds/music/Searching_Track.mp3",
         final_fight: "./assets/sounds/music/Final_Fight.mp3",
+        sad_ending: "./assets/sounds/music/Sad_Ending.mp3",
         // sfx
         woman_groan_1: "./assets/sounds/sfx/womangroan1.mp3",
         woman_groan_2: "./assets/sounds/sfx/womangroan2.mp3",
@@ -115,6 +118,30 @@ var Endabgabe;
         sumisHouse_outside: {
             name: "SumisHouse_Outside",
             background: "./assets/images/backgrounds/sumishouse_outside.png"
+        },
+        hospitalRoom_day: {
+            name: "HospitalRoom_Day",
+            background: "./assets/images/backgrounds/hospitalroom_day.png"
+        },
+        hospitalRoom_evening: {
+            name: "HospitalRoom_Evening",
+            background: "./assets/images/backgrounds/hospitalroom_evening.png"
+        },
+        hospitalRoom_night: {
+            name: "HospitalRoom_Night",
+            background: "./assets/images/backgrounds/hospitalroom_night.png"
+        },
+        hospitalHallway: {
+            name: "HospitalHallway",
+            background: "./assets/images/backgrounds/hospitalhallway.png"
+        },
+        hospitalHallway2: {
+            name: "HospitalHallway2",
+            background: "./assets/images/backgrounds/hospitalhallway2.png"
+        },
+        yukosRoom: {
+            name: "YukosRoom",
+            background: "./assets/images/backgrounds/yukosroom.png"
         }
     };
     Endabgabe.sequences = {
@@ -1492,6 +1519,7 @@ var Endabgabe;
         Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.nobu.name = "Blonder Junge";
         Endabgabe.characters.sumi.name = "Pinkes Mädchen";
+        //ƒS.Sound.fade(sound.filler_track, 0.1, 14, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_evening);
         await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
@@ -1503,9 +1531,10 @@ var Endabgabe;
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_03);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_4, 0, 1, false);
+        //await ƒS.Sound.fade(sound.filler_track, 0, 0, false);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.harassment);
         await Endabgabe.ƒS.update(1);
-        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0.05, 19, true);
+        Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0.1, 19, true);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_04);
         interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
         switch (interfereOrNot) {

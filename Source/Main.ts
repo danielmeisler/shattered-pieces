@@ -28,9 +28,13 @@ namespace Endabgabe {
   
     export let sound = {
         // themes
+        filler_track: "./assets/sounds/music/Filler_Track.mp3",
         first_encounter: "./assets/sounds/music/First_Encounter.mp3",
 
+        searching_track: "./assets/sounds/music/Searching_Track.mp3",
         final_fight: "./assets/sounds/music/Final_Fight.mp3",
+
+        sad_ending: "./assets/sounds/music/Sad_Ending.mp3",
   
         // sfx
         woman_groan_1: "./assets/sounds/sfx/womangroan1.mp3",
@@ -100,6 +104,33 @@ namespace Endabgabe {
         sumisHouse_outside: {
             name: "SumisHouse_Outside",
             background: "./assets/images/backgrounds/sumishouse_outside.png"
+        },
+
+        hospitalRoom_day: {
+            name: "HospitalRoom_Day",
+            background: "./assets/images/backgrounds/hospitalroom_day.png"
+        },
+        hospitalRoom_evening: {
+            name: "HospitalRoom_Evening",
+            background: "./assets/images/backgrounds/hospitalroom_evening.png"
+        },
+        hospitalRoom_night: {
+            name: "HospitalRoom_Night",
+            background: "./assets/images/backgrounds/hospitalroom_night.png"
+        },
+
+        hospitalHallway: {
+            name: "HospitalHallway",
+            background: "./assets/images/backgrounds/hospitalhallway.png"
+        },
+        hospitalHallway2: {
+            name: "HospitalHallway2",
+            background: "./assets/images/backgrounds/hospitalhallway2.png"
+        },
+
+        yukosRoom: {
+            name: "YukosRoom",
+            background: "./assets/images/backgrounds/yukosroom.png"
         }
     };
 
