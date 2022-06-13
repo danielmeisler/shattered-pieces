@@ -162,8 +162,17 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_01);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3121_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_03);
+        await ƒS.Character.hideAll();
+        await ƒS.Speech.hide();
 
-        // Plan sequenz?
+        await ƒS.Location.show(sequences.planningEvening);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(10);
+        await ƒS.Location.show(sequences.planningNight);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.planningNight2);
+        await ƒS.update(1);
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3121_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_05);
@@ -194,8 +203,8 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.sumiSmilingEyesClosed);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_12);
-
-        // Nächster Tag und Beginn des Planes sequenz
+        await ƒS.Location.show(sequences.theNextDay);
+        await ƒS.update(3);
 
         return "thePlan";
     }

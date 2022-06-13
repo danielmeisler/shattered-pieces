@@ -188,6 +188,18 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        planningEvening: {
+            name: string;
+            background: string;
+        };
+        planningNight: {
+            name: string;
+            background: string;
+        };
+        planningNight2: {
+            name: string;
+            background: string;
+        };
         sumiUndress: {
             name: string;
             background: string;

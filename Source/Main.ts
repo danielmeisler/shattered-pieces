@@ -204,6 +204,18 @@ namespace Endabgabe {
             name: "sumiKicksYouOut",
             background: "./assets/images/sequences/sumikicksyouout.png"
         },
+        planningEvening: {
+            name: "PlanningEvening",
+            background: "./assets/images/sequences/planning_evening.png"
+        },
+        planningNight: {
+            name: "PlanningNight",
+            background: "./assets/images/sequences/planning_night.png"
+        },
+        planningNight2: {
+            name: "PlanningNight2",
+            background: "./assets/images/sequences/planning_night2.png"
+        },
         sumiUndress: {
             name: "sumiUndress",
             background: "./assets/images/sequences/sumiundress.png"
@@ -400,7 +412,7 @@ namespace Endabgabe {
                     end: { translation: new ƒS.Position(1500, ƒS.positions.bottomcenter.y) },
                     duration: 2,
                     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
-                };   
+                };  
 
             case animations.credits:
                 return {

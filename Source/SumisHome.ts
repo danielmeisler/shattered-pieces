@@ -241,8 +241,13 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
+                await ƒS.Speech.hide();
+                await ƒS.Location.show(sequences.planningEvening);
+                await ƒS.update(1);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(10);
+                await ƒS.Location.show(sequences.planningNight);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
                 await ƒS.Location.show(locations.sumisHome_livingRoom_night);
                 await ƒS.update(1);

@@ -213,6 +213,18 @@ var Endabgabe;
             name: "sumiKicksYouOut",
             background: "./assets/images/sequences/sumikicksyouout.png"
         },
+        planningEvening: {
+            name: "PlanningEvening",
+            background: "./assets/images/sequences/planning_evening.png"
+        },
+        planningNight: {
+            name: "PlanningNight",
+            background: "./assets/images/sequences/planning_night.png"
+        },
+        planningNight2: {
+            name: "PlanningNight2",
+            background: "./assets/images/sequences/planning_night2.png"
+        },
         sumiUndress: {
             name: "sumiUndress",
             background: "./assets/images/sequences/sumiundress.png"
@@ -2372,8 +2384,13 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_06);
+                await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEvening);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                 await Endabgabe.ƒS.update(10);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_07);
                 await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_night);
                 await Endabgabe.ƒS.update(1);
@@ -2594,7 +2611,16 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_03);
-        // Plan sequenz?
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEvening);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(10);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight2);
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_04);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_06);
@@ -2621,7 +2647,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesClosed);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_12);
-        // Nächster Tag und Beginn des Planes sequenz
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+        await Endabgabe.ƒS.update(3);
         return "thePlan";
     }
     Endabgabe.SumisHouse = SumisHouse;
