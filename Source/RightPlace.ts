@@ -183,7 +183,7 @@ namespace Endabgabe {
         // Augenöffnungsanimation oder Sequenz
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_01);
 
-        // Sumi wird gefesselt reingeschleppt
+        // Sumi wird gefesselt reingeschleppt genau wie bei WrongPlace
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_03);

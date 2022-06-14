@@ -87,7 +87,8 @@ namespace Endabgabe {
         characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(sequences.black);
         await ƒS.update(1);
-        //await ƒS.Location.show(locations.hospitalhallway);
+        //await ƒS.Location.show(locations.hospitalRoom);
+        // Eigenes Zimmer bis man Gespräch hört.
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3200_01);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3200_01);
@@ -124,6 +125,7 @@ namespace Endabgabe {
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
                         //await ƒS.Location.show(sequences.nobuWaitingHospital);
+                        // Zeitsprung, nachts Geräusche und Nobu drückt Kissen ins Gesicht.
                         await ƒS.update(5);
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
@@ -134,6 +136,7 @@ namespace Endabgabe {
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
                         //await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
+                        // Mhhhh Geräusch?
                         return await ending(1);
                     case howToInterfereAnswer.mother:
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3220_01);
@@ -166,7 +169,8 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3240_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_03);
 
-        // Plan sequenz?
+        // Plan sequenz wie in Datei davor?
+        // Auch mit angucken wie bei ihr zuhause
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3240_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_05);
@@ -198,7 +202,8 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_12);
 
-        // Nächster Tag und Beginn des Planes sequenz
+        await ƒS.Location.show(sequences.theNextDay);
+        await ƒS.update(3);
 
         if (dataForSave.nobuKnowsMother == false) {
             return "thePlan";

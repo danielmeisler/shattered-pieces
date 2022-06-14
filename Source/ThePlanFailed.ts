@@ -40,6 +40,7 @@ namespace Endabgabe {
         characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
+        // Hier verletzte Version von Sumi mit Flecken und Wunden?
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4200_01);
@@ -72,6 +73,10 @@ namespace Endabgabe {
         await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_19);
         // Endsequenzen
+        // Sumis Mutter
+        // Sumis Bruder
+        // Nobu ist frei
+        // Sumi kriegt Depressionen
         return await ending(1);
     }
     // Endings

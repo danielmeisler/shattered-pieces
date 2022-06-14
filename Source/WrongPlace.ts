@@ -63,6 +63,9 @@ namespace Endabgabe {
         // Schlag auf Hinterkopf
 
         // Augenöffnungsanimation oder Sequenz
+        // Wie auf der Straße
+        // Dann normale Szene mit Nobu in der Mitte
+        // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_01);
 
         // Sumi wird gefesselt reingeschleppt
@@ -78,7 +81,7 @@ namespace Endabgabe {
         // Sequenz wie Nobu auf Sumi mit einem Messer zu kommt.
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_09);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_10);
-
+        // Sumi schaut den Protagonisten voller Angst oder Tränen in den Augen an.
         // Decision
         if (dataForSave.romancePoints >= 2 ) {
             lastWordsPoints = await ƒS.Menu.getInput(lastWordsPointsAnswer, "decisionClass");
@@ -97,6 +100,7 @@ namespace Endabgabe {
                     break;
                 case lastWordsPointsAnswer.iLoveYou:
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_11d);
+                    // Extra Bild mit Lächeln?
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_12d);
                     break;
             }

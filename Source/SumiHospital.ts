@@ -109,6 +109,7 @@ namespace Endabgabe {
         characters.nobu.name = "Nobu";
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
+        // Sumi liegt im Bett vom Hintergrund, danach rangezoomte Version
         //await ƒS.Location.show(locations.sumisHome_hospitalroom);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_01);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_02);
@@ -213,6 +214,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_05);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_06);
+        // Sumi kommt eine Träne wenn nicht schon davor und dann kommt Plansequenz?
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_07);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_08);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_09);

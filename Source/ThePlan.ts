@@ -39,6 +39,8 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_06);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_07);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_08);
+
+        // Pause einführen damit man im Inventar ding anschauen kann für Rätsel?
         
     }
 }

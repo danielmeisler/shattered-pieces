@@ -693,7 +693,8 @@ var Endabgabe;
         Endabgabe.characters.nobu.name = "Nobu";
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
-        //await ƒS.Location.show(locations.sumisHome_hospitalroom);
+        //await ƒS.Location.show(locations.hospitalroom);
+        // Protagonist POV mit und ohne Sumi - Hier mit Sumi.
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2200_01);
@@ -726,6 +727,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
         await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
         await Endabgabe.ƒS.update(1);
+        // Sumi geht also POV ohne Sumi
         tvOrWalk = await Endabgabe.ƒS.Menu.getInput(tvOrWalkAnswer, "decisionClass");
         switch (tvOrWalk) {
             case tvOrWalkAnswer.tv:
@@ -735,7 +737,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell("Nachrichtensprecher", text.Reporter.S2210_03);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2200_18);
                 await Endabgabe.ƒS.Speech.tell("Nachrichtensprecher", text.Reporter.S2210_05);
-                // Nach einer Weile kommt Sumi ihn besuchen
+                // Zeit vergeht und Sumi kommt wieder zu Besuch (Steht in der Tür?)
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_03);
@@ -744,6 +746,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_06);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_07);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_01);
+                // Sumi kommen die Tränen
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2231_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_03);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2231_04);
@@ -754,7 +757,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2231_09);
                 break;
             case tvOrWalkAnswer.walk:
-                // Sequenz von verschiedenen Gängen und eine wo sumi reinläuft.
+                // Sequenz von verschiedenen Gängen und eine wo Sumi reinläuft.
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2220_01);
                 // Protagonist schaut durch Tür und sieh Sumi mit einer Frau
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_02);
@@ -770,7 +773,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2220_12);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2220_13);
                 // Der Protagonist kehrt zurück in sein Zimmer
-                // Nach einer Weile kommt Sumi ihn besuchen
+                // Nach einer Weile kommt Sumi ihn besuchen (Steht in der Tür?)
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_03);
@@ -779,6 +782,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2230_06);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2230_07);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_01);
+                // Sumi kommen die Tränen
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2232_03);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2232_04);
@@ -807,6 +811,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01b);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2242_02);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCry);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_03);
             case talkOutOrHelpAnswer.help:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_01);
@@ -817,6 +823,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_04);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_06);
+                // Plan Sequenz wie drüben am Rand des Bettes?
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                 await Endabgabe.ƒS.update(10);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_07);
@@ -827,7 +834,7 @@ var Endabgabe;
                 flirtOrNot = await Endabgabe.ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
                 switch (flirtOrNot) {
                     case flirtOrNotAnswer.not:
-                        // Sumi geht und der nächste Tag bricht an
+                        // Sumi wird rot.
                         break;
                     case flirtOrNotAnswer.flirt:
                         Endabgabe.dataForSave.romancePoints++;
@@ -931,7 +938,8 @@ var Endabgabe;
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(1);
-        //await ƒS.Location.show(locations.hospitalhallway);
+        //await ƒS.Location.show(locations.hospitalRoom);
+        // Eigenes Zimmer bis man Gespräch hört.
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3200_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3200_01);
@@ -966,6 +974,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
                         //await ƒS.Location.show(sequences.nobuWaitingHospital);
+                        // Zeitsprung, nachts Geräusche und Nobu drückt Kissen ins Gesicht.
                         await Endabgabe.ƒS.update(5);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
@@ -975,6 +984,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
                         //await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
+                        // Mhhhh Geräusch?
                         return await ending(1);
                     case howToInterfereAnswer.mother:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3220_01);
@@ -1005,7 +1015,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_03);
-        // Plan sequenz?
+        // Plan sequenz wie in Datei davor?
+        // Auch mit angucken wie bei ihr zuhause
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_04);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_06);
@@ -1032,7 +1043,8 @@ var Endabgabe;
         //await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_12);
-        // Nächster Tag und Beginn des Planes sequenz
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+        await Endabgabe.ƒS.update(3);
         if (Endabgabe.dataForSave.nobuKnowsMother == false) {
             return "thePlan";
         }
@@ -1212,7 +1224,7 @@ var Endabgabe;
         // Schlag auf Hinterkopf
         // Augenöffnungsanimation oder Sequenz
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_01);
-        // Sumi wird gefesselt reingeschleppt
+        // Sumi wird gefesselt reingeschleppt genau wie bei WrongPlace
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4120_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4120_03);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4120_04);
@@ -1836,6 +1848,7 @@ var Endabgabe;
         Endabgabe.characters.nobu.name = "Nobu";
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        // Sumi liegt im Bett vom Hintergrund, danach rangezoomte Version
         //await ƒS.Location.show(locations.sumisHome_hospitalroom);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_02);
@@ -1932,6 +1945,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_04);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_06);
+        // Sumi kommt eine Träne wenn nicht schon davor und dann kommt Plansequenz?
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_07);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_08);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_09);
@@ -2041,6 +2055,7 @@ var Endabgabe;
         Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        // Yuko fängt den Protagonisten im Flur ab.
         //await ƒS.Location.show(locations.sumisHome_hospitalhallway);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(1);
@@ -2061,6 +2076,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRightOut));
         await Endabgabe.ƒS.update(1);
         // Protagonist geht weiter und hört Diskussion aus Sumis Zimmer, er linst rein.
+        // Nobu und Sumi diskutieren
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_15);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_16);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_17);
@@ -2094,7 +2110,7 @@ var Endabgabe;
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
                         //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
-                        //Nobu sticht dich außerhalb des Krankenhauses ab
+                        //Nobu sticht dich außerhalb des Krankenhauses ab (Hintergrund ändern)
                         await Endabgabe.ƒS.update(3);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
@@ -2703,6 +2719,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4100_07);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_08);
+        // Pause einführen damit man im Inventar ding anschauen kann für Rätsel?
     }
     Endabgabe.ThePlan = ThePlan;
 })(Endabgabe || (Endabgabe = {}));
@@ -2746,6 +2763,7 @@ var Endabgabe;
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
+        // Hier verletzte Version von Sumi mit Flecken und Wunden?
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4200_01);
@@ -2778,6 +2796,10 @@ var Endabgabe;
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4200_19);
         // Endsequenzen
+        // Sumis Mutter
+        // Sumis Bruder
+        // Nobu ist frei
+        // Sumi kriegt Depressionen
         return await ending(1);
     }
     Endabgabe.ThePlanFailed = ThePlanFailed;
@@ -2849,6 +2871,9 @@ var Endabgabe;
         // Sequenzen fürs Durchsuchen?
         // Schlag auf Hinterkopf
         // Augenöffnungsanimation oder Sequenz
+        // Wie auf der Straße
+        // Dann normale Szene mit Nobu in der Mitte
+        // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_01);
         // Sumi wird gefesselt reingeschleppt
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_02);
@@ -2861,6 +2886,7 @@ var Endabgabe;
         // Sequenz wie Nobu auf Sumi mit einem Messer zu kommt.
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_09);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_10);
+        // Sumi schaut den Protagonisten voller Angst oder Tränen in den Augen an.
         // Decision
         if (Endabgabe.dataForSave.romancePoints >= 2) {
             lastWordsPoints = await Endabgabe.ƒS.Menu.getInput(lastWordsPointsAnswer, "decisionClass");
@@ -2879,6 +2905,7 @@ var Endabgabe;
                     break;
                 case lastWordsPointsAnswer.iLoveYou:
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_11d);
+                    // Extra Bild mit Lächeln?
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_12d);
                     break;
             }

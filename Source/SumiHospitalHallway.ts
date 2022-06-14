@@ -97,6 +97,7 @@ namespace Endabgabe {
         ƒS.Speech.hide();
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
+        // Yuko fängt den Protagonisten im Flur ab.
         //await ƒS.Location.show(locations.sumisHome_hospitalhallway);
         await ƒS.Character.show(characters.yuko, characters.yuko.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
@@ -117,6 +118,7 @@ namespace Endabgabe {
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.normal, animate(animations.midToRightOut));
         await ƒS.update(1);
         // Protagonist geht weiter und hört Diskussion aus Sumis Zimmer, er linst rein.
+        // Nobu und Sumi diskutieren
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_15);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3300_16);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_17);
@@ -152,7 +154,7 @@ namespace Endabgabe {
                         await ƒS.update(1);
 
                         //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
-                        //Nobu sticht dich außerhalb des Krankenhauses ab
+                        //Nobu sticht dich außerhalb des Krankenhauses ab (Hintergrund ändern)
                         await ƒS.update(3);
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
