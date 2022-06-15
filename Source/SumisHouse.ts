@@ -172,7 +172,7 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.planningNight);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.planningNight2);
-        await ƒS.update(1);
+        await ƒS.update(3);
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3121_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3121_05);

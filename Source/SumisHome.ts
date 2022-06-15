@@ -132,7 +132,7 @@ namespace Endabgabe {
         ƒS.Speech.hide();
         await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         characters.nobu.name = "???";
-        characters.sumi.name = "Sumi";
+        characters.sumi.name = "Pinkes Mädchen";
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
@@ -151,9 +151,11 @@ namespace Endabgabe {
         characters.protagonist.name = name;
 
         await ƒS.Speech.tell(characters.sumi, "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
+        characters.sumi.name = "Sumi";
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
         ƒS.Speech.hide();
+        await ƒS.Character.hide(characters.sumi);
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
@@ -167,7 +169,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_18);
         ƒS.Speech.hide();
-        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.leftOutToMid));
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal_flipped, animate(animations.leftOutToMid));
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_19);
         await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");

@@ -23,6 +23,16 @@ namespace Endabgabe {
             duration: 3,
             alpha: "./assets/transitions/fade.jpg",
             edge: 1
+        },
+        eyesOpen: {
+            duration: 2,
+            alpha: "./assets/transitions/blink.jpg",
+            edge: 1
+        },
+        eyesClosed: {
+            duration: 1,
+            alpha: "./assets/transitions/blinkReverse.jpg",
+            edge: 1
         }
     };
   
@@ -106,6 +116,19 @@ namespace Endabgabe {
             background: "./assets/images/backgrounds/sumishouse_outside.png"
         },
 
+        protagonistHospitalRoom_day: {
+            name: "protagonistHospitalRoom_day",
+            background: "./assets/images/backgrounds/hospitalroom_pov_day.png"
+        },
+        protagonistHospitalRoom_evening: {
+            name: "protagonistHospitalRoom_evening",
+            background: "./assets/images/backgrounds/hospitalroom_pov_evening.png"
+        },
+        protagonistHospitalRoom_night: {
+            name: "protagonistHospitalRoom_night",
+            background: "./assets/images/backgrounds/hospitalroom_pov_night.png"
+        },
+
         hospitalRoom_day: {
             name: "HospitalRoom_Day",
             background: "./assets/images/backgrounds/hospitalroom_day.png"
@@ -131,20 +154,20 @@ namespace Endabgabe {
         yukosRoom: {
             name: "YukosRoom",
             background: "./assets/images/backgrounds/yukosroom.png"
-        }
+        },
     };
 
     export let sequences = {
         black: {
-            name: "Black",
+            name: "black",
             background: "./assets/images/sequences/black.png"
         },
         harassment: {
-            name: "Harassment",
+            name: "harassment",
             background: "./assets/images/sequences/harassment.png"
         },
         coming: {
-            name: "TheyComing",
+            name: "theyComing",
             background: "./assets/images/sequences/coming.png"
         },
         gimmeYourHand: {
@@ -194,7 +217,7 @@ namespace Endabgabe {
         },
         sumiHappyCry: {
             name: "sumiHappyCry",
-            background: "./assets/images/sequences/sumicrying.png"
+            background: "./assets/images/sequences/sumihappycrying.png"
         },
         sumiMadCry: {
             name: "sumiMadCry",
@@ -205,15 +228,15 @@ namespace Endabgabe {
             background: "./assets/images/sequences/sumikicksyouout.png"
         },
         planningEvening: {
-            name: "PlanningEvening",
+            name: "planningEvening",
             background: "./assets/images/sequences/planning_evening.png"
         },
         planningNight: {
-            name: "PlanningNight",
+            name: "planningNight",
             background: "./assets/images/sequences/planning_night.png"
         },
         planningNight2: {
-            name: "PlanningNight2",
+            name: "planningNight2",
             background: "./assets/images/sequences/planning_night2.png"
         },
         sumiUndress: {
@@ -252,7 +275,45 @@ namespace Endabgabe {
         sumiSmilingEyesClosed: {
             name: "sumiSmilingEyesClosed",
             background: "./assets/images/sequences/sumismilingeyesclosed.png"
-        }
+        },
+
+
+        wakeUp: {
+            name: "wakeUp",
+            background: "./assets/images/sequences/wakeUp.png"
+        },
+        wakeUp2: {
+            name: "wakeUp2",
+            background: "./assets/images/sequences/wakeUp2.png"
+        },
+        newsReporter: {
+            name: "newsReporter",
+            background: "./assets/images/sequences/newsreporter.png"
+        },
+        sumiCrying: {
+            name: "sumiCrying",
+            background: "./assets/images/sequences/sumicrying_hospital.png"
+        },
+        sumiMadCryHospital: {
+            name: "sumiMadCryHospital",
+            background: "./assets/images/sequences/sumimad_hospital.png"
+        },
+        sumiHappyCryHospital: {
+            name: "sumiHappyCryHospital",
+            background: "./assets/images/sequences/sumihappycrying_hospital.png"
+        },
+        planningEveningHospital: {
+            name: "planningEveningHospital",
+            background: "./assets/images/sequences/planning_hospital_evening.png"
+        },
+        planningNightHospital: {
+            name: "planningNightHospital",
+            background: "./assets/images/sequences/planning_hospital_night.png"
+        },
+        planningNight2Hospital: {
+            name: "planningNight2Hospital",
+            background: "./assets/images/sequences/planning_hospital_night2.png"
+        },
     };
 
     export let endings = {
@@ -279,7 +340,9 @@ namespace Endabgabe {
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 normal: "./assets/images/characters/sumi/sumi_normal.png",
-                embarrassed: "./assets/images/characters/sumi/sumi_embarrassed.png"
+                normal_flipped: "./assets/images/characters/sumi/sumi_normal_flipped.png",
+                embarrassed: "./assets/images/characters/sumi/sumi_embarrassed.png",
+                embarrassed_flipped: "./assets/images/characters/sumi/sumi_embarrassed_flipped.png"
             }
         },
         nobu: {

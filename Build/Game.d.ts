@@ -22,6 +22,16 @@ declare namespace Endabgabe {
             alpha: string;
             edge: number;
         };
+        eyesOpen: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
+        eyesClosed: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
     };
     let sound: {
         filler_track: string;
@@ -91,6 +101,18 @@ declare namespace Endabgabe {
             background: string;
         };
         sumisHouse_outside: {
+            name: string;
+            background: string;
+        };
+        protagonistHospitalRoom_day: {
+            name: string;
+            background: string;
+        };
+        protagonistHospitalRoom_evening: {
+            name: string;
+            background: string;
+        };
+        protagonistHospitalRoom_night: {
             name: string;
             background: string;
         };
@@ -236,6 +258,42 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        wakeUp: {
+            name: string;
+            background: string;
+        };
+        wakeUp2: {
+            name: string;
+            background: string;
+        };
+        newsReporter: {
+            name: string;
+            background: string;
+        };
+        sumiCrying: {
+            name: string;
+            background: string;
+        };
+        sumiMadCryHospital: {
+            name: string;
+            background: string;
+        };
+        sumiHappyCryHospital: {
+            name: string;
+            background: string;
+        };
+        planningEveningHospital: {
+            name: string;
+            background: string;
+        };
+        planningNightHospital: {
+            name: string;
+            background: string;
+        };
+        planningNight2Hospital: {
+            name: string;
+            background: string;
+        };
     };
     let endings: {
         newspaper: {
@@ -260,7 +318,9 @@ declare namespace Endabgabe {
             origin: ƒ.ORIGIN2D;
             pose: {
                 normal: string;
+                normal_flipped: string;
                 embarrassed: string;
+                embarrassed_flipped: string;
             };
         };
         nobu: {
