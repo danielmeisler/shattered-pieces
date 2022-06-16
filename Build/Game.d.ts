@@ -41,6 +41,7 @@ declare namespace Endabgabe {
     let sound: {
         filler_track: string;
         first_encounter: string;
+        sad_times: string;
         searching_track: string;
         final_fight: string;
         sad_ending: string;

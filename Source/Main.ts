@@ -45,7 +45,7 @@ namespace Endabgabe {
         // themes
         filler_track: "./assets/sounds/music/Filler_Track.mp3",
         first_encounter: "./assets/sounds/music/First_Encounter.mp3",
-
+        sad_times: "./assets/sounds/music/Sad_Times.mp3",
         searching_track: "./assets/sounds/music/Searching_Track.mp3",
         final_fight: "./assets/sounds/music/Final_Fight.mp3",
 
