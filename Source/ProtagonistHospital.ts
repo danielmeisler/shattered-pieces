@@ -241,6 +241,15 @@ namespace Endabgabe {
                 break;
             case tvOrWalkAnswer.walk:
                 // Sequenz von verschiedenen Gängen und eine wo Sumi reinläuft. Checken ob hide dieses flackern beim update verursacht.
+                await ƒS.Speech.hide();
+                await ƒS.Location.show(locations.hospitalHallway2);
+                await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+                await ƒS.Location.show(locations.hospitalHallway3);
+                await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+                await ƒS.Location.show(sequences.sumiWalksIn);
+                await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+                await ƒS.Location.show(locations.hospitalHallway);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2220_01);
                 // Protagonist schaut durch Tür und sieh Sumi mit einer Frau
                 await ƒS.Speech.tell(characters.yuko, text.Yuko.S2220_02);
@@ -255,9 +264,13 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2220_11);
                 await ƒS.Speech.tell(characters.yuko, text.Yuko.S2220_12);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2220_13);
-                // Der Protagonist kehrt zurück in sein Zimmer
-                // Nach einer Weile kommt Sumi ihn besuchen (Steht in der Tür?)
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
+                await ƒS.update(5);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2230_01);
+                await ƒS.Location.show(locations.protagonistHospitalRoom_evening);
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2230_02);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2230_03);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2230_04);

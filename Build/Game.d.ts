@@ -22,6 +22,11 @@ declare namespace Endabgabe {
             alpha: string;
             edge: number;
         };
+        swipe: {
+            duration: number;
+            alpha: string;
+            edge: number;
+        };
         eyesOpen: {
             duration: number;
             alpha: string;
@@ -133,6 +138,10 @@ declare namespace Endabgabe {
             background: string;
         };
         hospitalHallway2: {
+            name: string;
+            background: string;
+        };
+        hospitalHallway3: {
             name: string;
             background: string;
         };
@@ -270,6 +279,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiWalksIn: {
+            name: string;
+            background: string;
+        };
         sumiCrying: {
             name: string;
             background: string;
@@ -336,6 +349,8 @@ declare namespace Endabgabe {
             origin: ƒ.ORIGIN2D;
             pose: {
                 normal: string;
+                happy: string;
+                sad: string;
             };
         };
         shou: {

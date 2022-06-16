@@ -24,6 +24,11 @@ namespace Endabgabe {
             alpha: "./assets/transitions/fade.jpg",
             edge: 1
         },
+        swipe: {
+            duration: 3,
+            alpha: "./assets/transitions/swipe.jpg",
+            edge: 1
+        },
         eyesOpen: {
             duration: 2,
             alpha: "./assets/transitions/blink.jpg",
@@ -150,7 +155,10 @@ namespace Endabgabe {
             name: "HospitalHallway2",
             background: "./assets/images/backgrounds/hospitalhallway2.png"
         },
-
+        hospitalHallway3: {
+            name: "HospitalHallway3",
+            background: "./assets/images/backgrounds/hospitalhallway3.png"
+        },
         yukosRoom: {
             name: "YukosRoom",
             background: "./assets/images/backgrounds/yukosroom.png"
@@ -290,6 +298,10 @@ namespace Endabgabe {
             name: "newsReporter",
             background: "./assets/images/sequences/newsreporter.png"
         },
+        sumiWalksIn: {
+            name: "sumiWalksIn",
+            background: "./assets/images/sequences/sumiwalksin.png"
+        },
         sumiCrying: {
             name: "sumiCrying",
             background: "./assets/images/sequences/sumicrying_hospital.png"
@@ -357,7 +369,9 @@ namespace Endabgabe {
             name: "Yuko",
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
-                normal: "Pfad für Bild"
+                normal: "./assets/images/characters/yuko/yuko_normal.png",
+                happy: "./assets/images/characters/yuko/yuko_happy.png",
+                sad: "./assets/images/characters/yuko/yuko_sad.png"
             }
         },
         shou: {
