@@ -87,12 +87,11 @@ namespace Endabgabe {
         characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(sequences.black);
         await ƒS.update(1);
-        //await ƒS.Location.show(locations.hospitalRoom);
-        // Eigenes Zimmer bis man Gespräch hört.
+        await ƒS.Location.show(locations.protagonistHospitalRoom_day);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3200_01);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3200_01);
-        //await ƒS.Location.show(sequences.sumiNobuArgumentInHospitalHallway);
+        await ƒS.Location.show(sequences.sumiNobuArgumentHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3200_02);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3200_03);
@@ -108,7 +107,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 break;
             case interfereOrNotAnswer.interefere:
-                //await ƒS.Location.show(locations.hospitalhallway);
+                await ƒS.Location.show(locations.hospitalHallway3);
                 ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToRight));
                 ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.midToLeft));
                 await ƒS.update(1);
@@ -122,19 +121,22 @@ namespace Endabgabe {
                     case howToInterfereAnswer.couple:
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3210_01);
                         await ƒS.Character.hideAll();
+                        await ƒS.Speech.hide();
                         await ƒS.Location.show(sequences.black);
-                        await ƒS.update(1);
-                        //await ƒS.Location.show(sequences.nobuWaitingHospital);
-                        // Zeitsprung, nachts Geräusche und Nobu drückt Kissen ins Gesicht.
+                        await ƒS.update(10);
+                        await ƒS.Location.show(sequences.nobuWaitingHospital);
                         await ƒS.update(5);
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
 
-                        //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
-                        //Nobu drückt dir Kissen ins Gesicht
-                        await ƒS.update(3);
+                        await ƒS.Location.show(locations.protagonistHospitalRoom_night);
+                        await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                        await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+                        await ƒS.Speech.tell(characters.nobu, "Du hast dich mit mir angelegt... selbst Schuld.");
+                        await ƒS.Character.hideAll();
+                        await ƒS.Speech.hide();
                         await ƒS.Location.show(sequences.black);
-                        await ƒS.update(1);
+                        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
                         //await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
                         // Mhhhh Geräusch?
                         return await ending(1);
@@ -161,16 +163,23 @@ namespace Endabgabe {
                 break;
             }
 
-        //await ƒS.Location.show(locations.hospitalroom);
+        await ƒS.Location.show(locations.protagonistHospitalRoom_day);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_01);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3240_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_03);
-
-        // Plan sequenz wie in Datei davor?
-        // Auch mit angucken wie bei ihr zuhause
+        await ƒS.Speech.hide();
+        await ƒS.Character.hideAll();
+        await ƒS.Location.show(sequences.planningEveningHospital);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(10);
+        await ƒS.Location.show(sequences.planningNightHospital);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.planningNight2Hospital);
+        await ƒS.update(3);
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3240_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_05);
@@ -195,10 +204,10 @@ namespace Endabgabe {
         }
 
         await ƒS.Character.hide(characters.sumi);
-        //await ƒS.Location.show(sequences.sumiSmilingEyesOpenHospital);
+        await ƒS.Location.show(sequences.sumiSmilingEyesOpenHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3240_11);
-        //await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
+        await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_12);
 

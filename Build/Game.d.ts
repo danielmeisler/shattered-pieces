@@ -156,6 +156,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        start: {
+            name: string;
+            background: string;
+        };
         harassment: {
             name: string;
             background: string;
@@ -284,6 +288,14 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        yukoVisitNormal: {
+            name: string;
+            background: string;
+        };
+        yukoVisitSad: {
+            name: string;
+            background: string;
+        };
         sumiCrying: {
             name: string;
             background: string;
@@ -308,6 +320,26 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiNobuArgumentHospital: {
+            name: string;
+            background: string;
+        };
+        nobuWaitingHospital: {
+            name: string;
+            background: string;
+        };
+        sumiSmilingEyesOpenHospital: {
+            name: string;
+            background: string;
+        };
+        sumiSmilingEyesClosedHospital: {
+            name: string;
+            background: string;
+        };
+        sumiDepressed: {
+            name: string;
+            background: string;
+        };
     };
     let endings: {
         newspaper: {
@@ -319,6 +351,10 @@ declare namespace Endabgabe {
             background: string;
         };
         partingWays: {
+            name: string;
+            background: string;
+        };
+        sumiEnding: {
             name: string;
             background: string;
         };
@@ -335,6 +371,8 @@ declare namespace Endabgabe {
                 normal_flipped: string;
                 embarrassed: string;
                 embarrassed_flipped: string;
+                hurt: string;
+                hurt_flipped: string;
             };
         };
         nobu: {
@@ -386,7 +424,9 @@ declare namespace Endabgabe {
         rightToMid: string;
         leftToMid: string;
         rightToRightOut: string;
+        rightOutToRight: string;
         leftToLeftOut: string;
+        leftOutToLeft: string;
         credits: string;
         creditsLast: string;
     };

@@ -12,7 +12,7 @@ namespace Endabgabe {
                 S4200_05: "Oh nein… ich habe mich verplappert?",
                 S4200_07: "Tut mir leid, aber das erklärt immer noch nicht warum du verletzt bist.",
                 S4200_09: "Was will er denn von dir?",
-                S4200_11: "Was habe ich nur angerichtet…",
+                S4200_11: "Was habe ich nur angerichtet…"
             },
             Sumi: {
                 S4200_02: "Als ich dich gestern aus dem Krankenhaus verlassen habe, hat mir Nobu aufgelauert…",
@@ -40,8 +40,7 @@ namespace Endabgabe {
         characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        // Hier verletzte Version von Sumi mit Flecken und Wunden?
-        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.Character.show(characters.sumi, characters.sumi.pose.hurt, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4200_01);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_02);
@@ -56,27 +55,26 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4200_11);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_12);
         // Klopfen an der Tür
-        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.hurt, animate(animations.midToLeftOut));
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_13);
         await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.leftOutToMid));
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4200_14);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_15);
-        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.leftOutToMid));
-        ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeft));
-        ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.midToRight));
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.hurt_flipped, animate(animations.leftOutToLeft));
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4200_16);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4200_18);
-        await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.rightToMid));
         await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_19);
-        // Endsequenzen
-        // Sumis Mutter
-        // Sumis Bruder
-        // Nobu ist frei
-        // Sumi kriegt Depressionen
+        await ƒS.Character.hideAll();
+        await ƒS.Speech.hide();
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(5);
+        await ƒS.Location.show(sequences.sumiDepressed);
+        await ƒS.update(5);
+        await ƒS.Text.print("̶L̶i̶e̶b̶e̶s̶ Tagebuch, \n \n Es sind mittlerweile einige Wochen seitdem Tod von Mom vergangen... Es sind mittlerweile auch einige Wochen seitdem Fund von Shous Leiche vergangen... Es sind mittlerweile ebenso einige Wochen seitdem Unfall von " + dataForSave.nameProtagonist + " vergangen. Nobu hat es geschafft... es gibt keine Beweise. Er baut sein Imperium auf Leichen auf... Mich hat er verschont, da er mich liebt... sagt er. Er hat gewonnen... Er hat mir alles genommen... ich bin allein und habe gar nichts mehr. Ich vermisse euch alle so sehr... ich will nicht mehr, ich sehe keinen Ausweg. \n \n Sumi");
         return await ending(1);
     }
     // Endings
@@ -84,8 +82,8 @@ namespace Endabgabe {
         switch (endingNr) {
             case 1:
                 await ƒS.Speech.hide();
-                //await ƒS.Location.show(endings.suicide);
-                await ƒS.update(3);
+                await ƒS.Location.show(endings.sumiEnding);
+                await ƒS.update(5);
                 return "endOfNovel";
         }
         return "endOfNovel";

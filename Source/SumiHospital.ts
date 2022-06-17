@@ -100,7 +100,7 @@ namespace Endabgabe {
 
         let flirtOrNotAnswer = {
             flirt: "Du siehst sehr schön aus...",
-            not: "Wir sollten schlafen gehen..."
+            not: "Nichts..."
         };
 
         // Start

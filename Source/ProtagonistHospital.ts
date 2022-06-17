@@ -90,14 +90,14 @@ namespace Endabgabe {
                 S2232_04: "Ja nein, alles in Ordnung… was genau hast du denn mit angehört?",
                 S2232_06: "Nicht viel…",
                 S2232_08: "Nein ist schon in Ordnung…",
-                S2232_10: "	Ich weiß nicht, ob ich hier einer ziemlich fremden Person private Geschichten erzählen sollte. Außerdem hat das alles sowieso nichts mit dir zu tun…",
+                S2232_10: "Ich weiß nicht, ob ich hier einer ziemlich fremden Person private Geschichten erzählen sollte. Außerdem hat das alles sowieso nichts mit dir zu tun…",
 
                 S2240_01: "Wow, so wie du aussiehst hätte ich solchen weise Worte nicht erwartet.",
                 S2240_03: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen Möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der dich zusammen-geschlagen hat, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
                 S2240_05: "Ja, aber am letzten Abend, an dem ich meinen Bruder sah, ist er zu einem Gang-Treffen aufgebrochen und laut Nobu nie dort angekommen. Seitdem macht er sich auch so ekelhaft an mich ran. Er ist der Meinung, dass als sein bester Freund es jetzt seine  Aufgabe ist mich zu beschützen. Und da er der Vize ist wurde er natürlich zum Anführer und strukturiert die Gang um… alle Prinzipien und Grenzen, die mein Bruder aufgestellt hat, ignoriert er komplett. Es scheint alles perfekt für ihn zu laufen, seitdem Shou weg ist…. Ich habe das im Gefühl…",
                 S2240_07: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
 
-                S2241_02: "Wer bist du? Ich treffe meine eigenen Entscheidungen… warum erzähl ich das eigentlich einer fremden Person? Du solltest gehen und mich in Ruhe mein Ding machen lassen.",
+                S2241_02: "Wer bist du? Ich treffe meine eigenen Entscheidungen… warum erzähl ich das eigentlich einer fremden Person? Ich sollte gehen und nicht meine Zeit mit einem Fremden verschwenden…",
             
                 S2242_01: "Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten.",
                 S2242_01b: "Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als unsere Mutter schwerkrank wurde und ins Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
@@ -144,7 +144,7 @@ namespace Endabgabe {
 
         let flirtOrNotAnswer = {
             flirt: "Du siehst sehr schön aus...",
-            not: "Wir sollten schlafen gehen..."
+            not: "Nichts..."
         };
 
         // Start
@@ -152,6 +152,7 @@ namespace Endabgabe {
         await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         characters.nobu.name = "Nobu";
         characters.sumi.name = "Pinkes Mädchen";
+        characters.yuko.name = "Sumis Mom";
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(sequences.wakeUp);
@@ -251,11 +252,14 @@ namespace Endabgabe {
                 await ƒS.Location.show(locations.hospitalHallway);
                 await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2220_01);
-                // Protagonist schaut durch Tür und sieh Sumi mit einer Frau
+                await ƒS.Location.show(sequences.yukoVisitNormal);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.yuko, text.Yuko.S2220_02);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2220_03);
                 await ƒS.Speech.tell(characters.yuko, text.Yuko.S2220_04);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2220_05);
+                await ƒS.Location.show(sequences.yukoVisitSad);
+                await ƒS.update(2);
                 await ƒS.Speech.tell(characters.yuko, text.Yuko.S2220_06);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2220_07);
                 await ƒS.Speech.tell(characters.yuko, text.Yuko.S2220_08);
@@ -279,6 +283,7 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2230_07);
 
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2232_01);
+                await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.sumiCrying);
                 await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2232_02);
@@ -310,7 +315,9 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.sumiMadCryHospital);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2241_02);
-
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
+                // Türknall Geräusche
                 return await ending(1);
             case talkOutOrHelpAnswer.morePeople:
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2242_01);

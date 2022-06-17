@@ -170,6 +170,10 @@ namespace Endabgabe {
             name: "black",
             background: "./assets/images/sequences/black.png"
         },
+        start: {
+            name: "intro",
+            background: "./assets/images/sequences/start.png"
+        },
         harassment: {
             name: "harassment",
             background: "./assets/images/sequences/harassment.png"
@@ -302,6 +306,14 @@ namespace Endabgabe {
             name: "sumiWalksIn",
             background: "./assets/images/sequences/sumiwalksin.png"
         },
+        yukoVisitNormal: {
+            name: "yukoVisit",
+            background: "./assets/images/sequences/yukovisit_normal.png"
+        },
+        yukoVisitSad: {
+            name: "yukoVisitSad",
+            background: "./assets/images/sequences/yukovisit_sad.png"
+        },
         sumiCrying: {
             name: "sumiCrying",
             background: "./assets/images/sequences/sumicrying_hospital.png"
@@ -326,6 +338,27 @@ namespace Endabgabe {
             name: "planningNight2Hospital",
             background: "./assets/images/sequences/planning_hospital_night2.png"
         },
+        sumiNobuArgumentHospital: {
+            name: "sumiNobuArgumentHospital",
+            background: "./assets/images/sequences/suminobuargument_hospital.png"
+        },
+        nobuWaitingHospital: {
+            name: "nobuWaitingHospital",
+            background: "./assets/images/sequences/nobuwaiting_hospital.png"
+        },
+        sumiSmilingEyesOpenHospital: {
+            name: "sumiSmilingEyesOpenHospital",
+            background: "./assets/images/sequences/sumismilingeyesopen_hospital.png"
+        },
+        sumiSmilingEyesClosedHospital: {
+            name: "sumiSmilingEyesClosedHospital",
+            background: "./assets/images/sequences/sumismilingeyesclosed_hospital.png"
+        },
+
+        sumiDepressed: {
+            name: "sumiDepressed",
+            background: "./assets/images/sequences/sumidepressed.png"
+        }
     };
 
     export let endings = {
@@ -340,6 +373,10 @@ namespace Endabgabe {
         partingWays: {
             name: "partingWays",
             background: "./assets/images/sequences/endings/partingways.png"
+        },
+        sumiEnding: {
+            name: "sumiEnding",
+            background: "./assets/images/sequences/endings/sumiending.png"
         }
     };
   
@@ -354,7 +391,9 @@ namespace Endabgabe {
                 normal: "./assets/images/characters/sumi/sumi_normal.png",
                 normal_flipped: "./assets/images/characters/sumi/sumi_normal_flipped.png",
                 embarrassed: "./assets/images/characters/sumi/sumi_embarrassed.png",
-                embarrassed_flipped: "./assets/images/characters/sumi/sumi_embarrassed_flipped.png"
+                embarrassed_flipped: "./assets/images/characters/sumi/sumi_embarrassed_flipped.png",
+                hurt: "./assets/images/characters/sumi/sumi_hurt.png",
+                hurt_flipped: "./assets/images/characters/sumi/sumi_hurt_flipped.png"
             }
         },
         nobu: {
@@ -411,7 +450,9 @@ namespace Endabgabe {
         leftToMid: "leftToMid",
 
         rightToRightOut: "rightToRightOut",
+        rightOutToRight: "rightOutToRight",
         leftToLeftOut: "leftToLeftOut",
+        leftOutToLeft: "leftOutToLeft",
 
         credits: "credits",
         creditsLast: "creditsLast"
@@ -475,14 +516,7 @@ namespace Endabgabe {
                     duration: 2,
                     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
                 };     
-                
-            case animations.leftToLeftOut:
-                return {
-                    start: { translation: new ƒS.Position(-480, ƒS.positions.bottomcenter.y) },
-                    end: { translation: new ƒS.Position(-1500, ƒS.positions.bottomcenter.y) },
-                    duration: 2,
-                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
-                };               
+                      
             case animations.rightToRightOut:
                 return {
                     start: { translation: new ƒS.Position(480, ƒS.positions.bottomcenter.y) },
@@ -490,6 +524,27 @@ namespace Endabgabe {
                     duration: 2,
                     playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
                 };  
+            case animations.rightToRightOut:
+                return {
+                    start: { translation: new ƒS.Position(1500, ƒS.positions.bottomcenter.y) },
+                    end: { translation: new ƒS.Position(480, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                }; 
+            case animations.leftToLeftOut:
+                return {
+                    start: { translation: new ƒS.Position(-480, ƒS.positions.bottomcenter.y) },
+                    end: { translation: new ƒS.Position(-1500, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };
+            case animations.leftOutToLeft:
+                return {
+                    start: { translation: new ƒS.Position(-1500, ƒS.positions.bottomcenter.y) },
+                    end: { translation: new ƒS.Position(-480, ƒS.positions.bottomcenter.y) },
+                    duration: 2,
+                    playmode: ƒS.ANIMATION_PLAYMODE.PLAYONCE
+                };     
 
             case animations.credits:
                 return {

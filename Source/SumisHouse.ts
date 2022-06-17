@@ -120,8 +120,9 @@ namespace Endabgabe {
                     case howToInterfereAnswer.couple:
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3110_01);
                         await ƒS.Character.hideAll();
+                        await ƒS.Speech.hide();
                         await ƒS.Location.show(sequences.black);
-                        await ƒS.update(1);
+                        await ƒS.update(10);
                         await ƒS.Location.show(sequences.nobuWaiting);
                         await ƒS.update(5);
                         await ƒS.Location.show(sequences.black);

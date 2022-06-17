@@ -110,6 +110,8 @@ namespace Endabgabe {
     characters.nobu.name = "Blonder Junge";
     characters.sumi.name = "Pinkes Mädchen";
     //ƒS.Sound.fade(sound.filler_track, 0.1, 14, true);
+    await ƒS.Location.show(sequences.start);
+    await ƒS.update(10);
     await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
