@@ -95,12 +95,17 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
+        characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        // Yuko fängt den Protagonisten im Flur ab.
-        //await ƒS.Location.show(locations.sumisHome_hospitalhallway);
+        await ƒS.Speech.hide();
+        await ƒS.Location.show(locations.hospitalHallway2);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.hospitalHallway3);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.hospitalHallway);
         await ƒS.Character.show(characters.yuko, characters.yuko.pose.normal, ƒS.positions.bottomcenter);
-        await ƒS.update(1);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_01);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_02);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_03);
@@ -108,6 +113,9 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_05);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_06);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_07);
+        await ƒS.Character.hideAll();
+        await ƒS.Character.show(characters.yuko, characters.yuko.pose.sad, ƒS.positions.bottomcenter);
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_08);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_09);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_10);
@@ -115,14 +123,22 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_12);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_13);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_14);
-        await ƒS.Character.animate(characters.yuko, characters.yuko.pose.normal, animate(animations.midToRightOut));
+        await ƒS.Character.hideAll();
+        await ƒS.Character.animate(characters.yuko, characters.yuko.pose.sad, animate(animations.midToRightOut));
         await ƒS.update(1);
-        // Protagonist geht weiter und hört Diskussion aus Sumis Zimmer, er linst rein.
-        // Nobu und Sumi diskutieren
+        await ƒS.Location.show(locations.hospitalHallway3);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.hospitalHallway2);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_15);
+        await ƒS.Speech.tell(characters.protagonist, "Das kommt doch aus Sumis Zimmer? Was ist da los?");
+        await ƒS.Location.show(sequences.sumiNobuArgumentHospitalroom);
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3300_16);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3300_18);
+        interfereOrNot = await ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
+
         switch (interfereOrNot) {
             case interfereOrNotAnswer.not:
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_19);
@@ -132,9 +148,8 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 break;
             case interfereOrNotAnswer.interefere:
-                //await ƒS.Location.show(locations.hospitalroom);
-                ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToRight));
-                ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.midToLeft));
+                await ƒS.Location.show(sequences.sumiHospitalZoom);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_21);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_22);
@@ -145,16 +160,15 @@ namespace Endabgabe {
                 switch (howToInterfere) {
                     case howToInterfereAnswer.couple:
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3310_01);
+                        await ƒS.Speech.hide();
                         await ƒS.Character.hideAll();
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
-                        //await ƒS.Location.show(sequences.nobuWaitingHospital);
+                        await ƒS.Location.show(sequences.nobuWaitingHospitalOutside);
                         await ƒS.update(5);
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
-
-                        //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
-                        //Nobu sticht dich außerhalb des Krankenhauses ab (Hintergrund ändern)
+                        await ƒS.Location.show(sequences.nobuWaitingAndKnifeHospital);
                         await ƒS.update(3);
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
@@ -174,21 +188,29 @@ namespace Endabgabe {
                         dataForSave.nobuKnowsBrother = true;
                         break;
                 }
-                await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.leftToLeftOut));
-                await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.rightToRightOut));
                 await ƒS.Speech.hide();
+                await ƒS.Character.hideAll();
+                await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.leftToLeftOut));
+                await ƒS.update(2);
                 break;
             }
-
-        //await ƒS.Location.show(locations.hospitalroom);
-        await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.Location.show(sequences.sumiHospitalZoom);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3340_01);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3340_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3340_03);
 
-        // Plan sequenz?
+        await ƒS.Character.hideAll();
+        await ƒS.Speech.hide();
+
+        await ƒS.Location.show(sequences.planningDaySumiHospital);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(10);
+        await ƒS.Location.show(sequences.planningEveningSumiHospital);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.planningEveningSumiHospitalLooking);
+        await ƒS.update(3);
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3340_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3340_05);
@@ -213,14 +235,17 @@ namespace Endabgabe {
         }
 
         await ƒS.Character.hide(characters.sumi);
-        //await ƒS.Location.show(sequences.sumiSmilingEyesOpenHospital);
+        await ƒS.Location.show(sequences.sumiSmilingEyesOpenInHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3340_11);
-        //await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
+        await ƒS.Location.show(sequences.sumiSmilingEyesClosedInHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3340_12);
 
-        // Nächster Tag und Beginn des Planes sequenz
+        ƒS.Speech.hide();
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.theNextDay);
+        await ƒS.update(3);
 
         return "thePlan";
     }

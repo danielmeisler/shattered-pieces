@@ -175,6 +175,26 @@ var Endabgabe;
             name: "YukosRoom",
             background: "./assets/images/backgrounds/yukosroom.png"
         },
+        storageHall: {
+            name: "StorageHall",
+            background: "./assets/images/backgrounds/storagehall.png"
+        },
+        storageHallEntrance: {
+            name: "StorageHallEntrance",
+            background: "./assets/images/backgrounds/storagehall_entrance.png"
+        },
+        storageHallHallway: {
+            name: "StorageHallHallway",
+            background: "./assets/images/backgrounds/storagehall_hallway.png"
+        },
+        storageHallShou: {
+            name: "StorageHallShou",
+            background: "./assets/images/backgrounds/storagehall_shou.png"
+        },
+        storageHallFight: {
+            name: "StorageHall",
+            background: "./assets/images/backgrounds/storagehall_fight.png"
+        }
     };
     Endabgabe.sequences = {
         black: {
@@ -364,7 +384,63 @@ var Endabgabe;
         sumiDepressed: {
             name: "sumiDepressed",
             background: "./assets/images/sequences/sumidepressed.png"
-        }
+        },
+        sumiHospitalEyesClosed: {
+            name: "sumiHospitalEyesClosed",
+            background: "./assets/images/sequences/sumihospital_eyesclosed.png"
+        },
+        sumiHospitalEyesOpening: {
+            name: "sumiHospitalEyesOpening",
+            background: "./assets/images/sequences/sumihospital_eyesopening.png"
+        },
+        sumiHospital: {
+            name: "sumiHospital",
+            background: "./assets/images/sequences/sumihospital.png"
+        },
+        sumiHospitalZoom: {
+            name: "sumiHospitalZoom",
+            background: "./assets/images/sequences/sumihospital_zoom.png"
+        },
+        sumiHappyCryInHospital: {
+            name: "sumiHappyCryInHospital",
+            background: "./assets/images/sequences/sumihappycryhospital.png"
+        },
+        sumiCryInHospital: {
+            name: "sumiCryInHospital",
+            background: "./assets/images/sequences/sumicryhospital.png"
+        },
+        planningDaySumiHospital: {
+            name: "planningDaySumiHospital",
+            background: "./assets/images/sequences/planning_sumi_day.png"
+        },
+        planningEveningSumiHospital: {
+            name: "planningEveningSumiHospital",
+            background: "./assets/images/sequences/planning_sumi_evening.png"
+        },
+        planningEveningSumiHospitalLooking: {
+            name: "planningEveningSumiHospitalLooking",
+            background: "./assets/images/sequences/planning_sumi_evening_looking.png"
+        },
+        sumiSmilingEyesOpenInHospital: {
+            name: "sumiSmilingEyesOpenInHospital",
+            background: "./assets/images/sequences/sumihappyhospital.png"
+        },
+        sumiSmilingEyesClosedInHospital: {
+            name: "sumiSmilingEyesClosedInHospital",
+            background: "./assets/images/sequences/sumihappyhospitaleyesclosed.png"
+        },
+        sumiNobuArgumentHospitalroom: {
+            name: "sumiNobuArgumentHospitalroom",
+            background: "./assets/images/sequences/suminobuargument_hospitalroom.png"
+        },
+        nobuWaitingHospitalOutside: {
+            name: "nobuWaitingHospitalOutside",
+            background: "./assets/images/sequences/nobuwaiting_hospital_outside.png"
+        },
+        nobuWaitingAndKnifeHospital: {
+            name: "nobuWaitingAndKnifeHospital",
+            background: "./assets/images/sequences/nobuwaitingandknifehospital.png"
+        },
     };
     Endabgabe.endings = {
         newspaper: {
@@ -1975,7 +2051,7 @@ var Endabgabe;
                 S2330_01: "Deine Mutter kann ich nicht heilen, aber ich kann dir bei der Suche deines Bruder helfen… Ohne einen Plan wirst du nichts erreichen. Du hast keine Anhaltspunkte, sondern jagst deinem Gefühl hinterher. Wir sollten erst einen Plan ausarbeiten und vorsichtig sein.",
                 S2330_03: "Ich glaube nicht, dass wir noch fremde Personen sind, Sumi. Ich habe bereits mehr mit dir erlebt und weiß mehr von dir als von den meisten Menschen in meinem Umfeld. Aber das spielt keine Rolle, wenn jemand Hilfe braucht, sollte ihr geholfen werden.",
                 S2330_05: "Jetzt erzähl mir lieber mehr über Nobu, damit wir uns einen Plan überlegen können.",
-                S2330_07: "Es ist schon… ich sollte gehen. Ich komme dich morgen besuchen, dann können wir daran weiterarbeiten.",
+                S2330_07: "Es ist schon spät… ich sollte gehen. Ich komme dich morgen besuchen, dann können wir daran weiterarbeiten.",
                 S2330_09: "…",
                 S2330_12: "Bis morgen!"
             },
@@ -2005,7 +2081,8 @@ var Endabgabe;
                 S2310_09: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
                 S2320_01: "Was genau sie hat spielt keine Rolle… jedenfalls ist sie schwerkrank und hat wahrscheinlich nicht mehr lange zu leben…",
                 S2320_03: "Der ist nicht mehr da… es ist niemand mehr da…",
-                S2320_05: "Das ist eine lange Geschichte… Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade 	da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten. Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als 	unsere Mutter schwerkrank wurde und in dieses Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
+                S2320_05: "Das ist eine lange Geschichte… Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade 	da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten.",
+                S2320_05b: "Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als 	unsere Mutter schwerkrank wurde und in dieses Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
                 S2320_07: "Ich brauch kein Mitleid… meine Mutter wird wieder gesund, mein Vater wird zurückkommen und meinen Bruder werde ich finden. Auch wenn meine Familie wie eine Vase zerbrochen ist und ohne meinen kleinen Bruder ein Teil fehlt… sie kann wieder zusammengeklebt werden, auch wenn die Risse bleiben werden.",
                 S2330_02: "Wir? Warum sollte eine fremde Person mir helfen wollen? Außerdem schaffe ich das auch allein.",
                 S2330_04: "Trotzdem…",
@@ -2039,11 +2116,19 @@ var Endabgabe;
         Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0, 0, false);
         Endabgabe.characters.nobu.name = "Nobu";
+        Endabgabe.characters.sumi.name = "Pinkes Mädchen";
+        Endabgabe.characters.yuko.name = "???";
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
-        // Sumi liegt im Bett vom Hintergrund, danach rangezoomte Version
-        //await ƒS.Location.show(locations.sumisHome_hospitalroom);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHospitalEyesClosed);
+        await Endabgabe.ƒS.update(2);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHospitalEyesOpening);
+        await Endabgabe.ƒS.update(2);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHospital);
+        await Endabgabe.ƒS.update(2);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_01);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHospitalZoom);
+        await Endabgabe.ƒS.update(2);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_03);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_04);
@@ -2067,21 +2152,28 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_17);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_18);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_19);
-        // Yuko rennt rein
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_20);
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.animate(Endabgabe.animations.leftOutToLeft));
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_21);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_22);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_23);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_24);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_25);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_26);
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.happy, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Nein, nicht ganz… das ist " + Endabgabe.characters.protagonist.name + " … " + Endabgabe.characters.protagonist.name + " hat mir geholfen und den Krankenwagen gerufen…");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_28);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_29);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_30);
+        Endabgabe.characters.yuko.name = "Yuko";
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_31);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S2300_32);
-        // Yuko verlässt das Zimmer
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.happy, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_33);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2300_34);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2300_35);
@@ -2092,6 +2184,8 @@ var Endabgabe;
         brotherOrMother = await Endabgabe.ƒS.Menu.getInput(brotherOrMotherAnswer, "decisionClass");
         switch (brotherOrMother) {
             case brotherOrMotherAnswer.brother:
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiCryInHospital);
+                await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_03);
@@ -2107,8 +2201,10 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_03);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_04);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_05b);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_06);
-                //Sumi kommen die Tränen
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryInHospital);
+                await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_07);
                 break;
             case brotherOrMotherAnswer.mother:
@@ -2117,10 +2213,14 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_03);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_04);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_05);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_05b);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_06);
-                //Sumi kommen die Tränen
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryInHospital);
+                await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2320_07);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2320_08);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiCryInHospital);
+                await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2310_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2310_03);
@@ -2138,25 +2238,35 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_04);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_06);
-        // Sumi kommt eine Träne wenn nicht schon davor und dann kommt Plansequenz?
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningDaySumiHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(10);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningSumiHospital);
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_07);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningSumiHospitalLooking);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_08);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_09);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_10);
         flirtOrNot = await Endabgabe.ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
         switch (flirtOrNot) {
             case flirtOrNotAnswer.not:
-                // Protagonist geht und der nächste Tag bricht an
                 break;
             case flirtOrNotAnswer.flirt:
                 Endabgabe.dataForSave.romancePoints++;
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesOpenInHospital);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_11);
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesClosedInHospital);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_12);
-                // Sumi wird rot und der Protagonist geht
                 break;
         }
         Endabgabe.ƒS.Speech.hide();
-        Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
         await Endabgabe.ƒS.update(3);
@@ -2246,12 +2356,17 @@ var Endabgabe;
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
+        Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
-        // Yuko fängt den Protagonisten im Flur ab.
-        //await ƒS.Location.show(locations.sumisHome_hospitalhallway);
+        await Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.hospitalHallway2);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.hospitalHallway3);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.hospitalHallway);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_03);
@@ -2259,6 +2374,9 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_07);
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.sad, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_08);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_09);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_10);
@@ -2266,14 +2384,21 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_12);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_13);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_14);
-        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRightOut));
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.sad, Endabgabe.animate(Endabgabe.animations.midToRightOut));
         await Endabgabe.ƒS.update(1);
-        // Protagonist geht weiter und hört Diskussion aus Sumis Zimmer, er linst rein.
-        // Nobu und Sumi diskutieren
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.hospitalHallway3);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.hospitalHallway2);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_15);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Das kommt doch aus Sumis Zimmer? Was ist da los?");
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiNobuArgumentHospitalroom);
+        await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_16);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_17);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3300_18);
+        interfereOrNot = await Endabgabe.ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
         switch (interfereOrNot) {
             case interfereOrNotAnswer.not:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_19);
@@ -2283,9 +2408,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.update(1);
                 break;
             case interfereOrNotAnswer.interefere:
-                //await ƒS.Location.show(locations.hospitalroom);
-                Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToRight));
-                Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeft));
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHospitalZoom);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_21);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3300_22);
@@ -2295,15 +2419,15 @@ var Endabgabe;
                 switch (howToInterfere) {
                     case howToInterfereAnswer.couple:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3310_01);
+                        await Endabgabe.ƒS.Speech.hide();
                         await Endabgabe.ƒS.Character.hideAll();
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
-                        //await ƒS.Location.show(sequences.nobuWaitingHospital);
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuWaitingHospitalOutside);
                         await Endabgabe.ƒS.update(5);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
-                        //await ƒS.Location.show(sequences.nobuWaitingAndKnife);
-                        //Nobu sticht dich außerhalb des Krankenhauses ab (Hintergrund ändern)
+                        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuWaitingAndKnifeHospital);
                         await Endabgabe.ƒS.update(3);
                         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                         await Endabgabe.ƒS.update(1);
@@ -2323,19 +2447,27 @@ var Endabgabe;
                         Endabgabe.dataForSave.nobuKnowsBrother = true;
                         break;
                 }
-                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
-                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.rightToRightOut));
                 await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Character.hideAll();
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
+                await Endabgabe.ƒS.update(2);
                 break;
         }
-        //await ƒS.Location.show(locations.hospitalroom);
-        await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
-        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHospitalZoom);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_03);
-        // Plan sequenz?
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningDaySumiHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(10);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningSumiHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningSumiHospitalLooking);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_04);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_06);
@@ -2356,13 +2488,16 @@ var Endabgabe;
                 break;
         }
         await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
-        //await ƒS.Location.show(sequences.sumiSmilingEyesOpenHospital);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesOpenInHospital);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_11);
-        //await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiSmilingEyesClosedInHospital);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_12);
-        // Nächster Tag und Beginn des Planes sequenz
+        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+        await Endabgabe.ƒS.update(3);
         return "thePlan";
     }
     Endabgabe.SumiHospitalHallway = SumiHospitalHallway;
@@ -3060,7 +3195,7 @@ var Endabgabe;
         // Start
         Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHall);
         await Endabgabe.ƒS.update(Endabgabe.transitions.fade.duration, Endabgabe.transitions.fade.alpha, Endabgabe.transitions.fade.edge);
         // Sequenzen fürs Durchsuchen?
         // Schlag auf Hinterkopf

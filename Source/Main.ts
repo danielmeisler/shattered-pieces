@@ -163,6 +163,27 @@ namespace Endabgabe {
             name: "YukosRoom",
             background: "./assets/images/backgrounds/yukosroom.png"
         },
+
+        storageHall: {
+            name: "StorageHall",
+            background: "./assets/images/backgrounds/storagehall.png"
+        },
+        storageHallEntrance: {
+            name: "StorageHallEntrance",
+            background: "./assets/images/backgrounds/storagehall_entrance.png"
+        },
+        storageHallHallway: {
+            name: "StorageHallHallway",
+            background: "./assets/images/backgrounds/storagehall_hallway.png"
+        },
+        storageHallShou: {
+            name: "StorageHallShou",
+            background: "./assets/images/backgrounds/storagehall_shou.png"
+        },
+        storageHallFight: {
+            name: "StorageHall",
+            background: "./assets/images/backgrounds/storagehall_fight.png"
+        }
     };
 
     export let sequences = {
@@ -358,7 +379,64 @@ namespace Endabgabe {
         sumiDepressed: {
             name: "sumiDepressed",
             background: "./assets/images/sequences/sumidepressed.png"
-        }
+        },
+
+        sumiHospitalEyesClosed: {
+            name: "sumiHospitalEyesClosed",
+            background: "./assets/images/sequences/sumihospital_eyesclosed.png"
+        },
+        sumiHospitalEyesOpening: {
+            name: "sumiHospitalEyesOpening",
+            background: "./assets/images/sequences/sumihospital_eyesopening.png"
+        },
+        sumiHospital: {
+            name: "sumiHospital",
+            background: "./assets/images/sequences/sumihospital.png"
+        },
+        sumiHospitalZoom: {
+            name: "sumiHospitalZoom",
+            background: "./assets/images/sequences/sumihospital_zoom.png"
+        },
+        sumiHappyCryInHospital: {
+            name: "sumiHappyCryInHospital",
+            background: "./assets/images/sequences/sumihappycryhospital.png"
+        },
+        sumiCryInHospital: {
+            name: "sumiCryInHospital",
+            background: "./assets/images/sequences/sumicryhospital.png"
+        },
+        planningDaySumiHospital: {
+            name: "planningDaySumiHospital",
+            background: "./assets/images/sequences/planning_sumi_day.png"
+        },
+        planningEveningSumiHospital: {
+            name: "planningEveningSumiHospital",
+            background: "./assets/images/sequences/planning_sumi_evening.png"
+        },
+        planningEveningSumiHospitalLooking: {
+            name: "planningEveningSumiHospitalLooking",
+            background: "./assets/images/sequences/planning_sumi_evening_looking.png"
+        },
+        sumiSmilingEyesOpenInHospital: {
+            name: "sumiSmilingEyesOpenInHospital",
+            background: "./assets/images/sequences/sumihappyhospital.png"
+        },
+        sumiSmilingEyesClosedInHospital: {
+            name: "sumiSmilingEyesClosedInHospital",
+            background: "./assets/images/sequences/sumihappyhospitaleyesclosed.png"
+        },
+        sumiNobuArgumentHospitalroom: {
+            name: "sumiNobuArgumentHospitalroom",
+            background: "./assets/images/sequences/suminobuargument_hospitalroom.png"
+        },
+        nobuWaitingHospitalOutside: {
+            name: "nobuWaitingHospitalOutside",
+            background: "./assets/images/sequences/nobuwaiting_hospital_outside.png"
+        },
+        nobuWaitingAndKnifeHospital: {
+            name: "nobuWaitingAndKnifeHospital",
+            background: "./assets/images/sequences/nobuwaitingandknifehospital.png"
+        },
     };
 
     export let endings = {

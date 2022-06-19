@@ -56,7 +56,7 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
-        await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
+        await ƒS.Location.show(locations.storageHall);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         // Sequenzen fürs Durchsuchen?
 

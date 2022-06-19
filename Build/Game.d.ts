@@ -150,6 +150,26 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        storageHall: {
+            name: string;
+            background: string;
+        };
+        storageHallEntrance: {
+            name: string;
+            background: string;
+        };
+        storageHallHallway: {
+            name: string;
+            background: string;
+        };
+        storageHallShou: {
+            name: string;
+            background: string;
+        };
+        storageHallFight: {
+            name: string;
+            background: string;
+        };
     };
     let sequences: {
         black: {
@@ -337,6 +357,62 @@ declare namespace Endabgabe {
             background: string;
         };
         sumiDepressed: {
+            name: string;
+            background: string;
+        };
+        sumiHospitalEyesClosed: {
+            name: string;
+            background: string;
+        };
+        sumiHospitalEyesOpening: {
+            name: string;
+            background: string;
+        };
+        sumiHospital: {
+            name: string;
+            background: string;
+        };
+        sumiHospitalZoom: {
+            name: string;
+            background: string;
+        };
+        sumiHappyCryInHospital: {
+            name: string;
+            background: string;
+        };
+        sumiCryInHospital: {
+            name: string;
+            background: string;
+        };
+        planningDaySumiHospital: {
+            name: string;
+            background: string;
+        };
+        planningEveningSumiHospital: {
+            name: string;
+            background: string;
+        };
+        planningEveningSumiHospitalLooking: {
+            name: string;
+            background: string;
+        };
+        sumiSmilingEyesOpenInHospital: {
+            name: string;
+            background: string;
+        };
+        sumiSmilingEyesClosedInHospital: {
+            name: string;
+            background: string;
+        };
+        sumiNobuArgumentHospitalroom: {
+            name: string;
+            background: string;
+        };
+        nobuWaitingHospitalOutside: {
+            name: string;
+            background: string;
+        };
+        nobuWaitingAndKnifeHospital: {
             name: string;
             background: string;
         };

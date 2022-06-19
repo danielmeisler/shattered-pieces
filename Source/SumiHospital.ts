@@ -36,7 +36,7 @@ namespace Endabgabe {
                 S2330_01: "Deine Mutter kann ich nicht heilen, aber ich kann dir bei der Suche deines Bruder helfen… Ohne einen Plan wirst du nichts erreichen. Du hast keine Anhaltspunkte, sondern jagst deinem Gefühl hinterher. Wir sollten erst einen Plan ausarbeiten und vorsichtig sein.",
                 S2330_03: "Ich glaube nicht, dass wir noch fremde Personen sind, Sumi. Ich habe bereits mehr mit dir erlebt und weiß mehr von dir als von den meisten Menschen in meinem Umfeld. Aber das spielt keine Rolle, wenn jemand Hilfe braucht, sollte ihr geholfen werden.",
                 S2330_05: "Jetzt erzähl mir lieber mehr über Nobu, damit wir uns einen Plan überlegen können.",
-                S2330_07: "Es ist schon… ich sollte gehen. Ich komme dich morgen besuchen, dann können wir daran weiterarbeiten.",
+                S2330_07: "Es ist schon spät… ich sollte gehen. Ich komme dich morgen besuchen, dann können wir daran weiterarbeiten.",
                 S2330_09: "…",
                 S2330_12: "Bis morgen!"
             },
@@ -68,7 +68,8 @@ namespace Endabgabe {
                 
                 S2320_01: "Was genau sie hat spielt keine Rolle… jedenfalls ist sie schwerkrank und hat wahrscheinlich nicht mehr lange zu leben…",
                 S2320_03: "Der ist nicht mehr da… es ist niemand mehr da…",
-                S2320_05: "Das ist eine lange Geschichte… Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade 	da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten. Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als 	unsere Mutter schwerkrank wurde und in dieses Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
+                S2320_05: "Das ist eine lange Geschichte… Vor sehr vielen Jahren ist mein kleiner Bruder Fuun bei einem Unfall gestorben, das hat meine Eltern innerlich zerrissen. Sie haben sich nur noch gestritten und sich gegenseitig die Schuld in die Schuhe geschoben. Das war für Shou und mich auch keine leichte Zeit. Gerade 	da als wir unsere Eltern am meisten brauchten waren Sie nicht da für uns. Aber wer kann es ihnen verübeln… sie konnten es selbst nicht verarbeiten.",
+                S2320_05b: "Jedenfalls hat Shou angefangen mit zwielichtigen Leuten abzuhängen. Als dann unser Vater uns verlassen hat, da er das alles nicht ausgehalten hat, sah sich Shou als Mann im Haus… Und als 	unsere Mutter schwerkrank wurde und in dieses Krankenhaus kam gründete er die Gang, um an Geld zu kommen, damit wir uns über Wasser halten und die Krankenhaus Rechnungen meiner Mutter bezahlen können.",
                 S2320_07: "Ich brauch kein Mitleid… meine Mutter wird wieder gesund, mein Vater wird zurückkommen und meinen Bruder werde ich finden. Auch wenn meine Familie wie eine Vase zerbrochen ist und ohne meinen kleinen Bruder ein Teil fehlt… sie kann wieder zusammengeklebt werden, auch wenn die Risse bleiben werden.",
 
                 S2330_02: "Wir? Warum sollte eine fremde Person mir helfen wollen? Außerdem schaffe ich das auch allein.",
@@ -107,11 +108,19 @@ namespace Endabgabe {
         ƒS.Speech.hide();
         await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         characters.nobu.name = "Nobu";
+        characters.sumi.name = "Pinkes Mädchen";
+        characters.yuko.name = "???";
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        // Sumi liegt im Bett vom Hintergrund, danach rangezoomte Version
-        //await ƒS.Location.show(locations.sumisHome_hospitalroom);
+        await ƒS.Location.show(sequences.sumiHospitalEyesClosed);
+        await ƒS.update(2);
+        await ƒS.Location.show(sequences.sumiHospitalEyesOpening);
+        await ƒS.update(2);
+        await ƒS.Location.show(sequences.sumiHospital);
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_01);
+        await ƒS.Location.show(sequences.sumiHospitalZoom);
+        await ƒS.update(2);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_03);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_04);
@@ -137,21 +146,29 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_17);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_18);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_19);
-        // Yuko rennt rein
+
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_20);
+        await ƒS.Character.animate(characters.yuko, characters.yuko.pose.normal, animate(animations.leftOutToLeft));
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_21);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_22);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_23);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_24);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_25);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_26);
+        await ƒS.Character.hideAll();
+        await ƒS.Character.show(characters.yuko, characters.yuko.pose.happy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, "Nein, nicht ganz… das ist " + characters.protagonist.name + " … " + characters.protagonist.name + " hat mir geholfen und den Krankenwagen gerufen…");
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_28);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_29);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_30);
+        characters.yuko.name = "Yuko";
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_31);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_32);
-        // Yuko verlässt das Zimmer
+        await ƒS.Character.hideAll();
+        await ƒS.Character.animate(characters.yuko, characters.yuko.pose.happy, animate(animations.leftToLeftOut));
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_33);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_34);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_35);
@@ -163,6 +180,8 @@ namespace Endabgabe {
 
         switch (brotherOrMother) {
             case brotherOrMotherAnswer.brother:
+                await ƒS.Location.show(sequences.sumiCryInHospital);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2310_01);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2310_02);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2310_03);
@@ -180,8 +199,10 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_03);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2320_04);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_05);
+                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_05b);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2320_06);
-                //Sumi kommen die Tränen
+                await ƒS.Location.show(sequences.sumiHappyCryInHospital);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_07);
                 break;
             case brotherOrMotherAnswer.mother: 
@@ -190,12 +211,16 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_03);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2320_04);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_05);
+                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_05b);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2320_06);
-                //Sumi kommen die Tränen
+                await ƒS.Location.show(sequences.sumiHappyCryInHospital);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2320_07);
 
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2320_08);
 
+                await ƒS.Location.show(sequences.sumiCryInHospital);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2310_01);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2310_02);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2310_03);
@@ -214,8 +239,18 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_05);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_06);
-        // Sumi kommt eine Träne wenn nicht schon davor und dann kommt Plansequenz?
+        await ƒS.Character.hideAll();
+        await ƒS.Speech.hide();
+
+        await ƒS.Location.show(sequences.planningDaySumiHospital);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(10);
+        await ƒS.Location.show(sequences.planningEveningSumiHospital);
+        await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_07);
+        await ƒS.Location.show(sequences.planningEveningSumiHospitalLooking);
+        await ƒS.update(3);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_08);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_09);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_10);
@@ -223,17 +258,18 @@ namespace Endabgabe {
         flirtOrNot = await ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
         switch (flirtOrNot) {
             case flirtOrNotAnswer.not:
-                // Protagonist geht und der nächste Tag bricht an
                 break;
             case flirtOrNotAnswer.flirt:
                 dataForSave.romancePoints++;
+                await ƒS.Location.show(sequences.sumiSmilingEyesOpenInHospital);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2330_11);
+                await ƒS.Location.show(sequences.sumiSmilingEyesClosedInHospital);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_12);
-                // Sumi wird rot und der Protagonist geht
                 break;
         }
         ƒS.Speech.hide();
-        ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
