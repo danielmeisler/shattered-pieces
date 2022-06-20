@@ -180,6 +180,10 @@ namespace Endabgabe {
             name: "StorageHallShou",
             background: "./assets/images/backgrounds/storagehall_shou.png"
         },
+        storageHallEmpty: {
+            name: "storageHallEmpty",
+            background: "./assets/images/backgrounds/storagehall_empty.png"
+        },
         storageHallFight: {
             name: "StorageHall",
             background: "./assets/images/backgrounds/storagehall_fight.png"
@@ -436,6 +440,15 @@ namespace Endabgabe {
         nobuWaitingAndKnifeHospital: {
             name: "nobuWaitingAndKnifeHospital",
             background: "./assets/images/sequences/nobuwaitingandknifehospital.png"
+        },
+
+        storageHallWakeUp: {
+            name: "storageHallWakeUp",
+            background: "./assets/images/sequences/storagehall_wakeup.png"
+        },
+        storageHallWakeUp2: {
+            name: "storageHallWakeUp2",
+            background: "./assets/images/sequences/storagehall_wakeup2.png"
         },
     };
 

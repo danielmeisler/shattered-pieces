@@ -166,6 +166,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        storageHallEmpty: {
+            name: string;
+            background: string;
+        };
         storageHallFight: {
             name: string;
             background: string;
@@ -413,6 +417,14 @@ declare namespace Endabgabe {
             background: string;
         };
         nobuWaitingAndKnifeHospital: {
+            name: string;
+            background: string;
+        };
+        storageHallWakeUp: {
+            name: string;
+            background: string;
+        };
+        storageHallWakeUp2: {
             name: string;
             background: string;
         };

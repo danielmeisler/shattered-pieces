@@ -56,17 +56,32 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
-        await ƒS.Location.show(locations.storageHall);
+        await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        // Sequenzen fürs Durchsuchen?
+        await ƒS.Location.show(locations.storageHall);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.storageHallEntrance);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.storageHallHallway);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.storageHallEmpty);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Speech.tell(characters.protagonist, "Ich habe so ziemlich alles durchsucht und keine Spur... sag mir nicht ich bin am falschen Ort...");
+        // Sound von Hinten Schlag auf den Kopf.
 
-        // Schlag auf Hinterkopf
-
-        // Augenöffnungsanimation oder Sequenz
-        // Wie auf der Straße
-        // Dann normale Szene mit Nobu in der Mitte
-        // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
+        await ƒS.Location.show(sequences.storageHallWakeUp);
+        await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+        await ƒS.Location.show(sequences.storageHallWakeUp2);
+        await ƒS.update(5);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_01);
+
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+
+        await ƒS.Location.show(locations.storageHallFight);
+        await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+        // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
 
         // Sumi wird gefesselt reingeschleppt
 
@@ -100,7 +115,7 @@ namespace Endabgabe {
                     break;
                 case lastWordsPointsAnswer.iLoveYou:
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_11d);
-                    // Extra Bild mit Lächeln?
+                    // Extra Bild mit Lächeln und Tagebucheintrag oder so?
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_12d);
                     break;
             }

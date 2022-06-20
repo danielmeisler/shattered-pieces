@@ -174,15 +174,34 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
-        await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
+        await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
-        // Sequenzen fürs Durchsuchen?
-
+        await ƒS.Location.show(locations.storageHall);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.storageHallEntrance);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.storageHallHallway);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Location.show(locations.storageHallShou);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Speech.tell(characters.protagonist, "Das muss Shou sein?! Schnell ich muss ihn befrei...");
+        // Sound von Hinten Schlag auf den Kopf.
         // Schlag auf Hinterkopf
 
-        // Augenöffnungsanimation oder Sequenz
+        await ƒS.Location.show(sequences.storageHallWakeUp);
+        await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+        await ƒS.Location.show(sequences.storageHallWakeUp2);
+        await ƒS.update(5);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_01);
 
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+
+        await ƒS.Location.show(locations.storageHallFight);
+        await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+
+        
         // Sumi wird gefesselt reingeschleppt genau wie bei WrongPlace
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_02);
