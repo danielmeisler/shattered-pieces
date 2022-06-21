@@ -131,7 +131,7 @@ dialog[type="inventory"] > button{
 }
 
 dialog[type="inventory"] > ul{
-  padding-left: 50px;
+  padding-left: 100px;
 }
 
 dialog[type="inventory"] > ul > li{
@@ -145,19 +145,23 @@ dialog[type="inventory"] > ul > li{
 
 dialog[type="inventory"] img {
   position: absolute;
-  left: 10px;
-  width: 50px;
+  left: 20px;
+  height: 80px;
+  width: 80px;
+  -ms-user-select: None;
+  -moz-user-select: None;
+  -webkit-user-select: None;
+  user-select: None;
 }
 
 dialog[type="inventory"] > ul > li > name{
-  width: 150px;
+  width: 200px;
   color: white;
   font-weight: bold;
 }
 
 dialog[type="inventory"] > ul > li > amount{
-  width: 50px;
-  color: white;
+  display: none;
 }
 
 dialog[type="inventory"] > ul > li > description{

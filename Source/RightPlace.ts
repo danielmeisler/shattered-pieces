@@ -185,8 +185,12 @@ namespace Endabgabe {
         await ƒS.Location.show(locations.storageHallShou);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Speech.tell(characters.protagonist, "Das muss Shou sein?! Schnell ich muss ihn befrei...");
+        await ƒS.Speech.hide();
         // Sound von Hinten Schlag auf den Kopf.
-        // Schlag auf Hinterkopf
+
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+        await ƒS.update(10);
 
         await ƒS.Location.show(sequences.storageHallWakeUp);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
@@ -197,7 +201,7 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
 
-        await ƒS.Location.show(locations.storageHallFight);
+        await ƒS.Location.show(locations.storageHallFightFull);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
 

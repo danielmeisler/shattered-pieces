@@ -67,7 +67,12 @@ namespace Endabgabe {
         await ƒS.Location.show(locations.storageHallEmpty);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Speech.tell(characters.protagonist, "Ich habe so ziemlich alles durchsucht und keine Spur... sag mir nicht ich bin am falschen Ort...");
+        await ƒS.Speech.hide();
         // Sound von Hinten Schlag auf den Kopf.
+
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+        await ƒS.update(10);
 
         await ƒS.Location.show(sequences.storageHallWakeUp);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
@@ -78,7 +83,7 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
 
-        await ƒS.Location.show(locations.storageHallFight);
+        await ƒS.Location.show(locations.storageHallFightFull);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
         // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
@@ -93,10 +98,13 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_07);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_08);
 
-        // Sequenz wie Nobu auf Sumi mit einem Messer zu kommt.
+        await ƒS.Location.show(sequences.sumiTiedUp);
+        await ƒS.update(3);
+
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_09);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_10);
-        // Sumi schaut den Protagonisten voller Angst oder Tränen in den Augen an.
+        await ƒS.Location.show(sequences.sumiEndCry);
+        await ƒS.update(3);
         // Decision
         if (dataForSave.romancePoints >= 2 ) {
             lastWordsPoints = await ƒS.Menu.getInput(lastWordsPointsAnswer, "decisionClass");
@@ -115,9 +123,8 @@ namespace Endabgabe {
                     break;
                 case lastWordsPointsAnswer.iLoveYou:
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_11d);
-                    // Extra Bild mit Lächeln und Tagebucheintrag oder so?
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_12d);
-                    break;
+                    return await ending(2);
             }
         } else {
             lastWords = await ƒS.Menu.getInput(lastWordsAnswer, "decisionClass");
@@ -137,9 +144,16 @@ namespace Endabgabe {
             }
         }
 
+        await ƒS.Location.show(sequences.nobuKnifeStorage);
+        await ƒS.update(3);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_13);
         // Sounds
-        return await ending(1);
+
+        if (dataForSave.romancePoints >= 2 ) {
+            return await ending(2);
+        } else {
+            return await ending(1);
+        }
     }
 
     // Endings
@@ -147,6 +161,12 @@ namespace Endabgabe {
         switch (endingNr) {
             case 1:
                 await ƒS.Speech.hide();
+                await ƒS.Location.show(endings.protagonistDead);
+                await ƒS.update(1);
+                return "endOfNovel";
+            case 2:
+                await ƒS.Speech.hide();
+                //Tagebucheintrag?
                 await ƒS.Location.show(endings.protagonistDead);
                 await ƒS.update(1);
                 return "endOfNovel";

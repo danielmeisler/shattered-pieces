@@ -10,6 +10,7 @@ declare namespace Endabgabe {
         protagonistHurt: boolean;
         nobuKnowsBrother: boolean;
         nobuKnowsMother: boolean;
+        storageHall: string;
     };
     let transitions: {
         blink: {
@@ -171,6 +172,10 @@ declare namespace Endabgabe {
             background: string;
         };
         storageHallFight: {
+            name: string;
+            background: string;
+        };
+        storageHallFightFull: {
             name: string;
             background: string;
         };
@@ -420,11 +425,27 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        plan: {
+            name: string;
+            background: string;
+        };
         storageHallWakeUp: {
             name: string;
             background: string;
         };
         storageHallWakeUp2: {
+            name: string;
+            background: string;
+        };
+        sumiTiedUp: {
+            name: string;
+            background: string;
+        };
+        sumiEndCry: {
+            name: string;
+            background: string;
+        };
+        nobuKnifeStorage: {
             name: string;
             background: string;
         };
@@ -529,37 +550,37 @@ declare namespace Endabgabe {
         volumeUp: string;
     };
     let items: {
-        item1: {
+        glasses: {
             name: string;
             description: string;
             image: string;
             static: boolean;
         };
-        item2: {
+        juice: {
             name: string;
             description: string;
             image: string;
             static: boolean;
         };
-        item3: {
+        documentsShou: {
             name: string;
             description: string;
             image: string;
             static: boolean;
         };
-        item4: {
+        documentsShou2: {
             name: string;
             description: string;
             image: string;
             static: boolean;
         };
-        item5: {
+        documentsNobu: {
             name: string;
             description: string;
             image: string;
             static: boolean;
         };
-        item6: {
+        code: {
             name: string;
             description: string;
             image: string;

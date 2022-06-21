@@ -122,15 +122,15 @@ namespace Endabgabe {
         },
 
         protagonistHospitalRoom_day: {
-            name: "protagonistHospitalRoom_day",
+            name: "ProtagonistHospitalRoom_day",
             background: "./assets/images/backgrounds/hospitalroom_pov_day.png"
         },
         protagonistHospitalRoom_evening: {
-            name: "protagonistHospitalRoom_evening",
+            name: "ProtagonistHospitalRoom_evening",
             background: "./assets/images/backgrounds/hospitalroom_pov_evening.png"
         },
         protagonistHospitalRoom_night: {
-            name: "protagonistHospitalRoom_night",
+            name: "ProtagonistHospitalRoom_night",
             background: "./assets/images/backgrounds/hospitalroom_pov_night.png"
         },
 
@@ -181,12 +181,16 @@ namespace Endabgabe {
             background: "./assets/images/backgrounds/storagehall_shou.png"
         },
         storageHallEmpty: {
-            name: "storageHallEmpty",
+            name: "StorageHallEmpty",
             background: "./assets/images/backgrounds/storagehall_empty.png"
         },
         storageHallFight: {
             name: "StorageHall",
             background: "./assets/images/backgrounds/storagehall_fight.png"
+        },
+        storageHallFightFull: {
+            name: "StorageHallFull",
+            background: "./assets/images/backgrounds/storagehall_fight_full.png"
         }
     };
 
@@ -442,6 +446,11 @@ namespace Endabgabe {
             background: "./assets/images/sequences/nobuwaitingandknifehospital.png"
         },
 
+        plan: {
+            name: "plan",
+            background: "./assets/images/sequences/plan.png"
+        },
+
         storageHallWakeUp: {
             name: "storageHallWakeUp",
             background: "./assets/images/sequences/storagehall_wakeup.png"
@@ -449,6 +458,19 @@ namespace Endabgabe {
         storageHallWakeUp2: {
             name: "storageHallWakeUp2",
             background: "./assets/images/sequences/storagehall_wakeup2.png"
+        },
+
+        sumiTiedUp: {
+            name: "sumiTiedUp",
+            background: "./assets/images/sequences/sumitiedup.png"
+        },
+        sumiEndCry: {
+            name: "sumiEndCry",
+            background: "./assets/images/sequences/sumiendcry.png"
+        },
+        nobuKnifeStorage: {
+            name: "nobuKnifeStorage",
+            background: "./assets/images/sequences/nobuknife_storage.png"
         },
     };
 
@@ -690,37 +712,37 @@ namespace Endabgabe {
         glasses: {
             name: "Mysteriöse Brille",
             description: "Willst du sie wirklich aufsetzen?",
-            image: "./assets/images/items/pokeball.png",
+            image: "./assets/images/items/glasses.png",
             static: false
         },
         juice: {
             name: "Saft",
             description: "Du wolltest Saft, hier haste ihn.",
-            image: "./assets/images/items/pokeball.png",
+            image: "./assets/images/items/juice.png",
             static: false
         },
         documentsShou: {
             name: "Shous Dokumente 1",
             description: "Dokumente um einen Plan auszuarbeiten, damit wir Shou finden.",
-            image: "./assets/images/items/pokeball.png",
+            image: "./assets/images/items/documents1.png",
             static: true
         },
         documentsShou2: {
             name: "Shous Dokumente 2",
             description: "Mehr Dokumente um den Plan fertigzustellen, damit wir Shou finden.",
-            image: "./assets/images/items/pokeball.png",
+            image: "./assets/images/items/documents2.png",
             static: true
         },
         documentsNobu: {
             name: "Nobus Dokumente",
             description: "Diese Dokumente wurden benutzt um den Aufenthaltsort von Shou herauszufinden.",
-            image: "./assets/images/items/pokeball.png",
+            image: "./assets/images/items/documents3.png",
             static: true
         },
         code: {
-            name: "Code",
-            description: "Die Lagerhallennummer: " + dataForSave.storageHall,
-            image: "./assets/images/items/superball.png",
+            name: "Lagerhallennummer",
+            description: "",
+            image: "./assets/images/items/code.png",
             static: true
         }
 

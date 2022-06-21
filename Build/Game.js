@@ -32,7 +32,8 @@ var Endabgabe;
         romancePoints: 0,
         protagonistHurt: false,
         nobuKnowsBrother: false,
-        nobuKnowsMother: false
+        nobuKnowsMother: false,
+        storageHall: ""
     };
     Endabgabe.transitions = {
         blink: {
@@ -136,15 +137,15 @@ var Endabgabe;
             background: "./assets/images/backgrounds/sumishouse_outside.png"
         },
         protagonistHospitalRoom_day: {
-            name: "protagonistHospitalRoom_day",
+            name: "ProtagonistHospitalRoom_day",
             background: "./assets/images/backgrounds/hospitalroom_pov_day.png"
         },
         protagonistHospitalRoom_evening: {
-            name: "protagonistHospitalRoom_evening",
+            name: "ProtagonistHospitalRoom_evening",
             background: "./assets/images/backgrounds/hospitalroom_pov_evening.png"
         },
         protagonistHospitalRoom_night: {
-            name: "protagonistHospitalRoom_night",
+            name: "ProtagonistHospitalRoom_night",
             background: "./assets/images/backgrounds/hospitalroom_pov_night.png"
         },
         hospitalRoom_day: {
@@ -192,12 +193,16 @@ var Endabgabe;
             background: "./assets/images/backgrounds/storagehall_shou.png"
         },
         storageHallEmpty: {
-            name: "storageHallEmpty",
+            name: "StorageHallEmpty",
             background: "./assets/images/backgrounds/storagehall_empty.png"
         },
         storageHallFight: {
             name: "StorageHall",
             background: "./assets/images/backgrounds/storagehall_fight.png"
+        },
+        storageHallFightFull: {
+            name: "StorageHallFull",
+            background: "./assets/images/backgrounds/storagehall_fight_full.png"
         }
     };
     Endabgabe.sequences = {
@@ -445,6 +450,10 @@ var Endabgabe;
             name: "nobuWaitingAndKnifeHospital",
             background: "./assets/images/sequences/nobuwaitingandknifehospital.png"
         },
+        plan: {
+            name: "plan",
+            background: "./assets/images/sequences/plan.png"
+        },
         storageHallWakeUp: {
             name: "storageHallWakeUp",
             background: "./assets/images/sequences/storagehall_wakeup.png"
@@ -452,6 +461,18 @@ var Endabgabe;
         storageHallWakeUp2: {
             name: "storageHallWakeUp2",
             background: "./assets/images/sequences/storagehall_wakeup2.png"
+        },
+        sumiTiedUp: {
+            name: "sumiTiedUp",
+            background: "./assets/images/sequences/sumitiedup.png"
+        },
+        sumiEndCry: {
+            name: "sumiEndCry",
+            background: "./assets/images/sequences/sumiendcry.png"
+        },
+        nobuKnifeStorage: {
+            name: "nobuKnifeStorage",
+            background: "./assets/images/sequences/nobuknife_storage.png"
         },
     };
     Endabgabe.endings = {
@@ -676,42 +697,45 @@ var Endabgabe;
         volumeUp: "♫"
     };
     Endabgabe.items = {
-        item1: {
-            name: "Poke Ball",
-            description: "It has a simple red and white design, and it's the most known kind of Poké Ball",
-            image: "./assets/images/items/pokeball.png",
+        glasses: {
+            name: "Mysteriöse Brille",
+            description: "Willst du sie wirklich aufsetzen?",
+            image: "./assets/images/items/glasses.png",
             static: false
         },
-        item2: {
-            name: "Great Ball",
-            description: "It is slightly better than the regular Poké Ball.",
-            image: "./assets/images/items/superball.png",
+        juice: {
+            name: "Saft",
+            description: "Du wolltest Saft, hier haste ihn.",
+            image: "./assets/images/items/juice.png",
             static: false
         },
-        item3: {
-            name: "Ultra Ball",
-            description: "It is twice as good as a regular Poké Ball.",
-            image: "./assets/images/items/hyperball.png",
-            static: false
+        documentsShou: {
+            name: "Shous Dokumente 1",
+            description: "Dokumente um einen Plan auszuarbeiten, damit wir Shou finden.",
+            image: "./assets/images/items/documents1.png",
+            static: true
         },
-        item4: {
-            name: "Quick Ball",
-            description: "A kind of Poké Ball that works better the sooner it is used in battle.",
-            image: "./assets/images/items/flottball.png",
-            static: false
+        documentsShou2: {
+            name: "Shous Dokumente 2",
+            description: "Mehr Dokumente um den Plan fertigzustellen, damit wir Shou finden.",
+            image: "./assets/images/items/documents2.png",
+            static: true
         },
-        item5: {
-            name: "Premier Ball",
-            description: "They act the same way as a regular Poké Ball but has a completely white design and is given as a gift when ten or more Poké Balls are bought at once.",
-            image: "./assets/images/items/premierball.png",
-            static: false
+        documentsNobu: {
+            name: "Nobus Dokumente",
+            description: "Diese Dokumente wurden benutzt um den Aufenthaltsort von Shou herauszufinden.",
+            image: "./assets/images/items/documents3.png",
+            static: true
         },
-        item6: {
-            name: "Master Ball",
-            description: "A very rare Poké Ball that never fails in an attempt to catch a Pokémon.",
-            image: "./assets/images/items/masterball.png",
-            static: false
+        code: {
+            name: "Lagerhallennummer",
+            description: "",
+            image: "./assets/images/items/code.png",
+            static: true
         }
+        // Hier kommen noch Waffen hin?
+        // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien...zum Beispiel if getAmount == 0? Zumindest im Finale, aber wie mit Brille?
+        // Background Overlay Sumi befreien?
     };
     async function menuButtons(_option) {
         console.log(_option);
@@ -734,24 +758,6 @@ var Endabgabe;
     Endabgabe.menuButtons = menuButtons;
     window.addEventListener("load", start);
     function start(_event) {
-        for (let i = 0; i < 86; i++) {
-            Endabgabe.ƒS.Inventory.add(Endabgabe.items.item1);
-        }
-        for (let i = 0; i < 22; i++) {
-            Endabgabe.ƒS.Inventory.add(Endabgabe.items.item2);
-        }
-        for (let i = 0; i < 14; i++) {
-            Endabgabe.ƒS.Inventory.add(Endabgabe.items.item3);
-        }
-        for (let i = 0; i < 64; i++) {
-            Endabgabe.ƒS.Inventory.add(Endabgabe.items.item4);
-        }
-        for (let i = 0; i < 3; i++) {
-            Endabgabe.ƒS.Inventory.add(Endabgabe.items.item5);
-        }
-        for (let i = 0; i < 1; i++) {
-            Endabgabe.ƒS.Inventory.add(Endabgabe.items.item6);
-        }
         let scenes = [
             // Intro
             { scene: Endabgabe.Street, name: "street", id: "street" },
@@ -1081,6 +1087,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_04);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_06);
+                await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
+                await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
                 await Endabgabe.ƒS.Character.hideAll();
                 await Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningHospital);
@@ -1286,6 +1294,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3240_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_03);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou2);
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningHospital);
@@ -1508,8 +1518,11 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallShou);
         await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Das muss Shou sein?! Schnell ich muss ihn befrei...");
+        await Endabgabe.ƒS.Speech.hide();
         // Sound von Hinten Schlag auf den Kopf.
-        // Schlag auf Hinterkopf
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
+        await Endabgabe.ƒS.update(10);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.storageHallWakeUp);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.storageHallWakeUp2);
@@ -1517,7 +1530,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_01);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFight);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFull);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
         // Sumi wird gefesselt reingeschleppt genau wie bei WrongPlace
@@ -2267,6 +2280,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_04);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2330_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2330_06);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningDaySumiHospital);
@@ -2487,6 +2502,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3340_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3340_03);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou2);
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningDaySumiHospital);
@@ -2623,7 +2640,7 @@ var Endabgabe;
             }
         };
         // Decisions
-        //let juiceOrNot;
+        let juiceOrNot;
         let nobuOrShou;
         let goOrTalk;
         let talkOutOrHelp;
@@ -2669,6 +2686,10 @@ var Endabgabe;
         let name = await Endabgabe.ƒS.Speech.getInput();
         Endabgabe.dataForSave.nameProtagonist = name;
         Endabgabe.characters.protagonist.name = name;
+        if (Endabgabe.dataForSave.nameProtagonist == "ecchi") {
+            await Endabgabe.ƒS.Inventory.add(Endabgabe.items.glasses);
+            await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+        }
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Alles klar, " + Endabgabe.characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
         Endabgabe.characters.sumi.name = "Sumi";
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_08);
@@ -2691,7 +2712,15 @@ var Endabgabe;
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal_flipped, Endabgabe.animate(Endabgabe.animations.leftOutToMid));
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_19);
-        await Endabgabe.ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
+        juiceOrNot = await Endabgabe.ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
+        switch (juiceOrNot) {
+            case juiceOrNotAnswer.juice:
+                await Endabgabe.ƒS.Inventory.add(Endabgabe.items.juice);
+                await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+                break;
+            case juiceOrNotAnswer.nothing:
+                break;
+        }
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_20);
         await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
         await Endabgabe.ƒS.update(1);
@@ -2759,6 +2788,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_06);
+                await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
+                await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
                 await Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEvening);
                 await Endabgabe.ƒS.update(1);
@@ -2987,6 +3018,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_01);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3121_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3121_03);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou2);
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEvening);
@@ -3062,6 +3095,34 @@ var Endabgabe;
             }
         };
         // Decisions
+        let question1;
+        let question1Answers = {
+            answer1: "A: Soma",
+            answer2: "B: Shou",
+            answer3: "C: Fuun",
+            answer4: "D: Unbekannt"
+        };
+        let question2;
+        let question2Answers = {
+            answer1: "1: Er ist vestorben.",
+            answer2: "2: Sein Status ist unbekannt.",
+            answer3: "3: Er ist auf Geschäftsreise.",
+            answer4: "4: Er ist abgehauen."
+        };
+        let question3;
+        let question3Answers = {
+            answer1: "E: Sie ist verstorben",
+            answer2: "F: Sie liegt im Krankenhaus.",
+            answer3: "G: Ihr Status ist unbekannt.",
+            answer4: "H: Sie ist abgehauen."
+        };
+        let question4;
+        let question4Answers = {
+            answer1: "5: Er hat Gefühle für sie.",
+            answer2: "6: Er will sich an ihr rächen.",
+            answer3: "7: Sie ist Shous kleine Schwester.",
+            answer4: "8: Er will an ihre Wäsche."
+        };
         // Start
         Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
@@ -3070,6 +3131,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4100_01);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsNobu);
         // Inventar hinzufügen
         await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_02);
@@ -3079,7 +3141,87 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4100_07);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_08);
-        // Pause einführen damit man im Inventar ding anschauen kann für Rätsel?
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.plan);
+        await Endabgabe.ƒS.update(3);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Okay... dann schau ich mir mal das Zeug an...");
+        await Endabgabe.ƒS.Text.print("Anleitung\n \nUm Shou zu finden, muss zuerst sein Aufenthaltsort gefunden werden. Dafür muss folgendes Quiz beantwortet werden, um die richtige Lagerhalle zu finden. Die Anfangsbuchstaben der ausgewählten Antworten ergeben eine Nummer, welche am Ende eingegeben wird. Selbst bei einer falschen Nummer geht die Visual Novel weiter, doch ob dann Shou noch gefunden wird, ist eine andere Frage.\n \nViel Glück!");
+        await Endabgabe.ƒS.Speech.tell("Frage 1", "Wie hieß der kleine Bruder von Sumi?");
+        question1 = await Endabgabe.ƒS.Menu.getInput(question1Answers, "decisionClass");
+        switch (question1) {
+            case question1Answers.answer1:
+                Endabgabe.dataForSave.storageHall = "A";
+                break;
+            case question1Answers.answer2:
+                Endabgabe.dataForSave.storageHall = "B";
+                break;
+            case question1Answers.answer3:
+                Endabgabe.dataForSave.storageHall = "C";
+                break;
+            case question1Answers.answer4:
+                Endabgabe.dataForSave.storageHall = "D";
+                break;
+        }
+        await Endabgabe.ƒS.Speech.tell("Frage 2", "Was ist mit Sumis Vater passiert?");
+        question2 = await Endabgabe.ƒS.Menu.getInput(question2Answers, "decisionClass");
+        switch (question2) {
+            case question2Answers.answer1:
+                Endabgabe.dataForSave.storageHall += "1";
+                break;
+            case question2Answers.answer2:
+                Endabgabe.dataForSave.storageHall += "2";
+                break;
+            case question2Answers.answer3:
+                Endabgabe.dataForSave.storageHall += "3";
+                break;
+            case question2Answers.answer4:
+                Endabgabe.dataForSave.storageHall += "4";
+                break;
+        }
+        await Endabgabe.ƒS.Speech.tell("Frage 3", "Was ist mit Sumis Mutter passiert?");
+        question3 = await Endabgabe.ƒS.Menu.getInput(question3Answers, "decisionClass");
+        switch (question3) {
+            case question3Answers.answer1:
+                Endabgabe.dataForSave.storageHall += "E";
+                break;
+            case question3Answers.answer2:
+                Endabgabe.dataForSave.storageHall += "F";
+                break;
+            case question3Answers.answer3:
+                Endabgabe.dataForSave.storageHall += "G";
+                break;
+            case question3Answers.answer4:
+                Endabgabe.dataForSave.storageHall += "H";
+                break;
+        }
+        await Endabgabe.ƒS.Speech.tell("Frage 4", "Warum hängt Nobu so an Sumi?");
+        question4 = await Endabgabe.ƒS.Menu.getInput(question4Answers, "decisionClass");
+        switch (question4) {
+            case question4Answers.answer1:
+                Endabgabe.dataForSave.storageHall += "5";
+                break;
+            case question4Answers.answer2:
+                Endabgabe.dataForSave.storageHall += "6";
+                break;
+            case question4Answers.answer3:
+                Endabgabe.dataForSave.storageHall += "7";
+                break;
+            case question4Answers.answer4:
+                Endabgabe.dataForSave.storageHall += "8";
+                break;
+        }
+        Endabgabe.items.code.description = "Die Lagerhallennummer: " + Endabgabe.dataForSave.storageHall,
+            await Endabgabe.ƒS.Inventory.add(Endabgabe.items.code);
+        await Endabgabe.ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
+        let code = await Endabgabe.ƒS.Speech.getInput();
+        if (code == "C4F5" || code == "c4f5") {
+            return "rightPlace";
+        }
+        else {
+            return "wrongPlace";
+        }
     }
     Endabgabe.ThePlan = ThePlan;
 })(Endabgabe || (Endabgabe = {}));
@@ -3235,7 +3377,11 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallEmpty);
         await Endabgabe.ƒS.update(Endabgabe.transitions.swipe.duration, Endabgabe.transitions.swipe.alpha, Endabgabe.transitions.swipe.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Ich habe so ziemlich alles durchsucht und keine Spur... sag mir nicht ich bin am falschen Ort...");
+        await Endabgabe.ƒS.Speech.hide();
         // Sound von Hinten Schlag auf den Kopf.
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
+        await Endabgabe.ƒS.update(10);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.storageHallWakeUp);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.storageHallWakeUp2);
@@ -3243,7 +3389,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_01);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
-        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFight);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFull);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
         // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
@@ -3255,10 +3401,12 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_07);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_08);
-        // Sequenz wie Nobu auf Sumi mit einem Messer zu kommt.
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiTiedUp);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_09);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_10);
-        // Sumi schaut den Protagonisten voller Angst oder Tränen in den Augen an.
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiEndCry);
+        await Endabgabe.ƒS.update(3);
         // Decision
         if (Endabgabe.dataForSave.romancePoints >= 2) {
             lastWordsPoints = await Endabgabe.ƒS.Menu.getInput(lastWordsPointsAnswer, "decisionClass");
@@ -3277,9 +3425,8 @@ var Endabgabe;
                     break;
                 case lastWordsPointsAnswer.iLoveYou:
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_11d);
-                    // Extra Bild mit Lächeln und Tagebucheintrag oder so?
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_12d);
-                    break;
+                    return await ending(2);
             }
         }
         else {
@@ -3299,9 +3446,16 @@ var Endabgabe;
                     break;
             }
         }
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuKnifeStorage);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_13);
         // Sounds
-        return await ending(1);
+        if (Endabgabe.dataForSave.romancePoints >= 2) {
+            return await ending(2);
+        }
+        else {
+            return await ending(1);
+        }
     }
     Endabgabe.WrongPlace = WrongPlace;
     // Endings
@@ -3309,6 +3463,12 @@ var Endabgabe;
         switch (endingNr) {
             case 1:
                 await Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
+                await Endabgabe.ƒS.update(1);
+                return "endOfNovel";
+            case 2:
+                await Endabgabe.ƒS.Speech.hide();
+                //Tagebucheintrag?
                 await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
                 await Endabgabe.ƒS.update(1);
                 return "endOfNovel";

@@ -57,13 +57,6 @@ namespace Endabgabe {
             answer4: "8: Er will an ihre Wäsche."
         };
 
-        let endOrAgain;
-
-        let endOrAgainAnswer = {
-            end: "Fortfahren",
-            again: "Wiederholen"
-        };
-
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
@@ -82,97 +75,95 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_06);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_07);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_08);
-        quiz();
+        await ƒS.Character.hideAll();
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
+        await ƒS.Character.hideAll();
+        await ƒS.Location.show(sequences.plan);
+        await ƒS.update(3);
+        await ƒS.Speech.tell(characters.protagonist, "Okay... dann schau ich mir mal das Zeug an...");
 
-        async function quiz(): Promise<String> {
+        
 
-            await ƒS.Text.print("Um Shou zu finden müssen Sie den richtigen Ort finden. Diesen finden Sie durch das folgende Rätsel. Sie werden mit einem kleinen Quiz konfrontiert und Fragen beantworten, welche mit dieser Visual Novel zu tun haben. Somit prüfen wir einmal, ob Sie aufgepasst haben. Der Anfangsbuchstabe oder die Anfangszahl werden zusammengesetzt und am Ende ergeben sie die richtige Lagerhallen Nummer. Sollten Sie die falsche Nummer eingeben geht es auch weiter... jedoch ist die Frage, ob sie den Bruder finden, eine andere. Viel Glück!");
-            await ƒS.Speech.tell("Frage 1", "Wie hieß der kleine Bruder von Sumi?");
-            question1 = await ƒS.Menu.getInput(question1Answers, "decisionClass");
+        await ƒS.Text.print("Anleitung\n \nUm Shou zu finden, muss zuerst sein Aufenthaltsort gefunden werden. Dafür muss folgendes Quiz beantwortet werden, um die richtige Lagerhalle zu finden. Die Anfangsbuchstaben der ausgewählten Antworten ergeben eine Nummer, welche am Ende eingegeben wird. Selbst bei einer falschen Nummer geht die Visual Novel weiter, doch ob dann Shou noch gefunden wird, ist eine andere Frage.\n \nViel Glück!");
+        await ƒS.Speech.tell("Frage 1", "Wie hieß der kleine Bruder von Sumi?");
+        question1 = await ƒS.Menu.getInput(question1Answers, "decisionClass");
 
-            switch (question1) {
-                case question1Answers.answer1:
-                    dataForSave.storageHall = "A";
-                    break;
-                case question1Answers.answer2:
-                    dataForSave.storageHall = "B";
-                    break;
-                case question1Answers.answer3:
-                    dataForSave.storageHall = "C";
-                    break;
-                case question1Answers.answer4:
-                    dataForSave.storageHall = "D";
-                    break;
-            }
+        switch (question1) {
+            case question1Answers.answer1:
+                dataForSave.storageHall = "A";
+                break;
+            case question1Answers.answer2:
+                dataForSave.storageHall = "B";
+                break;
+            case question1Answers.answer3:
+                dataForSave.storageHall = "C";
+                break;
+            case question1Answers.answer4:
+                dataForSave.storageHall = "D";
+                break;
+        }
 
-            await ƒS.Speech.tell("Frage 2", "Was ist mit Sumis Vater passiert?");
-            question2 = await ƒS.Menu.getInput(question2Answers, "decisionClass");
-            switch (question2) {
-                case question2Answers.answer1:
-                    dataForSave.storageHall += "1";
-                    break;
-                case question2Answers.answer2:
-                    dataForSave.storageHall += "2";
-                    break;
-                case question2Answers.answer3:
-                    dataForSave.storageHall += "3";
-                    break;
-                case question2Answers.answer4:
-                    dataForSave.storageHall += "4";
-                    break;
-            }
+        await ƒS.Speech.tell("Frage 2", "Was ist mit Sumis Vater passiert?");
+        question2 = await ƒS.Menu.getInput(question2Answers, "decisionClass");
+        switch (question2) {
+            case question2Answers.answer1:
+                dataForSave.storageHall += "1";
+                break;
+            case question2Answers.answer2:
+                dataForSave.storageHall += "2";
+                break;
+            case question2Answers.answer3:
+                dataForSave.storageHall += "3";
+                break;
+            case question2Answers.answer4:
+                dataForSave.storageHall += "4";
+                break;
+        }
 
-            await ƒS.Speech.tell("Frage 3", "Was ist mit Sumis Mutter passiert?");
-            question3 = await ƒS.Menu.getInput(question3Answers, "decisionClass");
-            switch (question3) {
-                case question3Answers.answer1:
-                    dataForSave.storageHall += "E";
-                    break;
-                case question3Answers.answer2:
-                    dataForSave.storageHall += "F";
-                    break;
-                case question3Answers.answer3:
-                    dataForSave.storageHall += "G";
-                    break;
-                case question3Answers.answer4:
-                    dataForSave.storageHall += "H";
-                    break;
-            }
+        await ƒS.Speech.tell("Frage 3", "Was ist mit Sumis Mutter passiert?");
+        question3 = await ƒS.Menu.getInput(question3Answers, "decisionClass");
+        switch (question3) {
+            case question3Answers.answer1:
+                dataForSave.storageHall += "E";
+                break;
+            case question3Answers.answer2:
+                dataForSave.storageHall += "F";
+                break;
+            case question3Answers.answer3:
+                dataForSave.storageHall += "G";
+                break;
+            case question3Answers.answer4:
+                dataForSave.storageHall += "H";
+                break;
+        }
 
-            await ƒS.Speech.tell("Frage 4", "Warum hängt Nobu so an Sumi?");
-            question4 = await ƒS.Menu.getInput(question4Answers, "decisionClass");
-            switch (question4) {
-                case question3Answers.answer1:
-                    dataForSave.storageHall += "5";
-                    break;
-                case question3Answers.answer2:
-                    dataForSave.storageHall += "6";
-                    break;
-                case question3Answers.answer3:
-                    dataForSave.storageHall += "7";
-                    break;
-                case question3Answers.answer4:
-                    dataForSave.storageHall += "8";
-                    break;
-            }
+        await ƒS.Speech.tell("Frage 4", "Warum hängt Nobu so an Sumi?");
+        question4 = await ƒS.Menu.getInput(question4Answers, "decisionClass");
+        switch (question4) {
+            case question4Answers.answer1:
+                dataForSave.storageHall += "5";
+                break;
+            case question4Answers.answer2:
+                dataForSave.storageHall += "6";
+                break;
+            case question4Answers.answer3:
+                dataForSave.storageHall += "7";
+                break;
+            case question4Answers.answer4:
+                dataForSave.storageHall += "8";
+                break;
+        }
 
-            await ƒS.Speech.tell("", "Der aktuelle Code lautet: " + dataForSave.storageHall + "\n Möchten Sie mit der Geschichte fortfahren oder das Quiz wiederholen?");
-            endOrAgain = await ƒS.Menu.getInput(endOrAgainAnswer, "decisionClass");
-            switch (endOrAgain) {
-                case endOrAgainAnswer.again: 
-                    quiz();
-                    break;
-                case endOrAgainAnswer.end:
-                    await ƒS.Inventory.add(items.code);
-                    await ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
-                    let code: String = await ƒS.Speech.getInput();
-                    if (code == "C4F5") {
-                        return "rightPlace";
-                    } else {
-                        return "wrongPlace";
-                    }
-            }
+        
+        items.code.description = "Die Lagerhallennummer: " + dataForSave.storageHall,
+        await ƒS.Inventory.add(items.code);
+        await ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
+        let code: String = await ƒS.Speech.getInput();
+        if (code == "C4F5" || code == "c4f5") {
+            return "rightPlace";
+        } else {
             return "wrongPlace";
         }
+    
     }
 }
