@@ -725,7 +725,7 @@ namespace Endabgabe {
         }
 
         // Hier kommen noch Waffen hin?
-        // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien.
+        // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien...zum Beispiel if getAmount == 0? Zumindest im Finale, aber wie mit Brille?
         // Background Overlay Sumi befreien?
       };
     
