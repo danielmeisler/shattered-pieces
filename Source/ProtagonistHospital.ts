@@ -335,6 +335,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2243_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2243_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2243_06);
+                await ƒS.Inventory.add(items.documentsShou);
+                await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
                 await ƒS.Character.hideAll();
                 await ƒS.Speech.hide();
 

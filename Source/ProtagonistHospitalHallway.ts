@@ -170,6 +170,8 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_01);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3240_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_03);
+        await ƒS.Inventory.add(items.documentsShou2);
+        await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await ƒS.Speech.hide();
         await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.planningEveningHospital);

@@ -9,8 +9,8 @@ namespace Endabgabe {
         romancePoints: 0,
         protagonistHurt: false,
         nobuKnowsBrother: false,
-        nobuKnowsMother: false
-
+        nobuKnowsMother: false,
+        storageHall: ""
     };
   
     export let transitions = {
@@ -687,42 +687,46 @@ namespace Endabgabe {
     };
 
     export let items = {
-        item1: {
-            name: "Poke Ball",
-            description: "It has a simple red and white design, and it's the most known kind of Poké Ball",
+        glasses: {
+            name: "Mysteriöse Brille",
+            description: "Willst du sie wirklich aufsetzen?",
             image: "./assets/images/items/pokeball.png",
             static: false
         },
-        item2: {
-            name: "Great Ball",
-            description: "It is slightly better than the regular Poké Ball.",
+        juice: {
+            name: "Saft",
+            description: "Du wolltest Saft, hier haste ihn.",
+            image: "./assets/images/items/pokeball.png",
+            static: false
+        },
+        documentsShou: {
+            name: "Shous Dokumente 1",
+            description: "Dokumente um einen Plan auszuarbeiten, damit wir Shou finden.",
+            image: "./assets/images/items/pokeball.png",
+            static: true
+        },
+        documentsShou2: {
+            name: "Shous Dokumente 2",
+            description: "Mehr Dokumente um den Plan fertigzustellen, damit wir Shou finden.",
+            image: "./assets/images/items/pokeball.png",
+            static: true
+        },
+        documentsNobu: {
+            name: "Nobus Dokumente",
+            description: "Diese Dokumente wurden benutzt um den Aufenthaltsort von Shou herauszufinden.",
+            image: "./assets/images/items/pokeball.png",
+            static: true
+        },
+        code: {
+            name: "Code",
+            description: "Die Lagerhallennummer: " + dataForSave.storageHall,
             image: "./assets/images/items/superball.png",
-            static: false
-        },
-        item3: {
-            name: "Ultra Ball",
-            description: "It is twice as good as a regular Poké Ball.",
-            image: "./assets/images/items/hyperball.png",
-            static: false
-        },
-        item4: {
-            name: "Quick Ball",
-            description: "A kind of Poké Ball that works better the sooner it is used in battle.",
-            image: "./assets/images/items/flottball.png",
-            static: false
-        },
-        item5: {
-            name: "Premier Ball",
-            description: "They act the same way as a regular Poké Ball but has a completely white design and is given as a gift when ten or more Poké Balls are bought at once.",
-            image: "./assets/images/items/premierball.png",
-            static: false
-        },
-        item6: {
-            name: "Master Ball",
-            description: "A very rare Poké Ball that never fails in an attempt to catch a Pokémon.",
-            image: "./assets/images/items/masterball.png",
-            static: false
-        }     
+            static: true
+        }
+
+        // Hier kommen noch Waffen hin?
+        // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien.
+        // Background Overlay Sumi befreien?
       };
     
   
@@ -748,26 +752,6 @@ namespace Endabgabe {
     window.addEventListener("load", start);
   
     function start(_event: Event): void {
-
-        for (let i: number = 0; i < 86; i++) {
-            ƒS.Inventory.add(items.item1);
-        }
-        for (let i: number = 0; i < 22; i++) {
-            ƒS.Inventory.add(items.item2);
-        }
-        for (let i: number = 0; i < 14; i++) {
-            ƒS.Inventory.add(items.item3);
-        }
-        for (let i: number = 0; i < 64; i++) {
-            ƒS.Inventory.add(items.item4);
-        }
-        for (let i: number = 0; i < 3; i++) {
-            ƒS.Inventory.add(items.item5);
-        }
-        for (let i: number = 0; i < 1; i++) {
-            ƒS.Inventory.add(items.item6);
-        }
-
 
         let scenes: ƒS.Scenes = [
             // Intro

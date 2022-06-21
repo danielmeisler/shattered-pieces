@@ -96,7 +96,7 @@ namespace Endabgabe {
         };
 
         // Decisions
-        //let juiceOrNot;
+        let juiceOrNot;
         let nobuOrShou;
         let goOrTalk;
         let talkOutOrHelp;
@@ -150,6 +150,11 @@ namespace Endabgabe {
         dataForSave.nameProtagonist = name;
         characters.protagonist.name = name;
 
+        if (dataForSave.nameProtagonist == "ecchi") {
+            await ƒS.Inventory.add(items.glasses);
+            await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+        }
+
         await ƒS.Speech.tell(characters.sumi, "Alles klar, " + characters.protagonist.name + ", danke nochmal für deine Hilfe. Ich heiße Sumi.");
         characters.sumi.name = "Sumi";
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
@@ -172,7 +177,17 @@ namespace Endabgabe {
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal_flipped, animate(animations.leftOutToMid));
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_19);
-        await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
+        juiceOrNot = await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
+
+        switch (juiceOrNot) {
+            case juiceOrNotAnswer.juice:
+                await ƒS.Inventory.add(items.juice);
+                await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+                break;
+            case juiceOrNotAnswer.nothing:
+                break;
+        }
+
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_20);
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
@@ -243,6 +258,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
+                await ƒS.Inventory.add(items.documentsShou);
+                await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
                 await ƒS.Speech.hide();
                 await ƒS.Location.show(sequences.planningEvening);
                 await ƒS.update(1);
