@@ -86,9 +86,9 @@ namespace Endabgabe {
         await ƒS.Location.show(locations.storageHallFightFull);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
-        // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
 
-        // Sumi wird gefesselt reingeschleppt
+        await ƒS.Location.show(sequences.sumiTiedUpComing);
+        await ƒS.update(3);
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_03);

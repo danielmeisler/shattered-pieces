@@ -4,7 +4,7 @@ declare namespace Endabgabe {
 declare namespace Endabgabe {
     export import ƒ = FudgeCore;
     export import ƒS = FudgeStory;
-    let dataForSave: {
+    export let dataForSave: {
         nameProtagonist: string;
         romancePoints: number;
         protagonistHurt: boolean;
@@ -12,7 +12,7 @@ declare namespace Endabgabe {
         nobuKnowsMother: boolean;
         storageHall: string;
     };
-    let transitions: {
+    export let transitions: {
         blink: {
             duration: number;
             alpha: string;
@@ -39,7 +39,7 @@ declare namespace Endabgabe {
             edge: number;
         };
     };
-    let sound: {
+    export let sound: {
         filler_track: string;
         first_encounter: string;
         sad_times: string;
@@ -66,7 +66,7 @@ declare namespace Endabgabe {
         group_scream: string;
         woman_heavy_breathing: string;
     };
-    let locations: {
+    export let locations: {
         street_evening: {
             name: string;
             background: string;
@@ -180,7 +180,7 @@ declare namespace Endabgabe {
             background: string;
         };
     };
-    let sequences: {
+    export let sequences: {
         black: {
             name: string;
             background: string;
@@ -437,6 +437,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiTiedUpComing: {
+            name: string;
+            background: string;
+        };
         sumiTiedUp: {
             name: string;
             background: string;
@@ -450,7 +454,7 @@ declare namespace Endabgabe {
             background: string;
         };
     };
-    let endings: {
+    export let endings: {
         newspaper: {
             name: string;
             background: string;
@@ -468,7 +472,7 @@ declare namespace Endabgabe {
             background: string;
         };
     };
-    let characters: {
+    export let characters: {
         protagonist: {
             name: string;
         };
@@ -523,7 +527,7 @@ declare namespace Endabgabe {
             };
         };
     };
-    let animations: {
+    export let animations: {
         midToRightOut: string;
         midToLeftOut: string;
         midToRight: string;
@@ -539,17 +543,17 @@ declare namespace Endabgabe {
         credits: string;
         creditsLast: string;
     };
-    function animate(_animation: string): ƒS.AnimationDefinition;
-    function volumeUp(): void;
-    function volumeDown(): void;
-    let menuItems: {
+    export function animate(_animation: string): ƒS.AnimationDefinition;
+    export function volumeUp(): void;
+    export function volumeDown(): void;
+    export let menuItems: {
         inventory: string;
         save: string;
         load: string;
         volumeDown: string;
         volumeUp: string;
     };
-    let items: {
+    export let items: {
         glasses: {
             name: string;
             description: string;
@@ -561,6 +565,7 @@ declare namespace Endabgabe {
             description: string;
             image: string;
             static: boolean;
+            handler: typeof hndJuice;
         };
         documentsShou: {
             name: string;
@@ -580,6 +585,12 @@ declare namespace Endabgabe {
             image: string;
             static: boolean;
         };
+        knife: {
+            name: string;
+            description: string;
+            image: string;
+            static: boolean;
+        };
         code: {
             name: string;
             description: string;
@@ -587,7 +598,9 @@ declare namespace Endabgabe {
             static: boolean;
         };
     };
-    function menuButtons(_option: string): Promise<void>;
+    function hndJuice(_event: CustomEvent): Promise<void>;
+    export function menuButtons(_option: string): Promise<void>;
+    export {};
 }
 declare namespace Endabgabe {
     function ProtagonistHospital(): ƒS.SceneReturn;

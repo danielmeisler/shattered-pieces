@@ -115,6 +115,7 @@ namespace Endabgabe {
     await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
+    await ƒS.update(3);
     await ƒS.Sound.fade(sound.woman_groan_1, 0.3, 1, false);
     await ƒS.Sound.fade(sound.woman_groan_2, 0.5, 1, false);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_02);

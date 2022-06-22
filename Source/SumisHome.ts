@@ -160,7 +160,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
         ƒS.Speech.hide();
-        await ƒS.Character.hide(characters.sumi);
+        await ƒS.Character.hideAll();
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
@@ -267,6 +267,7 @@ namespace Endabgabe {
                 await ƒS.update(10);
                 await ƒS.Location.show(sequences.planningNight);
                 await ƒS.update(1);
+                //Regensounds?
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
                 await ƒS.Location.show(locations.sumisHome_livingRoom_night);
                 await ƒS.update(1);
@@ -298,15 +299,14 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_14);
                 await ƒS.Location.show(sequences.black);
-                await ƒS.update(1);
+                await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_15);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_16);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_17);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_18);
                 await ƒS.Location.show(locations.sumisHome_futonroom);
-                await ƒS.update(1);
                 await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed, ƒS.positions.bottomcenter);
-                await ƒS.update(1);
+                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 
                 flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
                 switch (flirtOrSleep) {

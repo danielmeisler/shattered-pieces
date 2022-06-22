@@ -74,15 +74,18 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_05);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_06);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_07);
+        await ƒS.Inventory.add(items.knife);
+        await ƒS.Speech.tell(characters.sumi, "Ich gebe dir noch Shous Messer mit... Er hat damit nie getötet, sondern es eher wie ein Werkzeug benutzt... Unser Vater hat es ihm geschenkt... damals. Jedenfalls für den notfall, benutz es. Ich möchte nicht noch mehr Menschen verlieren...");
+        await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_08);
+        await ƒS.Speech.hide();
         await ƒS.Character.hideAll();
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.plan);
         await ƒS.update(3);
         await ƒS.Speech.tell(characters.protagonist, "Okay... dann schau ich mir mal das Zeug an...");
-
-        
+        await ƒS.Speech.hide();
 
         await ƒS.Text.print("Anleitung\n \nUm Shou zu finden, muss zuerst sein Aufenthaltsort gefunden werden. Dafür muss folgendes Quiz beantwortet werden, um die richtige Lagerhalle zu finden. Die Anfangsbuchstaben der ausgewählten Antworten ergeben eine Nummer, welche am Ende eingegeben wird. Selbst bei einer falschen Nummer geht die Visual Novel weiter, doch ob dann Shou noch gefunden wird, ist eine andere Frage.\n \nViel Glück!");
         await ƒS.Speech.tell("Frage 1", "Wie hieß der kleine Bruder von Sumi?");
@@ -159,6 +162,11 @@ namespace Endabgabe {
         await ƒS.Inventory.add(items.code);
         await ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
         let code: String = await ƒS.Speech.getInput();
+        await ƒS.Speech.tell(characters.protagonist, "Das muss es sein ...");
+        await ƒS.Speech.tell(characters.protagonist, "... tief durchatmen ...");
+        await ƒS.Speech.tell(characters.protagonist, "... auf geht's!");
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {
             return "rightPlace";
         } else {

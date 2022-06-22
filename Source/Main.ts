@@ -460,6 +460,10 @@ namespace Endabgabe {
             background: "./assets/images/sequences/storagehall_wakeup2.png"
         },
 
+        sumiTiedUpComing: {
+            name: "sumiTiedUpComing",
+            background: "./assets/images/sequences/sumitiedupcoming.png"
+        },
         sumiTiedUp: {
             name: "sumiTiedUp",
             background: "./assets/images/sequences/sumitiedup.png"
@@ -714,12 +718,14 @@ namespace Endabgabe {
             description: "Willst du sie wirklich aufsetzen?",
             image: "./assets/images/items/glasses.png",
             static: false
+            //handler: hndGlasses
         },
         juice: {
             name: "Saft",
             description: "Du wolltest Saft, hier haste ihn.",
             image: "./assets/images/items/juice.png",
-            static: false
+            static: false,
+            handler: hndJuice
         },
         documentsShou: {
             name: "Shous Dokumente 1",
@@ -739,6 +745,12 @@ namespace Endabgabe {
             image: "./assets/images/items/documents3.png",
             static: true
         },
+        knife: {
+            name: "Messer",
+            description: "Ein Messer um sich zu verteidigen... oder etwas Anderes?",
+            image: "./assets/images/items/knife.png",
+            static: true
+        },
         code: {
             name: "Lagerhallennummer",
             description: "",
@@ -750,8 +762,18 @@ namespace Endabgabe {
         // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien...zum Beispiel if getAmount == 0? Zumindest im Finale, aber wie mit Brille?
         // Background Overlay Sumi befreien?
       };
+
+    // async function hndGlasses(_event: CustomEvent): Promise<void> {
+    //     await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+    //     await ƒS.update(3);
+    //     characters.sumi.pose.normal = "./assets/images/characters/sumi/.png";
+    //     characters.sumi.pose.normal_flipped = "./assets/images/characters/sumi/.png";
+    // }
     
-  
+    async function hndJuice(_event: CustomEvent): Promise<void> {
+        await ƒS.Speech.tell(characters.protagonist, "Boahhhh geiler Saft");
+    }
+
     export async function menuButtons(_option: string): Promise<void> {
         console.log(_option);
         if (_option == menuItems.inventory) {

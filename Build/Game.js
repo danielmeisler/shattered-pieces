@@ -462,6 +462,10 @@ var Endabgabe;
             name: "storageHallWakeUp2",
             background: "./assets/images/sequences/storagehall_wakeup2.png"
         },
+        sumiTiedUpComing: {
+            name: "sumiTiedUpComing",
+            background: "./assets/images/sequences/sumitiedupcoming.png"
+        },
         sumiTiedUp: {
             name: "sumiTiedUp",
             background: "./assets/images/sequences/sumitiedup.png"
@@ -702,12 +706,14 @@ var Endabgabe;
             description: "Willst du sie wirklich aufsetzen?",
             image: "./assets/images/items/glasses.png",
             static: false
+            //handler: hndGlasses
         },
         juice: {
             name: "Saft",
             description: "Du wolltest Saft, hier haste ihn.",
             image: "./assets/images/items/juice.png",
-            static: false
+            static: false,
+            handler: hndJuice
         },
         documentsShou: {
             name: "Shous Dokumente 1",
@@ -727,6 +733,12 @@ var Endabgabe;
             image: "./assets/images/items/documents3.png",
             static: true
         },
+        knife: {
+            name: "Messer",
+            description: "Ein Messer um sich zu verteidigen... oder etwas Anderes?",
+            image: "./assets/images/items/knife.png",
+            static: true
+        },
         code: {
             name: "Lagerhallennummer",
             description: "",
@@ -737,6 +749,15 @@ var Endabgabe;
         // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien...zum Beispiel if getAmount == 0? Zumindest im Finale, aber wie mit Brille?
         // Background Overlay Sumi befreien?
     };
+    // async function hndGlasses(_event: CustomEvent): Promise<void> {
+    //     await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+    //     await ƒS.update(3);
+    //     characters.sumi.pose.normal = "./assets/images/characters/sumi/.png";
+    //     characters.sumi.pose.normal_flipped = "./assets/images/characters/sumi/.png";
+    // }
+    async function hndJuice(_event) {
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Boahhhh geiler Saft");
+    }
     async function menuButtons(_option) {
         console.log(_option);
         if (_option == Endabgabe.menuItems.inventory) {
@@ -1372,7 +1393,7 @@ var Endabgabe;
                 S4120_15: "Also war das am Ende ein Racheakt, weil er dich nicht seine Schwester lieben ließ? Du bist krank!",
                 S4120_17: "Also was, ihr habt einen Putsch geplant um ihn als euren Anführer abzulösen?",
                 S4120_19: "Du warst sein bester Freund, natürlich erwartet er nicht das Schlimmste.",
-                S4120_22: "Sumi, geh deinen Bruder befreien! Der Code lautet: ",
+                S4120_22: "Sumi, geh deinen Bruder befreien!",
                 S4120_25: "Keine Sorge, ich halte ihn auf. Er ist diesmal allein, es ist fairer als sonst mit seinem Schlägertrupp, ich schaff das, vertrau mir! Lauf los!",
                 S4120_27: "Wir beenden es so wie es begonnen hat!",
                 S4120_29: "Wir werden sehen, wie stark du ohne deine Männer wirklich bist.",
@@ -1533,7 +1554,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFull);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
-        // Sumi wird gefesselt reingeschleppt genau wie bei WrongPlace
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiTiedUpComing);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4120_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4120_03);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4120_04);
@@ -1556,6 +1578,12 @@ var Endabgabe;
         // Sequences wie Sumi sich befreit und die Schläger k.o macht
         // Sequence wie sie Nobu das Messer entzieht und an seine Kehle hält
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_21);
+        Endabgabe.items.knife.static = false;
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.knife);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Ich sollte mich befreien...");
+        while (Endabgabe.ƒS.Inventory.getAmount(Endabgabe.items.knife) != 0) {
+            await Endabgabe.ƒS.update(1);
+        }
         // Inventar nutzen?
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4120_22);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4120_23);
@@ -1858,6 +1886,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_evening);
         await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_1, 0.3, 1, false);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.woman_groan_2, 0.5, 1, false);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_02);
@@ -2695,7 +2724,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2100_08);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_09);
         Endabgabe.ƒS.Speech.hide();
-        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
         await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
         await Endabgabe.ƒS.update(1);
@@ -2797,6 +2826,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.update(10);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight);
                 await Endabgabe.ƒS.update(1);
+                //Regensounds?
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_07);
                 await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_night);
                 await Endabgabe.ƒS.update(1);
@@ -2829,15 +2859,14 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_13);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_14);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
-                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_15);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_16);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_17);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_18);
                 await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_futonroom);
-                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.embarrassed, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update(1);
+                await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
                 flirtOrSleep = await Endabgabe.ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
                 switch (flirtOrSleep) {
                     case flirtOrSleepAnswer.sleep:
@@ -3140,13 +3169,18 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4100_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4100_07);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.knife);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Ich gebe dir noch Shous Messer mit... Er hat damit nie getötet, sondern es eher wie ein Werkzeug benutzt... Unser Vater hat es ihm geschenkt... damals. Jedenfalls für den notfall, benutz es. Ich möchte nicht noch mehr Menschen verlieren...");
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4100_08);
+        await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.animate(Endabgabe.animations.midToLeftOut));
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.plan);
         await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Okay... dann schau ich mir mal das Zeug an...");
+        await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Text.print("Anleitung\n \nUm Shou zu finden, muss zuerst sein Aufenthaltsort gefunden werden. Dafür muss folgendes Quiz beantwortet werden, um die richtige Lagerhalle zu finden. Die Anfangsbuchstaben der ausgewählten Antworten ergeben eine Nummer, welche am Ende eingegeben wird. Selbst bei einer falschen Nummer geht die Visual Novel weiter, doch ob dann Shou noch gefunden wird, ist eine andere Frage.\n \nViel Glück!");
         await Endabgabe.ƒS.Speech.tell("Frage 1", "Wie hieß der kleine Bruder von Sumi?");
         question1 = await Endabgabe.ƒS.Menu.getInput(question1Answers, "decisionClass");
@@ -3216,6 +3250,11 @@ var Endabgabe;
             await Endabgabe.ƒS.Inventory.add(Endabgabe.items.code);
         await Endabgabe.ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
         let code = await Endabgabe.ƒS.Speech.getInput();
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Das muss es sein ...");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "... tief durchatmen ...");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "... auf geht's!");
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {
             return "rightPlace";
         }
@@ -3392,8 +3431,8 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFull);
         await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
-        // Dann animate links rechts mit Sumi gefesselte Version oder sequenz
-        // Sumi wird gefesselt reingeschleppt
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiTiedUpComing);
+        await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_03);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_04);

@@ -16,7 +16,7 @@ namespace Endabgabe {
                 S4120_15: "Also war das am Ende ein Racheakt, weil er dich nicht seine Schwester lieben ließ? Du bist krank!",
                 S4120_17: "Also was, ihr habt einen Putsch geplant um ihn als euren Anführer abzulösen?",
                 S4120_19: "Du warst sein bester Freund, natürlich erwartet er nicht das Schlimmste.",
-                S4120_22: "Sumi, geh deinen Bruder befreien! Der Code lautet: ",
+                S4120_22: "Sumi, geh deinen Bruder befreien!",
                 S4120_25: "Keine Sorge, ich halte ihn auf. Er ist diesmal allein, es ist fairer als sonst mit seinem Schlägertrupp, ich schaff das, vertrau mir! Lauf los!",
                 S4120_27: "Wir beenden es so wie es begonnen hat!",
                 S4120_29: "Wir werden sehen, wie stark du ohne deine Männer wirklich bist.",
@@ -205,8 +205,8 @@ namespace Endabgabe {
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
 
-        
-        // Sumi wird gefesselt reingeschleppt genau wie bei WrongPlace
+        await ƒS.Location.show(sequences.sumiTiedUpComing);
+        await ƒS.update(3);
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_03);
@@ -232,6 +232,14 @@ namespace Endabgabe {
         // Sequence wie sie Nobu das Messer entzieht und an seine Kehle hält
 
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_21);
+        items.knife.static = false;
+        await ƒS.Inventory.add(items.knife);
+        await ƒS.Speech.tell(characters.protagonist, "Ich sollte mich befreien...");
+
+        while (ƒS.Inventory.getAmount(items.knife) != 0) {
+            await ƒS.update(1);
+        }
+        
         // Inventar nutzen?
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_22);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_23);
