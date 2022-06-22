@@ -28,7 +28,8 @@ namespace Endabgabe {
 
             },
             Nobu: {
-                S4110_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor. Oder findest du nicht, Sumi?",
+                S4110_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor.",
+                S4110_01b: "... oder findest du nicht, Sumi?",
                 S4110_06: "Und ihr seid voll reingetappt… schon schade… Euer Plan hat leider nicht funktioniert, ich hab ihr alles abgenommen.",
                 S4110_08: "Was denkst du? Ich weiß nicht wie viel ihr wisst und wie viel ihr mir hinterher geschnüffelt habt… Aber ich kann euch nicht mehr am Leben lassen.",
                 S4110_09: "Sumi, es tut mir wirklich leid, dass es so enden muss. Ich habe dich geliebt...",
@@ -84,12 +85,18 @@ namespace Endabgabe {
         await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
 
         await ƒS.Location.show(locations.storageHallFightFull);
-        await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
 
+        await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_01b);
+        await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.sumiTiedUpComing);
         await ƒS.update(3);
+        await ƒS.update(5);
 
+        await ƒS.Location.show(locations.storageHallFightFuller);
+        await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
+        await ƒS.update(3);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_03);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_04);
@@ -98,6 +105,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_07);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_08);
 
+        await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.sumiTiedUp);
         await ƒS.update(3);
 
@@ -124,7 +132,6 @@ namespace Endabgabe {
                 case lastWordsPointsAnswer.iLoveYou:
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_11d);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_12d);
-                    return await ending(2);
             }
         } else {
             lastWords = await ƒS.Menu.getInput(lastWordsAnswer, "decisionClass");
@@ -166,7 +173,7 @@ namespace Endabgabe {
                 return "endOfNovel";
             case 2:
                 await ƒS.Speech.hide();
-                //Tagebucheintrag?
+                await ƒS.Text.print("L̶i̶e̶b̶e̶s̶ Tagebuch, \n \n Heute ist es soweit... der große Tag. Heute sehen wir, ob die Mühen der letzten Tage sich ausgezahlt haben... und vielleicht sehe ich auch endlich Shou wieder. Ich hoffe dir geht es gut Bruderherz... Jedenfalls habe ich alle Vorbereitungen getroffen und warte auf " + dataForSave.nameProtagonist + " und dann starten wir auch mit dem Plan. In einigen Stunden kann sich alles ändern... und vielleicht, wenn das alles hier vorbei ist... kann ich " + dataForSave.nameProtagonist + " meine Liebe gestehen. Ob sie erwidert wird? Heute werde ich es herausfinden... hoffentlich. \n \n Sumi");
                 await ƒS.Location.show(endings.protagonistDead);
                 await ƒS.update(1);
                 return "endOfNovel";

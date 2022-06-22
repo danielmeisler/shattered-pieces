@@ -191,6 +191,14 @@ namespace Endabgabe {
         storageHallFightFull: {
             name: "StorageHallFull",
             background: "./assets/images/backgrounds/storagehall_fight_full.png"
+        },
+        storageHallFightFuller: {
+            name: "StorageHallFuller",
+            background: "./assets/images/backgrounds/storagehall_fight_fuller.png"
+        },
+        storageHallFightFullest: {
+            name: "StorageHallFullest",
+            background: "./assets/images/backgrounds/storagehall_fight_fullest.png"
         }
     };
 

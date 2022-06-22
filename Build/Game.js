@@ -203,6 +203,14 @@ var Endabgabe;
         storageHallFightFull: {
             name: "StorageHallFull",
             background: "./assets/images/backgrounds/storagehall_fight_full.png"
+        },
+        storageHallFightFuller: {
+            name: "StorageHallFuller",
+            background: "./assets/images/backgrounds/storagehall_fight_fuller.png"
+        },
+        storageHallFightFullest: {
+            name: "StorageHallFullest",
+            background: "./assets/images/backgrounds/storagehall_fight_fullest.png"
         }
     };
     Endabgabe.sequences = {
@@ -1460,7 +1468,8 @@ var Endabgabe;
                 S41222_26: "Ja, das stimmt wohl… Aber ich wollte mich nochmal bedanken… Hättest du dich damals in der Gasse nicht eingemischt, hätte ich meinen Bruder wahrscheinlich nie wieder gesehen. Ich weiß nicht, wie ich das je zurückgeben soll…"
             },
             Nobu: {
-                S4120_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor. Oder findest du nicht, Sumi?",
+                S4120_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor.",
+                S4120_01b: "... oder findest du nicht, Sumi?",
                 S4120_06: "Und ihr seid voll reingetappt… schon schade… ",
                 S4120_10: "Du willst es wirklich vor deinem Tod noch wissen? Na schön, ich erzähl es dir, weil du ihn gefunden hast… als letzte Belohnung. Shou wollte mit der Gang immer nur das Mindeste, keine Ambitionen. Wir hatten Potenzial einer der gefürchtetsten Banden zu werden und als wir einen richtig dicken Fisch an der Angel hatten hat Shou alles abgebrochen, da seine Prinzipien ihm im Weg standen. Er ist weich und schwach!",
                 S4120_12: "Wenn du nur wüsstest, wie oft ich das versucht habe. Doch das ist noch nicht alles. Shou hat immer sein Leben vor allen geheim gehalten. Wir wussten gar nichts über ihn, denn er war der Meinung, dass es nicht nötig ist. Aber wie willst du jemandem Folgen und dein Leben riskieren, wenn du nicht weißt, was er verbirgt? Wir waren so lange Freunde und ich wusste nichts über ihn, außer dass er eine Schwester hat.",
@@ -1552,9 +1561,15 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFull);
-        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.happy, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_01b);
+        await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiTiedUpComing);
+        await Endabgabe.ƒS.update(3);
+        await Endabgabe.ƒS.update(5);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFuller);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.happy, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4120_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4120_03);
@@ -1575,6 +1590,17 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_18);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4120_19);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_20);
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(0.1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, "Was passiert hier? Warum ist es plötzlich dunkel?!");
+        await Endabgabe.ƒS.Speech.tell("Schläger", "Ahhh");
+        await Endabgabe.ƒS.Speech.tell("Prolet", "Auaaa");
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFullest);
+        //vllt agressives gesicht?
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, "Was ist mit euch? Warum...?!?");
         // Sequences wie Sumi sich befreit und die Schläger k.o macht
         // Sequence wie sie Nobu das Messer entzieht und an seine Kehle hält
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4120_21);
@@ -3381,7 +3407,8 @@ var Endabgabe;
                 S4110_12d: "Mhh mhhhh mhhh mhhh!"
             },
             Nobu: {
-                S4110_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor. Oder findest du nicht, Sumi?",
+                S4110_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor.",
+                S4110_01b: "... oder findest du nicht, Sumi?",
                 S4110_06: "Und ihr seid voll reingetappt… schon schade… Euer Plan hat leider nicht funktioniert, ich hab ihr alles abgenommen.",
                 S4110_08: "Was denkst du? Ich weiß nicht wie viel ihr wisst und wie viel ihr mir hinterher geschnüffelt habt… Aber ich kann euch nicht mehr am Leben lassen.",
                 S4110_09: "Sumi, es tut mir wirklich leid, dass es so enden muss. Ich habe dich geliebt...",
@@ -3429,9 +3456,15 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFull);
-        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.happy, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_01b);
+        await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiTiedUpComing);
+        await Endabgabe.ƒS.update(3);
+        await Endabgabe.ƒS.update(5);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.storageHallFightFuller);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.nobu, Endabgabe.characters.nobu.pose.happy, Endabgabe.ƒS.positions.bottomcenter);
         await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_02);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_03);
@@ -3440,6 +3473,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_07);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_08);
+        await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiTiedUp);
         await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S4110_09);
@@ -3465,7 +3499,6 @@ var Endabgabe;
                 case lastWordsPointsAnswer.iLoveYou:
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S4110_11d);
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S4110_12d);
-                    return await ending(2);
             }
         }
         else {
@@ -3507,7 +3540,7 @@ var Endabgabe;
                 return "endOfNovel";
             case 2:
                 await Endabgabe.ƒS.Speech.hide();
-                //Tagebucheintrag?
+                await Endabgabe.ƒS.Text.print("L̶i̶e̶b̶e̶s̶ Tagebuch, \n \n Heute ist es soweit... der große Tag. Heute sehen wir, ob die Mühen der letzten Tage sich ausgezahlt haben... und vielleicht sehe ich auch endlich Shou wieder. Ich hoffe dir geht es gut Bruderherz... Jedenfalls habe ich alle Vorbereitungen getroffen und warte auf " + Endabgabe.dataForSave.nameProtagonist + " und dann starten wir auch mit dem Plan. In einigen Stunden kann sich alles ändern... und vielleicht, wenn das alles hier vorbei ist... kann ich " + Endabgabe.dataForSave.nameProtagonist + " meine Liebe gestehen. Ob sie erwidert wird? Heute werde ich es herausfinden... hoffentlich. \n \n Sumi");
                 await Endabgabe.ƒS.Location.show(Endabgabe.endings.protagonistDead);
                 await Endabgabe.ƒS.update(1);
                 return "endOfNovel";

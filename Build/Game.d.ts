@@ -179,6 +179,14 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        storageHallFightFuller: {
+            name: string;
+            background: string;
+        };
+        storageHallFightFullest: {
+            name: string;
+            background: string;
+        };
     };
     export let sequences: {
         black: {
