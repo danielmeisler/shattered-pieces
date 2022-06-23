@@ -484,6 +484,14 @@ namespace Endabgabe {
             name: "nobuKnifeStorage",
             background: "./assets/images/sequences/nobuknife_storage.png"
         },
+        sumiThreatsNobu: {
+            name: "sumiThreatsNobu",
+            background: "./assets/images/sequences/sumithreatsnobu.png"
+        },
+        grabKnife: {
+            name: "grabKnife",
+            background: "./assets/images/sequences/grabknife.png"
+        },
     };
 
     export let endings = {
@@ -779,7 +787,7 @@ namespace Endabgabe {
     // }
     
     async function hndJuice(_event: CustomEvent): Promise<void> {
-        await ƒS.Speech.tell(characters.protagonist, "Boahhhh geiler Saft");
+        await ƒS.Speech.tell(characters.protagonist, "Boahhhh geiler Saft!");
     }
 
     export async function menuButtons(_option: string): Promise<void> {

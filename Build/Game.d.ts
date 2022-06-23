@@ -461,6 +461,14 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiThreatsNobu: {
+            name: string;
+            background: string;
+        };
+        grabKnife: {
+            name: string;
+            background: string;
+        };
     };
     export let endings: {
         newspaper: {

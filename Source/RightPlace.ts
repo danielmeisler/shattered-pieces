@@ -106,7 +106,7 @@ namespace Endabgabe {
                 S4120_16: "Es war eine Mischung aus allen, irgendwann platzte mir der Kragen. Seine Regeln nahmen mir alles und ich konfrontierte ihn mit damit… doch es endete in einem riesigen Streit, da er nichts ändern wollte. Ich wollte ihn loswerden, da somit auch all meine Probleme verschwinden würden… also überlegt ich mir etwas. Ich verbündete mich mit den Gang-Mitgliedern, die derselben Meinung waren, dass die Gang ihr Potenzial nicht ausschöpfen würde.",
                 S4120_18: "Er hätte niemals die Führung freiwillig abgegeben… also lockte ich ihn mit dem Vorwand mich entschuldigen zu wollen zu einem Treffen. Normal ist er sehr vorsichtig und wachsam, doch er ist zu weich, weswegen er nicht erwartet hatte, aus seinen eigenen Reihen verraten zu werden. Schon fast traurig…und schwach.",
                 S4120_20: "Beweist nur, dass ich Recht habe…",
-                S4120_21: "Ohhh, aus Angst, dass ihr den richtigen Ort findet, habe ich vergessen euch zu durchsuchen… was ein dummer Anfängerfehler.",
+                S4120_21: "Ich hab euch nicht durchsucht... wie dumm von mir...",
                 S4120_24: "Glaubst du wirklich ich lass dich gehen?",
                 S4120_26: "Du willst ein Eins gegen Eins? Gegen mich? Hahahaha, na los!",
                 S4120_28: "Das Einzige was ich beende ist dein Leben, du Wicht! Ha!",
@@ -243,29 +243,49 @@ namespace Endabgabe {
         await ƒS.Speech.tell("Prolet", "Auaaa");
 
         await ƒS.Location.show(locations.storageHallFightFullest);
-        //vllt agressives gesicht?
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.nobu, "Was ist mit euch? Warum...?!?");
-        // Sequences wie Sumi sich befreit und die Schläger k.o macht
-        // Sequence wie sie Nobu das Messer entzieht und an seine Kehle hält
+        await ƒS.Character.hideAll();
+        await ƒS.Location.show(sequences.sumiThreatsNobu);
+        await ƒS.update(1);
 
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_21);
+        await ƒS.Speech.tell(characters.nobu, "Aber wie konntest du meine Leute besiegen? Du alleine?");
+        await ƒS.Speech.tell(characters.sumi, "Ha! Ich dachte du hast uns durchschaut?");
+        await ƒS.Speech.tell(characters.nobu, "Nein! Oder?!");
+        await ƒS.Speech.tell(characters.sumi, "Oh doch... einfacher ging es nicht...");
+        await ƒS.Speech.tell(characters.sumi, "Ha! Ich dachte du hast uns durchschaut?");
+        await ƒS.Speech.tell(characters.nobu, "Es kam mir von Anfang an komisch vor, dass du uns Alkohol mitbringst... da war was drin?");
+        await ƒS.Speech.tell(characters.protagonist, "Wir haben Tabletten besorgt die euch schwächen und euch übel wird... damit wollten wir euch von vorne rein schwächen, falls es zum Kampf kommt.");
+        await ƒS.Speech.tell(characters.sumi, "Und so dumm wie deine Gorillas sind haben sie sich draufgeworfen und alles leer gesoffen... außer du.");
+        await ƒS.Speech.tell(characters.nobu, "Ja... ich war so misstrauisch dass du was ausgeheckt haben könntest, dass ich mich nicht besaufen wollte und meine Sinne betäuben... das wäre eine zu große Angriffsfläche gewesen. Aber das etwas in den Getränken drin war? Da hatte ich wohl Glück im Unglück.");
+        await ƒS.Speech.tell(characters.sumi, "Egal, " + dataForSave.nameProtagonist + " befrei dich und wir können das hier beenden.");
+
         items.knife.static = false;
         await ƒS.Inventory.add(items.knife);
-        await ƒS.Speech.tell(characters.protagonist, "Ich sollte mich befreien...");
+        await ƒS.Speech.tell(characters.protagonist, "Ich sollte in meine Tasche greifen...");
 
         while (ƒS.Inventory.getAmount(items.knife) != 0) {
             await ƒS.update(1);
         }
+
+        await ƒS.Character.hideAll();
+        await ƒS.Location.show(sequences.grabKnife);
+        await ƒS.update(3);
+        // sounds fallendes knife, schmerz, blut? 
+
+        await ƒS.Location.show(locations.storageHallFightFullest);
+        await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, new ƒS.Position(480, ƒS.positions.bottomcenter.y));
+        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+        await ƒS.update(1);
         
-        // Inventar nutzen?
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_22);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_23);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_24);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_25);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_26);
-        // Sumi haut ab und der Kampf wird vorbereitet
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal_flipped, animate(animations.leftToLeftOut));
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_27);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_28);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_29);
