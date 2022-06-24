@@ -469,6 +469,26 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        letsFight: {
+            name: string;
+            background: string;
+        };
+        fightUnconscious: {
+            name: string;
+            background: string;
+        };
+        firstAidStorageHall: {
+            name: string;
+            background: string;
+        };
+        sumiHappyCryStorageHall: {
+            name: string;
+            background: string;
+        };
+        sumiHappyCryOutside: {
+            name: string;
+            background: string;
+        };
     };
     export let endings: {
         newspaper: {

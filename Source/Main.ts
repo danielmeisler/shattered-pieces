@@ -492,6 +492,26 @@ namespace Endabgabe {
             name: "grabKnife",
             background: "./assets/images/sequences/grabknife.png"
         },
+        letsFight: {
+            name: "letsFight",
+            background: "./assets/images/sequences/letsfight.png"
+        },
+        fightUnconscious: {
+            name: "fightUnconscious",
+            background: "./assets/images/sequences/fight_unconscious.png"
+        },
+        firstAidStorageHall: {
+            name: "firstAidStorageHall",
+            background: "./assets/images/sequences/sumifirstaid_storagehall.png"
+        },
+        sumiHappyCryStorageHall: {
+            name: "sumiHappyCryStorageHall",
+            background: "./assets/images/sequences/sumihappycry_storagehall.png"
+        },
+        sumiHappyCryOutside: {
+            name: "sumiHappyCryOutside",
+            background: "./assets/images/sequences/sumihappycry_outside.png"
+        },
     };
 
     export let endings = {
