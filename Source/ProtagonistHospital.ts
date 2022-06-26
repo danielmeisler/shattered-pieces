@@ -153,6 +153,7 @@ namespace Endabgabe {
         characters.nobu.name = "Nobu";
         characters.sumi.name = "Pinkes Mädchen";
         characters.yuko.name = "Sumis Mom";
+        dataForSave.protagonistHurt = true;
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(sequences.wakeUp);

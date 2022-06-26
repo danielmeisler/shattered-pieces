@@ -112,12 +112,14 @@ namespace Endabgabe {
                 S4120_28: "Das Einzige was ich beende ist dein Leben, du Wicht! Ha! Endlich kann ich dich erledigen, du warst mir schon seit der ersten Minute ein Dorn im Auge.",
                 S4120_30: "Nicht reden, zeig mir was du draufhast! Hahaha!",
 
-                S41211_01: "Das wars! Du hast echt nicht gedacht, dass du gegen mich gewinnen kannst, oder? Hahaha… verabschiede dich schon einmal von deinem Leben, du Wicht!",
-                S41211_03: "... was? ... Sumi ... ?",
+                S41211_01: "Das wars! Du hast echt nicht gedacht, dass du gegen mich gewinnen kannst, oder?",
+                S41211_01b: "Hahaha… verabschiede dich schon einmal von deinem Leben, du Wicht!",
+                S41211_03: "... was? ... wer? ... ?",
                 S41211_05: "Ich musste… beim letzten Gespräch hat die kleine Ratte zu viele Fragen gestellt… ich wurde nervös, also musste ich Shou töten, bevor ihr ihn findet… nur habe ich es nicht rechtzeitig geschafft seine Leiche wegzuschaffen… ich habe nicht erwartet, dass ihr so schnell seid… ahhh",
                 S41211_07: "Es war auch für mich nicht leicht, ich musste es tun…",
 
-                S41212_01: "Das wars! Du hast echt nicht gedacht, dass du gegen mich gewinnen kannst, oder? Hahaha… verabschiede dich schon einmal von deinem Leben, du Wicht!",
+                S41212_01: "Das wars! Du hast echt nicht gedacht, dass du gegen mich gewinnen kannst, oder?",
+                S41212_01b: "Hahaha… verabschiede dich schon einmal von deinem Leben, du Wicht!",
                 S41212_04: "Shou?!",
                 S41212_06: "Was soll ich mit einem Bruder, der mir Steine in den Weg legt?",
                 S41212_08: "Ich habe versucht mit dir zu reden, aber du warst ignorant.",
@@ -296,15 +298,27 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_28);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_29);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_30);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(3);
 
-        if (dataForSave.protagonistHurt == false) {
+        if (dataForSave.protagonistHurt == true) {
             if (dataForSave.nobuKnowsBrother == false) {
                 //Sounds vom Kampf
                 await ƒS.Location.show(sequences.fightUnconscious);
-                await ƒS.update(1);
+                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_01);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41212_02);
-                //Sumi ist mit ihrem Bruder zurück, Shou packt Nobu weg vom Protagonisten.
+                await ƒS.Location.show(locations.storageHallFight);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
+                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+                await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_01b);
+                //Sounds?
+                await ƒS.Character.hideAll();
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.grabbed, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
+                //Schlag?
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_03);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_04);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_05);
@@ -315,6 +329,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_10);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_11);
                 // Ez Kampf für Shou
+                await ƒS.Location.show(locations.storageHallNobu);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41212_12);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_14);
@@ -332,6 +348,10 @@ namespace Endabgabe {
                 if (dataForSave.romancePoints >= 2 ) {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
                     await ƒS.update(1);
+                    await ƒS.update(3);
+                    await ƒS.Location.show(sequences.sumiKissStorageHall);
+                    await ƒS.update(1);
+                    await ƒS.update(3);
                     // Sequenz Sumi und Protagonist küssen sich und gehen Hand in Hand zum Bruder
                     return await ending(3);
                 } else {
@@ -342,9 +362,19 @@ namespace Endabgabe {
                 }
             } else {
                 await ƒS.Location.show(sequences.fightUnconscious);
-                await ƒS.update(1);
+                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_01);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_02);
+                await ƒS.Location.show(locations.storageHallFight);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
+                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+                await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_01b);
+                //Sounds
+                await ƒS.Character.hideAll();
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
                 //Sequenz wie Sumi von hinten das Messer aufhebt und an Somu schleicht und voller Tränen und Rachegelüste zusticht.
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_03);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_04);
@@ -369,6 +399,9 @@ namespace Endabgabe {
                             await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_17);
                             await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_18);
                             await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_19);
+                            await ƒS.Location.show(sequences.sumiKissOutside);
+                            await ƒS.update(1);
+                            await ƒS.update(3);
                             // Ending wie sie sich küssen und ein neues Leben starten.
                             return await ending(1);
                         case sumiTurnInAnswer.yes:
@@ -392,7 +425,8 @@ namespace Endabgabe {
             }
         } else {
             if (dataForSave.nobuKnowsBrother == false) {
-                // Nobu liegt am Boden Sequenz
+                await ƒS.Location.show(sequences.nobuKO);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_03);
@@ -427,6 +461,10 @@ namespace Endabgabe {
                 if (dataForSave.romancePoints >= 2 ) {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
                     await ƒS.update(1);
+                    await ƒS.update(3);
+                    await ƒS.Location.show(sequences.sumiKissStorageHall);
+                    await ƒS.update(1);
+                    await ƒS.update(3);
                     // Sequenz Sumi und Protagonist küssen sich und gehen Hand in Hand zum Bruder
                     return await ending(3);
                 } else {
@@ -436,7 +474,8 @@ namespace Endabgabe {
                     return await ending(3);
                 }
             } else {
-                // Nobu liegt am Boden Sequenz
+                await ƒS.Location.show(sequences.nobuKO);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41221_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_03);
@@ -462,7 +501,9 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_17);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_18);
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_19);
-                    // Beide küssen sich
+                    await ƒS.Location.show(sequences.sumiKissOutside);
+                    await ƒS.update(1);
+                    await ƒS.update(3);
                     return await ending(3);
                 } else {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_20);

@@ -180,6 +180,10 @@ namespace Endabgabe {
             name: "StorageHallShou",
             background: "./assets/images/backgrounds/storagehall_shou.png"
         },
+        storageHallNobu: {
+            name: "storageHallNobu",
+            background: "./assets/images/backgrounds/storagehall_nobu.png"
+        },
         storageHallEmpty: {
             name: "StorageHallEmpty",
             background: "./assets/images/backgrounds/storagehall_empty.png"
@@ -496,6 +500,11 @@ namespace Endabgabe {
             name: "letsFight",
             background: "./assets/images/sequences/letsfight.png"
         },
+
+        nobuKO: {
+            name: "nobuKO",
+            background: "./assets/images/sequences/nobuko.png"
+        },
         fightUnconscious: {
             name: "fightUnconscious",
             background: "./assets/images/sequences/fight_unconscious.png"
@@ -511,6 +520,14 @@ namespace Endabgabe {
         sumiHappyCryOutside: {
             name: "sumiHappyCryOutside",
             background: "./assets/images/sequences/sumihappycry_outside.png"
+        },
+        sumiKissOutside: {
+            name: "sumiKissOutside",
+            background: "./assets/images/sequences/sumikiss_outside.png"
+        },
+        sumiKissStorageHall: {
+            name: "sumiKissStorageHall",
+            background: "./assets/images/sequences/sumikiss_storagehall.png"
         },
     };
 
@@ -554,7 +571,9 @@ namespace Endabgabe {
             origin: ƒS.ORIGIN.BOTTOMCENTER,
             pose: {
                 normal: "./assets/images/characters/nobu/nobu_normal.png",
-                happy: "./assets/images/characters/nobu/nobu_happy.png"
+                happy: "./assets/images/characters/nobu/nobu_happy.png",
+                hurt: "./assets/images/characters/nobu/nobu_hurt.png",
+                grabbed: "./assets/images/characters/nobu/nobu_grabbed.png"
             }
         },
         yuko: {

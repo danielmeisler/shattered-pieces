@@ -167,6 +167,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        storageHallNobu: {
+            name: string;
+            background: string;
+        };
         storageHallEmpty: {
             name: string;
             background: string;
@@ -473,6 +477,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        nobuKO: {
+            name: string;
+            background: string;
+        };
         fightUnconscious: {
             name: string;
             background: string;
@@ -486,6 +494,14 @@ declare namespace Endabgabe {
             background: string;
         };
         sumiHappyCryOutside: {
+            name: string;
+            background: string;
+        };
+        sumiKissOutside: {
+            name: string;
+            background: string;
+        };
+        sumiKissStorageHall: {
             name: string;
             background: string;
         };
@@ -530,6 +546,8 @@ declare namespace Endabgabe {
             pose: {
                 normal: string;
                 happy: string;
+                hurt: string;
+                grabbed: string;
             };
         };
         yuko: {
