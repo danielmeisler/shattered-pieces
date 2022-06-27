@@ -60,7 +60,7 @@ namespace Endabgabe {
                 S4120_08: "Mhh?!",
                 S4120_23: "Aber was ist mit dir?",
 
-                S41211_04: "DU HAST MEINEN BRUDER ERMORDET?",
+                S41211_04: "Du hast meinen Bruder ermordet...!?",
                 S41211_06: "Wie konntest du nur... Shou...",
                 S41211_09: "Ja… ich habe mich ja bereits innerlich für diesen Fall schon vorbereitet… nur als ich seine Leiche gesehen habe… darauf kann man sich nicht vorbereiten… aber es geht wieder.",
                 S41211_11: "Sag das nicht, das Monster hätte ihn jederzeit ermordet, wenn es ihm zu eng geworden wäre… es ist nicht deine Schuld. Du hast dein Versprechen gehalten und ihn gefunden, dafür bin ich dir dankbar.",
@@ -289,7 +289,8 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_23);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_24);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_25);
-        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal_flipped, animate(animations.leftToLeftOut));
+        await ƒS.Character.hide(characters.sumi);
+        await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.leftToLeftOut));
         await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.letsFight);
         await ƒS.update(1);
@@ -314,11 +315,23 @@ namespace Endabgabe {
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
                 await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_01b);
+                await ƒS.Speech.hide();
                 //Sounds?
                 await ƒS.Character.hideAll();
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.grabbed, ƒS.positions.bottomcenter);
+                await ƒS.update(2);
+                await ƒS.Character.hideAll();
+                await ƒS.Location.show(sequences.shouHitsNobu);
+                await ƒS.update(3);
+                //Sounds
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(2);
+
+                await ƒS.Location.show(locations.storageHallFightFullest);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, new ƒS.Position(480, ƒS.positions.bottomcenter.y));
+                await ƒS.Character.show(characters.shou, characters.shou.pose.normal, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
                 await ƒS.update(1);
-                //Schlag?
+
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_03);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_04);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_05);
@@ -328,36 +341,58 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_09);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_10);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_11);
-                // Ez Kampf für Shou
-                await ƒS.Location.show(locations.storageHallNobu);
+
+                ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.rightToMid));
+                ƒS.Character.animate(characters.shou, characters.shou.pose.normal, animate(animations.leftToMid));
                 await ƒS.update(1);
+                await ƒS.Character.hideAll();
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(3);
+                // Sounds
+                await ƒS.update(5);
+                await ƒS.Location.show(locations.storageHallNobu);
+                await ƒS.update(3);
+                await ƒS.Location.show(locations.storageHallFight);
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, new ƒS.Position(480, ƒS.positions.bottomcenter.y));
+                await ƒS.Character.show(characters.shou, characters.shou.pose.happy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41212_12);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_14);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_15);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_16);
+                await ƒS.Character.hide(characters.shou);
+                await ƒS.Character.show(characters.shou, characters.shou.pose.normal, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_17);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_18);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_19);
+                await ƒS.Character.animate(characters.shou, characters.shou.pose.normal, animate(animations.leftToLeftOut));
+                await ƒS.update(1);
+                await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.firstAidStorageHall);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_20);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41212_21);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_22);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41212_23);
+                await ƒS.Speech.hide();
                 if (dataForSave.romancePoints >= 2 ) {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
                     await ƒS.update(1);
                     await ƒS.update(3);
                     await ƒS.Location.show(sequences.sumiKissStorageHall);
                     await ƒS.update(1);
-                    await ƒS.update(3);
-                    // Sequenz Sumi und Protagonist küssen sich und gehen Hand in Hand zum Bruder
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich kann mein Leben mit der Person, die ich liebe, verbringen. " + dataForSave.nameProtagonist + ", ich liebe dich. \n \n Sumi");
                     return await ending(3);
                 } else {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
-                    // Sie gehen zu Shou
                     await ƒS.update(1);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     return await ending(3);
                 }
             } else {
@@ -371,17 +406,18 @@ namespace Endabgabe {
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
                 await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_01b);
-                //Sounds
+                //Sounds 
                 await ƒS.Character.hideAll();
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
-                //Sequenz wie Sumi von hinten das Messer aufhebt und an Somu schleicht und voller Tränen und Rachegelüste zusticht.
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_03);
+                await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_04);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_06);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_07);
-                //Sequenz wie nobu stirbt und sumi in tränen am boden sitzt
+
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_08);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_10);
@@ -402,7 +438,9 @@ namespace Endabgabe {
                             await ƒS.Location.show(sequences.sumiKissOutside);
                             await ƒS.update(1);
                             await ƒS.update(3);
-                            // Ending wie sie sich küssen und ein neues Leben starten.
+                            await ƒS.Location.show(sequences.black);
+                            await ƒS.update(5);
+                            await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und es wurden keine Fragen zum Täter gestellt, da sie es als interne Gang Angelegenheit abgestempelt haben. Jedoch wurde er für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir ... und ich liebe dich. \n \n Sumi");
                             return await ending(1);
                         case sumiTurnInAnswer.yes:
                             await ƒS.Speech.tell(characters.protagonist, "Ja, das wäre wohl besser...");
@@ -410,7 +448,9 @@ namespace Endabgabe {
                             await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_15);
                             await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_16);
                             await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_15);
-                            // Ending wie sie gestellt wird, in medien aufgeklärt wird blabla News Reporter?
+                            await ƒS.Location.show(sequences.black);
+                            await ƒS.update(5);
+                            await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und er wurde für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Ich habe mich gestellt, jedoch wurde der Fall als Notwehr abgestempelt, da er uns gekidnapped, gefesselt und fast umgebracht hat. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                             return await ending(2);
                     }
                 } else {
@@ -419,7 +459,9 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_15);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_16);
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_15);
-                    // Ending wie sie gestellt wird, in medien aufgeklärt wird blabla Newsreporter?
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und er wurde für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Ich habe mich gestellt, jedoch wurde der Fall als Notwehr abgestempelt, da er uns gekidnapped, gefesselt und fast umgebracht hat. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     return await ending(2);
                 }
             }
@@ -465,11 +507,17 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.sumiKissStorageHall);
                     await ƒS.update(1);
                     await ƒS.update(3);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich kann mein Leben mit der Person, die ich liebe, verbringen. " + dataForSave.nameProtagonist + ", ich liebe dich. \n \n Sumi");
                     // Sequenz Sumi und Protagonist küssen sich und gehen Hand in Hand zum Bruder
                     return await ending(3);
                 } else {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
                     await ƒS.update(1);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     // Sumi schaut den Protaginisten mit Tränen in den Augen glücklich an und sie gehen zum Bruder
                     return await ending(3);
                 }
@@ -484,7 +532,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_05);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41221_06);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_07);
-                // Sumi packt das Messer, der Protagonist hindert sie dran
+                await ƒS.Location.show(sequences.sumiGrabsKnife);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_08);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_10);
@@ -504,10 +553,16 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.sumiKissOutside);
                     await ƒS.update(1);
                     await ƒS.update(3);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und es wurden keine Fragen zum Täter gestellt, da sie es als interne Gang Angelegenheit abgestempelt haben. Jedoch wurde er für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir ... und ich liebe dich. \n \n Sumi");
                     return await ending(3);
                 } else {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_20);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_21);
+                    await ƒS.Location.show(sequences.black);
+                    await ƒS.update(5);
+                    await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und es wurden keine Fragen zum Täter gestellt, da sie es als interne Gang Angelegenheit abgestempelt haben. Jedoch wurde er für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     // Sie gehen
                     return await ending(3);
                 }

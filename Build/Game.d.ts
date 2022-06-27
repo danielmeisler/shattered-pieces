@@ -481,7 +481,19 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiGrabsKnife: {
+            name: string;
+            background: string;
+        };
         fightUnconscious: {
+            name: string;
+            background: string;
+        };
+        sumiStabbedNobu: {
+            name: string;
+            background: string;
+        };
+        shouHitsNobu: {
             name: string;
             background: string;
         };
