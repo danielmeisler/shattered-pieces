@@ -60,7 +60,7 @@ namespace Endabgabe {
                 S4120_08: "Mhh?!",
                 S4120_23: "Aber was ist mit dir?",
 
-                S41211_04: "Du hast meinen Bruder ermordet...!?",
+                S41211_04: "DU HAST MEINEN BRUDER ERMORDET?!?",
                 S41211_06: "Wie konntest du nur... Shou...",
                 S41211_09: "Ja… ich habe mich ja bereits innerlich für diesen Fall schon vorbereitet… nur als ich seine Leiche gesehen habe… darauf kann man sich nicht vorbereiten… aber es geht wieder.",
                 S41211_11: "Sag das nicht, das Monster hätte ihn jederzeit ermordet, wenn es ihm zu eng geworden wäre… es ist nicht deine Schuld. Du hast dein Versprechen gehalten und ihn gefunden, dafür bin ich dir dankbar.",
@@ -79,7 +79,7 @@ namespace Endabgabe {
                 S41212_20: "Von Nobu zusammengeschlagen zu werden scheint wohl dein Ding zu sein… aber ich hab dir vertraut und du dein Wort gehalten.",
                 S41212_22: "Ja, das stimmt wohl… Aber ich wollte mich nochmal bedanken… Hättest du dich damals nicht eingemischt, hätte ich meinen Bruder wahrscheinlich nie wieder gesehen. Ich weiß nicht, wie ich das je zurückgeben soll…",
 
-                S41221_04: "Er hat ihn umgebracht… Shou ist tot…",
+                S41221_04: "ER HAT IHN UMGEBRACHT… Shou ist tot…",
                 S41221_07: "DU MONSTER!",
                 S41221_09: "Du hast recht… das wäre ein zu einfacher Ausweg für ihn… er soll im Gefängnis verrotten…",
                 S41221_12: "Ja… ich habe mich ja bereits innerlich für diesen Fall schon vorbereitet… nur als ich seine Leiche gesehen habe… darauf kann man sich nicht vorbereiten… aber es geht wieder.",
@@ -411,9 +411,11 @@ namespace Endabgabe {
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_03);
-                await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
+                await ƒS.Location.show(sequences.sumiRage);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_04);
+                await ƒS.Location.show(sequences.sumiStabbedNobu);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_06);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_07);
@@ -472,7 +474,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_03);
-                // Sumi kommt mit Shou zurück
+                await ƒS.Location.show(sequences.sumiShouComing);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_04);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_05);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_06);
@@ -527,13 +530,15 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41221_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_03);
-                // Sumi kommt mit Tränen zurück
+                await ƒS.Location.show(sequences.sumiRage);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_05);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41221_06);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_07);
                 await ƒS.Location.show(sequences.sumiGrabsKnife);
                 await ƒS.update(3);
+                // Geht mit Messer auf Nobu zu
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_08);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_10);

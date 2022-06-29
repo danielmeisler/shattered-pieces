@@ -509,12 +509,20 @@ namespace Endabgabe {
             name: "sumiGrabsKnife",
             background: "./assets/images/sequences/sumigrabsknife.png"
         },
+        sumiRage: {
+            name: "sumiRage",
+            background: "./assets/images/sequences/sumirage.png"
+        },
         fightUnconscious: {
             name: "fightUnconscious",
             background: "./assets/images/sequences/fight_unconscious.png"
         },
+        sumiShouComing: {
+            name: "sumiShouComing",
+            background: "./assets/images/sequences/sumishoucoming.png"
+        },
         sumiStabbedNobu: {
-            name: "nosumiStabbedNobubuKO",
+            name: "sumiStabbedNobu",
             background: "./assets/images/sequences/sumistabbednobu.png"
         },
         shouHitsNobu: {

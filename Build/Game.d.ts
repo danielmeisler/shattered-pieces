@@ -485,7 +485,15 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiRage: {
+            name: string;
+            background: string;
+        };
         fightUnconscious: {
+            name: string;
+            background: string;
+        };
+        sumiShouComing: {
             name: string;
             background: string;
         };
