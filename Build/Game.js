@@ -215,6 +215,10 @@ var Endabgabe;
         storageHallFightFullest: {
             name: "StorageHallFullest",
             background: "./assets/images/backgrounds/storagehall_fight_fullest.png"
+        },
+        storagehallOutside: {
+            name: "storagehallOutside",
+            background: "./assets/images/backgrounds/storagehall_outside.png"
         }
     };
     Endabgabe.sequences = {
@@ -514,6 +518,10 @@ var Endabgabe;
             name: "sumiRage",
             background: "./assets/images/sequences/sumirage.png"
         },
+        sumiKillsNobu: {
+            name: "sumiKillsNobu",
+            background: "./assets/images/sequences/sumikillsnobu.png"
+        },
         fightUnconscious: {
             name: "fightUnconscious",
             background: "./assets/images/sequences/fight_unconscious.png"
@@ -549,7 +557,7 @@ var Endabgabe;
         sumiKissStorageHall: {
             name: "sumiKissStorageHall",
             background: "./assets/images/sequences/sumikiss_storagehall.png"
-        },
+        }
     };
     Endabgabe.endings = {
         newspaper: {
@@ -582,7 +590,8 @@ var Endabgabe;
                 embarrassed: "./assets/images/characters/sumi/sumi_embarrassed.png",
                 embarrassed_flipped: "./assets/images/characters/sumi/sumi_embarrassed_flipped.png",
                 hurt: "./assets/images/characters/sumi/sumi_hurt.png",
-                hurt_flipped: "./assets/images/characters/sumi/sumi_hurt_flipped.png"
+                hurt_flipped: "./assets/images/characters/sumi/sumi_hurt_flipped.png",
+                shy: "./assets/images/characters/sumi/sumi_shy.png"
             }
         },
         nobu: {
@@ -1832,10 +1841,14 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41211_05);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41211_06);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41211_07);
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.storagehallOutside);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.shy, Endabgabe.ƒS.positions.bottomcenter);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41211_08);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41211_09);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41211_10);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41211_11);
+                await Endabgabe.ƒS.Character.hideAll();
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryOutside);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41211_12);
@@ -1953,15 +1966,20 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41221_07);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiGrabsKnife);
                 await Endabgabe.ƒS.update(3);
-                // Geht mit Messer auf Nobu zu
+                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiKillsNobu);
+                await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41221_08);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41221_09);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41221_10);
                 // Polizei kommt
+                await Endabgabe.ƒS.Location.show(Endabgabe.locations.storagehallOutside);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.shy, Endabgabe.ƒS.positions.bottomcenter);
+                await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41221_11);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41221_12);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41221_13);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41221_14);
+                await Endabgabe.ƒS.Character.hideAll();
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryOutside);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41221_15);

@@ -203,6 +203,10 @@ namespace Endabgabe {
         storageHallFightFullest: {
             name: "StorageHallFullest",
             background: "./assets/images/backgrounds/storagehall_fight_fullest.png"
+        },
+        storagehallOutside: {
+            name: "storagehallOutside",
+            background: "./assets/images/backgrounds/storagehall_outside.png"
         }
     };
 
@@ -513,6 +517,10 @@ namespace Endabgabe {
             name: "sumiRage",
             background: "./assets/images/sequences/sumirage.png"
         },
+        sumiKillsNobu: {
+            name: "sumiKillsNobu",
+            background: "./assets/images/sequences/sumikillsnobu.png"
+        },
         fightUnconscious: {
             name: "fightUnconscious",
             background: "./assets/images/sequences/fight_unconscious.png"
@@ -549,7 +557,7 @@ namespace Endabgabe {
         sumiKissStorageHall: {
             name: "sumiKissStorageHall",
             background: "./assets/images/sequences/sumikiss_storagehall.png"
-        },
+        }
     };
 
     export let endings = {
@@ -584,7 +592,8 @@ namespace Endabgabe {
                 embarrassed: "./assets/images/characters/sumi/sumi_embarrassed.png",
                 embarrassed_flipped: "./assets/images/characters/sumi/sumi_embarrassed_flipped.png",
                 hurt: "./assets/images/characters/sumi/sumi_hurt.png",
-                hurt_flipped: "./assets/images/characters/sumi/sumi_hurt_flipped.png"
+                hurt_flipped: "./assets/images/characters/sumi/sumi_hurt_flipped.png",
+                shy: "./assets/images/characters/sumi/sumi_shy.png"
             }
         },
         nobu: {

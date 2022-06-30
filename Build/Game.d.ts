@@ -191,6 +191,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        storagehallOutside: {
+            name: string;
+            background: string;
+        };
     };
     export let sequences: {
         black: {
@@ -489,6 +493,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiKillsNobu: {
+            name: string;
+            background: string;
+        };
         fightUnconscious: {
             name: string;
             background: string;
@@ -558,6 +566,7 @@ declare namespace Endabgabe {
                 embarrassed_flipped: string;
                 hurt: string;
                 hurt_flipped: string;
+                shy: string;
             };
         };
         nobu: {

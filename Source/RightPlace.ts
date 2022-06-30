@@ -420,10 +420,15 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_06);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_07);
 
+
+                await ƒS.Location.show(locations.storagehallOutside);
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_08);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_10);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_11);
+                await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.sumiHappyCryOutside);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_12);
@@ -538,15 +543,20 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_07);
                 await ƒS.Location.show(sequences.sumiGrabsKnife);
                 await ƒS.update(3);
-                // Geht mit Messer auf Nobu zu
+                await ƒS.Location.show(sequences.sumiKillsNobu);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_08);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_10);
                 // Polizei kommt
+                await ƒS.Location.show(locations.storagehallOutside);
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, ƒS.positions.bottomcenter);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_11);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_12);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_14);
+                await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.sumiHappyCryOutside);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_15);
