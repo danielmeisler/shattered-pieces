@@ -38,7 +38,7 @@ namespace Endabgabe {
                 S41221_01: "Das Spiel ist aus, Nobu. Du hast verloren!",
                 S41221_03: "Vielleicht bist du ohne deine Handlanger doch nicht so ein großer Kämpfer.",
                 S41221_05: "Was?",
-                S41221_08: "Er ist es nicht wert, Sumi. Werde nicht auch zum Mörder wie er.",
+                S41221_08: "HALT, SUMI, STOP! Werde nicht auch zum Mörder wie er, er ist es nicht wert!",
                 S41221_10: "Ich rufe die Polizei und lass sie den Fall aufklären.",
                 S41221_11: "Geht es dir gut?",
                 S41221_13: "Es tut mir leid, Shou ist meinetwegen tot.",
@@ -73,7 +73,7 @@ namespace Endabgabe {
                 S41211_17: "Aber... wieso nicht?",
                 S41211_19: "Das klingt schön… vielleicht sollte ich das wirklich tun…",
                 
-                S41212_14: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mit bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + "plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
+                S41212_14: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mit bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + " plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
                 S41212_16: "Ich bin so froh, dass wir dich noch rechtzeitig gefunden haben...",
                 S41212_18: "Keine Veränderungen, sie liegt immer noch schwerkrank im Krankenhaus…",
                 S41212_20: "Von Nobu zusammengeschlagen zu werden scheint wohl dein Ding zu sein… aber ich hab dir vertraut und du dein Wort gehalten.",
@@ -89,7 +89,7 @@ namespace Endabgabe {
                 S41221_21: "Danke, wirklich… danke für Alles.",
 
                 S41222_14: "Wir sollten die Polizei holen, immerhin wirst du vermisst Shou.",
-                S41222_16: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mit bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + "plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
+                S41222_16: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mit bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + " plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
                 S41222_18: "Ich bin so froh, dass wir dich noch rechtzeitig gefunden haben...",
                 S41222_20: "Keine Veränderungen, sie liegt immer noch schwerkrank im Krankenhaus…",
                 S41222_22: "Hätte nicht gedacht, dass du Nobu schlagen könntest.",
@@ -299,6 +299,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_28);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_29);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_30);
+        await ƒS.Speech.hide();
         await ƒS.Location.show(sequences.black);
         await ƒS.update(3);
 
@@ -341,9 +342,9 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_09);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_10);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41212_11);
+                await ƒS.Speech.hide();
 
-                ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.rightToMid));
-                ƒS.Character.animate(characters.shou, characters.shou.pose.normal, animate(animations.leftToMid));
+                await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.rightToMid));
                 await ƒS.update(1);
                 await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.black);
@@ -411,6 +412,7 @@ namespace Endabgabe {
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_03);
+                await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.sumiRage);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_04);
@@ -420,6 +422,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_06);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_07);
 
+                await ƒS.Speech.tell(characters.protagonist, "... Sumi was hast du getan?");
+                await ƒS.update(3);
 
                 await ƒS.Location.show(locations.storagehallOutside);
                 await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, ƒS.positions.bottomcenter);
@@ -442,6 +446,7 @@ namespace Endabgabe {
                             await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_17);
                             await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_18);
                             await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_19);
+                            await ƒS.Speech.hide();
                             await ƒS.Location.show(sequences.sumiKissOutside);
                             await ƒS.update(1);
                             await ƒS.update(3);
@@ -481,8 +486,16 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_03);
                 await ƒS.Location.show(sequences.sumiShouComing);
                 await ƒS.update(3);
+                await ƒS.Speech.tell(characters.sumi, dataForSave.nameProtagonist + "!!!");
+                await ƒS.Location.show(sequences.nobuKO);
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, new ƒS.Position(480, ƒS.positions.bottomcenter.y));
+                await ƒS.Character.show(characters.shou, characters.shou.pose.happy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_04);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_05);
+                await ƒS.Character.hide(characters.shou);
+                await ƒS.Character.show(characters.shou, characters.shou.pose.normal, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_06);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_07);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_08);
@@ -492,13 +505,22 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_12);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_14);
+                await ƒS.Character.hide(characters.shou);
+                await ƒS.Character.show(characters.shou, characters.shou.pose.happy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_15);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_16);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_17);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_18);
+                await ƒS.Character.hide(characters.shou);
+                await ƒS.Character.show(characters.shou, characters.shou.pose.normal, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_19);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_20);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_21);
+                await ƒS.Character.animate(characters.shou, characters.shou.pose.normal, animate(animations.leftToLeftOut));
+                await ƒS.update(1);
+                await ƒS.Character.hideAll();
                 // Shou trägt Nobu raus
                 await ƒS.Location.show(sequences.firstAidStorageHall);
                 await ƒS.update(1);
@@ -508,12 +530,11 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_25);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_26);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_27);
+                await ƒS.Speech.hide();
                 if (dataForSave.romancePoints >= 2 ) {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
                     await ƒS.update(1);
-                    await ƒS.update(3);
                     await ƒS.Location.show(sequences.sumiKissStorageHall);
-                    await ƒS.update(1);
                     await ƒS.update(3);
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(5);
@@ -539,15 +560,22 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_05);
+                await ƒS.Location.show(sequences.nobuKO);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41221_06);
+                await ƒS.Location.show(sequences.sumiRage);
+                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_07);
                 await ƒS.Location.show(sequences.sumiGrabsKnife);
                 await ƒS.update(3);
                 await ƒS.Location.show(sequences.sumiKillsNobu);
                 await ƒS.update(3);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_08);
+                await ƒS.Location.show(sequences.sumiAlmostStabbedNobu);
+                await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_10);
+                await ƒS.Speech.hide();
                 // Polizei kommt
                 await ƒS.Location.show(locations.storagehallOutside);
                 await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, ƒS.positions.bottomcenter);
@@ -565,6 +593,7 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_17);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_18);
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_19);
+                    await ƒS.Speech.hide();
                     await ƒS.Location.show(sequences.sumiKissOutside);
                     await ƒS.update(1);
                     await ƒS.update(3);

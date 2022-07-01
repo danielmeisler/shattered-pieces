@@ -130,7 +130,6 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
-        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         characters.nobu.name = "???";
         characters.sumi.name = "Pinkes Mädchen";
         await ƒS.Location.show(sequences.black);
@@ -159,11 +158,17 @@ namespace Endabgabe {
         characters.sumi.name = "Sumi";
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2100_08);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_09);
+        await ƒS.Sound.fade(sound.door_bell_buzzer, 1, 2, false);
+        await ƒS.Sound.play(sound.door_knocking, 1, false);
         ƒS.Speech.hide();
         await ƒS.Character.hideAll();
+        
+        ƒS.Sound.play(sound.wooden_floor_footsteps, 1, false);
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
+        await ƒS.Sound.fade(sound.wooden_floor_footsteps, 0, 0, false);
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
+        await ƒS.Sound.play(sound.door_opening, 0.5, false);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_10);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_11);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_12);
@@ -174,8 +179,10 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_18);
         ƒS.Speech.hide();
+        await ƒS.Sound.play(sound.door_closing, 0.5, false);
+        await ƒS.Sound.play(sound.wooden_floor_footsteps, 1, false);
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal_flipped, animate(animations.leftOutToMid));
-        await ƒS.update(1);
+        await ƒS.Sound.fade(sound.wooden_floor_footsteps, 0, 0, false);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_19);
         juiceOrNot = await ƒS.Menu.getInput(juiceOrNotAnswer, "decisionClass");
 
@@ -218,6 +225,7 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2110_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2110_01);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2110_02);
+                await ƒS.Sound.play(sound.door_closing, 0.5, false);
                 await ƒS.Location.show(sequences.youLeave);
                 await ƒS.update(3);
                 return await ending(1);
@@ -239,6 +247,7 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.sumiMadCry);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2121_02);
+                await ƒS.Sound.play(sound.door_closing, 0.5, false);
                 await ƒS.Location.show(sequences.sumiKicksYouOut);
                 await ƒS.update(3);
                 return await ending(2);
@@ -267,7 +276,7 @@ namespace Endabgabe {
                 await ƒS.update(10);
                 await ƒS.Location.show(sequences.planningNight);
                 await ƒS.update(1);
-                //Regensounds?
+                await ƒS.Sound.fade(sound.raining, 0.1, 8, true);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
                 await ƒS.Location.show(locations.sumisHome_livingRoom_night);
                 await ƒS.update(1);
@@ -282,11 +291,14 @@ namespace Endabgabe {
                 ƒS.Speech.hide();
                 await ƒS.Location.show(locations.sumisHome_bathRoom_normal);
                 await ƒS.update(2);
+                await ƒS.Sound.play(sound.bath_filling, 0.5, false);
                 await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
                 await ƒS.update(5);
+                await ƒS.Sound.play(sound.hard_floor_footsteps, 0.5, false);
                 await ƒS.Location.show(locations.sumisHome_hallway);
                 await ƒS.update(2);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
+                await ƒS.Sound.play(sound.hard_floor_footsteps, 0, false);
                 if (dataForSave.nameProtagonist == "ecchi") {
                     await ƒS.Location.show(sequences.sumiUndress);
                     await ƒS.update(1);
@@ -305,7 +317,7 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_17);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_18);
                 await ƒS.Location.show(locations.sumisHome_futonroom);
-                await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed, ƒS.positions.bottomcenter);
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed2, ƒS.positions.bottomcenter);
                 await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 
                 flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
@@ -322,6 +334,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Location.show(sequences.theNextDay);
                 await ƒS.update(3);
+                await ƒS.Sound.fade(sound.raining, 0, 0, false);
                 return "sumisHouse";
         }
     }

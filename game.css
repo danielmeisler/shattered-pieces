@@ -20,24 +20,19 @@ canvas {
 
 /* Splashscreen */
 dialog[type="splash"] {
-  background-image: url("Images/Backgrounds/starry.gif");
-  background-repeat: repeat;
-  background-size: contain;
+  position: absolute;
+  background-image: url("./assets/images/splash/Splash.png");
   width: 100%;
-  /* height: auto; */
-}
-
-dialog[type="splash"] > p {
-  font-size: 2vmin;
-  color: white;
-  text-align: center;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 #FudgeStoryLogo {
-  display: block;
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
+  width: 25%;
+  margin-bottom: 2%;
+  margin-right: 2%;
 }
 
 .choicesCSSclass {

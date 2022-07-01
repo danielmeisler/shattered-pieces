@@ -46,9 +46,13 @@ namespace Endabgabe {
         filler_track: "./assets/sounds/music/Filler_Track.mp3",
         first_encounter: "./assets/sounds/music/First_Encounter.mp3",
         sad_times: "./assets/sounds/music/Sad_Times.mp3",
+        romantic_track: "./assets/sounds/music/Romantic_Track.mp3",
         searching_track: "./assets/sounds/music/Searching_Track.mp3",
+        stealth_track: "./assets/sounds/music/Stealth_Track.mp3",
         final_fight: "./assets/sounds/music/Final_Fight.mp3",
 
+        good_ending: "./assets/sounds/music/Good_Ending.mp3",
+        neutral_ending: "./assets/sounds/music/Neutral_Ending.mp3",
         sad_ending: "./assets/sounds/music/Sad_Ending.mp3",
   
         // sfx
@@ -70,7 +74,16 @@ namespace Endabgabe {
         heartbeat: "./assets/sounds/sfx/heartbeat.mp3",
         police_sirens: "./assets/sounds/sfx/policesirens.mp3",
         group_scream: "./assets/sounds/sfx/groupscream.mp3",
-        woman_heavy_breathing: "./assets/sounds/sfx/womanheavybreathing.mp3"
+        woman_heavy_breathing: "./assets/sounds/sfx/womanheavybreathing.mp3",
+
+        door_bell_buzzer: "./assets/sounds/sfx/doorbellbuzzer.mp3",
+        door_knocking: "./assets/sounds/sfx/doorknocking.mp3",
+        wooden_floor_footsteps: "./assets/sounds/sfx/woodenfloorfootsteps.mp3",
+        hard_floor_footsteps: "./assets/sounds/sfx/hardfloorfootsteps.mp3",
+        door_opening: "./assets/sounds/sfx/dooropening.mp3",
+        door_closing: "./assets/sounds/sfx/doorclosing.mp3",
+        raining: "./assets/sounds/sfx/rainloop.mp3",
+        bath_filling: "./assets/sounds/sfx/bathfilling.mp3",
     };
   
     export let locations = {
@@ -533,6 +546,10 @@ namespace Endabgabe {
             name: "sumiStabbedNobu",
             background: "./assets/images/sequences/sumistabbednobu.png"
         },
+        sumiAlmostStabbedNobu: {
+            name: "sumiAlmostStabbedNobu",
+            background: "./assets/images/sequences/sumialmoststabbednobu.png"
+        },
         shouHitsNobu: {
             name: "shouHitsNobu",
             background: "./assets/images/sequences/shouhitsnobu.png"
@@ -593,7 +610,8 @@ namespace Endabgabe {
                 embarrassed_flipped: "./assets/images/characters/sumi/sumi_embarrassed_flipped.png",
                 hurt: "./assets/images/characters/sumi/sumi_hurt.png",
                 hurt_flipped: "./assets/images/characters/sumi/sumi_hurt_flipped.png",
-                shy: "./assets/images/characters/sumi/sumi_shy.png"
+                shy: "./assets/images/characters/sumi/sumi_shy.png",
+                embarrassed2: "./assets/images/characters/sumi/sumi_embarrassed2.png"
             }
         },
         nobu: {
@@ -773,7 +791,7 @@ namespace Endabgabe {
         }
     }
   
-    let volume: number = 1.0;
+    let volume: number = 0.5;
   
     export function volumeUp(): void {
         if (volume < 100) {
@@ -843,9 +861,6 @@ namespace Endabgabe {
             static: true
         }
 
-        // Hier kommen noch Waffen hin?
-        // Abfragen wann Items benutzt werden, um die horny brille zu benutzen oder sich später zu befreien...zum Beispiel if getAmount == 0? Zumindest im Finale, aber wie mit Brille?
-        // Background Overlay Sumi befreien?
       };
 
     // async function hndGlasses(_event: CustomEvent): Promise<void> {

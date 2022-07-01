@@ -115,7 +115,7 @@ namespace Endabgabe {
     await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);
-    await ƒS.update(3);
+    await ƒS.update(1);
     await ƒS.Sound.fade(sound.woman_groan_1, 0.3, 1, false);
     await ƒS.Sound.fade(sound.woman_groan_2, 0.5, 1, false);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_02);
@@ -133,7 +133,9 @@ namespace Endabgabe {
 
     switch (interfereOrNot) {
               case interfereOrNotAnswer.ignore:
-                  return await ending(1);
+                await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
+                return await ending(1);
               case interfereOrNotAnswer.interefere:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_05);
                 howToInterfere = await ƒS.Menu.getInput(howToInterfereAnswer, "decisionClass");
@@ -187,7 +189,8 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.gimmeYourHand);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S1121_08);
-
+                await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                 await ƒS.Character.hideAll();
                 return "sumisHome";
               case howToInterfereAnswer.threatenWithCops:
@@ -239,6 +242,8 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_09);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_10);
                     await ƒS.Character.hideAll();
+                    await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                    await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return "sumisHome";
                   case nobuTalk4Answer.fight:
                 }
@@ -271,6 +276,8 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(1);
                     await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
+                    await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                    await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return await ending(2);
                   case provokeOrKeepUpAnswer.keepUp:
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_06);
@@ -292,7 +299,8 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1123_07);
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(2);
-                    //WIP for Hospital Scene
+                    await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                    await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return "protagonistHospital";
                 }
               case howToInterfereAnswer.getHelp:
@@ -316,7 +324,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_04);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(1);
-                //WIP for Hospital Scene
+                await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                 return "sumiHospital";
     }
   }

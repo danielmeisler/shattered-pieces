@@ -235,7 +235,6 @@ namespace Endabgabe {
                 break;
         }
 
-        await ƒS.Character.hide(characters.sumi);
         await ƒS.Location.show(sequences.sumiSmilingEyesOpenInHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3340_11);

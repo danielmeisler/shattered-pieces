@@ -358,7 +358,7 @@ namespace Endabgabe {
                 flirtOrNot = await ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
 
                 await ƒS.Location.show(locations.protagonistHospitalRoom_night);
-                await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
                 await ƒS.update(1);
 
                 switch (flirtOrNot) {
@@ -367,14 +367,14 @@ namespace Endabgabe {
                     case flirtOrNotAnswer.flirt:
                         dataForSave.romancePoints++;
                         await ƒS.Character.hideAll();
-                        await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
+                        await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed2, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
                         await ƒS.update(1);
                         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2243_12);
                         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2243_13);
                         break;
                 }
                 ƒS.Speech.hide();
-                await ƒS.Character.animate(characters.sumi, characters.sumi.pose.embarrassed_flipped, animate(animations.leftToLeftOut));
+                await ƒS.Character.animate(characters.sumi, characters.sumi.pose.embarrassed2, animate(animations.leftToLeftOut));
                 ƒS.Character.hideAll();
                 await ƒS.update(1);
                 await ƒS.Location.show(sequences.theNextDay);

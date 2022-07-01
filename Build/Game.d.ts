@@ -43,8 +43,12 @@ declare namespace Endabgabe {
         filler_track: string;
         first_encounter: string;
         sad_times: string;
+        romantic_track: string;
         searching_track: string;
+        stealth_track: string;
         final_fight: string;
+        good_ending: string;
+        neutral_ending: string;
         sad_ending: string;
         woman_groan_1: string;
         woman_groan_2: string;
@@ -65,6 +69,14 @@ declare namespace Endabgabe {
         police_sirens: string;
         group_scream: string;
         woman_heavy_breathing: string;
+        door_bell_buzzer: string;
+        door_knocking: string;
+        wooden_floor_footsteps: string;
+        hard_floor_footsteps: string;
+        door_opening: string;
+        door_closing: string;
+        raining: string;
+        bath_filling: string;
     };
     export let locations: {
         street_evening: {
@@ -509,6 +521,10 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
+        sumiAlmostStabbedNobu: {
+            name: string;
+            background: string;
+        };
         shouHitsNobu: {
             name: string;
             background: string;
@@ -567,6 +583,7 @@ declare namespace Endabgabe {
                 hurt: string;
                 hurt_flipped: string;
                 shy: string;
+                embarrassed2: string;
             };
         };
         nobu: {
