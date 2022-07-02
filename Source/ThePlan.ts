@@ -169,6 +169,11 @@ namespace Endabgabe {
         await ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {
             return "rightPlace";
+        } else if (code == "dm99" || code == "DM99") {
+            await ƒS.Speech.tell(characters.protagonist, "Woher kommen die plötzlich...? Soll ich sie anziehen?");
+            await ƒS.Inventory.add(items.glasses);
+            await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+            return "rightPlace";
         } else {
             return "wrongPlace";
         }

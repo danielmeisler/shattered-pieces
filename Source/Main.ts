@@ -74,16 +74,20 @@ namespace Endabgabe {
         heartbeat: "./assets/sounds/sfx/heartbeat.mp3",
         police_sirens: "./assets/sounds/sfx/policesirens.mp3",
         group_scream: "./assets/sounds/sfx/groupscream.mp3",
+        running: "./assets/sounds/sfx/running.mp3",
         woman_heavy_breathing: "./assets/sounds/sfx/womanheavybreathing.mp3",
 
         door_bell_buzzer: "./assets/sounds/sfx/doorbellbuzzer.mp3",
         door_knocking: "./assets/sounds/sfx/doorknocking.mp3",
-        wooden_floor_footsteps: "./assets/sounds/sfx/woodenfloorfootsteps.mp3",
         hard_floor_footsteps: "./assets/sounds/sfx/hardfloorfootsteps.mp3",
         door_opening: "./assets/sounds/sfx/dooropening.mp3",
         door_closing: "./assets/sounds/sfx/doorclosing.mp3",
         raining: "./assets/sounds/sfx/rainloop.mp3",
         bath_filling: "./assets/sounds/sfx/bathfilling.mp3",
+
+        rooster: "./assets/sounds/sfx/rooster.mp3",
+        
+        hospital_ambiente: "./assets/sounds/sfx/hospital_ambiente.mp3",
     };
   
     export let locations = {
@@ -820,8 +824,8 @@ namespace Endabgabe {
             name: "Mysteriöse Brille",
             description: "Willst du sie wirklich aufsetzen?",
             image: "./assets/images/items/glasses.png",
-            static: false
-            //handler: hndGlasses
+            static: false,
+            handler: hndGlasses
         },
         juice: {
             name: "Saft",
@@ -863,12 +867,9 @@ namespace Endabgabe {
 
       };
 
-    // async function hndGlasses(_event: CustomEvent): Promise<void> {
-    //     await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
-    //     await ƒS.update(3);
-    //     characters.sumi.pose.normal = "./assets/images/characters/sumi/.png";
-    //     characters.sumi.pose.normal_flipped = "./assets/images/characters/sumi/.png";
-    // }
+    async function hndGlasses(_event: CustomEvent): Promise<void> {
+        window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    }
     
     async function hndJuice(_event: CustomEvent): Promise<void> {
         await ƒS.Speech.tell(characters.protagonist, "Boahhhh geiler Saft!");

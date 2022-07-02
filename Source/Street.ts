@@ -109,7 +109,7 @@ namespace Endabgabe {
     ƒS.Speech.hide();
     characters.nobu.name = "Blonder Junge";
     characters.sumi.name = "Pinkes Mädchen";
-    //ƒS.Sound.fade(sound.filler_track, 0.1, 14, true);
+    //ƒS.Sound.play(sound.filler_track, 0.1, true);
     await ƒS.Location.show(sequences.start);
     await ƒS.update(10);
     await ƒS.Location.show(locations.street_evening);
@@ -127,14 +127,15 @@ namespace Endabgabe {
     //await ƒS.Sound.fade(sound.filler_track, 0, 0, false);
     await ƒS.Location.show(sequences.harassment);
     await ƒS.update(1);
-    ƒS.Sound.fade(sound.first_encounter, 0.1, 19, true);
+    ƒS.Sound.play(sound.first_encounter, 0.1, true);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_04);
     interfereOrNot = await ƒS.Menu.getInput(interfereOrNotAnswer, "decisionClass");
 
     switch (interfereOrNot) {
               case interfereOrNotAnswer.ignore:
                 await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
-                await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(3);
                 return await ending(1);
               case interfereOrNotAnswer.interefere:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_05);
@@ -169,7 +170,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
                 await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
-                ƒS.Sound.fade(sound.heartbeat, 0, 3, false);
+                ƒS.Sound.play(sound.heartbeat, 1, true);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_05);
 
                 await ƒS.Location.show(sequences.unconsciousNobuGang);
@@ -181,11 +182,14 @@ namespace Endabgabe {
 
                 ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
                 ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                ƒS.Sound.fade(sound.running, 0.5, 5, false);
+                ƒS.Sound.fade(sound.running, 0.3, 5, false);
+                ƒS.Sound.fade(sound.running, 0.1, 5, false);
                 await ƒS.Location.show(sequences.police);
                 await ƒS.update(1);
 
                 await ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
-
+                ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
                 await ƒS.Location.show(sequences.gimmeYourHand);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S1121_08);
@@ -221,7 +225,7 @@ namespace Endabgabe {
                     await ƒS.update(1);
                     await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
                     await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
-                    ƒS.Sound.fade(sound.heartbeat, 0, 3, false);
+                    ƒS.Sound.play(sound.heartbeat, 1, true);
                     await ƒS.Location.show(sequences.unconsciousNobuGang);
                     await ƒS.update(1);
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_05);
@@ -230,12 +234,16 @@ namespace Endabgabe {
                     ƒS.Speech.hide();
                     ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
                     ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                    ƒS.Sound.fade(sound.running, 0.5, 5, false);
+                    ƒS.Sound.fade(sound.running, 0.3, 5, false);
+                    ƒS.Sound.fade(sound.running, 0.1, 5, false);
                     await ƒS.Location.show(sequences.police);
                     await ƒS.update(1);
 
                     await ƒS.Speech.tell("Schläger", text.Schlaeger.S1122_06);
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1122_07);
                     ƒS.Character.hide(characters.nobu);
+                    ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
                     await ƒS.Location.show(sequences.gimmeYourHand);
                     await ƒS.update(1);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_08);
@@ -261,7 +269,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
                 await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
-                ƒS.Sound.fade(sound.heartbeat, 0, 3, false);
+                ƒS.Sound.play(sound.heartbeat, 1, true);
                 await ƒS.Location.show(sequences.unconsciousNobuGang);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_04);
@@ -276,6 +284,7 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(1);
                     await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
+                    await ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
                     await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return await ending(2);
@@ -291,8 +300,11 @@ namespace Endabgabe {
                     await ƒS.Sound.fade(sound.punch_4, 0, 1, false);
                     ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
                     ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
+                    ƒS.Sound.fade(sound.running, 0.5, 5, false);
+                    ƒS.Sound.fade(sound.running, 0.3, 5, false);
                     await ƒS.Sound.fade(sound.punch_5, 0, 1, false);
                     await ƒS.Sound.fade(sound.punch_6, 0, 1, false);
+                    ƒS.Sound.fade(sound.running, 0.1, 5, false);
                     await ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
                     await ƒS.Location.show(sequences.unconsciousSumi);
                     await ƒS.update(2);
@@ -301,6 +313,7 @@ namespace Endabgabe {
                     await ƒS.update(2);
                     await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
+                    await ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
                     return "protagonistHospital";
                 }
               case howToInterfereAnswer.getHelp:
@@ -315,7 +328,10 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.police);
                 await ƒS.update(1);
                 ƒS.Sound.fade(sound.group_scream, 0.1, 5, false);
+                ƒS.Sound.fade(sound.running, 0.5, 5, false);
                 await ƒS.Location.show(sequences.gangRunningAway);
+                ƒS.Sound.fade(sound.running, 0.3, 5, false);
+                ƒS.Sound.fade(sound.running, 0.1, 5, false);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_03);
                 await ƒS.Location.show(sequences.sumiHurt);
@@ -326,6 +342,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                 await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
+                await ƒS.Sound.fade(sound.woman_heavy_breathing, 0, 0, false);
                 return "sumiHospital";
     }
   }
@@ -336,12 +353,14 @@ namespace Endabgabe {
         case 1:
           await ƒS.Speech.hide();
           await ƒS.Location.show(endings.newspaper);
-          await ƒS.update(1);
+          await ƒS.update(3);
+          await ƒS.Sound.fade(sound.sad_ending, 0, 7, false);
           return "endOfNovel";
         case 2:
           await ƒS.Speech.hide();
           await ƒS.Location.show(endings.protagonistDead);
-          await ƒS.update(1);
+          await ƒS.update(3);
+          await ƒS.Sound.fade(sound.sad_ending, 0, 7, false);
           return "endOfNovel";
     }
     return "endOfNovel";

@@ -68,15 +68,17 @@ declare namespace Endabgabe {
         heartbeat: string;
         police_sirens: string;
         group_scream: string;
+        running: string;
         woman_heavy_breathing: string;
         door_bell_buzzer: string;
         door_knocking: string;
-        wooden_floor_footsteps: string;
         hard_floor_footsteps: string;
         door_opening: string;
         door_closing: string;
         raining: string;
         bath_filling: string;
+        rooster: string;
+        hospital_ambiente: string;
     };
     export let locations: {
         street_evening: {
@@ -659,6 +661,7 @@ declare namespace Endabgabe {
             description: string;
             image: string;
             static: boolean;
+            handler: typeof hndGlasses;
         };
         juice: {
             name: string;
@@ -698,6 +701,7 @@ declare namespace Endabgabe {
             static: boolean;
         };
     };
+    function hndGlasses(_event: CustomEvent): Promise<void>;
     function hndJuice(_event: CustomEvent): Promise<void>;
     export function menuButtons(_option: string): Promise<void>;
     export {};

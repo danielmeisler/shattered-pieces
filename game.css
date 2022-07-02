@@ -75,6 +75,10 @@ speech content {
   background-color: rgba(0, 0, 0, 0.500);
   border: none;
   height: 3%;
+  -ms-user-select: None;
+  -moz-user-select: None;
+  -webkit-user-select: None;
+  user-select: None;
 }
 
 .menu button {

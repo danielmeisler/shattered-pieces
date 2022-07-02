@@ -169,6 +169,7 @@ namespace Endabgabe {
         await ƒS.Character.hideAll();
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.happy, animate(animations.leftToLeftOut));
         await ƒS.update(1);
+        ƒS.Sound.play(sound.sad_times, 0.3, true);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_33);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_34);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_35);
@@ -248,6 +249,8 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(10);
+        await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+        ƒS.Sound.play(sound.romantic_track, 0.3, true);
         await ƒS.Location.show(sequences.planningEveningSumiHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2330_07);
@@ -273,6 +276,8 @@ namespace Endabgabe {
         }
         ƒS.Speech.hide();
         await ƒS.update(1);
+        await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
+        await ƒS.Sound.play(sound.rooster, 0.5, false);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
         return "sumiHospitalHallway";

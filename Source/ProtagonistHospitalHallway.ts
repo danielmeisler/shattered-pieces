@@ -93,6 +93,8 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3200_01);
         await ƒS.Location.show(sequences.sumiNobuArgumentHospital);
         await ƒS.update(1);
+        ƒS.Sound.play(sound.hospital_ambiente, 0.5, true);
+        ƒS.Sound.play(sound.first_encounter, 0.1, true);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3200_02);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3200_03);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3200_04);
@@ -137,8 +139,8 @@ namespace Endabgabe {
                         await ƒS.Speech.hide();
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
-                        //await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
-                        // Mhhhh Geräusch?
+                        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);  
+                        await ƒS.Sound.play(sound.knife_stabbing, 1, false);
                         return await ending(1);
                     case howToInterfereAnswer.mother:
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3220_01);
@@ -163,6 +165,8 @@ namespace Endabgabe {
                 break;
             }
 
+        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);    
+        await ƒS.Sound.fade(sound.hospital_ambiente, 0, 0, false);
         await ƒS.Location.show(locations.protagonistHospitalRoom_day);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
@@ -178,6 +182,7 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(10);
+        ƒS.Sound.play(sound.romantic_track, 0.3, true);
         await ƒS.Location.show(sequences.planningNightHospital);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.planningNight2Hospital);
@@ -212,7 +217,8 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.sumiSmilingEyesClosedHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_12);
-
+        await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
+        await ƒS.Sound.play(sound.rooster, 0.5, false);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
 
@@ -229,7 +235,8 @@ namespace Endabgabe {
             case 1:
                 await ƒS.Speech.hide();
                 await ƒS.Location.show(endings.protagonistDead);
-                await ƒS.update(1);
+                await ƒS.update(3);
+                await ƒS.Sound.fade(sound.sad_ending, 0, 7, false);
                 return "endOfNovel";
         }
         return "endOfNovel";

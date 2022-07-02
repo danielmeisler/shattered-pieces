@@ -99,13 +99,17 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Speech.hide();
+        await ƒS.Sound.play(sound.hard_floor_footsteps, 0.5, true);
+        ƒS.Sound.play(sound.hospital_ambiente, 0.5, true);
         await ƒS.Location.show(locations.hospitalHallway2);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Location.show(locations.hospitalHallway3);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        ƒS.Sound.play(sound.sad_times, 0.3, true);
         await ƒS.Location.show(locations.hospitalHallway);
         await ƒS.Character.show(characters.yuko, characters.yuko.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_01);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_02);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_03);
@@ -126,14 +130,19 @@ namespace Endabgabe {
         await ƒS.Character.hideAll();
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.sad, animate(animations.midToRightOut));
         await ƒS.update(1);
+        await ƒS.Sound.play(sound.hard_floor_footsteps, 0.5, true);
         await ƒS.Location.show(locations.hospitalHallway3);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Location.show(locations.hospitalHallway2);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_15);
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.Speech.tell(characters.protagonist, "Das kommt doch aus Sumis Zimmer? Was ist da los?");
+        await ƒS.Sound.fade(sound.hospital_ambiente, 0, 0, false);
+        await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
         await ƒS.Location.show(sequences.sumiNobuArgumentHospitalroom);
         await ƒS.update(1);
+        ƒS.Sound.play(sound.first_encounter, 0.1, true);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3300_16);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3300_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3300_18);
@@ -172,6 +181,7 @@ namespace Endabgabe {
                         await ƒS.update(3);
                         await ƒS.Location.show(sequences.black);
                         await ƒS.update(1);
+                        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);   
                         await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
                         return await ending(1);
                     case howToInterfereAnswer.coincidence:
@@ -194,6 +204,7 @@ namespace Endabgabe {
                 await ƒS.update(2);
                 break;
             }
+        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);   
         await ƒS.Location.show(sequences.sumiHospitalZoom);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3340_01);
@@ -208,6 +219,7 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(10);
+        ƒS.Sound.play(sound.romantic_track, 0.3, true);
         await ƒS.Location.show(sequences.planningEveningSumiHospital);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.planningEveningSumiHospitalLooking);
@@ -241,12 +253,12 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.sumiSmilingEyesClosedInHospital);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3340_12);
-
         ƒS.Speech.hide();
         await ƒS.update(1);
+        await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
+        await ƒS.Sound.play(sound.rooster, 0.5, false);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
-
         return "thePlan";
     }
 
@@ -257,6 +269,7 @@ namespace Endabgabe {
                 await ƒS.Speech.hide();
                 await ƒS.Location.show(endings.protagonistDead);
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.sad_ending, 0, 7, false);
                 return "endOfNovel";
         }
         return "endOfNovel";
