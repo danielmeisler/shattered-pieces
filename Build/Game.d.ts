@@ -79,6 +79,13 @@ declare namespace Endabgabe {
         bath_filling: string;
         rooster: string;
         hospital_ambiente: string;
+        hallway_floor_footsteps: string;
+        lights: string;
+        groan_man_1: string;
+        groan_man_2: string;
+        whipped_man: string;
+        knife: string;
+        fight_men: string;
     };
     export let locations: {
         street_evening: {
@@ -540,6 +547,10 @@ declare namespace Endabgabe {
             background: string;
         };
         sumiHappyCryOutside: {
+            name: string;
+            background: string;
+        };
+        sumiCryingOutside: {
             name: string;
             background: string;
         };

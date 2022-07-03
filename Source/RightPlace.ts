@@ -177,23 +177,30 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        ƒS.Sound.play(sound.stealth_track, 0.1, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(locations.storageHall);
-        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge)
+        ƒS.Sound.play(sound.hallway_floor_footsteps, 1, true);
         await ƒS.Location.show(locations.storageHallEntrance);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Location.show(locations.storageHallHallway);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Location.show(locations.storageHallShou);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Sound.fade(sound.hallway_floor_footsteps, 0, 0, false);
         await ƒS.Speech.tell(characters.protagonist, "Das muss Shou sein?! Schnell ich muss ihn befrei...");
         await ƒS.Speech.hide();
-        // Sound von Hinten Schlag auf den Kopf.
 
+        await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
         await ƒS.Location.show(sequences.black);
-        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+        await ƒS.update(1);
+        await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
+        ƒS.Sound.play(sound.heartbeat, 1, true);
         await ƒS.update(10);
+        await ƒS.Sound.fade(sound.stealth_track, 0, 0, false);
+        ƒS.Sound.play(sound.first_encounter, 0.01, true);
 
         await ƒS.Location.show(sequences.storageHallWakeUp);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
@@ -203,7 +210,8 @@ namespace Endabgabe {
 
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
-
+        ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
+        ƒS.Sound.fade(sound.first_encounter, 0.1, 1, true);
         await ƒS.Location.show(locations.storageHallFightFull);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
@@ -213,7 +221,6 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.sumiTiedUpComing);
         await ƒS.update(3);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4120_02);
-        await ƒS.update(5);
 
         await ƒS.Location.show(locations.storageHallFightFuller);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
@@ -240,10 +247,22 @@ namespace Endabgabe {
         await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.black);
         await ƒS.update(0.1);
+        ƒS.Sound.play(sound.lights, 1, false);
         await ƒS.Speech.tell(characters.nobu, "Was passiert hier? Warum ist es plötzlich dunkel?!");
+        ƒS.Sound.play(sound.hard_floor_footsteps, 1, true);
+        ƒS.Sound.play(sound.whipped_man, 1, false);
+        ƒS.Sound.play(sound.punch_3, 1, false);
+        ƒS.Sound.play(sound.groan_man_1, 1, false);
         await ƒS.Speech.tell("Schläger", "Ahhh");
+        ƒS.Sound.play(sound.punch_5, 1, false);
+        ƒS.Sound.play(sound.fall_on_ground, 1, false);
+        ƒS.Sound.play(sound.groan_man_2, 1, false);
         await ƒS.Speech.tell("Prolet", "Auaaa");
-
+        ƒS.Sound.play(sound.punch_2, 1, false);
+        ƒS.Sound.play(sound.fall_on_ground, 1, false);
+        ƒS.Sound.play(sound.punch_5, 1, false);
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
+        await ƒS.Sound.play(sound.lights, 1, false);
         await ƒS.Location.show(locations.storageHallFightFullest);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
         await ƒS.update(1);
@@ -274,11 +293,13 @@ namespace Endabgabe {
 
         await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.grabKnife);
-        await ƒS.update(3);
+        await ƒS.update(1);
+        ƒS.Sound.play(sound.woman_groan_1, 1, false);
+        await ƒS.update(1);
+        ƒS.Sound.play(sound.knife, 1, false);
         await ƒS.Speech.tell(characters.nobu, "Ah");
         await ƒS.Speech.tell(characters.sumi, "Was?!");
         await ƒS.Speech.tell(characters.nobu, "Hahaha!");
-        // sounds fallendes knife, schmerz, blut? 
 
         await ƒS.Location.show(locations.storageHallFightFullest);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, new ƒS.Position(480, ƒS.positions.bottomcenter.y));
@@ -290,8 +311,12 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_24);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4120_25);
         await ƒS.Character.hide(characters.sumi);
+        ƒS.Sound.play(sound.hard_floor_footsteps, 1, true);
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.leftToLeftOut));
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.Character.hideAll();
+        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        ƒS.Sound.play(sound.final_fight, 0.1, true);
         await ƒS.Location.show(sequences.letsFight);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4120_26);
@@ -302,10 +327,23 @@ namespace Endabgabe {
         await ƒS.Speech.hide();
         await ƒS.Location.show(sequences.black);
         await ƒS.update(3);
+        ƒS.Sound.play(sound.fight_men, 1, true);
+        ƒS.Sound.play(sound.punch_2, 1, false);
+        ƒS.Sound.play(sound.punch_6, 1, false);
+        await ƒS.update(2);
+        ƒS.Sound.play(sound.punch_3, 1, false);
+        await ƒS.update(1);
+        ƒS.Sound.play(sound.punch_5, 1, false);
+        ƒS.Sound.play(sound.punch_1, 1, false);
+        ƒS.Sound.play(sound.punch_4, 1, false);
+        await ƒS.update(4);
+        ƒS.Sound.play(sound.punch_5, 1, false);
+        ƒS.Sound.play(sound.punch_1, 1, false);
+        await ƒS.Sound.fade(sound.fight_men, 0, 0, false);
+        await ƒS.update(2);
 
         if (dataForSave.protagonistHurt == true) {
             if (dataForSave.nobuKnowsBrother == false) {
-                //Sounds vom Kampf
                 await ƒS.Location.show(sequences.fightUnconscious);
                 await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_01);
@@ -317,16 +355,16 @@ namespace Endabgabe {
                 await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41212_01b);
                 await ƒS.Speech.hide();
-                //Sounds?
                 await ƒS.Character.hideAll();
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.grabbed, ƒS.positions.bottomcenter);
                 await ƒS.update(2);
                 await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.shouHitsNobu);
+                ƒS.Sound.play(sound.punch_5, 1, false);
                 await ƒS.update(3);
-                //Sounds
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(2);
+                ƒS.Sound.play(sound.fall_on_ground, 1, false);
 
                 await ƒS.Location.show(locations.storageHallFightFullest);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, new ƒS.Position(480, ƒS.positions.bottomcenter.y));
@@ -349,8 +387,22 @@ namespace Endabgabe {
                 await ƒS.Character.hideAll();
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(3);
-                // Sounds
-                await ƒS.update(5);
+                ƒS.Sound.play(sound.fight_men, 1, true);
+                ƒS.Sound.play(sound.punch_2, 1, false);
+                ƒS.Sound.play(sound.punch_6, 1, false);
+                await ƒS.update(2);
+                ƒS.Sound.play(sound.punch_3, 1, false);
+                await ƒS.update(1);
+                ƒS.Sound.play(sound.punch_5, 1, false);
+                ƒS.Sound.play(sound.punch_1, 1, false);
+                ƒS.Sound.play(sound.punch_4, 1, false);
+                await ƒS.update(4);
+                ƒS.Sound.play(sound.punch_5, 1, false);
+                ƒS.Sound.play(sound.punch_1, 1, false);
+                await ƒS.Sound.fade(sound.fight_men, 0, 0, false);
+                await ƒS.update(2);
+                await ƒS.Sound.fade(sound.final_fight, 0, 0, false);
+                ƒS.Sound.play(sound.sad_times, 0.3, true);
                 await ƒS.Location.show(locations.storageHallNobu);
                 await ƒS.update(3);
                 await ƒS.Location.show(locations.storageHallFight);
@@ -371,6 +423,8 @@ namespace Endabgabe {
                 await ƒS.Character.animate(characters.shou, characters.shou.pose.normal, animate(animations.leftToLeftOut));
                 await ƒS.update(1);
                 await ƒS.Character.hideAll();
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
                 await ƒS.Location.show(sequences.firstAidStorageHall);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41212_20);
@@ -407,7 +461,7 @@ namespace Endabgabe {
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
                 await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_01b);
-                //Sounds 
+                ƒS.Sound.play(sound.knife_stabbing, 1, false);
                 await ƒS.Character.hideAll();
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.hurt, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
@@ -416,6 +470,7 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.sumiRage);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_04);
+                ƒS.Sound.play(sound.fall_on_ground, 1, false);
                 await ƒS.Location.show(sequences.sumiStabbedNobu);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_05);
@@ -423,8 +478,10 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41211_07);
 
                 await ƒS.Speech.tell(characters.protagonist, "... Sumi was hast du getan?");
-                await ƒS.update(3);
-
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
+                await ƒS.Sound.fade(sound.final_fight, 0, 0, false);
+                ƒS.Sound.play(sound.sad_times, 0.3, true);
                 await ƒS.Location.show(locations.storagehallOutside);
                 await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
@@ -433,7 +490,9 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41211_10);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_11);
                 await ƒS.Character.hideAll();
-                await ƒS.Location.show(sequences.sumiHappyCryOutside);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
+                await ƒS.Location.show(sequences.sumiCryingOutside);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41211_12);
                 await ƒS.Menu.getInput(isSumiBetterAnswer, "decisionClass");
@@ -506,6 +565,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_14);
                 await ƒS.Character.hide(characters.shou);
+                await ƒS.Sound.fade(sound.final_fight, 0, 0, false);
+                ƒS.Sound.play(sound.sad_times, 0.3, true);
                 await ƒS.Character.show(characters.shou, characters.shou.pose.happy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_15);
@@ -518,10 +579,12 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_19);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_20);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_21);
+                await ƒS.Speech.hide();
                 await ƒS.Character.animate(characters.shou, characters.shou.pose.normal, animate(animations.leftToLeftOut));
                 await ƒS.update(1);
                 await ƒS.Character.hideAll();
-                // Shou trägt Nobu raus
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
                 await ƒS.Location.show(sequences.firstAidStorageHall);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_22);
@@ -567,6 +630,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_07);
                 await ƒS.Location.show(sequences.sumiGrabsKnife);
+                ƒS.Sound.play(sound.knife, 1, false);
                 await ƒS.update(3);
                 await ƒS.Location.show(sequences.sumiKillsNobu);
                 await ƒS.update(3);
@@ -576,7 +640,11 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41221_09);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41221_10);
                 await ƒS.Speech.hide();
-                // Polizei kommt
+                ƒS.Sound.play(sound.police_sirens, 1, false);
+                await ƒS.Sound.fade(sound.final_fight, 0, 0, false);
+                ƒS.Sound.play(sound.sad_times, 0.3, true);
+                await ƒS.Location.show(sequences.black);
+                await ƒS.update(5);
                 await ƒS.Location.show(locations.storagehallOutside);
                 await ƒS.Character.show(characters.sumi, characters.sumi.pose.shy, ƒS.positions.bottomcenter);
                 await ƒS.update(1);
@@ -621,16 +689,22 @@ namespace Endabgabe {
                 await ƒS.Speech.hide();
                 // Sumi und Protagonist schönes Leben
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.good_ending, 0, 4, false);
                 return "endOfNovel";
             case 2:
                 await ƒS.Speech.hide();
                 // Sumi wird gestellt
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.good_ending, 0, 4, false);
                 return "endOfNovel";
             case 3:
                 await ƒS.Speech.hide();
                 // Sumi und ihr Bruder haben ein Happy Ending
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.good_ending, 0, 4, false);
                 return "endOfNovel";
         }
         return "endOfNovel";

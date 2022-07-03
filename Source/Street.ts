@@ -182,9 +182,9 @@ namespace Endabgabe {
 
                 ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
                 ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
-                ƒS.Sound.fade(sound.running, 0.5, 5, false);
-                ƒS.Sound.fade(sound.running, 0.3, 5, false);
-                ƒS.Sound.fade(sound.running, 0.1, 5, false);
+                ƒS.Sound.play(sound.running, 0.5, false);
+                ƒS.Sound.play(sound.running, 0.3, false);
+                ƒS.Sound.play(sound.running, 0.1, true);
                 await ƒS.Location.show(sequences.police);
                 await ƒS.update(1);
 
@@ -193,6 +193,7 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.gimmeYourHand);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S1121_08);
+                await ƒS.Sound.fade(sound.running, 0, 0, false);
                 await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                 await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                 await ƒS.Character.hideAll();
@@ -234,9 +235,9 @@ namespace Endabgabe {
                     ƒS.Speech.hide();
                     ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
                     ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
-                    ƒS.Sound.fade(sound.running, 0.5, 5, false);
-                    ƒS.Sound.fade(sound.running, 0.3, 5, false);
-                    ƒS.Sound.fade(sound.running, 0.1, 5, false);
+                    ƒS.Sound.play(sound.running, 0.5, false);
+                    ƒS.Sound.play(sound.running, 0.3, false);
+                    ƒS.Sound.play(sound.running, 0.1, true);
                     await ƒS.Location.show(sequences.police);
                     await ƒS.update(1);
 
@@ -250,6 +251,7 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_09);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_10);
                     await ƒS.Character.hideAll();
+                    await ƒS.Sound.fade(sound.running, 0, 0, false);
                     await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return "sumisHome";
@@ -300,17 +302,18 @@ namespace Endabgabe {
                     await ƒS.Sound.fade(sound.punch_4, 0, 1, false);
                     ƒS.Sound.fade(sound.police_sirens, 0, 5, false);
                     ƒS.Sound.fade(sound.group_scream, 0.2, 5, false);
-                    ƒS.Sound.fade(sound.running, 0.5, 5, false);
-                    ƒS.Sound.fade(sound.running, 0.3, 5, false);
+                    ƒS.Sound.play(sound.running, 0.5, false);
+                    ƒS.Sound.play(sound.running, 0.3, false);
                     await ƒS.Sound.fade(sound.punch_5, 0, 1, false);
                     await ƒS.Sound.fade(sound.punch_6, 0, 1, false);
-                    ƒS.Sound.fade(sound.running, 0.1, 5, false);
+                    ƒS.Sound.play(sound.running, 0.1, true);
                     await ƒS.Speech.tell("Schläger", text.Schlaeger.S1121_07);
                     await ƒS.Location.show(sequences.unconsciousSumi);
                     await ƒS.update(2);
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1123_07);
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(2);
+                    await ƒS.Sound.fade(sound.running, 0, 0, false);
                     await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     await ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
@@ -328,10 +331,10 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.police);
                 await ƒS.update(1);
                 ƒS.Sound.fade(sound.group_scream, 0.1, 5, false);
-                ƒS.Sound.fade(sound.running, 0.5, 5, false);
+                ƒS.Sound.play(sound.running, 0.5, false);
                 await ƒS.Location.show(sequences.gangRunningAway);
-                ƒS.Sound.fade(sound.running, 0.3, 5, false);
-                ƒS.Sound.fade(sound.running, 0.1, 5, false);
+                ƒS.Sound.play(sound.running, 0.3, false);
+                ƒS.Sound.play(sound.running, 0.1, true);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_03);
                 await ƒS.Location.show(sequences.sumiHurt);
@@ -340,6 +343,7 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1124_04);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.running, 0, 0, false);
                 await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
                 await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                 await ƒS.Sound.fade(sound.woman_heavy_breathing, 0, 0, false);

@@ -88,6 +88,14 @@ namespace Endabgabe {
         rooster: "./assets/sounds/sfx/rooster.mp3",
         
         hospital_ambiente: "./assets/sounds/sfx/hospital_ambiente.mp3",
+
+        hallway_floor_footsteps: "./assets/sounds/sfx/hallwayfloorfootsteps.mp3",
+        lights: "./assets/sounds/sfx/lights.mp3",
+        groan_man_1: "./assets/sounds/sfx/groanman1.mp3",
+        groan_man_2: "./assets/sounds/sfx/groanman2.mp3",
+        whipped_man: "./assets/sounds/sfx/whippedman.mp3",
+        knife: "./assets/sounds/sfx/knife.mp3",
+        fight_men: "./assets/sounds/sfx/fightmen.mp3"
     };
   
     export let locations = {
@@ -570,6 +578,10 @@ namespace Endabgabe {
         sumiHappyCryOutside: {
             name: "sumiHappyCryOutside",
             background: "./assets/images/sequences/sumihappycry_outside.png"
+        },
+        sumiCryingOutside: {
+            name: "sumiCrying",
+            background: "./assets/images/sequences/sumicrying_storagehall.png"
         },
         sumiKissOutside: {
             name: "sumiKissOutside",

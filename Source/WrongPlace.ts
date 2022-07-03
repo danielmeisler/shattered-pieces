@@ -57,23 +57,30 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        ƒS.Sound.play(sound.stealth_track, 0.1, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(locations.storageHall);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        ƒS.Sound.play(sound.hallway_floor_footsteps, 1, true);
         await ƒS.Location.show(locations.storageHallEntrance);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Location.show(locations.storageHallHallway);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         await ƒS.Location.show(locations.storageHallEmpty);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
+        await ƒS.Sound.fade(sound.hallway_floor_footsteps, 0, 0, false);
         await ƒS.Speech.tell(characters.protagonist, "Ich habe so ziemlich alles durchsucht und keine Spur... sag mir nicht ich bin am falschen Ort...");
         await ƒS.Speech.hide();
-        // Sound von Hinten Schlag auf den Kopf.
 
+        await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
         await ƒS.Location.show(sequences.black);
-        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+        await ƒS.update(1);
+        await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
+        ƒS.Sound.play(sound.heartbeat, 1, true);
         await ƒS.update(10);
+        await ƒS.Sound.fade(sound.stealth_track, 0, 0, false);
+        ƒS.Sound.play(sound.first_encounter, 0.01, true);
 
         await ƒS.Location.show(sequences.storageHallWakeUp);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
@@ -83,7 +90,8 @@ namespace Endabgabe {
 
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
-
+        ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
+        ƒS.Sound.fade(sound.first_encounter, 0.1, 1, true);
         await ƒS.Location.show(locations.storageHallFightFull);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
         await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
@@ -92,12 +100,11 @@ namespace Endabgabe {
         await ƒS.Character.hideAll();
         await ƒS.Location.show(sequences.sumiTiedUpComing);
         await ƒS.update(3);
-        await ƒS.update(5);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_02);
 
         await ƒS.Location.show(locations.storageHallFightFuller);
         await ƒS.Character.show(characters.nobu, characters.nobu.pose.happy, ƒS.positions.bottomcenter);
         await ƒS.update(3);
-        await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_03);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4110_04);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4110_05);
@@ -150,11 +157,18 @@ namespace Endabgabe {
                     break;
             }
         }
-
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(1);
+        await ƒS.Sound.play(sound.knife_stabbing, 1, false);
+        await ƒS.update(3);
         await ƒS.Location.show(sequences.nobuKnifeStorage);
         await ƒS.update(3);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S4110_13);
-        // Sounds
+        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.Sound.play(sound.knife_stabbing, 1, false);
+        await ƒS.update(1);
+        await ƒS.update(10);
 
         if (dataForSave.romancePoints >= 2 ) {
             return await ending(2);
@@ -170,12 +184,14 @@ namespace Endabgabe {
                 await ƒS.Speech.hide();
                 await ƒS.Location.show(endings.protagonistDead);
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.sad_ending, 0, 7, false);
                 return "endOfNovel";
             case 2:
                 await ƒS.Speech.hide();
                 await ƒS.Text.print("L̶i̶e̶b̶e̶s̶ Tagebuch, \n \n Heute ist es soweit... der große Tag. Heute sehen wir, ob die Mühen der letzten Tage sich ausgezahlt haben... und vielleicht sehe ich auch endlich Shou wieder. Ich hoffe dir geht es gut Bruderherz... Jedenfalls habe ich alle Vorbereitungen getroffen und warte auf " + dataForSave.nameProtagonist + " und dann starten wir auch mit dem Plan. In einigen Stunden kann sich alles ändern... und vielleicht, wenn das alles hier vorbei ist... kann ich " + dataForSave.nameProtagonist + " meine Liebe gestehen. Ob sie erwidert wird? Heute werde ich es herausfinden... hoffentlich. \n \n Sumi");
                 await ƒS.Location.show(endings.protagonistDead);
                 await ƒS.update(1);
+                await ƒS.Sound.fade(sound.sad_ending, 0, 7, false);
                 return "endOfNovel";
         }
         return "endOfNovel";

@@ -146,9 +146,10 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_17);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_18);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_19);
-
+        ƒS.Sound.play(sound.hard_floor_footsteps, 1, true);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_20);
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.normal, animate(animations.leftOutToLeft));
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_21);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_22);
@@ -167,7 +168,9 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_31);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S2300_32);
         await ƒS.Character.hideAll();
+        ƒS.Sound.play(sound.hard_floor_footsteps, 1, true);
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.happy, animate(animations.leftToLeftOut));
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.update(1);
         ƒS.Sound.play(sound.sad_times, 0.3, true);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_33);

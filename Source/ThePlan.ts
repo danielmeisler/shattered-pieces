@@ -66,7 +66,6 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_01);
         await ƒS.Inventory.add(items.documentsNobu);
-        // Inventar hinzufügen
         await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_02);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S4100_03);
@@ -80,8 +79,12 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4100_08);
         await ƒS.Speech.hide();
         await ƒS.Character.hideAll();
+        ƒS.Sound.play(sound.hard_floor_footsteps, 1, true);
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal, animate(animations.midToLeftOut));
         await ƒS.Character.hideAll();
+        await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
+        await ƒS.Sound.play(sound.door_closing, 0.5, false);
+        ƒS.Sound.play(sound.searching_track, 0.1, true);
         await ƒS.Location.show(sequences.plan);
         await ƒS.update(3);
         await ƒS.Speech.tell(characters.protagonist, "Okay... dann schau ich mir mal das Zeug an...");
@@ -168,13 +171,16 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {
+            await ƒS.Sound.fade(sound.searching_track, 0, 0, false);
             return "rightPlace";
         } else if (code == "dm99" || code == "DM99") {
             await ƒS.Speech.tell(characters.protagonist, "Woher kommen die plötzlich...? Soll ich sie anziehen?");
             await ƒS.Inventory.add(items.glasses);
             await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+            await ƒS.Sound.fade(sound.searching_track, 0, 0, false);
             return "rightPlace";
         } else {
+            await ƒS.Sound.fade(sound.searching_track, 0, 0, false);
             return "wrongPlace";
         }
     
