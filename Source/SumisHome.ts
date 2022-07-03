@@ -65,7 +65,7 @@ namespace Endabgabe {
                 S2110_01: "Ich bin fertig, danke nochmal. Pass auf dich auf und renn nicht wieder in solche Situationen rein, wenn du nicht draufgehen willst. Tschüss.",
                 
                 S2120_01: "Wow, so wie du aussiehst hätte ich solchen weise Worte nicht erwartet.",
-                S2120_03: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen Möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der eben hier war, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
+                S2120_03: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der eben hier war, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
                 S2120_05: "Ja, aber am letzten Abend, an dem ich meinen Bruder sah, ist er zu einem Gang-Treffen aufgebrochen und laut Nobu nie dort angekommen. Seitdem macht er sich auch so ekelhaft an mich ran. Er ist der Meinung, dass als sein bester Freund es jetzt seine Aufgabe ist mich zu beschützen. Und da er der Vize ist wurde er natürlich zum Anführer und strukturiert die Gang um… alle Prinzipien und Grenzen, die mein Bruder aufgestellt hat, ignoriert er komplett. Es scheint alles perfekt für ihn zu laufen, seitdem Shou weg ist…. Ich habe das im Gefühl...",
                 S2120_07: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
             
@@ -120,7 +120,6 @@ namespace Endabgabe {
         let talkOutOrHelpAnswer = {
             talkOut: "Ausreden",
             morePeople: "Noch mehr Menschen?",
-            help: "Hilfe anbieten"
         };
 
         let flirtOrSleepAnswer = {
@@ -256,7 +255,6 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.sumiHappyCry);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_03);
-            case talkOutOrHelpAnswer.help:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_03);
@@ -336,7 +334,7 @@ namespace Endabgabe {
                 await ƒS.update(3);
                 await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
                 await ƒS.Sound.fade(sound.raining, 0, 0, false);
-                await ƒS.Sound.play(sound.rooster, 0.5, false);
+                await ƒS.Sound.play(sound.rooster, 0.2, false);
                 await ƒS.Location.show(sequences.theNextDay);
                 await ƒS.update(3);
                 return "sumisHouse";

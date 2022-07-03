@@ -103,7 +103,7 @@ namespace Endabgabe {
                 S4120_10: "Du willst es wirklich vor deinem Tod noch wissen? Na schön, ich erzähl es dir, weil du ihn gefunden hast… als letzte Belohnung. Shou wollte mit der Gang immer nur das Mindeste, keine Ambitionen. Wir hatten Potenzial einer der gefürchtetsten Banden zu werden und als wir einen richtig dicken Fisch an der Angel hatten hat Shou alles abgebrochen, da seine Prinzipien ihm im Weg standen. Er ist weich und schwach!",
                 S4120_12: "Wenn du nur wüsstest, wie oft ich das versucht habe. Doch das ist noch nicht alles. Shou hat immer sein Leben vor allen geheim gehalten. Wir wussten gar nichts über ihn, denn er war der Meinung, dass es nicht nötig ist. Aber wie willst du jemandem Folgen und dein Leben riskieren, wenn du nicht weißt, was er verbirgt? Wir waren so lange Freunde und ich wusste nichts über ihn, außer dass er eine Schwester hat.",
                 S4120_14: "Natürlich nicht, ich habe das lange vor all den Problemen von allein rausgefunden. Zuerst war er auch sehr sauer, aber da wir schon fast wie Brüder waren, nahm er es mir am Ende doch nicht übel, solange ich es geheim halten würde. Aber als ich Sumi zum ersten Mal gesehen habe, habe ich mich sofort Kopf über in sie verliebt. Doch Shou wollte sie beschützen und aus all dem hier raushalten… und lies mich nicht an sie ran.",
-                S4120_16: "Es war eine Mischung aus allen, irgendwann platzte mir der Kragen. Seine Regeln nahmen mir alles und ich konfrontierte ihn mit damit… doch es endete in einem riesigen Streit, da er nichts ändern wollte. Ich wollte ihn loswerden, da somit auch all meine Probleme verschwinden würden… also überlegt ich mir etwas. Ich verbündete mich mit den Gang-Mitgliedern, die derselben Meinung waren, dass die Gang ihr Potenzial nicht ausschöpfen würde.",
+                S4120_16: "Es war eine Mischung aus allem, irgendwann platzte mir der Kragen. Seine Regeln nahmen mir alles und ich konfrontierte ihn mit damit… doch es endete in einem riesigen Streit, da er nichts ändern wollte. Ich wollte ihn loswerden, da somit auch all meine Probleme verschwinden würden… also überlegt ich mir etwas. Ich verbündete mich mit den Gang-Mitgliedern, die derselben Meinung waren, dass die Gang ihr Potenzial nicht ausschöpfen würde.",
                 S4120_18: "Er hätte niemals die Führung freiwillig abgegeben… also lockte ich ihn mit dem Vorwand mich entschuldigen zu wollen zu einem Treffen. Normal ist er sehr vorsichtig und wachsam, doch er ist zu weich, weswegen er nicht erwartet hatte, aus seinen eigenen Reihen verraten zu werden. Schon fast traurig…und schwach.",
                 S4120_20: "Beweist nur, dass ich Recht habe…",
                 S4120_21: "Ich hab euch nicht durchsucht... wie dumm von mir...",
@@ -543,6 +543,8 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_01);
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S41222_03);
+                await ƒS.Sound.fade(sound.final_fight, 0, 3, false);
+                ƒS.Sound.play(sound.sad_times, 0.3, true);
                 await ƒS.Location.show(sequences.sumiShouComing);
                 await ƒS.update(3);
                 await ƒS.Speech.tell(characters.sumi, dataForSave.nameProtagonist + "!!!");
@@ -565,8 +567,6 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.nobu, text.Nobu.S41222_13);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S41222_14);
                 await ƒS.Character.hide(characters.shou);
-                await ƒS.Sound.fade(sound.final_fight, 0, 0, false);
-                ƒS.Sound.play(sound.sad_times, 0.3, true);
                 await ƒS.Character.show(characters.shou, characters.shou.pose.happy, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.shou, text.Shou.S41222_15);
@@ -690,21 +690,21 @@ namespace Endabgabe {
                 // Sumi und Protagonist schönes Leben
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
-                await ƒS.Sound.fade(sound.good_ending, 0, 4, false);
+                await ƒS.Sound.fade(sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 2:
                 await ƒS.Speech.hide();
                 // Sumi wird gestellt
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
-                await ƒS.Sound.fade(sound.good_ending, 0, 4, false);
+                await ƒS.Sound.fade(sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 3:
                 await ƒS.Speech.hide();
                 // Sumi und ihr Bruder haben ein Happy Ending
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
-                await ƒS.Sound.fade(sound.good_ending, 0, 4, false);
+                await ƒS.Sound.fade(sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
         }
         return "endOfNovel";

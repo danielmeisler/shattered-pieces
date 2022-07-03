@@ -213,7 +213,7 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(3);
         await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
-        await ƒS.Sound.play(sound.rooster, 0.5, false);
+        await ƒS.Sound.play(sound.rooster, 0.2, false);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
 

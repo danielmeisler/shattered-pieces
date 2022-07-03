@@ -72,6 +72,7 @@ namespace Endabgabe {
 
         let howToInterfereAnswer = {
             couple: "Ja bin ich, wir sind jetzt ein Paar und sie besucht mich.",
+            school: "Entspann dich, wir sind in der selben Klasse und ich bringe ihr nur die heutigen Notizen.",
             mother: "Das ist Zufall, du hast mich her befördert und sie besucht ihre Mutter.",
             brother: "Vielleicht ist der Grund eher, dass du etwas mit der Entführung ihres Bruders zu tun hast?"
         };
@@ -142,6 +143,11 @@ namespace Endabgabe {
                         await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);  
                         await ƒS.Sound.play(sound.knife_stabbing, 1, false);
                         return await ending(1);
+                    case howToInterfereAnswer.school:
+                        await ƒS.Speech.tell(characters.nobu, "Ihr kennt euch aus der Klasse? Das erklärt so einiges...");
+                        await ƒS.Speech.tell(characters.sumi, "Ja, jetzt lass mich in Ruhe, denn ich muss hier meine Bildung nachholen.");
+                        await ƒS.Speech.tell(characters.nobu, "Na gut... ausnahmsweise... aber glaub ja nicht, dass du immer so leicht davon kommst.");
+                        break;
                     case howToInterfereAnswer.mother:
                         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3220_01);
                         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3220_02);
@@ -218,7 +224,7 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3240_12);
         await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
-        await ƒS.Sound.play(sound.rooster, 0.5, false);
+        await ƒS.Sound.play(sound.rooster, 0.2, false);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
 

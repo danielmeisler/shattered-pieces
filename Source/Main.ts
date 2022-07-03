@@ -868,7 +868,7 @@ namespace Endabgabe {
             name: "Messer",
             description: "Ein Messer um sich zu verteidigen... oder etwas Anderes?",
             image: "./assets/images/items/knife.png",
-            static: true
+            static: false
         },
         code: {
             name: "Lagerhallennummer",

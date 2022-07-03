@@ -850,7 +850,7 @@ var Endabgabe;
             name: "Messer",
             description: "Ein Messer um sich zu verteidigen... oder etwas Anderes?",
             image: "./assets/images/items/knife.png",
-            static: true
+            static: false
         },
         code: {
             name: "Lagerhallennummer",
@@ -1267,7 +1267,7 @@ var Endabgabe;
                 Endabgabe.ƒS.Character.hideAll();
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 0, false);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.5, false);
+                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
                 await Endabgabe.ƒS.update(3);
                 return "protagonistHospitalHallway";
@@ -1347,6 +1347,7 @@ var Endabgabe;
         };
         let howToInterfereAnswer = {
             couple: "Ja bin ich, wir sind jetzt ein Paar und sie besucht mich.",
+            school: "Entspann dich, wir sind in der selben Klasse und ich bringe ihr nur die heutigen Notizen.",
             mother: "Das ist Zufall, du hast mich her befördert und sie besucht ihre Mutter.",
             brother: "Vielleicht ist der Grund eher, dass du etwas mit der Entführung ihres Bruders zu tun hast?"
         };
@@ -1412,6 +1413,11 @@ var Endabgabe;
                         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.first_encounter, 0, 0, false);
                         await Endabgabe.ƒS.Sound.play(Endabgabe.sound.knife_stabbing, 1, false);
                         return await ending(1);
+                    case howToInterfereAnswer.school:
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, "Ihr kennt euch aus der Klasse? Das erklärt so einiges...");
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Ja, jetzt lass mich in Ruhe, denn ich muss hier meine Bildung nachholen.");
+                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, "Na gut... ausnahmsweise... aber glaub ja nicht, dass du immer so leicht davon kommst.");
+                        break;
                     case howToInterfereAnswer.mother:
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S3220_01);
                         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S3220_02);
@@ -1483,7 +1489,7 @@ var Endabgabe;
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3240_12);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 0, false);
-        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.5, false);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
         await Endabgabe.ƒS.update(3);
         if (Endabgabe.dataForSave.nobuKnowsMother == false) {
@@ -1598,7 +1604,7 @@ var Endabgabe;
                 S4120_10: "Du willst es wirklich vor deinem Tod noch wissen? Na schön, ich erzähl es dir, weil du ihn gefunden hast… als letzte Belohnung. Shou wollte mit der Gang immer nur das Mindeste, keine Ambitionen. Wir hatten Potenzial einer der gefürchtetsten Banden zu werden und als wir einen richtig dicken Fisch an der Angel hatten hat Shou alles abgebrochen, da seine Prinzipien ihm im Weg standen. Er ist weich und schwach!",
                 S4120_12: "Wenn du nur wüsstest, wie oft ich das versucht habe. Doch das ist noch nicht alles. Shou hat immer sein Leben vor allen geheim gehalten. Wir wussten gar nichts über ihn, denn er war der Meinung, dass es nicht nötig ist. Aber wie willst du jemandem Folgen und dein Leben riskieren, wenn du nicht weißt, was er verbirgt? Wir waren so lange Freunde und ich wusste nichts über ihn, außer dass er eine Schwester hat.",
                 S4120_14: "Natürlich nicht, ich habe das lange vor all den Problemen von allein rausgefunden. Zuerst war er auch sehr sauer, aber da wir schon fast wie Brüder waren, nahm er es mir am Ende doch nicht übel, solange ich es geheim halten würde. Aber als ich Sumi zum ersten Mal gesehen habe, habe ich mich sofort Kopf über in sie verliebt. Doch Shou wollte sie beschützen und aus all dem hier raushalten… und lies mich nicht an sie ran.",
-                S4120_16: "Es war eine Mischung aus allen, irgendwann platzte mir der Kragen. Seine Regeln nahmen mir alles und ich konfrontierte ihn mit damit… doch es endete in einem riesigen Streit, da er nichts ändern wollte. Ich wollte ihn loswerden, da somit auch all meine Probleme verschwinden würden… also überlegt ich mir etwas. Ich verbündete mich mit den Gang-Mitgliedern, die derselben Meinung waren, dass die Gang ihr Potenzial nicht ausschöpfen würde.",
+                S4120_16: "Es war eine Mischung aus allem, irgendwann platzte mir der Kragen. Seine Regeln nahmen mir alles und ich konfrontierte ihn mit damit… doch es endete in einem riesigen Streit, da er nichts ändern wollte. Ich wollte ihn loswerden, da somit auch all meine Probleme verschwinden würden… also überlegt ich mir etwas. Ich verbündete mich mit den Gang-Mitgliedern, die derselben Meinung waren, dass die Gang ihr Potenzial nicht ausschöpfen würde.",
                 S4120_18: "Er hätte niemals die Führung freiwillig abgegeben… also lockte ich ihn mit dem Vorwand mich entschuldigen zu wollen zu einem Treffen. Normal ist er sehr vorsichtig und wachsam, doch er ist zu weich, weswegen er nicht erwartet hatte, aus seinen eigenen Reihen verraten zu werden. Schon fast traurig…und schwach.",
                 S4120_20: "Beweist nur, dass ich Recht habe…",
                 S4120_21: "Ich hab euch nicht durchsucht... wie dumm von mir...",
@@ -2015,6 +2021,8 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41222_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41222_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41222_03);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.final_fight, 0, 3, false);
+                Endabgabe.ƒS.Sound.play(Endabgabe.sound.sad_times, 0.3, true);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiShouComing);
                 await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, Endabgabe.dataForSave.nameProtagonist + "!!!");
@@ -2037,8 +2045,6 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41222_13);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41222_14);
                 await Endabgabe.ƒS.Character.hide(Endabgabe.characters.shou);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.final_fight, 0, 0, false);
-                Endabgabe.ƒS.Sound.play(Endabgabe.sound.sad_times, 0.3, true);
                 await Endabgabe.ƒS.Character.show(Endabgabe.characters.shou, Endabgabe.characters.shou.pose.happy, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.shou, text.Shou.S41222_15);
@@ -2165,21 +2171,21 @@ var Endabgabe;
                 // Sumi und Protagonist schönes Leben
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 0, false);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0, 4, false);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 2:
                 await Endabgabe.ƒS.Speech.hide();
                 // Sumi wird gestellt
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 0, false);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0, 4, false);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 3:
                 await Endabgabe.ƒS.Speech.hide();
                 // Sumi und ihr Bruder haben ein Happy Ending
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 0, false);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0, 4, false);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
         }
         return "endOfNovel";
@@ -2780,7 +2786,7 @@ var Endabgabe;
         Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 0, false);
-        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.5, false);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
         await Endabgabe.ƒS.update(3);
         return "sumiHospitalHallway";
@@ -3023,7 +3029,7 @@ var Endabgabe;
         Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 0, false);
-        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.5, false);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
         await Endabgabe.ƒS.update(3);
         return "thePlan";
@@ -3097,7 +3103,7 @@ var Endabgabe;
                 S2100_29: "Hör zu, ich weiß nicht, ob ich einer fremden Person hier private Geschichten erzählen sollte. Ich bin gleich fertig, dann können sich unsere Wege wieder trennen.",
                 S2110_01: "Ich bin fertig, danke nochmal. Pass auf dich auf und renn nicht wieder in solche Situationen rein, wenn du nicht draufgehen willst. Tschüss.",
                 S2120_01: "Wow, so wie du aussiehst hätte ich solchen weise Worte nicht erwartet.",
-                S2120_03: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen Möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der eben hier war, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
+                S2120_03: "Na gut, wenn du schon darauf bestehst. Jetzt gibt es keinen Rückzieher mehr. Mein Bruder Shou ist, oder eher war, der Anführer dieser kleinen möchtegern Gang…. Er war ein herzensguter Mensch und stark, alle haben ihm vertraut und waren stolz ihm zu folgen. Auch wenn manche seiner Geschäfte nicht gerade die Saubersten waren, er hat nie jemanden Unschuldigen verletzt. Nobu, der Typ, der eben hier war, war sein Vize und bester Freund. Doch irgendwas ist zwischen ihnen passiert und Nobu hat sich zum Schlimmsten entwickelt. Irgendwann ist mein Bruder verschwunden und ich wette Nobu hat damit zu tun.",
                 S2120_05: "Ja, aber am letzten Abend, an dem ich meinen Bruder sah, ist er zu einem Gang-Treffen aufgebrochen und laut Nobu nie dort angekommen. Seitdem macht er sich auch so ekelhaft an mich ran. Er ist der Meinung, dass als sein bester Freund es jetzt seine Aufgabe ist mich zu beschützen. Und da er der Vize ist wurde er natürlich zum Anführer und strukturiert die Gang um… alle Prinzipien und Grenzen, die mein Bruder aufgestellt hat, ignoriert er komplett. Es scheint alles perfekt für ihn zu laufen, seitdem Shou weg ist…. Ich habe das im Gefühl...",
                 S2120_07: "Wow, ich bin beeindruckt… du kapierst schnell. Aber was bleibt mir übrig. Ich kann nicht noch mehr Menschen in meinem Leben verlieren. Das ist das Einzige was mir noch einfällt, ich bin in einer Sackgasse und weiß nicht weiter.",
                 S2121_02: "Wer bist du? Ich treffe meine eigenen Entscheidungen… warum erzähl ich das eigentlich einer fremden Person? Du solltest gehen und mich in Ruhe mein Ding machen lassen.",
@@ -3143,7 +3149,6 @@ var Endabgabe;
         let talkOutOrHelpAnswer = {
             talkOut: "Ausreden",
             morePeople: "Noch mehr Menschen?",
-            help: "Hilfe anbieten"
         };
         let flirtOrSleepAnswer = {
             flirt: "Du siehst sehr schön aus...",
@@ -3270,7 +3275,6 @@ var Endabgabe;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCry);
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_03);
-            case talkOutOrHelpAnswer.help:
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_01);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_02);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_03);
@@ -3350,7 +3354,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 0, false);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.raining, 0, 0, false);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.5, false);
+                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
                 await Endabgabe.ƒS.update(3);
                 return "sumisHouse";
@@ -3566,7 +3570,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(3);
         await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 0, false);
-        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.5, false);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
         await Endabgabe.ƒS.update(3);
         return "thePlan";
