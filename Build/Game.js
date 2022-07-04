@@ -1767,8 +1767,9 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Und so dumm wie deine Gorillas sind haben sie sich draufgeworfen und alles leer gesoffen... außer du.");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, "Ja... ich war so misstrauisch, dass du etwas ausgeheckt haben könntest, dass ich mich nicht besaufen wollte und meine Sinne betäuben... das wäre eine zu große Angriffsfläche gewesen. Aber das etwas in den Getränken drin war? Da hatte ich wohl Glück im Unglück.");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Egal, " + Endabgabe.dataForSave.nameProtagonist + " befrei dich und wir können das hier beenden.");
-        Endabgabe.items.knife.static = false;
-        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.knife);
+        if (Endabgabe.ƒS.Inventory.getAmount(Endabgabe.items.knife) == 0) {
+            await Endabgabe.ƒS.Inventory.add(Endabgabe.items.knife);
+        }
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Ich sollte in meine Tasche greifen...");
         while (Endabgabe.ƒS.Inventory.getAmount(Endabgabe.items.knife) != 0) {
             await Endabgabe.ƒS.update(1);

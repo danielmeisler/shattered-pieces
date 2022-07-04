@@ -283,8 +283,10 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.nobu, "Ja... ich war so misstrauisch, dass du etwas ausgeheckt haben könntest, dass ich mich nicht besaufen wollte und meine Sinne betäuben... das wäre eine zu große Angriffsfläche gewesen. Aber das etwas in den Getränken drin war? Da hatte ich wohl Glück im Unglück.");
         await ƒS.Speech.tell(characters.sumi, "Egal, " + dataForSave.nameProtagonist + " befrei dich und wir können das hier beenden.");
 
-        items.knife.static = false;
-        await ƒS.Inventory.add(items.knife);
+        if (ƒS.Inventory.getAmount(items.knife) == 0) {
+            await ƒS.Inventory.add(items.knife);
+        }
+
         await ƒS.Speech.tell(characters.protagonist, "Ich sollte in meine Tasche greifen...");
 
         while (ƒS.Inventory.getAmount(items.knife) != 0) {
