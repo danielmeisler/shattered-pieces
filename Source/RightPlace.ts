@@ -181,7 +181,7 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(locations.storageHall);
-        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge)
+        await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
         ƒS.Sound.play(sound.hallway_floor_footsteps, 1, true);
         await ƒS.Location.show(locations.storageHallEntrance);
         await ƒS.update(transitions.swipe.duration, transitions.swipe.alpha, transitions.swipe.edge);
