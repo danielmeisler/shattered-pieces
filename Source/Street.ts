@@ -109,7 +109,7 @@ namespace Endabgabe {
     ƒS.Speech.hide();
     characters.nobu.name = "Blonder Junge";
     characters.sumi.name = "Pinkes Mädchen";
-    //ƒS.Sound.play(sound.filler_track, 0.1, true);
+    ƒS.Sound.play(sound.float_track, 0.2, true);
     await ƒS.Location.show(sequences.start);
     await ƒS.update(10);
     await ƒS.Location.show(locations.street_evening);
@@ -124,7 +124,7 @@ namespace Endabgabe {
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
     await ƒS.Sound.fade(sound.woman_groan_4, 0, 1, false);
-    //await ƒS.Sound.fade(sound.filler_track, 0, 0, false);
+    await ƒS.Sound.fade(sound.float_track, 0, 3, false);
     await ƒS.Location.show(sequences.harassment);
     await ƒS.update(1);
     ƒS.Sound.play(sound.first_encounter, 0.1, true);
@@ -133,7 +133,7 @@ namespace Endabgabe {
 
     switch (interfereOrNot) {
               case interfereOrNotAnswer.ignore:
-                await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(3);
                 return await ending(1);
@@ -194,7 +194,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S1121_08);
                 await ƒS.Sound.fade(sound.running, 0, 0, false);
-                await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
                 await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                 await ƒS.Character.hideAll();
                 return "sumisHome";
@@ -252,7 +252,7 @@ namespace Endabgabe {
                     await ƒS.Speech.tell(characters.sumi, text.Sumi.S1122_10);
                     await ƒS.Character.hideAll();
                     await ƒS.Sound.fade(sound.running, 0, 0, false);
-                    await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                    await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return "sumisHome";
                   case nobuTalk4Answer.fight:
@@ -287,15 +287,17 @@ namespace Endabgabe {
                     await ƒS.update(1);
                     await ƒS.Sound.fade(sound.knife_stabbing, 0, 1, false);
                     await ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
-                    await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                    await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     return await ending(2);
                   case provokeOrKeepUpAnswer.keepUp:
                     await ƒS.Speech.tell(characters.nobu, text.Nobu.S1123_06);
+                    await ƒS.Speech.hide();
                     await ƒS.Location.show(sequences.unconsciousNobuGang);
                     await ƒS.update(1);
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(1);
+                    await ƒS.Sound.fade(sound.first_encounter, 0.05, 3, false);
                     await ƒS.Sound.fade(sound.punch_1, 0, 1, false);
                     await ƒS.Sound.fade(sound.punch_2, 0, 1, false);
                     await ƒS.Sound.fade(sound.punch_3, 0, 1, false);
@@ -314,7 +316,7 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(2);
                     await ƒS.Sound.fade(sound.running, 0, 0, false);
-                    await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                    await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
                     await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                     await ƒS.Sound.fade(sound.heartbeat, 0, 0, false);
                     return "protagonistHospital";
@@ -344,7 +346,7 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.running, 0, 0, false);
-                await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+                await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
                 await ƒS.Sound.fade(sound.group_scream, 0, 0, false);
                 await ƒS.Sound.fade(sound.woman_heavy_breathing, 0, 0, false);
                 return "sumiHospital";

@@ -41,6 +41,7 @@ declare namespace Endabgabe {
     };
     export let sound: {
         filler_track: string;
+        float_track: string;
         first_encounter: string;
         sad_times: string;
         romantic_track: string;

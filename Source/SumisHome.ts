@@ -119,7 +119,7 @@ namespace Endabgabe {
 
         let talkOutOrHelpAnswer = {
             talkOut: "Ausreden",
-            morePeople: "Noch mehr Menschen?",
+            morePeople: "Noch mehr Menschen?"
         };
 
         let flirtOrSleepAnswer = {
@@ -131,6 +131,7 @@ namespace Endabgabe {
         ƒS.Speech.hide();
         characters.nobu.name = "???";
         characters.sumi.name = "Pinkes Mädchen";
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
@@ -160,9 +161,10 @@ namespace Endabgabe {
         await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         await ƒS.Sound.play(sound.door_opening, 0.5, false);
-        await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_10);
         ƒS.Sound.play(sound.first_encounter, 0.01, true);
+        await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_10);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_11);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_12);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_13);
@@ -172,8 +174,9 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_17);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S2100_18);
         ƒS.Speech.hide();
-        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
         await ƒS.Sound.play(sound.door_closing, 0.5, false);
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Sound.play(sound.hard_floor_footsteps, 1, false);
         await ƒS.Character.animate(characters.sumi, characters.sumi.pose.normal_flipped, animate(animations.leftOutToMid));
         await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
@@ -190,10 +193,12 @@ namespace Endabgabe {
         }
 
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_20);
+        await ƒS.Speech.hide();
         await ƒS.Character.hide(characters.sumi);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.sumiFirstAid);
         await ƒS.update(1);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         ƒS.Sound.play(sound.sad_times, 0.3, true);
         nobuOrShou = await ƒS.Menu.getInput(nobuOrShouAnswer, "decisionClass");
 
@@ -223,7 +228,7 @@ namespace Endabgabe {
                 await ƒS.Sound.play(sound.door_closing, 0.5, false);
                 await ƒS.Location.show(sequences.youLeave);
                 await ƒS.update(3);
-                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
                 return await ending(1);
             case goOrTalkAnswer.talk:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_01);
@@ -246,7 +251,7 @@ namespace Endabgabe {
                 await ƒS.Sound.play(sound.door_closing, 0.5, false);
                 await ƒS.Location.show(sequences.sumiKicksYouOut);
                 await ƒS.update(3);
-                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
                 return await ending(2);
             case talkOutOrHelpAnswer.morePeople:
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01);
@@ -258,15 +263,14 @@ namespace Endabgabe {
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_03);
-                await ƒS.Location.show(sequences.sumiHappyCry);
-                await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
                 await ƒS.Inventory.add(items.documentsShou);
                 await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
                 await ƒS.Speech.hide();
-                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
+                ƒS.Sound.play(sound.float_track, 0.2, true);
                 await ƒS.Location.show(sequences.planningEvening);
                 await ƒS.update(1);
                 await ƒS.Location.show(sequences.black);
@@ -296,6 +300,7 @@ namespace Endabgabe {
                 await ƒS.update(2);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
                 await ƒS.Sound.play(sound.hard_floor_footsteps, 0, false);
+                await ƒS.Sound.fade(sound.float_track, 0, 3, false);
                 ƒS.Sound.play(sound.romantic_track, 0.3, true);
                 if (dataForSave.nameProtagonist == "ecchi") {
                     await ƒS.Location.show(sequences.sumiUndress);
@@ -332,7 +337,7 @@ namespace Endabgabe {
                 await ƒS.update(1);
                 await ƒS.Location.show(sequences.black);
                 await ƒS.update(3);
-                await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
+                await ƒS.Sound.fade(sound.romantic_track, 0, 3, false);
                 await ƒS.Sound.fade(sound.raining, 0, 0, false);
                 await ƒS.Sound.play(sound.rooster, 0.2, false);
                 await ƒS.Location.show(sequences.theNextDay);

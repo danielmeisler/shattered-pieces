@@ -44,6 +44,7 @@ namespace Endabgabe {
     export let sound = {
         // themes
         filler_track: "./assets/sounds/music/Filler_Track.mp3",
+        float_track: "./assets/sounds/music/Floating_Track.mp3",
         first_encounter: "./assets/sounds/music/First_Encounter.mp3",
         sad_times: "./assets/sounds/music/Sad_Times.mp3",
         romantic_track: "./assets/sounds/music/Romantic_Track.mp3",

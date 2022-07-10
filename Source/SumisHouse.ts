@@ -83,6 +83,7 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         characters.protagonist.name = dataForSave.nameProtagonist;
         await ƒS.Location.show(sequences.black);
         await ƒS.update(1);
@@ -91,6 +92,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3100_01);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3100_01);
         await ƒS.Location.show(sequences.sumiNobuArgument);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         ƒS.Sound.play(sound.first_encounter, 0.1, true);
         await ƒS.update(1);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3100_02);
@@ -157,7 +159,8 @@ namespace Endabgabe {
                 break;
             }
 
-        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
@@ -176,6 +179,7 @@ namespace Endabgabe {
         await ƒS.update(10);
         await ƒS.Location.show(sequences.planningNight);
         await ƒS.update(1);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         await ƒS.Location.show(sequences.planningNight2);
         await ƒS.update(3);
 
@@ -212,7 +216,7 @@ namespace Endabgabe {
         await ƒS.Speech.hide();
         await ƒS.Location.show(sequences.black);
         await ƒS.update(3);
-        await ƒS.Sound.fade(sound.romantic_track, 0, 0, false);
+        await ƒS.Sound.fade(sound.romantic_track, 0, 3, false);
         await ƒS.Sound.play(sound.rooster, 0.2, false);
         await ƒS.Location.show(sequences.theNextDay);
         await ƒS.update(3);
