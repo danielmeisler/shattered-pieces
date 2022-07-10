@@ -38,6 +38,7 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        ƒS.Sound.play(sound.sad_times, 0.2, true);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.hurt, ƒS.positions.bottomcenter);
@@ -63,6 +64,7 @@ namespace Endabgabe {
         await ƒS.update(1);
         await ƒS.Sound.play(sound.door_opening, 0.5, false);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S4200_13);
+        await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
         ƒS.Sound.play(sound.first_encounter, 0.1, true);
         ƒS.Sound.play(sound.hard_floor_footsteps, 1, true);
         await ƒS.Character.animate(characters.nobu, characters.nobu.pose.normal, animate(animations.leftOutToMid));
@@ -82,7 +84,7 @@ namespace Endabgabe {
         await ƒS.Character.hideAll();
         await ƒS.Speech.hide();
         await ƒS.Sound.play(sound.door_closing, 0.5, false);
-        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
+        await ƒS.Sound.fade(sound.first_encounter, 0, 3, false);
         ƒS.Sound.play(sound.searching_track, 0.1, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(5);

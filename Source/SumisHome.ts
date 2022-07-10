@@ -269,12 +269,12 @@ namespace Endabgabe {
                 await ƒS.Inventory.add(items.documentsShou);
                 await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
                 await ƒS.Speech.hide();
-                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
-                ƒS.Sound.play(sound.float_track, 0.2, true);
                 await ƒS.Location.show(sequences.planningEvening);
                 await ƒS.update(1);
                 await ƒS.Location.show(sequences.black);
-                await ƒS.update(10);
+                await ƒS.Sound.fade(sound.sad_times, 0, 10, false);
+                await ƒS.update(1);
+                ƒS.Sound.play(sound.float_track, 0.2, true);
                 await ƒS.Location.show(sequences.planningNight);
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.raining, 0.1, 8, true);

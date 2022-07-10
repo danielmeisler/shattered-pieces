@@ -106,10 +106,10 @@ namespace Endabgabe {
 
         // Start
         ƒS.Speech.hide();
-        await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);
         characters.nobu.name = "Nobu";
         characters.sumi.name = "Pinkes Mädchen";
         characters.yuko.name = "???";
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Location.show(sequences.sumiHospitalEyesClosed);
@@ -172,6 +172,7 @@ namespace Endabgabe {
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.happy, animate(animations.leftToLeftOut));
         await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.update(1);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         ƒS.Sound.play(sound.sad_times, 0.3, true);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2300_33);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2300_34);
@@ -251,8 +252,8 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.planningDaySumiHospital);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.black);
-        await ƒS.update(10);
-        await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+        await ƒS.Sound.fade(sound.sad_times, 0, 10, false);
+        await ƒS.update(1);
         ƒS.Sound.play(sound.romantic_track, 0.3, true);
         await ƒS.Location.show(sequences.planningEveningSumiHospital);
         await ƒS.update(1);

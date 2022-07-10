@@ -199,7 +199,7 @@ namespace Endabgabe {
         await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
         ƒS.Sound.play(sound.heartbeat, 1, true);
         await ƒS.update(10);
-        await ƒS.Sound.fade(sound.stealth_track, 0, 0, false);
+        await ƒS.Sound.fade(sound.stealth_track, 0, 3, false);
         ƒS.Sound.play(sound.first_encounter, 0.01, true);
 
         await ƒS.Location.show(sequences.storageHallWakeUp);
@@ -604,7 +604,6 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(5);
                     await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich kann mein Leben mit der Person, die ich liebe, verbringen. " + dataForSave.nameProtagonist + ", ich liebe dich. \n \n Sumi");
-                    // Sequenz Sumi und Protagonist küssen sich und gehen Hand in Hand zum Bruder
                     return await ending(3);
                 } else {
                     await ƒS.Location.show(sequences.sumiHappyCryStorageHall);
@@ -612,7 +611,6 @@ namespace Endabgabe {
                     await ƒS.Location.show(sequences.black);
                     await ƒS.update(5);
                     await ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
-                    // Sumi schaut den Protaginisten mit Tränen in den Augen glücklich an und sie gehen zum Bruder
                     return await ending(3);
                 }
             } else {
@@ -691,21 +689,21 @@ namespace Endabgabe {
                 await ƒS.Speech.hide();
                 // Sumi und Protagonist schönes Leben
                 await ƒS.update(1);
-                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
                 await ƒS.Sound.fade(sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 2:
                 await ƒS.Speech.hide();
                 // Sumi wird gestellt
                 await ƒS.update(1);
-                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
                 await ƒS.Sound.fade(sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 3:
                 await ƒS.Speech.hide();
                 // Sumi und ihr Bruder haben ein Happy Ending
                 await ƒS.update(1);
-                await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
                 await ƒS.Sound.fade(sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
         }

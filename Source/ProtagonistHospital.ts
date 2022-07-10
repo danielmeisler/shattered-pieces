@@ -138,8 +138,7 @@ namespace Endabgabe {
 
         let talkOutOrHelpAnswer = {
             talkOut: "Ausreden",
-            morePeople: "Noch mehr Menschen?",
-            help: "Hilfe anbieten"
+            morePeople: "Noch mehr Menschen?"
         };
 
         let flirtOrNotAnswer = {
@@ -315,7 +314,9 @@ namespace Endabgabe {
 
                 break;
         }
-
+        await ƒS.Sound.fade(sound.sad_times, 0, 0, false);
+        await ƒS.Sound.fade(sound.float_track, 0, 0, false);
+        ƒS.Sound.play(sound.sad_times, 0.3, true);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2240_01);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2240_02);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2240_03);
@@ -343,7 +344,6 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.sumiHappyCryHospital);
                 await ƒS.update(1);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2242_03);
-            case talkOutOrHelpAnswer.help:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2243_01);
                 await ƒS.Speech.tell(characters.sumi, text.Sumi.S2243_02);
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2243_03);
@@ -360,8 +360,8 @@ namespace Endabgabe {
                 await ƒS.Location.show(sequences.planningEveningHospital);
                 await ƒS.update(1);
                 await ƒS.Location.show(sequences.black);
-                await ƒS.update(10);
-                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
+                await ƒS.Sound.fade(sound.sad_times, 0, 10, false);
+                await ƒS.update(1);
                 ƒS.Sound.play(sound.romantic_track, 0.3, true);
                 await ƒS.Location.show(sequences.planningNightHospital);
                 await ƒS.update(1);

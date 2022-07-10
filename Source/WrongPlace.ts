@@ -79,7 +79,7 @@ namespace Endabgabe {
         await ƒS.Sound.fade(sound.fall_on_ground, 0, 1, false);
         ƒS.Sound.play(sound.heartbeat, 1, true);
         await ƒS.update(10);
-        await ƒS.Sound.fade(sound.stealth_track, 0, 0, false);
+        await ƒS.Sound.fade(sound.stealth_track, 0, 3, false);
         ƒS.Sound.play(sound.first_encounter, 0.01, true);
 
         await ƒS.Location.show(sequences.storageHallWakeUp);

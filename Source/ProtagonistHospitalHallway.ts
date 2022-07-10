@@ -86,6 +86,7 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(1);
         await ƒS.Location.show(locations.protagonistHospitalRoom_day);
@@ -95,6 +96,7 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.sumiNobuArgumentHospital);
         await ƒS.update(1);
         ƒS.Sound.play(sound.hospital_ambiente, 0.5, true);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         ƒS.Sound.play(sound.first_encounter, 0.1, true);
         await ƒS.Speech.tell(characters.nobu, text.Nobu.S3200_02);
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S3200_03);
@@ -173,6 +175,7 @@ namespace Endabgabe {
 
         await ƒS.Sound.fade(sound.first_encounter, 0, 0, false);    
         await ƒS.Sound.fade(sound.hospital_ambiente, 0, 0, false);
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(locations.protagonistHospitalRoom_day);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal_flipped, new ƒS.Position(-480, ƒS.positions.bottomcenter.y));
@@ -187,7 +190,8 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.planningEveningHospital);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.black);
-        await ƒS.update(10);
+        await ƒS.Sound.fade(sound.float_track, 0, 10, false);
+        await ƒS.update(1);
         ƒS.Sound.play(sound.romantic_track, 0.3, true);
         await ƒS.Location.show(sequences.planningNightHospital);
         await ƒS.update(1);

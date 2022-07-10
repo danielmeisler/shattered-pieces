@@ -60,6 +60,7 @@ namespace Endabgabe {
         // Start
         ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
         await ƒS.update(transitions.fade.duration, transitions.fade.alpha, transitions.fade.edge);
         await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
@@ -84,6 +85,7 @@ namespace Endabgabe {
         await ƒS.Character.hideAll();
         await ƒS.Sound.fade(sound.hard_floor_footsteps, 0, 0, false);
         await ƒS.Sound.play(sound.door_closing, 0.5, false);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         ƒS.Sound.play(sound.searching_track, 0.1, true);
         await ƒS.Location.show(sequences.plan);
         await ƒS.update(3);
@@ -171,16 +173,16 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.black);
         await ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {
-            await ƒS.Sound.fade(sound.searching_track, 0, 0, false);
+            await ƒS.Sound.fade(sound.searching_track, 0, 3, false);
             return "rightPlace";
         } else if (code == "dm99" || code == "DM99") {
             await ƒS.Speech.tell(characters.protagonist, "Woher kommen die plötzlich...? Soll ich sie anziehen?");
             await ƒS.Inventory.add(items.glasses);
             await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
-            await ƒS.Sound.fade(sound.searching_track, 0, 0, false);
+            await ƒS.Sound.fade(sound.searching_track, 0, 3, false);
             return "rightPlace";
         } else {
-            await ƒS.Sound.fade(sound.searching_track, 0, 0, false);
+            await ƒS.Sound.fade(sound.searching_track, 0, 3, false);
             return "wrongPlace";
         }
     

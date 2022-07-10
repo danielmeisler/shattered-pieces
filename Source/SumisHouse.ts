@@ -176,10 +176,10 @@ namespace Endabgabe {
         await ƒS.Location.show(sequences.planningEvening);
         await ƒS.update(1);
         await ƒS.Location.show(sequences.black);
-        await ƒS.update(10);
+        await ƒS.Sound.fade(sound.float_track, 0, 10, false);
+        await ƒS.update(1);
         await ƒS.Location.show(sequences.planningNight);
         await ƒS.update(1);
-        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
         await ƒS.Location.show(sequences.planningNight2);
         await ƒS.update(3);
 
