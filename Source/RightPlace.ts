@@ -10,11 +10,11 @@ namespace Endabgabe {
                 S4120_03: "Sumi, geht es dir gut? Bist du verletzt?",
                 S4120_05: "Es war also eine Falle?",
                 S4120_07: "Sumi, dein Bruder ist da drin… wir haben ihn gefunden.",
-                S4120_09: "Warum hast du ihren Bruder entführt Nobu?",
-                S4120_11: "Und da dachtest du einfach ihn zu entführen, anstatt mit ihm zu reden?",
+                S4120_09: "Warum hast du ihren Bruder entführt, Nobu?",
+                S4120_11: "Und da dachtest du einfach ihn zu entführen anstatt mit ihm zu reden?",
                 S4120_13: "Aber, dass er eine Schwester hat, hat er dir einfach so erzählt?",
                 S4120_15: "Also war das am Ende ein Racheakt, weil er dich nicht seine Schwester lieben ließ? Du bist krank!",
-                S4120_17: "Also was, ihr habt einen Putsch geplant um ihn als euren Anführer abzulösen?",
+                S4120_17: "Also was, ihr habt einen Putsch geplant, um ihn als euren Anführer abzulösen?",
                 S4120_19: "Du warst sein bester Freund, natürlich erwartet er nicht das Schlimmste.",
                 S4120_22: "Sumi, geh deinen Bruder befreien!",
                 S4120_25: "Keine Sorge, ich halte ihn auf. Er ist diesmal allein, es ist fairer als sonst mit seinem Schlägertrupp, ich schaff das, vertrau mir! Lauf los!",
@@ -27,7 +27,7 @@ namespace Endabgabe {
 
                 S41211_15: "Vielleicht.",
 
-                S41211_18: "Es ist nicht fair, dass dein ganzes Leben voller Unglück gejagt wird. Mach es dir nicht kaputt, indem du weggesperrt wirst. Starte ein neues Leben… einen Neuanfang. Vielleicht nicht allein?",
+                S41211_18: "Es ist nicht fair, dass dein ganzes Leben von Unglück gejagt wird. Mach es dir nicht kaputt, indem du weggesperrt wirst. Starte ein neues Leben… einen Neuanfang. Vielleicht nicht allein?",
                 
                 S41212_02: "Nein… es ist noch nicht vorbei!",
 
@@ -73,11 +73,11 @@ namespace Endabgabe {
                 S41211_17: "Aber... wieso nicht?",
                 S41211_19: "Das klingt schön… vielleicht sollte ich das wirklich tun…",
                 
-                S41212_14: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mit bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + " plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
+                S41212_14: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mich bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + " plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
                 S41212_16: "Ich bin so froh, dass wir dich noch rechtzeitig gefunden haben...",
                 S41212_18: "Keine Veränderungen, sie liegt immer noch schwerkrank im Krankenhaus…",
                 S41212_20: "Von Nobu zusammengeschlagen zu werden scheint wohl dein Ding zu sein… aber ich hab dir vertraut und du dein Wort gehalten.",
-                S41212_22: "Ja, das stimmt wohl… Aber ich wollte mich nochmal bedanken… Hättest du dich damals nicht eingemischt, hätte ich meinen Bruder wahrscheinlich nie wieder gesehen. Ich weiß nicht, wie ich das je zurückgeben soll…",
+                S41212_22: "Ja, das stimmt wohl… Aber ich wollte mich nochmal bedanken… Hättest du dich damals nicht eingemischt, hätte ich meinen Bruder wahrscheinlich nie wieder gesehen. Ich weiß nicht, wie ich dir das je zurückgeben soll…",
 
                 S41221_04: "ER HAT IHN UMGEBRACHT… Shou ist tot…",
                 S41221_07: "DU MONSTER!",
@@ -89,28 +89,28 @@ namespace Endabgabe {
                 S41221_21: "Danke, wirklich… danke für Alles.",
 
                 S41222_14: "Wir sollten die Polizei holen, immerhin wirst du vermisst Shou.",
-                S41222_16: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mit bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + " plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
+                S41222_16: "Das ist " + dataForSave.nameProtagonist + ". Als Nobu und einige seiner Leute mich bedrängt haben und sich an mir vergehen wollten, tauchte " + dataForSave.nameProtagonist + " plötzlich auf und rettete mich. Der gesamte Plan stammte von " + dataForSave.nameProtagonist,
                 S41222_18: "Ich bin so froh, dass wir dich noch rechtzeitig gefunden haben...",
                 S41222_20: "Keine Veränderungen, sie liegt immer noch schwerkrank im Krankenhaus…",
                 S41222_22: "Hätte nicht gedacht, dass du Nobu schlagen könntest.",
                 S41222_24: "Haha, tut mir leid.",
-                S41222_26: "Ja, das stimmt wohl… Aber ich wollte mich nochmal bedanken… Hättest du dich damals in der Gasse nicht eingemischt, hätte ich meinen Bruder wahrscheinlich nie wieder gesehen. Ich weiß nicht, wie ich das je zurückgeben soll…"
+                S41222_26: "Ja, das stimmt wohl… Aber ich wollte mich nochmal bedanken… Hättest du dich damals in der Gasse nicht eingemischt, hätte ich meinen Bruder wahrscheinlich nie wieder gesehen. Ich weiß nicht, wie ich dir das je zurückgeben soll…"
             },
             Nobu: {
                 S4120_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor.",
                 S4120_01b: "... oder findest du nicht, Sumi?",
                 S4120_06: "Und ihr seid voll reingetappt… schon schade… ",
-                S4120_10: "Du willst es wirklich vor deinem Tod noch wissen? Na schön, ich erzähl es dir, weil du ihn gefunden hast… als letzte Belohnung. Shou wollte mit der Gang immer nur das Mindeste, keine Ambitionen. Wir hatten Potenzial einer der gefürchtetsten Banden zu werden und als wir einen richtig dicken Fisch an der Angel hatten hat Shou alles abgebrochen, da seine Prinzipien ihm im Weg standen. Er ist weich und schwach!",
-                S4120_12: "Wenn du nur wüsstest, wie oft ich das versucht habe. Doch das ist noch nicht alles. Shou hat immer sein Leben vor allen geheim gehalten. Wir wussten gar nichts über ihn, denn er war der Meinung, dass es nicht nötig ist. Aber wie willst du jemandem Folgen und dein Leben riskieren, wenn du nicht weißt, was er verbirgt? Wir waren so lange Freunde und ich wusste nichts über ihn, außer dass er eine Schwester hat.",
-                S4120_14: "Natürlich nicht, ich habe das lange vor all den Problemen von allein rausgefunden. Zuerst war er auch sehr sauer, aber da wir schon fast wie Brüder waren, nahm er es mir am Ende doch nicht übel, solange ich es geheim halten würde. Aber als ich Sumi zum ersten Mal gesehen habe, habe ich mich sofort Kopf über in sie verliebt. Doch Shou wollte sie beschützen und aus all dem hier raushalten… und lies mich nicht an sie ran.",
+                S4120_10: "Du willst es wirklich vor deinem Tod noch wissen? Na schön, ich erzähl es dir, weil du ihn gefunden hast… als letzte Belohnung. Shou wollte mit der Gang immer nur das Mindeste, keine Ambitionen. Wir hatten Potenzial einer der gefürchtetsten Banden zu werden, und als wir einen richtig dicken Fisch an der Angel hatten, hat Shou alles abgebrochen, da seine Prinzipien ihm im Weg standen. Er ist weich und schwach!",
+                S4120_12: "Wenn du nur wüsstest, wie oft ich das versucht habe. Doch das ist noch nicht alles. Shou hat immer sein Leben vor allen geheim gehalten. Wir wussten gar nichts über ihn, denn er war der Meinung, das wäre nicht nötig. Aber wie willst du jemandem Folgen und dein Leben riskieren, wenn du nicht weißt, was er verbirgt? Wir waren so lange Freunde und ich wusste nichts über ihn, außer dass er eine Schwester hat.",
+                S4120_14: "Natürlich nicht, ich habe das lange vor all den Problemen von allein rausgefunden. Zuerst war er auch sehr sauer, aber da wir schon fast wie Brüder waren, nahm er es mir am Ende doch nicht übel, solange ich es geheim halten würde. Aber als ich Sumi zum ersten Mal gesehen habe, habe ich mich sofort Hals über Kopf in sie verliebt. Doch Shou wollte sie beschützen und aus all dem hier raushalten… und ließ mich nicht an sie ran.",
                 S4120_16: "Es war eine Mischung aus allem, irgendwann platzte mir der Kragen. Seine Regeln nahmen mir alles und ich konfrontierte ihn mit damit… doch es endete in einem riesigen Streit, da er nichts ändern wollte. Ich wollte ihn loswerden, da somit auch all meine Probleme verschwinden würden… also überlegt ich mir etwas. Ich verbündete mich mit den Gang-Mitgliedern, die derselben Meinung waren, dass die Gang ihr Potenzial nicht ausschöpfen würde.",
-                S4120_18: "Er hätte niemals die Führung freiwillig abgegeben… also lockte ich ihn mit dem Vorwand mich entschuldigen zu wollen zu einem Treffen. Normal ist er sehr vorsichtig und wachsam, doch er ist zu weich, weswegen er nicht erwartet hatte, aus seinen eigenen Reihen verraten zu werden. Schon fast traurig…und schwach.",
+                S4120_18: "Er hätte niemals die Führung freiwillig abgegeben… also lockte ich ihn mit dem Vorwand mich entschuldigen zu wollen zu einem Treffen. Normal ist er sehr vorsichtig und wachsam, doch er ist zu weich, weswegen er nicht erwartet hatte, aus seinen eigenen Reihen verraten zu werden. Schon fast traurig… und schwach.",
                 S4120_20: "Beweist nur, dass ich Recht habe…",
                 S4120_21: "Ich hab euch nicht durchsucht... wie dumm von mir...",
-                S4120_24: "Glaubst du wirklich ich lass dich gehen?",
+                S4120_24: "Glaubst du wirklich, ich lass dich gehen?",
                 S4120_26: "Du willst ein Eins gegen Eins? Gegen mich? Hahahaha, na los!",
-                S4120_28: "Das Einzige was ich beende ist dein Leben, du Wicht! Ha! Endlich kann ich dich erledigen, du warst mir schon seit der ersten Minute ein Dorn im Auge.",
-                S4120_30: "Nicht reden, zeig mir was du draufhast! Hahaha!",
+                S4120_28: "Das Einzige, das ich beende, ist dein Leben, du Wicht! Ha! Endlich kann ich dich erledigen, du warst mir schon seit der ersten Minute ein Dorn im Auge.",
+                S4120_30: "Nicht reden, zeig mir, was du draufhast! Hahaha!",
 
                 S41211_01: "Das wars! Du hast echt nicht gedacht, dass du gegen mich gewinnen kannst, oder?",
                 S41211_01b: "Hahaha… verabschiede dich schon einmal von deinem Leben, du Wicht!",
@@ -123,7 +123,7 @@ namespace Endabgabe {
                 S41212_04: "Shou?!",
                 S41212_06: "Was soll ich mit einem Bruder, der mir Steine in den Weg legt?",
                 S41212_08: "Ich habe versucht mit dir zu reden, aber du warst ignorant.",
-                S41212_10: "Reden bringt auch nichts mehr, bringen wir es hinter uns… ein für Alle mal.",
+                S41212_10: "Reden bringt auch nichts mehr, bringen wir es hinter uns… ein für alle mal.",
 
                 S41221_02: "Das kann nicht sein, so eine kleine Ratte wie du kann mich nicht besiegen.",
                 S41221_06: "Ich musste es tun… ihr wart mir auf die Schliche gekommen… beim letzten Gespräch hat die kleine Ratte zu viele Fragen gestellt… ich wurde nervös, also musste ich Shou töten, bevor ihr ihn findet… nur habe ich es nicht rechtzeitig geschafft seine Leiche wegzuschaffen… ich habe nicht erwartet, dass ihr so schnell seid… ahhh", 
@@ -141,7 +141,7 @@ namespace Endabgabe {
                 S41212_07: "Weil ich dich davon abhalte Fehler zu begehen und meine Schwester von all diesen illegalen Machenschaften raushalten möchte, lege ich dir Steine in den Weg?",
                 S41212_09: "Und deswegen hintergehst du mich und entführst mich wochenlang?",
                 S41212_11: "Und wieder mal siehst du nichts als Gewalt als Lösung…",
-                S41212_13: "Das klingt nach einem Plan… Wir hatten das Vergnügen noch nicht… ich nehme an du weißt wer ich bin, aber ich weiß nicht wer du bist.",
+                S41212_13: "Das klingt nach einem Plan… Wir hatten das Vergnügen noch nicht… ich nehme an du weißt, wer ich bin, aber ich weiß nicht, wer du bist.",
                 S41212_15: "Du bist also mein Retter? Danke dafür… ich habe eigentlich nur noch auf meinen Tod gewartet…",
                 S41212_17: "Wie geht es unserer Mutter?",
                 S41212_19: "Hauptsache sie ist noch am Leben… Aber das bereden wir, sobald wir zuhause sind. Ich trag Nobu schon einmal raus und warte auf die Polizei… Du solltest vielleicht " + dataForSave.nameProtagonist + " verarzten… hat gut was abbekommen…",
@@ -151,7 +151,7 @@ namespace Endabgabe {
                 S41222_08: "Weil ich dich davon abhalte Fehler zu begehen und meine Schwester von all diesen illegalen Machenschaften raushalten möchte, lege ich dir Steine in den Weg?",
                 S41222_10: "Und deswegen hintergehst du mich und entführst mich wochenlang?",
                 S41222_12: "...",
-                S41222_15: "Das klingt nach einem Plan… Wir hatten das Vergnügen noch nicht… ich nehme an du weißt wer ich bin, aber ich weiß nicht wer du bist.",
+                S41222_15: "Das klingt nach einem Plan… Wir hatten das Vergnügen noch nicht… ich nehme an du weißt, wer ich bin, aber ich weiß nicht, wer du bist.",
                 S41222_17: "Du bist also mein Retter? Danke dafür… ich habe eigentlich nur noch auf meinen Tod gewartet…",
                 S41222_19: "Wie geht es unserer Mutter?",
                 S41222_21: "Hauptsache sie ist noch am Leben… Aber das bereden wir, sobald wir zuhause sind. Ich trag Nobu schon einmal raus und warte auf die Polizei… Du solltest vielleicht " + dataForSave.nameProtagonist + " verarzten… hat gut was abbekommen…"

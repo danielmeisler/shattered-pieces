@@ -9,8 +9,8 @@ namespace Endabgabe {
             Protagonist: {
                 S4100_01: "Und? Hast du alles besorgt?",
                 S4100_03: "Wie kamst du rein?",
-                S4100_05: "Hast du was gefunden?",
-                S4100_07: "Mhhhh… ich gib mein Bestes. Aber dir erstmal viel Glück."
+                S4100_05: "Hast du etwas gefunden?",
+                S4100_07: "Mhhhh… ich gebe mein Bestes. Aber dir erstmal viel Glück."
             },
             Sumi: {
                 S4100_02: "Ich war heute Morgen bei Nobu zuhause, während er unterwegs war.",

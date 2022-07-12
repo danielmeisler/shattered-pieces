@@ -14,7 +14,7 @@ namespace Endabgabe {
                 S3130_02: "Sicher, dass du nichts weißt?",
                 S3130_04: "Keine Sorge, die finden wir noch...",
 
-                S3121_01: "Dass der Typ dich auch nicht in Ruhe lässt.",
+                S3121_01: "Dass der Typ dich auch nicht in Ruhe lässt..",
                 S3121_03: "Halte noch ein wenig durch.",
                 S3121_05: "Klingt gut, geht mir genauso...",
                 S3121_07: "Keine Sorge, wir finden deinen Bruder.",
@@ -25,7 +25,7 @@ namespace Endabgabe {
                 S3100_01: "Jetzt verschwinde endlich, ich bin immer noch sauer auf dich!",
                 S3100_03: "Achja? Was passiert dann?!",
 
-                S3100_05: "Hör zu, ich habe noch viel zu tun… warum komm ich nicht einfach zum nächsten Gang-Treffen und wir bereden es?",
+                S3100_05: "Hör zu, ich habe noch viel zu tun… warum komme ich nicht einfach zum nächsten Gang-Treffen und wir bereden es?",
                 S3100_08: dataForSave.nameProtagonist + ", warum?!...",
                 S3100_10: "Nein… ehm…",
 
@@ -40,22 +40,22 @@ namespace Endabgabe {
                 S3121_11: "Wir sollten den Plan fertig stellen..."
             },
             Nobu: {
-                S3100_02: "Glaubst du ich werde mir das weiterhin Gefallen lassen Sumi?! Irgendwann reißt der Faden!",
+                S3100_02: "Glaubst du, ich werde mir das weiterhin Gefallen lassen, Sumi?! Irgendwann reißt der Faden!",
                 S3100_04: "Du unterschätzt mich…",
 
-                S3100_06: "Wehe du tauchst nicht auf.",
+                S3100_06: "Wehe, du tauchst nicht auf.",
 
-                S3100_09: "Ach ist er der Grund, weshalb du so eiskalt zu mir bist, mich dauernd meidest und mich nicht reinlassen willst?",
+                S3100_09: "Ach, ist das der Grund, weshalb du so eiskalt zu mir bist, mich dauernd meidest und mich nicht reinlassen willst?",
 
                 S3110_01: "Du kleine Ratte… hast du Glück, dass hier schon die Nachbarn schauen. Aber das wirst du noch bereuen…",
 
-                S3120_01: "Achsoooo, ihr kennt euch aus der Schule? Das erklärt dann auch, warum du sie gestern beschützen wolltest… wer wäre so dumm und würde sonst sein Leben für eine Fremde aufs Spiel setzen und sich einmischen.",
+                S3120_01: "Achsoooo, ihr kennt euch aus der Schule? Das erklärt dann auch, warum du sie gestern beschützen wolltest… wer wäre so dumm und würde sonst sein Leben für eine Fremde aufs Spiel setzen und sich einmischen?",
                 S3120_03: "Was?",
-                S3120_05: "Na gut… aber ich komme wieder Sumi, denk nicht, dass du mich einfach so jedes Mal abschütteln kannst.",
+                S3120_05: "Na gut… aber ich komme wieder, Sumi. Denk nicht, dass du mich einfach so jedes Mal abschütteln kannst.",
 
-                S3130_01: "Ich weiß absolut nicht was du meinst… und was kümmert dich das eigentlich?",
+                S3130_01: "Ich weiß absolut nicht, was du meinst… und was kümmert dich das eigentlich?",
                 S3130_03: "Hast du Beweise für deine Anschuldigungen?",
-                S3130_05: "Pass lieber auf wo du deine Nase reinsteckst."
+                S3130_05: "Pass lieber auf, wo du deine Nase reinsteckst."
             }
         };
 
@@ -66,11 +66,11 @@ namespace Endabgabe {
         
         let interfereOrNotAnswer = {
             not: "Ich sollte mich raushalten, um den Plan nicht zu gefährden.",
-            interefere: "Ich sollte was tun, es sieht brenzlig aus."
+            interefere: "Ich sollte etwas tun, es sieht brenzlig aus."
         };
 
         let howToInterfereAnswer = {
-            couple: "Ja bin ich, wir sind jetzt ein Paar und ich habe letzte Nacht bei ihr übernachtet.",
+            couple: "Ja, bin ich, wir sind jetzt ein Paar und ich habe letzte Nacht bei ihr übernachtet.",
             classmates: "Entspann dich, wir sind im gleichen Kurs und haben ein Projekt zusammen.",
             brother: "Vielleicht ist der Grund eher, dass du etwas mit der Entführung ihres Bruders zu tun hast?"
         };

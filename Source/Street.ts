@@ -10,7 +10,7 @@ namespace Endabgabe {
         Protagonist: {
             S1000_01: "Hmmm, der Bus kommt mal wieder zu spät. Als wäre es nicht schon spät genug und dann jeden Tag sowas. Noch dazu war es heute so ein harter Tag, wenigstens heute hätte der Bus pünktlich kommen können...",
             S1000_02: "Wo kam das her? Ich sollte mal nachsehen...",
-            S1000_03: "Ich glaube das kam von hier...",
+            S1000_03: "Ich glaube, das kam von hier...",
             S1000_04: "Was soll ich tun?",
             S1000_05: "Ich sollte sie aufhalten, aber wie?",
 
@@ -25,7 +25,7 @@ namespace Endabgabe {
             S1123_03: "Sicher, dass du weiterreden möchtest?",
 
             S1124_01: "HILFE! ICH BRAUCHE HILFE, RUFT DIE POLIZEI!",
-            S1124_02: "HEY IHR DA! KOMMT MIT, DA VORNE WIRD GERADE EIN MÄDCHEN VON EINER GANG BELÄSTIGT!",
+            S1124_02: "HEY, IHR DA! KOMMT MIT, DA VORNE WIRD GERADE EIN MÄDCHEN VON EINER GANG BELÄSTIGT!",
             S1124_03: "DIE HAUEN AB!",
             S1124_04: "SIE BLUTET, SCHNELL RUFT EINEN KRANKENWAGEN!"
         },
@@ -33,20 +33,20 @@ namespace Endabgabe {
             S1121_08: "Schnell weg hier, die Polizei ist gleich hier. Ich wohne hier in der Nähe, dort kann ich dich verarzten.",
 
             S1122_08: "Du hast gar nicht gelogen?",
-            S1122_10: "Naja, egal du siehst schlimm aus. Ich wohn hier in der Nähe, lass uns schnell von hier verschwinden.",
+            S1122_10: "Naja, egal du siehst schlimm aus. Ich wohne hier in der Nähe, lass uns schnell von hier verschwinden.",
 
             S1123_07: "He du! Bleib bei mir, ich hole einen Krankenwagen! HILFE!"
         },
         Nobu: {
             S1121_02: "Hey du, verzieh dich. Geh einfach weiter und tu so als hättest du nichts gesehen.",
             S1121_03: "Junge, ich habe dich gewarnt, letzte Chance. Oder willst du den nächsten Tag nicht mehr erleben?",
-            S1121_04: "Wenn du nicht hören willst, musst du eben fühlen du kleine Ratte.",
+            S1121_04: "Wenn du nicht hören willst, musst du eben fühlen, du kleine Ratte.",
             S1121_06: "Du hättest auf mich hören sollen, jetzt ist es vorbei mit dir…",
 
             S1122_02: "Heee?! Du kleine Ratte bluffst doch. Du willst wohl drauf gehen?",
             S1122_03: "Du willst dich wohl mit uns anlegen? Wärst du bloß lieber einfach weitergelaufen, dann wäre dir nichts passiert.",
-            S1122_05: "Wolltest du den Helden spielen? Das hat man davon du….",
-            S1122_07: "Hast nochmal Glück gehabt du Wicht.",
+            S1122_05: "Wolltest du den Helden spielen? Das hat man davon, du….",
+            S1122_07: "Hast nochmal Glück gehabt, du Wicht.",
 
             S1123_02: "Großes Maul für so ein halbes Hemd. Ha! Sicher, dass du dich mit uns anlegen möchtest?",
             S1123_04: "Hahaha! Nach der Ansage bin ich ja ziemlich enttäuscht von dir, du Ratte! Jetzt liegst du auf dem Boden, wo du auch hingehörst. Sicher, dass du weitermachen willst?",

@@ -11,7 +11,7 @@ namespace Endabgabe {
                 S4110_05: "Es war also eine Falle?",
                 S4110_07: "Und was geschieht jetzt?",
 
-                S4110_11a: "Es tut mir leid Sumi! Ich wollte nicht, dass das alles so endet!",
+                S4110_11a: "Es tut mir leid, Sumi! Ich wollte nicht, dass das alles so endet!",
                 S4110_11b: "Es ist alles meine Schuld... nur weil ich mit diesem dummen Plan ankam...",
                 S4110_11c: "Bitte... tu uns nichts... oder lass zumindest Sumi am Leben!",
                 S4110_11d: "Sumi... ich liebe dich!"
@@ -28,10 +28,10 @@ namespace Endabgabe {
 
             },
             Nobu: {
-                S4110_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest. Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor.",
+                S4110_01: "Na, hast du gut geschlafen? Wer hätte gedacht, dass du mir wirklich hinterherschnüffeln würdest? Dass Sumi plötzlich nett ist und sogar zum Gang-Treffen kommt, kam mir sofort falsch vor.",
                 S4110_01b: "... oder findest du nicht, Sumi?",
                 S4110_06: "Und ihr seid voll reingetappt… schon schade… Euer Plan hat leider nicht funktioniert, ich hab ihr alles abgenommen.",
-                S4110_08: "Was denkst du? Ich weiß nicht wie viel ihr wisst und wie viel ihr mir hinterher geschnüffelt habt… Aber ich kann euch nicht mehr am Leben lassen.",
+                S4110_08: "Was denkst du? Ich weiß nicht, wie viel ihr wisst und wie viel ihr mir hinterher geschnüffelt habt… Aber ich kann euch nicht mehr am Leben lassen.",
                 S4110_09: "Sumi, es tut mir wirklich leid, dass es so enden muss. Ich habe dich geliebt...",
                 S4110_13: "Hättest du dich damals nur nicht eingemischt, wäre das alles nicht passiert…"
             }

@@ -7,13 +7,13 @@ namespace Endabgabe {
         // Speeches
         let text = {
             Protagonist: {
-                S3200_01: "Das klingt doch wie Sumi? Was ist da los?",
+                S3200_01: "Das klingt doch wie Sumi! Was ist da los?",
                 S3200_07: "Du hast echt nichts Besseres zu tun als sie zu nerven, oder?",
                 
                 S3230_02: "Sicher, dass du nichts weißt?",
                 S3230_04: "Keine Sorge, die finden wir noch…",
 
-                S3240_01: "Dass der Typ dich auch nicht in Ruhe lässt.",
+                S3240_01: "Dass der Typ dich auch nicht in Ruhe lässt..",
                 S3240_03: "Halte noch ein wenig durch.",
                 S3240_05: "Klingt gut, geht mir genauso...",
                 S3240_07: "Keine Sorge, wir finden deinen Bruder.",
@@ -24,7 +24,7 @@ namespace Endabgabe {
                 S3200_01: "Jetzt verschwinde endlich, du hast hier nichts zu suchen!",
                 S3200_03: "Du spionierst mir nach? Das geht dich nichts an, verschwinde jetzt!",
                 
-                S3200_05: "Hör zu, ich habe gerade keine Zeit… warum komm ich nicht einfach zum nächsten Gang-Treffen und ich erzähle dir alles?",
+                S3200_05: "Hör zu, ich habe gerade keine Zeit… warum komme ich nicht einfach zum nächsten Gang-Treffen und erzähle dir alles?",
                 
                 S3200_08: dataForSave.nameProtagonist + ", warum?!...",
                 S3200_10: "Nein… ehm…",
@@ -40,12 +40,12 @@ namespace Endabgabe {
                 S3240_11: "Wir sollten den Plan fertig stellen… denn morgen wirst du entlassen und dann treffen wir uns bei mir zuhause, um den Plan zu beginnen."
             },
             Nobu: {
-                S3200_02: "Glaubst du ich werde mir das weiterhin Gefallen lassen Sumi?! Irgendwann reißt der Faden! Du meidest mich, antwortest mir nicht auf meine Nachrichten oder Anrufe. Ich hab dich beobachtet… du bist ziemlich oft in diesem Krankenhaus… warum?",
+                S3200_02: "Glaubst du, ich werde mir das weiterhin Gefallen lassen, Sumi?! Irgendwann reißt der Faden! Du meidest mich, antwortest mir nicht auf meine Nachrichten oder Anrufe. Ich habe dich beobachtet… du bist ziemlich oft in diesem Krankenhaus… warum?",
                 S3200_04: "Ja, ich will wissen, warum du mir aus dem Weg gehst!",
                 
-                S3200_06: "Wehe du tauchst nicht auf.",
+                S3200_06: "Wehe, du tauchst nicht auf.",
                 
-                S3200_09: "Ach ist er der Grund, weshalb du so eiskalt zu mir bist, mich dauernd meidest und dich hier befindest? Hast dich in deinen Retter verliebt?",
+                S3200_09: "Ach, ist das der Grund, weshalb du so eiskalt zu mir bist, mich dauernd meidest und dich hier befindest? Hast dich in deinen Retter verliebt?",
 
                 S3210_01: "Du kleine Ratte… hast du Glück, dass hier schon die Leute schauen. Aber das wirst du noch bereuen…",
 
@@ -54,9 +54,9 @@ namespace Endabgabe {
                 S3220_05: "Keine Sorge… ich gehe jetzt.",
                 S3220_05b: "Aber an deiner Stelle würde ich definitiv zum nächsten Gang-Treffen kommen, wenn du nicht willst, dass es deiner schwerkranken Mutter noch schlechter geht.",
 
-                S3230_01: "Ich weiß absolut nicht was du meinst… und was kümmert dich das eigentlich?",
+                S3230_01: "Ich weiß absolut nicht, was du meinst… und was kümmert dich das eigentlich?",
                 S3230_03: "Hast du Beweise für deine Anschuldigungen?",
-                S3230_05: "Pass lieber auf wo du deine Nase reinsteckst."
+                S3230_05: "Pass lieber auf, wo du deine Nase reinsteckst."
             }
         };
 
@@ -67,20 +67,20 @@ namespace Endabgabe {
         
         let interfereOrNotAnswer = {
             not: "Ich sollte mich raushalten, um den Plan nicht zu gefährden.",
-            interefere: "Ich sollte was tun, es sieht brenzlig aus."
+            interefere: "Ich sollte etwas tun, es sieht brenzlig aus."
         };
 
         let howToInterfereAnswer = {
-            couple: "Ja bin ich, wir sind jetzt ein Paar und sie besucht mich.",
-            school: "Entspann dich, wir sind in der selben Klasse und ich bringe ihr nur die heutigen Notizen.",
-            mother: "Das ist Zufall, du hast mich her befördert und sie besucht ihre Mutter.",
+            couple: "Ja, bin ich, wir sind jetzt ein Paar und sie besucht mich.",
+            school: "Entspann dich, wir sind in derselben Klasse und ich bringe ihr nur die heutigen Notizen.",
+            mother: "Das ist Zufall, du hast mich herbefördert und sie besucht ihre Mutter.",
             brother: "Vielleicht ist der Grund eher, dass du etwas mit der Entführung ihres Bruders zu tun hast?"
         };
 
         let romanceChoicesAnswer = {
             beautiful: "Ich bewundere wunderschöne Menschen.",
             intelligent: "Du bist auch sehr intelligent, deine Ideen waren sogar noch besser.",
-            thanks: "Danke"
+            thanks: "Danke."
         };
 
         // Start
