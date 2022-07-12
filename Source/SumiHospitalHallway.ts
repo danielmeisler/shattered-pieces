@@ -94,7 +94,8 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
         ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(sequences.black);
@@ -129,6 +130,7 @@ namespace Endabgabe {
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_12);
         await ƒS.Speech.tell(characters.yuko, text.Yuko.S3300_13);
         await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S3300_14);
+        await ƒS.Speech.hide();
         await ƒS.Character.hideAll();
         await ƒS.Character.animate(characters.yuko, characters.yuko.pose.sad, animate(animations.midToRightOut));
         await ƒS.update(1);

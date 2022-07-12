@@ -111,7 +111,8 @@ namespace Endabgabe {
     characters.sumi.name = "Pinkes Mädchen";
     ƒS.Sound.play(sound.float_track, 0.2, true);
     await ƒS.Location.show(sequences.start);
-    await ƒS.update(10);
+    await ƒS.update(1);
+    await ƒS.Speech.tell("", "");
     await ƒS.Location.show(locations.street_evening);
     await ƒS.update(transitions.blink.duration, transitions.blink.alpha, transitions.blink.edge);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_01);

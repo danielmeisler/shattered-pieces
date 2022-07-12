@@ -55,7 +55,7 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
+        await ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
         ƒS.Sound.play(sound.stealth_track, 0.1, true);
         await ƒS.Location.show(sequences.black);
@@ -169,6 +169,7 @@ namespace Endabgabe {
         await ƒS.Sound.play(sound.knife_stabbing, 1, false);
         await ƒS.update(1);
         await ƒS.update(10);
+        await ƒS.Speech.tell("", "Weg: " + dataForSave.way + "/3 , Finale: -/4, Bad Ending");
 
         if (dataForSave.romancePoints >= 2 ) {
             return await ending(2);

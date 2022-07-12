@@ -10,7 +10,9 @@ namespace Endabgabe {
         protagonistHurt: false,
         nobuKnowsBrother: false,
         nobuKnowsMother: false,
-        storageHall: ""
+        storageHall: "",
+        way: 0,
+        final: 0
     };
   
     export let transitions = {

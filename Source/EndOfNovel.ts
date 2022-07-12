@@ -1,6 +1,6 @@
 namespace Endabgabe {
     export async function EndOfNovel(): ƒS.SceneReturn {
-        await ƒS.Sound.setMasterVolume(0);
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.update(5);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(1);
@@ -18,5 +18,6 @@ namespace Endabgabe {
         await ƒS.Character.hide(characters.credits);
 
         await ƒS.Character.animate(characters.credits, characters.credits.pose.tfp, animate(animations.creditsLast));
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
     }
 }

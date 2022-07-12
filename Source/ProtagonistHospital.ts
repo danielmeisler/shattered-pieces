@@ -147,9 +147,11 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();                
+        dataForSave.way = 2;              
         ƒS.Sound.play(sound.heartbeat, 1, true);
         ƒS.Sound.play(sound.float_track, 0.05, true);
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.nobu.name = "Nobu";
         characters.sumi.name = "Pinkes Mädchen";
         characters.yuko.name = "Sumis Mom";

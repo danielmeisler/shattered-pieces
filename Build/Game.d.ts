@@ -11,6 +11,8 @@ declare namespace Endabgabe {
         nobuKnowsBrother: boolean;
         nobuKnowsMother: boolean;
         storageHall: string;
+        way: number;
+        final: number;
     };
     export let transitions: {
         blink: {

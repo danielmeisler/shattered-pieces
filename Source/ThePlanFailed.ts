@@ -36,7 +36,7 @@ namespace Endabgabe {
         // Decisions
 
         // Start
-        ƒS.Speech.hide();
+        await ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
         ƒS.Sound.play(sound.sad_times, 0.2, true);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
@@ -90,6 +90,7 @@ namespace Endabgabe {
         await ƒS.update(5);
         await ƒS.Location.show(sequences.sumiDepressed);
         await ƒS.update(5);
+        await ƒS.Speech.tell("", "Weg: " + dataForSave.way + "/3 , Finale: -/4, Bad Ending");
         await ƒS.Text.print("̶L̶i̶e̶b̶e̶s̶ Tagebuch, \n \n Es sind mittlerweile einige Wochen seitdem Tod von Mom vergangen... Es sind mittlerweile auch einige Wochen seitdem Fund von Shous Leiche vergangen... Es sind mittlerweile ebenso einige Wochen seitdem Unfall von " + dataForSave.nameProtagonist + " vergangen. Nobu hat es geschafft... es gibt keine Beweise. Er baut sein Imperium auf Leichen auf... Mich hat er verschont, da er mich liebt... sagt er. Er hat gewonnen... Er hat mir alles genommen... ich bin allein und habe gar nichts mehr. Ich vermisse euch alle so sehr... ich will nicht mehr, ich sehe keinen Ausweg. \n \n Sumi");
         return await ending(1);
     }

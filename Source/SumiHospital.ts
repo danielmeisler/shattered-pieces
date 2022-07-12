@@ -105,7 +105,9 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
+        dataForSave.way = 3;
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.nobu.name = "Nobu";
         characters.sumi.name = "Pinkes Mädchen";
         characters.yuko.name = "???";

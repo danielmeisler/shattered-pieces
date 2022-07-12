@@ -128,7 +128,9 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
+        dataForSave.way = 1;
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.nobu.name = "???";
         characters.sumi.name = "Pinkes Mädchen";
         ƒS.Sound.play(sound.float_track, 0.2, true);

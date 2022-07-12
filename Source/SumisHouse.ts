@@ -82,9 +82,10 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
-        ƒS.Sound.play(sound.float_track, 0.2, true);
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
+        ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(sequences.black);
         await ƒS.update(1);
         await ƒS.Location.show(locations.street_day);

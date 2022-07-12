@@ -2,7 +2,7 @@
 var Endabgabe;
 (function (Endabgabe) {
     async function EndOfNovel() {
-        await Endabgabe.ƒS.Sound.setMasterVolume(0);
+        Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
         await Endabgabe.ƒS.update(5);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(1);
@@ -19,6 +19,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.backgrounds, Endabgabe.animate(Endabgabe.animations.credits));
         await Endabgabe.ƒS.Character.hide(Endabgabe.characters.credits);
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.credits, Endabgabe.characters.credits.pose.tfp, Endabgabe.animate(Endabgabe.animations.creditsLast));
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.float_track, 0, 3, false);
     }
     Endabgabe.EndOfNovel = EndOfNovel;
 })(Endabgabe || (Endabgabe = {}));
@@ -33,7 +34,9 @@ var Endabgabe;
         protagonistHurt: false,
         nobuKnowsBrother: false,
         nobuKnowsMother: false,
-        storageHall: ""
+        storageHall: "",
+        way: 0,
+        final: 0
     };
     Endabgabe.transitions = {
         blink: {
@@ -1040,9 +1043,11 @@ var Endabgabe;
             not: "Nichts..."
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.dataForSave.way = 2;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.heartbeat, 1, true);
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.05, true);
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.nobu.name = "Nobu";
         Endabgabe.characters.sumi.name = "Pinkes Mädchen";
         Endabgabe.characters.yuko.name = "Sumis Mom";
@@ -1364,7 +1369,8 @@ var Endabgabe;
             thanks: "Danke"
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
@@ -1678,7 +1684,8 @@ var Endabgabe;
             no: "Nein, lieber nicht..."
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.stealth_track, 0.1, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
@@ -1835,6 +1842,7 @@ var Endabgabe;
         await Endabgabe.ƒS.update(2);
         if (Endabgabe.dataForSave.protagonistHurt == true) {
             if (Endabgabe.dataForSave.nobuKnowsBrother == false) {
+                Endabgabe.dataForSave.final = 1;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.fightUnconscious);
                 await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41212_01);
@@ -1928,6 +1936,7 @@ var Endabgabe;
                     await Endabgabe.ƒS.update(1);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich kann mein Leben mit der Person, die ich liebe, verbringen. " + Endabgabe.dataForSave.nameProtagonist + ", ich liebe dich. \n \n Sumi");
                     return await ending(3);
                 }
@@ -1936,11 +1945,13 @@ var Endabgabe;
                     await Endabgabe.ƒS.update(1);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     return await ending(3);
                 }
             }
             else {
+                Endabgabe.dataForSave.final = 2;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.fightUnconscious);
                 await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.nobu, text.Nobu.S41211_01);
@@ -1999,6 +2010,7 @@ var Endabgabe;
                             await Endabgabe.ƒS.update(3);
                             await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                             await Endabgabe.ƒS.update(5);
+                            await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                             await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und es wurden keine Fragen zum Täter gestellt, da sie es als interne Gang Angelegenheit abgestempelt haben. Jedoch wurde er für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir ... und ich liebe dich. \n \n Sumi");
                             return await ending(1);
                         case sumiTurnInAnswer.yes:
@@ -2009,6 +2021,7 @@ var Endabgabe;
                             await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41211_15);
                             await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                             await Endabgabe.ƒS.update(5);
+                            await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                             await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und er wurde für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Ich habe mich gestellt, jedoch wurde der Fall als Notwehr abgestempelt, da er uns gekidnapped, gefesselt und fast umgebracht hat. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                             return await ending(2);
                     }
@@ -2021,6 +2034,7 @@ var Endabgabe;
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41211_15);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und er wurde für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Ich habe mich gestellt, jedoch wurde der Fall als Notwehr abgestempelt, da er uns gekidnapped, gefesselt und fast umgebracht hat. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     return await ending(2);
                 }
@@ -2028,6 +2042,7 @@ var Endabgabe;
         }
         else {
             if (Endabgabe.dataForSave.nobuKnowsBrother == false) {
+                Endabgabe.dataForSave.final = 3;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuKO);
                 await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41222_01);
@@ -2091,6 +2106,7 @@ var Endabgabe;
                     await Endabgabe.ƒS.update(3);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich kann mein Leben mit der Person, die ich liebe, verbringen. " + Endabgabe.dataForSave.nameProtagonist + ", ich liebe dich. \n \n Sumi");
                     return await ending(3);
                 }
@@ -2099,11 +2115,13 @@ var Endabgabe;
                     await Endabgabe.ƒS.update(1);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides war ungewiss und ich weiß nicht was wäre, wenn ich beide verloren hätte. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " konnte ich meinen Bruder wiedersehen und Mom geht es auch ein wenig besser. Nobu wurde für seine Taten bestraft und hinter Gittern gebracht. Mein Leben fühlt sich wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
                     return await ending(3);
                 }
             }
             else {
+                Endabgabe.dataForSave.final = 4;
                 await Endabgabe.ƒS.Location.show(Endabgabe.sequences.nobuKO);
                 await Endabgabe.ƒS.update(3);
                 await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S41221_01);
@@ -2157,6 +2175,7 @@ var Endabgabe;
                     await Endabgabe.ƒS.update(3);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und es wurden keine Fragen zum Täter gestellt, da sie es als interne Gang Angelegenheit abgestempelt haben. Jedoch wurde er für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir ... und ich liebe dich. \n \n Sumi");
                     return await ending(3);
                 }
@@ -2165,8 +2184,8 @@ var Endabgabe;
                     await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S41221_21);
                     await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
                     await Endabgabe.ƒS.update(5);
+                    await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: " + Endabgabe.dataForSave.final + "/4");
                     await Endabgabe.ƒS.Text.print("Liebes Tagebuch \n \n Vor ungefähr einer Woche kämpfte ich mit mir selbst... es war die schlimmste Zeit meines Lebens und ich wusste nicht weiter. Ich hing mit einem seidenen Faden am Leben, und dieser Faden bestand aus der Hoffnung Shou wiederzusehen und dass es Mom besser gehen wird... Doch beides ist eingetreten und ich habe alle Menschen verloren, dir mir wichtig sind. Doch in einem Moment hat sich alles verändert und " + Endabgabe.dataForSave.nameProtagonist + " betrat plötzlich mein Leben. Was sich zuerst als lästiges Anhängsel anfühlte entpuppte sich schnell als Hoffnungsschimmer. Dank " + Endabgabe.dataForSave.nameProtagonist + " versinke ich nicht in einem schwarzen Loch, sondern kann damit abschließen und mein Leben fortsetzen. Nobu hat den Vorfall überlebt und es wurden keine Fragen zum Täter gestellt, da sie es als interne Gang Angelegenheit abgestempelt haben. Jedoch wurde er für Shous Mord hinter Gittern gebracht... und ich konnte meinen Bruder in Frieden beerdigen. Mein Leben fühlt sich langsam wieder lebendig an ... und nicht nur das ... ich habe einen neuen wichtigen Menschen in meinem Leben. " + Endabgabe.dataForSave.nameProtagonist + ", ich danke dir. \n \n Sumi");
-                    // Sie gehen
                     return await ending(3);
                 }
             }
@@ -2178,21 +2197,18 @@ var Endabgabe;
         switch (endingNr) {
             case 1:
                 await Endabgabe.ƒS.Speech.hide();
-                // Sumi und Protagonist schönes Leben
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 3, false);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 2:
                 await Endabgabe.ƒS.Speech.hide();
-                // Sumi wird gestellt
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 3, false);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0.5, 0, false);
                 return "endOfNovel";
             case 3:
                 await Endabgabe.ƒS.Speech.hide();
-                // Sumi und ihr Bruder haben ein Happy Ending
                 await Endabgabe.ƒS.update(1);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 3, false);
                 await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.good_ending, 0.5, 0, false);
@@ -2295,7 +2311,8 @@ var Endabgabe;
         Endabgabe.characters.sumi.name = "Pinkes Mädchen";
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.start);
-        await Endabgabe.ƒS.update(10);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell("", "");
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_evening);
         await Endabgabe.ƒS.update(Endabgabe.transitions.blink.duration, Endabgabe.transitions.blink.alpha, Endabgabe.transitions.blink.edge);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S1000_01);
@@ -2633,7 +2650,9 @@ var Endabgabe;
             not: "Nichts..."
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.dataForSave.way = 3;
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.nobu.name = "Nobu";
         Endabgabe.characters.sumi.name = "Pinkes Mädchen";
         Endabgabe.characters.yuko.name = "???";
@@ -2887,7 +2906,8 @@ var Endabgabe;
             thanks: "Danke"
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
@@ -2922,6 +2942,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_12);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.yuko, text.Yuko.S3300_13);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S3300_14);
+        await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Character.hideAll();
         await Endabgabe.ƒS.Character.animate(Endabgabe.characters.yuko, Endabgabe.characters.yuko.pose.sad, Endabgabe.animate(Endabgabe.animations.midToRightOut));
         await Endabgabe.ƒS.update(1);
@@ -3172,7 +3193,9 @@ var Endabgabe;
             sleep: "Wir sollten schlafen gehen..."
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.dataForSave.way = 1;
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.nobu.name = "???";
         Endabgabe.characters.sumi.name = "Pinkes Mädchen";
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
@@ -3470,9 +3493,10 @@ var Endabgabe;
             thanks: "Danke"
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
-        Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
+        Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.street_day);
@@ -3649,7 +3673,7 @@ var Endabgabe;
             answer1: "1: Er ist vestorben.",
             answer2: "2: Sein Status ist unbekannt.",
             answer3: "3: Er ist auf Geschäftsreise.",
-            answer4: "4: Er ist abgehauen."
+            answer4: "4: Er hat sie verlassen."
         };
         let question3;
         let question3Answers = {
@@ -3666,7 +3690,8 @@ var Endabgabe;
             answer4: "8: Er will an ihre Wäsche."
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
@@ -3766,11 +3791,12 @@ var Endabgabe;
         }
         Endabgabe.items.code.description = "Die Lagerhallennummer: " + Endabgabe.dataForSave.storageHall,
             await Endabgabe.ƒS.Inventory.add(Endabgabe.items.code);
-        await Endabgabe.ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
+        await Endabgabe.ƒS.Speech.tell("", "Die richtige Lagerhallennummer (Inventar) lautet: ");
         let code = await Endabgabe.ƒS.Speech.getInput();
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Das muss es sein ...");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "... tief durchatmen ...");
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "... auf geht's!");
+        await Endabgabe.ƒS.Speech.hide();
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
         await Endabgabe.ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {
@@ -3827,7 +3853,7 @@ var Endabgabe;
         };
         // Decisions
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.sad_times, 0.2, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_evening);
@@ -3881,6 +3907,7 @@ var Endabgabe;
         await Endabgabe.ƒS.update(5);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiDepressed);
         await Endabgabe.ƒS.update(5);
+        await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: -/4, Bad Ending");
         await Endabgabe.ƒS.Text.print("̶L̶i̶e̶b̶e̶s̶ Tagebuch, \n \n Es sind mittlerweile einige Wochen seitdem Tod von Mom vergangen... Es sind mittlerweile auch einige Wochen seitdem Fund von Shous Leiche vergangen... Es sind mittlerweile ebenso einige Wochen seitdem Unfall von " + Endabgabe.dataForSave.nameProtagonist + " vergangen. Nobu hat es geschafft... es gibt keine Beweise. Er baut sein Imperium auf Leichen auf... Mich hat er verschont, da er mich liebt... sagt er. Er hat gewonnen... Er hat mir alles genommen... ich bin allein und habe gar nichts mehr. Ich vermisse euch alle so sehr... ich will nicht mehr, ich sehe keinen Ausweg. \n \n Sumi");
         return await ending(1);
     }
@@ -3947,7 +3974,7 @@ var Endabgabe;
             iLoveYou: "Ich liebe dich..."
         };
         // Start
-        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Speech.hide();
         Endabgabe.characters.protagonist.name = Endabgabe.dataForSave.nameProtagonist;
         Endabgabe.ƒS.Sound.play(Endabgabe.sound.stealth_track, 0.1, true);
         await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
@@ -4055,6 +4082,7 @@ var Endabgabe;
         await Endabgabe.ƒS.Sound.play(Endabgabe.sound.knife_stabbing, 1, false);
         await Endabgabe.ƒS.update(1);
         await Endabgabe.ƒS.update(10);
+        await Endabgabe.ƒS.Speech.tell("", "Weg: " + Endabgabe.dataForSave.way + "/3 , Finale: -/4, Bad Ending");
         if (Endabgabe.dataForSave.romancePoints >= 2) {
             return await ending(2);
         }

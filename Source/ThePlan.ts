@@ -36,7 +36,7 @@ namespace Endabgabe {
             answer1: "1: Er ist vestorben.",
             answer2: "2: Sein Status ist unbekannt.",
             answer3: "3: Er ist auf Geschäftsreise.",
-            answer4: "4: Er ist abgehauen."
+            answer4: "4: Er hat sie verlassen."
         };
 
         let question3;
@@ -58,7 +58,8 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
         ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(locations.sumisHome_livingRoom_evening);
@@ -165,11 +166,12 @@ namespace Endabgabe {
         
         items.code.description = "Die Lagerhallennummer: " + dataForSave.storageHall,
         await ƒS.Inventory.add(items.code);
-        await ƒS.Speech.tell("", "Die richtige Lagerhallennumer (Inventar) lautet: ");
+        await ƒS.Speech.tell("", "Die richtige Lagerhallennummer (Inventar) lautet: ");
         let code: String = await ƒS.Speech.getInput();
         await ƒS.Speech.tell(characters.protagonist, "Das muss es sein ...");
         await ƒS.Speech.tell(characters.protagonist, "... tief durchatmen ...");
         await ƒS.Speech.tell(characters.protagonist, "... auf geht's!");
+        await ƒS.Speech.hide();
         await ƒS.Location.show(sequences.black);
         await ƒS.update(10);
         if (code == "C4F5" || code == "c4f5") {

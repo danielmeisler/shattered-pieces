@@ -84,7 +84,8 @@ namespace Endabgabe {
         };
 
         // Start
-        ƒS.Speech.hide();
+        await ƒS.Speech.tell("", "Hier ist Speichern zu empfehlen! (Zweiter Button)");
+        await ƒS.Speech.hide();
         characters.protagonist.name = dataForSave.nameProtagonist;
         ƒS.Sound.play(sound.float_track, 0.2, true);
         await ƒS.Location.show(sequences.black);
