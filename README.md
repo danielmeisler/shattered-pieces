@@ -6,7 +6,7 @@ Sommersemester 2022<br>
 
 
 
-Visuel Novel: https://danielmeisler.github.io/VisualNovel_Endabgabe/game.html
+Visual Novel: https://danielmeisler.github.io/VisualNovel_Endabgabe/game.html
 
 Code: https://github.com/danielmeisler/VisualNovel_Endabgabe/tree/main/Source
 
