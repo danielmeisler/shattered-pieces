@@ -10,6 +10,6 @@ Visuel Novel: https://danielmeisler.github.io/VisualNovel_Endabgabe/game.html
 
 Code: https://github.com/danielmeisler/VisualNovel_Endabgabe/tree/main/Source
 
-Konzept: https://github.com/danielmeisler/VisualNovel_Endabgabe/Concept
+Konzept: https://github.com/danielmeisler/VisualNovel_Endabgabe/blob/main/concept/VisualNovel_Konzept_Daniel_Meisler_263236.pdf
 
 Zip: https://github.com/danielmeisler/VisualNovel_Endabgabe/Zip
