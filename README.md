@@ -14,4 +14,4 @@ Konzept: https://github.com/danielmeisler/VisualNovel_Endabgabe/blob/main/concep
 
 Baumdiagramm (Ist auch im Konzept enthalten, aber besser lesbar): https://github.com/danielmeisler/VisualNovel_Endabgabe/blob/main/concept/Baumdiagramm.png
 
-Zip: https://github.com/danielmeisler/VisualNovel_Endabgabe/Zip
+Zip: https://www.dropbox.com/sh/9ed3y7w500hdnwi/AAB4LkDv9VtbMaf4nRcoEkDAa?dl=0
