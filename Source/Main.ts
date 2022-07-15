@@ -108,10 +108,6 @@ namespace Endabgabe {
         },
         school: {
             name: "School",
-            background: "./assets/images/backgrounds/school.png"
-        },
-        school2: {
-            name: "School",
             background: "./assets/images/backgrounds/school_harassment.png"
         },
 
@@ -162,19 +158,6 @@ namespace Endabgabe {
             background: "./assets/images/backgrounds/hospitalroom_pov_night.png"
         },
 
-        hospitalRoom_day: {
-            name: "HospitalRoom_Day",
-            background: "./assets/images/backgrounds/hospitalroom_day.png"
-        },
-        hospitalRoom_evening: {
-            name: "HospitalRoom_Evening",
-            background: "./assets/images/backgrounds/hospitalroom_evening.png"
-        },
-        hospitalRoom_night: {
-            name: "HospitalRoom_Night",
-            background: "./assets/images/backgrounds/hospitalroom_night.png"
-        },
-
         hospitalHallway: {
             name: "HospitalHallway",
             background: "./assets/images/backgrounds/hospitalhallway.png"
@@ -186,10 +169,6 @@ namespace Endabgabe {
         hospitalHallway3: {
             name: "HospitalHallway3",
             background: "./assets/images/backgrounds/hospitalhallway3.png"
-        },
-        yukosRoom: {
-            name: "YukosRoom",
-            background: "./assets/images/backgrounds/yukosroom.png"
         },
 
         storageHall: {

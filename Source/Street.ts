@@ -121,7 +121,7 @@ namespace Endabgabe {
     await ƒS.Sound.fade(sound.woman_groan_2, 0.5, 1, false);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_02);
     await ƒS.Sound.fade(sound.woman_groan_3, 0.8, 1, false);
-    await ƒS.Location.show(locations.school2);
+    await ƒS.Location.show(locations.school);
     await ƒS.update(1);
     await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1000_03);
     await ƒS.Sound.fade(sound.woman_groan_4, 0, 1, false);
@@ -147,7 +147,7 @@ namespace Endabgabe {
     switch (howToInterfere) {
               case howToInterfereAnswer.talk:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1121_01);
-                await ƒS.Location.show(locations.school2);
+                await ƒS.Location.show(locations.school);
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.smoking_cigarette, 0, 1, false);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);
@@ -201,7 +201,7 @@ namespace Endabgabe {
                 return "sumisHome";
               case howToInterfereAnswer.threatenWithCops:
                 await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S1122_01);
-                await ƒS.Location.show(locations.school2);
+                await ƒS.Location.show(locations.school);
                 await ƒS.update(1);
                 await ƒS.Sound.fade(sound.smoking_cigarette, 0, 1, false);
                 await ƒS.Character.show(characters.nobu, characters.nobu.pose.normal, ƒS.positions.bottomcenter);

@@ -99,10 +99,6 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
-        school2: {
-            name: string;
-            background: string;
-        };
         sumisHome_livingRoom_evening: {
             name: string;
             background: string;
@@ -147,18 +143,6 @@ declare namespace Endabgabe {
             name: string;
             background: string;
         };
-        hospitalRoom_day: {
-            name: string;
-            background: string;
-        };
-        hospitalRoom_evening: {
-            name: string;
-            background: string;
-        };
-        hospitalRoom_night: {
-            name: string;
-            background: string;
-        };
         hospitalHallway: {
             name: string;
             background: string;
@@ -168,10 +152,6 @@ declare namespace Endabgabe {
             background: string;
         };
         hospitalHallway3: {
-            name: string;
-            background: string;
-        };
-        yukosRoom: {
             name: string;
             background: string;
         };
