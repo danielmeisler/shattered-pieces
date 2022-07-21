@@ -1008,15 +1008,10 @@ var Endabgabe;
         };
         // Decisions
         let tvOrWalk;
-        let talkOutOrHelp;
         let flirtOrNot;
         let tvOrWalkAnswer = {
             tv: "Fernseher schauen",
             walk: "Durch das Krankenhaus spazieren"
-        };
-        let talkOutOrHelpAnswer = {
-            talkOut: "Ausreden",
-            morePeople: "Noch mehr Menschen?"
         };
         let flirtOrNotAnswer = {
             flirt: "Du siehst sehr schön aus...",
@@ -1192,90 +1187,69 @@ var Endabgabe;
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2240_05);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2240_06);
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2240_07);
-        talkOutOrHelp = await Endabgabe.ƒS.Menu.getInput(talkOutOrHelpAnswer, "decisionClass");
-        switch (talkOutOrHelp) {
-            case talkOutOrHelpAnswer.talkOut:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2241_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiMadCryHospital);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2241_02);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
-                await Endabgabe.ƒS.update(5);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.door_closing, 2, false);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 0, false);
-                return await ending(1);
-            case talkOutOrHelpAnswer.morePeople:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01b);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2242_02);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryHospital);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_03);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_02);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_03);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryHospital);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_04);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_05);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_06);
-                await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
-                await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Noch mehr Menschen?");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_01b);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2242_02);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2242_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_03);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCryHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_06);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+        await Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 10, false);
+        await Endabgabe.ƒS.update(1);
+        Endabgabe.ƒS.Sound.play(Endabgabe.sound.romantic_track, 0.3, true);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNightHospital);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight2Hospital);
+        await Endabgabe.ƒS.update(3);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_11);
+        flirtOrNot = await Endabgabe.ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.protagonistHospitalRoom_night);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.shy, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
+        await Endabgabe.ƒS.update(1);
+        switch (flirtOrNot) {
+            case flirtOrNotAnswer.not:
+                Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, "Ich sollte gehen, bis morgen.");
+                Endabgabe.ƒS.Speech.hide();
+                await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.shy, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
+                break;
+            case flirtOrNotAnswer.flirt:
+                Endabgabe.dataForSave.romancePoints++;
                 await Endabgabe.ƒS.Character.hideAll();
-                await Endabgabe.ƒS.Speech.hide();
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEveningHospital);
+                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.embarrassed2, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
                 await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 10, false);
-                await Endabgabe.ƒS.update(1);
-                Endabgabe.ƒS.Sound.play(Endabgabe.sound.romantic_track, 0.3, true);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNightHospital);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight2Hospital);
-                await Endabgabe.ƒS.update(3);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_07);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_08);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_09);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_10);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_11);
-                flirtOrNot = await Endabgabe.ƒS.Menu.getInput(flirtOrNotAnswer, "decisionClass");
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.protagonistHospitalRoom_night);
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.shy, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
-                await Endabgabe.ƒS.update(1);
-                switch (flirtOrNot) {
-                    case flirtOrNotAnswer.not:
-                        break;
-                    case flirtOrNotAnswer.flirt:
-                        Endabgabe.dataForSave.romancePoints++;
-                        await Endabgabe.ƒS.Character.hideAll();
-                        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.embarrassed2, new Endabgabe.ƒS.Position(-480, Endabgabe.ƒS.positions.bottomcenter.y));
-                        await Endabgabe.ƒS.update(1);
-                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_12);
-                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_13);
-                        break;
-                }
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2243_12);
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2243_13);
                 Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Character.animate(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.embarrassed2, Endabgabe.animate(Endabgabe.animations.leftToLeftOut));
-                Endabgabe.ƒS.Character.hideAll();
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 3, false);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
-                await Endabgabe.ƒS.update(3);
-                return "protagonistHospitalHallway";
+                break;
         }
-        // Endings
-        async function ending(endingNr) {
-            switch (endingNr) {
-                case 1:
-                    await Endabgabe.ƒS.Speech.hide();
-                    await Endabgabe.ƒS.Location.show(Endabgabe.endings.partingWays);
-                    await Endabgabe.ƒS.update(3);
-                    await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.neutral_ending, 0, 4, false);
-                    return "endOfNovel";
-            }
-            return "endOfNovel";
-        }
+        Endabgabe.ƒS.Character.hideAll();
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 3, false);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+        await Endabgabe.ƒS.update(3);
+        return "protagonistHospitalHallway";
     }
     Endabgabe.ProtagonistHospital = ProtagonistHospital;
 })(Endabgabe || (Endabgabe = {}));
@@ -2282,8 +2256,8 @@ var Endabgabe;
             fight: "Sich wehren"
         };
         let provokeOrKeepUpAnswer = {
-            provoke: "Mehr hast du nicht drauf?",
-            keepUp: "Das kann den ganzen Tag so weitergehen!"
+            provoke: "Mehr hast du nicht drauf? [Provozieren]",
+            keepUp: "Das kann den ganzen Tag so weitergehen! [Durchhalten]"
         };
         // Start
         Endabgabe.ƒS.Speech.hide();
@@ -3149,8 +3123,6 @@ var Endabgabe;
         // Decisions
         let juiceOrNot;
         let nobuOrShou;
-        let goOrTalk;
-        let talkOutOrHelp;
         let flirtOrSleep;
         let juiceOrNotAnswer = {
             juice: "Ich hätte gern Saft!",
@@ -3159,14 +3131,6 @@ var Endabgabe;
         let nobuOrShouAnswer = {
             nobu: "Wer war das?",
             shou: "Dein Bruder wird vermisst?"
-        };
-        let goOrTalkAnswer = {
-            go: "Tut mir leid, ich werde gehen.",
-            talk: "Lass es raus, du kannst mir vertrauen."
-        };
-        let talkOutOrHelpAnswer = {
-            talkOut: "Ausreden",
-            morePeople: "Noch mehr Menschen?"
         };
         let flirtOrSleepAnswer = {
             flirt: "Du siehst sehr schön aus...",
@@ -3260,150 +3224,106 @@ var Endabgabe;
         }
         Endabgabe.characters.nobu.name = "Nobu";
         await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2100_29);
-        goOrTalk = await Endabgabe.ƒS.Menu.getInput(goOrTalkAnswer, "decisionClass");
-        switch (goOrTalk) {
-            case goOrTalkAnswer.go:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2110_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2110_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2110_02);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.door_closing, 0.5, false);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.youLeave);
-                await Endabgabe.ƒS.update(3);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 3, false);
-                return await ending(1);
-            case goOrTalkAnswer.talk:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_02);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_03);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_04);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_05);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_06);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_07);
-                talkOutOrHelp = await Endabgabe.ƒS.Menu.getInput(talkOutOrHelpAnswer, "decisionClass");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2120_06);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2120_07);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, "Noch mehr Menschen?");
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01b);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2122_02);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCry);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_01);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_02);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_03);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_06);
+        await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
+        await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+        await Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEvening);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 10, false);
+        await Endabgabe.ƒS.update(1);
+        Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.raining, 0.1, 8, true);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_07);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_night);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_08);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_09);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_10);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_11);
+        await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.update(1);
+        Endabgabe.ƒS.Speech.hide();
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.bath_filling, 0.5, false);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_normal);
+        await Endabgabe.ƒS.update(2);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_foggy);
+        await Endabgabe.ƒS.update(5);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.hard_floor_footsteps, 0.5, false);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_hallway);
+        await Endabgabe.ƒS.update(2);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_12);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.hard_floor_footsteps, 0, false);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.float_track, 0, 3, false);
+        Endabgabe.ƒS.Sound.play(Endabgabe.sound.romantic_track, 0.3, true);
+        if (Endabgabe.dataForSave.nameProtagonist == "ecchi") {
+            await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiUndress);
+            await Endabgabe.ƒS.update(1);
+            await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiUndress2);
+            await Endabgabe.ƒS.update(1);
         }
-        switch (talkOutOrHelp) {
-            case talkOutOrHelpAnswer.talkOut:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2121_01);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiMadCry);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2121_02);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.door_closing, 0.5, false);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiKicksYouOut);
-                await Endabgabe.ƒS.update(3);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 3, false);
-                return await ending(2);
-            case talkOutOrHelpAnswer.morePeople:
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_01b);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2122_02);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiHappyCry);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2122_03);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_01);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_02);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_03);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_04);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_05);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_06);
-                await Endabgabe.ƒS.Inventory.add(Endabgabe.items.documentsShou);
-                await Endabgabe.ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
-                await Endabgabe.ƒS.Speech.hide();
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningEvening);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.sad_times, 0, 10, false);
-                await Endabgabe.ƒS.update(1);
-                Endabgabe.ƒS.Sound.play(Endabgabe.sound.float_track, 0.2, true);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.planningNight);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.raining, 0.1, 8, true);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_07);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_livingRoom_night);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.normal, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_08);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_09);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_10);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_11);
-                await Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
-                await Endabgabe.ƒS.update(1);
-                Endabgabe.ƒS.Speech.hide();
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.bath_filling, 0.5, false);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_normal);
-                await Endabgabe.ƒS.update(2);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_bathRoom_foggy);
-                await Endabgabe.ƒS.update(5);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.hard_floor_footsteps, 0.5, false);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_hallway);
-                await Endabgabe.ƒS.update(2);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_12);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.hard_floor_footsteps, 0, false);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.float_track, 0, 3, false);
-                Endabgabe.ƒS.Sound.play(Endabgabe.sound.romantic_track, 0.3, true);
-                if (Endabgabe.dataForSave.nameProtagonist == "ecchi") {
-                    await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiUndress);
-                    await Endabgabe.ƒS.update(1);
-                    await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiUndress2);
-                    await Endabgabe.ƒS.update(1);
-                }
-                else {
-                    await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiUndressHarmless);
-                    await Endabgabe.ƒS.update(1);
-                }
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_13);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_14);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
-                await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_15);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_16);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_17);
-                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_18);
-                await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_futonroom);
-                await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.embarrassed2, Endabgabe.ƒS.positions.bottomcenter);
-                await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
-                flirtOrSleep = await Endabgabe.ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
-                switch (flirtOrSleep) {
-                    case flirtOrSleepAnswer.sleep:
-                        break;
-                    case flirtOrSleepAnswer.flirt:
-                        Endabgabe.dataForSave.romancePoints++;
-                        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_19);
-                        break;
-                }
-                Endabgabe.ƒS.Speech.hide();
-                Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
-                await Endabgabe.ƒS.update(1);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
-                await Endabgabe.ƒS.update(3);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 3, false);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.raining, 0, 0, false);
-                await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
-                await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
-                await Endabgabe.ƒS.update(3);
-                return "sumisHouse";
+        else {
+            await Endabgabe.ƒS.Location.show(Endabgabe.sequences.sumiUndressHarmless);
+            await Endabgabe.ƒS.update(1);
         }
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_13);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_14);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.eyesClosed.duration, Endabgabe.transitions.eyesClosed.alpha, Endabgabe.transitions.eyesClosed.edge);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_15);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_16);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.protagonist, text.Protagonist.S2123_17);
+        await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_18);
+        await Endabgabe.ƒS.Location.show(Endabgabe.locations.sumisHome_futonroom);
+        await Endabgabe.ƒS.Character.show(Endabgabe.characters.sumi, Endabgabe.characters.sumi.pose.embarrassed2, Endabgabe.ƒS.positions.bottomcenter);
+        await Endabgabe.ƒS.update(Endabgabe.transitions.eyesOpen.duration, Endabgabe.transitions.eyesOpen.alpha, Endabgabe.transitions.eyesOpen.edge);
+        flirtOrSleep = await Endabgabe.ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
+        switch (flirtOrSleep) {
+            case flirtOrSleepAnswer.sleep:
+                break;
+            case flirtOrSleepAnswer.flirt:
+                Endabgabe.dataForSave.romancePoints++;
+                await Endabgabe.ƒS.Speech.tell(Endabgabe.characters.sumi, text.Sumi.S2123_19);
+                break;
+        }
+        Endabgabe.ƒS.Speech.hide();
+        Endabgabe.ƒS.Character.hide(Endabgabe.characters.sumi);
+        await Endabgabe.ƒS.update(1);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.black);
+        await Endabgabe.ƒS.update(3);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.romantic_track, 0, 3, false);
+        await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.raining, 0, 0, false);
+        await Endabgabe.ƒS.Sound.play(Endabgabe.sound.rooster, 0.2, false);
+        await Endabgabe.ƒS.Location.show(Endabgabe.sequences.theNextDay);
+        await Endabgabe.ƒS.update(3);
+        return "sumisHouse";
     }
     Endabgabe.SumisHome = SumisHome;
-    // Endings
-    async function ending(endingNr) {
-        switch (endingNr) {
-            case 1:
-                await Endabgabe.ƒS.Speech.hide();
-                await Endabgabe.ƒS.Location.show(Endabgabe.endings.partingWays);
-                await Endabgabe.ƒS.update(3);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.neutral_ending, 0, 4, false);
-                return "endOfNovel";
-            case 2:
-                await Endabgabe.ƒS.Speech.hide();
-                await Endabgabe.ƒS.Location.show(Endabgabe.endings.partingWays);
-                await Endabgabe.ƒS.update(3);
-                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.neutral_ending, 0, 4, false);
-                return "endOfNovel";
-        }
-        return "endOfNovel";
-    }
 })(Endabgabe || (Endabgabe = {}));
 var Endabgabe;
 (function (Endabgabe) {
@@ -3899,6 +3819,7 @@ var Endabgabe;
                 await Endabgabe.ƒS.Speech.hide();
                 await Endabgabe.ƒS.Location.show(Endabgabe.endings.sumiEnding);
                 await Endabgabe.ƒS.update(5);
+                await Endabgabe.ƒS.Sound.fade(Endabgabe.sound.searching_track, 0, 3, false);
                 return "endOfNovel";
         }
         return "endOfNovel";

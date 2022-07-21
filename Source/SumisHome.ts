@@ -98,8 +98,6 @@ namespace Endabgabe {
         // Decisions
         let juiceOrNot;
         let nobuOrShou;
-        let goOrTalk;
-        let talkOutOrHelp;
         let flirtOrSleep;
         
         let juiceOrNotAnswer = {
@@ -110,16 +108,6 @@ namespace Endabgabe {
         let nobuOrShouAnswer = {
             nobu: "Wer war das?",
             shou: "Dein Bruder wird vermisst?"
-        };
-
-        let goOrTalkAnswer = {
-            go: "Tut mir leid, ich werde gehen.",
-            talk: "Lass es raus, du kannst mir vertrauen."
-        };
-
-        let talkOutOrHelpAnswer = {
-            talkOut: "Ausreden",
-            morePeople: "Noch mehr Menschen?"
         };
 
         let flirtOrSleepAnswer = {
@@ -220,150 +208,106 @@ namespace Endabgabe {
         }
         characters.nobu.name = "Nobu";
         await ƒS.Speech.tell(characters.sumi, text.Sumi.S2100_29);
-        goOrTalk = await ƒS.Menu.getInput(goOrTalkAnswer, "decisionClass");
+        
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_01);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_01);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_02);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_03);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_04);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_05);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_06);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_07);
 
-        switch (goOrTalk) {
-            case goOrTalkAnswer.go:
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2110_01);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2110_01);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2110_02);
-                await ƒS.Sound.play(sound.door_closing, 0.5, false);
-                await ƒS.Location.show(sequences.youLeave);
-                await ƒS.update(3);
-                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
-                return await ending(1);
-            case goOrTalkAnswer.talk:
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_01);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_01);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_02);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_03);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_04);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_05);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2120_06);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2120_07);
-                talkOutOrHelp = await ƒS.Menu.getInput(talkOutOrHelpAnswer, "decisionClass");
+        await ƒS.Speech.tell(characters.protagonist, "Noch mehr Menschen?");
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01b);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2122_02);
+        await ƒS.Location.show(sequences.sumiHappyCry);
+        await ƒS.update(1);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_03);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_01);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_02);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_03);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
+        await ƒS.Inventory.add(items.documentsShou);
+        await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
+        await ƒS.Speech.hide();
+        await ƒS.Location.show(sequences.planningEvening);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.Sound.fade(sound.sad_times, 0, 10, false);
+        await ƒS.update(1);
+        ƒS.Sound.play(sound.float_track, 0.2, true);
+        await ƒS.Location.show(sequences.planningNight);
+        await ƒS.update(1);
+        await ƒS.Sound.fade(sound.raining, 0.1, 8, true);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
+        await ƒS.Location.show(locations.sumisHome_livingRoom_night);
+        await ƒS.update(1);
+        await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
+        await ƒS.update(1);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_08);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_09);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_10);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_11);
+        await ƒS.Character.hide(characters.sumi);
+        await ƒS.update(1);
+        ƒS.Speech.hide();
+        await ƒS.Sound.play(sound.bath_filling, 0.5, false);
+        await ƒS.Location.show(locations.sumisHome_bathRoom_normal);
+        await ƒS.update(2);
+        await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
+        await ƒS.update(5);
+        await ƒS.Sound.play(sound.hard_floor_footsteps, 0.5, false);
+        await ƒS.Location.show(locations.sumisHome_hallway);
+        await ƒS.update(2);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
+        await ƒS.Sound.play(sound.hard_floor_footsteps, 0, false);
+        await ƒS.Sound.fade(sound.float_track, 0, 3, false);
+        ƒS.Sound.play(sound.romantic_track, 0.3, true);
+        if (dataForSave.nameProtagonist == "ecchi") {
+            await ƒS.Location.show(sequences.sumiUndress);
+            await ƒS.update(1);
+            await ƒS.Location.show(sequences.sumiUndress2);
+            await ƒS.update(1);
+        } else {
+            await ƒS.Location.show(sequences.sumiUndressHarmless);
+            await ƒS.update(1);
         }
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_13);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_14);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_15);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_16);
+        await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_17);
+        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_18);
+        await ƒS.Location.show(locations.sumisHome_futonroom);
+        await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed2, ƒS.positions.bottomcenter);
+        await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
+        
+        flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
+        switch (flirtOrSleep) {
+            case flirtOrSleepAnswer.sleep:
+                break;
+            case flirtOrSleepAnswer.flirt:
+                dataForSave.romancePoints++;
+                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_19);
+                break;
+        }
+        ƒS.Speech.hide();
+        ƒS.Character.hide(characters.sumi);
+        await ƒS.update(1);
+        await ƒS.Location.show(sequences.black);
+        await ƒS.update(3);
+        await ƒS.Sound.fade(sound.romantic_track, 0, 3, false);
+        await ƒS.Sound.fade(sound.raining, 0, 0, false);
+        await ƒS.Sound.play(sound.rooster, 0.2, false);
+        await ƒS.Location.show(sequences.theNextDay);
+        await ƒS.update(3);
+        return "sumisHouse";
 
-        switch (talkOutOrHelp) {
-            case talkOutOrHelpAnswer.talkOut:
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2121_01);
-                await ƒS.Location.show(sequences.sumiMadCry);
-                await ƒS.update(1);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2121_02);
-                await ƒS.Sound.play(sound.door_closing, 0.5, false);
-                await ƒS.Location.show(sequences.sumiKicksYouOut);
-                await ƒS.update(3);
-                await ƒS.Sound.fade(sound.sad_times, 0, 3, false);
-                return await ending(2);
-            case talkOutOrHelpAnswer.morePeople:
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_01b);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2122_02);
-                await ƒS.Location.show(sequences.sumiHappyCry);
-                await ƒS.update(1);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2122_03);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_01);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_02);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_03);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_04);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_05);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_06);
-                await ƒS.Inventory.add(items.documentsShou);
-                await ƒS.Speech.tell("", "Dem Inventar wurden neue Gegenstände hinzugefügt.");
-                await ƒS.Speech.hide();
-                await ƒS.Location.show(sequences.planningEvening);
-                await ƒS.update(1);
-                await ƒS.Location.show(sequences.black);
-                await ƒS.Sound.fade(sound.sad_times, 0, 10, false);
-                await ƒS.update(1);
-                ƒS.Sound.play(sound.float_track, 0.2, true);
-                await ƒS.Location.show(sequences.planningNight);
-                await ƒS.update(1);
-                await ƒS.Sound.fade(sound.raining, 0.1, 8, true);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_07);
-                await ƒS.Location.show(locations.sumisHome_livingRoom_night);
-                await ƒS.update(1);
-                await ƒS.Character.show(characters.sumi, characters.sumi.pose.normal, ƒS.positions.bottomcenter);
-                await ƒS.update(1);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_08);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_09);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_10);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_11);
-                await ƒS.Character.hide(characters.sumi);
-                await ƒS.update(1);
-                ƒS.Speech.hide();
-                await ƒS.Sound.play(sound.bath_filling, 0.5, false);
-                await ƒS.Location.show(locations.sumisHome_bathRoom_normal);
-                await ƒS.update(2);
-                await ƒS.Location.show(locations.sumisHome_bathRoom_foggy);
-                await ƒS.update(5);
-                await ƒS.Sound.play(sound.hard_floor_footsteps, 0.5, false);
-                await ƒS.Location.show(locations.sumisHome_hallway);
-                await ƒS.update(2);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_12);
-                await ƒS.Sound.play(sound.hard_floor_footsteps, 0, false);
-                await ƒS.Sound.fade(sound.float_track, 0, 3, false);
-                ƒS.Sound.play(sound.romantic_track, 0.3, true);
-                if (dataForSave.nameProtagonist == "ecchi") {
-                    await ƒS.Location.show(sequences.sumiUndress);
-                    await ƒS.update(1);
-                    await ƒS.Location.show(sequences.sumiUndress2);
-                    await ƒS.update(1);
-                } else {
-                    await ƒS.Location.show(sequences.sumiUndressHarmless);
-                    await ƒS.update(1);
-                }
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_13);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_14);
-                await ƒS.Location.show(sequences.black);
-                await ƒS.update(transitions.eyesClosed.duration, transitions.eyesClosed.alpha, transitions.eyesClosed.edge);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_15);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_16);
-                await ƒS.Speech.tell(characters.protagonist, text.Protagonist.S2123_17);
-                await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_18);
-                await ƒS.Location.show(locations.sumisHome_futonroom);
-                await ƒS.Character.show(characters.sumi, characters.sumi.pose.embarrassed2, ƒS.positions.bottomcenter);
-                await ƒS.update(transitions.eyesOpen.duration, transitions.eyesOpen.alpha, transitions.eyesOpen.edge);
-                
-                flirtOrSleep = await ƒS.Menu.getInput(flirtOrSleepAnswer, "decisionClass");
-                switch (flirtOrSleep) {
-                    case flirtOrSleepAnswer.sleep:
-                        break;
-                    case flirtOrSleepAnswer.flirt:
-                        dataForSave.romancePoints++;
-                        await ƒS.Speech.tell(characters.sumi, text.Sumi.S2123_19);
-                        break;
-                }
-                ƒS.Speech.hide();
-                ƒS.Character.hide(characters.sumi);
-                await ƒS.update(1);
-                await ƒS.Location.show(sequences.black);
-                await ƒS.update(3);
-                await ƒS.Sound.fade(sound.romantic_track, 0, 3, false);
-                await ƒS.Sound.fade(sound.raining, 0, 0, false);
-                await ƒS.Sound.play(sound.rooster, 0.2, false);
-                await ƒS.Location.show(sequences.theNextDay);
-                await ƒS.update(3);
-                return "sumisHouse";
-        }
     }
-
-    // Endings
-    async function ending(endingNr: number): Promise<string> {
-        switch (endingNr) {
-            case 1:
-              await ƒS.Speech.hide();
-              await ƒS.Location.show(endings.partingWays);
-              await ƒS.update(3);
-              await ƒS.Sound.fade(sound.neutral_ending, 0, 4, false);
-              return "endOfNovel";
-            case 2:
-              await ƒS.Speech.hide();
-              await ƒS.Location.show(endings.partingWays);
-              await ƒS.update(3);
-              await ƒS.Sound.fade(sound.neutral_ending, 0, 4, false);
-              return "endOfNovel";
-        }
-        return "endOfNovel";
-      }
 }

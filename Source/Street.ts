@@ -101,8 +101,8 @@ namespace Endabgabe {
     };
 
     let provokeOrKeepUpAnswer = {
-      provoke: "Mehr hast du nicht drauf?",
-      keepUp: "Das kann den ganzen Tag so weitergehen!"
+      provoke: "Mehr hast du nicht drauf? [Provozieren]",
+      keepUp: "Das kann den ganzen Tag so weitergehen! [Durchhalten]"
     };
 
     // Start

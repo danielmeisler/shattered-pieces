@@ -101,6 +101,7 @@ namespace Endabgabe {
                 await ƒS.Speech.hide();
                 await ƒS.Location.show(endings.sumiEnding);
                 await ƒS.update(5);
+                await ƒS.Sound.fade(sound.searching_track, 0, 3, false);
                 return "endOfNovel";
         }
         return "endOfNovel";
