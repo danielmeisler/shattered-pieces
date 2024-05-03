@@ -6,12 +6,12 @@ Sommersemester 2022<br>
 
 
 
-Visual Novel: https://danielmeisler.github.io/VisualNovel_Endabgabe/game.html
+Visual Novel: https://danielmeisler.github.io/shattered-pieces/game.html
 
-Code: https://github.com/danielmeisler/VisualNovel_Endabgabe/tree/main/Source
+Code: https://github.com/danielmeisler/shattered-pieces/tree/main/Source
 
-Konzept: https://github.com/danielmeisler/VisualNovel_Endabgabe/blob/main/concept/VisualNovel_Konzept_Daniel_Meisler_263236.pdf
+Konzept: https://github.com/danielmeisler/shattered-pieces/blob/main/concept/VisualNovel_Konzept_Daniel_Meisler_263236.pdf
 
-Baumdiagramm (Ist auch im Konzept enthalten, aber besser lesbar): https://github.com/danielmeisler/VisualNovel_Endabgabe/blob/main/concept/Baumdiagramm.png
+Baumdiagramm (Ist auch im Konzept enthalten, aber besser lesbar): https://github.com/danielmeisler/shattered-pieces/blob/main/concept/Baumdiagramm.png
 
-Zip: https://github.com/danielmeisler/VisualNovel_Endabgabe/tree/main/zip
+Zip: https://github.com/danielmeisler/shattered-pieces/tree/main/zip
